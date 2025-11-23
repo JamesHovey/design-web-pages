@@ -17,13 +17,13 @@ export default function DashboardPage() {
   }
 
   if (status === "unauthenticated") {
-    router.push("/auth/login");
+    router.push("/login");
     return null;
   }
 
   const handleSignOut = async () => {
     await signOut({ redirect: false });
-    router.push("/auth/login");
+    router.push("/login");
   };
 
   return (

@@ -47,7 +47,7 @@ export default function RegisterPage() {
       }
 
       // Redirect to login page
-      router.push("/auth/login?registered=true");
+      router.push("/login?registered=true");
     } catch (err) {
       setError("An error occurred. Please try again.");
     } finally {
@@ -127,7 +127,7 @@ export default function RegisterPage() {
           <div className="mt-6 text-center text-sm">
             <span className="text-gray-600">Already have an account? </span>
             <Link
-              href="/auth/login"
+              href="/login"
               className="text-blue-600 hover:text-blue-700 font-medium"
             >
               Sign in

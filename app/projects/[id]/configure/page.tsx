@@ -138,7 +138,7 @@ export default function ConfigurePage() {
   }
 
   if (status === "unauthenticated") {
-    router.push("/auth/login");
+    router.push("/login");
     return null;
   }
 

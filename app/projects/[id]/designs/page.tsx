@@ -98,7 +98,7 @@ export default function DesignsPage() {
   }
 
   if (status === "unauthenticated") {
-    router.push("/auth/login");
+    router.push("/login");
     return null;
   }
 

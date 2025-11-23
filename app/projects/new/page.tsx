@@ -23,7 +23,7 @@ export default function NewProjectPage() {
   }
 
   if (status === "unauthenticated") {
-    router.push("/auth/login");
+    router.push("/login");
     return null;
   }
 

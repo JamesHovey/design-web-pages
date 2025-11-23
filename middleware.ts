@@ -24,7 +24,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Auth pages - redirect to dashboard if already logged in
-  if (pathname.startsWith("/auth/")) {
+  if (pathname === "/login" || pathname === "/register") {
     const token = await getToken({
       req: request,
       secret: process.env.NEXTAUTH_SECRET,
@@ -44,7 +44,7 @@ export async function middleware(request: NextRequest) {
     });
 
     if (!token) {
-      return NextResponse.redirect(new URL("/auth/login", request.url));
+      return NextResponse.redirect(new URL("/login", request.url));
     }
   }
 

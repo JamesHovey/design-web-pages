@@ -27,7 +27,7 @@ export default function GatewayPage() {
       const data = await response.json();
 
       if (data.success) {
-        router.push("/auth/login");
+        router.push("/login");
         router.refresh();
       } else {
         setError("Invalid credentials. Please try again.");
