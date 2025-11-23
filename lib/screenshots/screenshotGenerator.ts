@@ -17,6 +17,11 @@ const VIEWPORT_SIZES: ViewportSize[] = [
 ];
 
 /**
+ * Wait utility function to replace deprecated waitForTimeout
+ */
+const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+/**
  * Generate screenshots of HTML preview at different viewport sizes
  * Returns base64 encoded images
  */
@@ -58,7 +63,7 @@ export async function generateScreenshots(
       });
 
       // Wait a bit for any animations or layout shifts
-      await page.waitForTimeout(500);
+      await wait(500);
 
       // Take screenshot as base64
       const screenshot = await page.screenshot({
@@ -105,7 +110,7 @@ export async function generatePreviewScreenshot(htmlContent: string): Promise<st
       timeout: 30000,
     });
 
-    await page.waitForTimeout(500);
+    await wait(500);
 
     const screenshot = await page.screenshot({
       type: "png",
