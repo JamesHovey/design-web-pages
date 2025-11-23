@@ -1,6 +1,8 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
+:root {
   /* Varied spacing scale following design principles */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
