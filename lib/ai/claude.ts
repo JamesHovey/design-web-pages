@@ -1,12 +1,28 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-if (!process.env.ANTHROPIC_API_KEY) {
-  throw new Error("ANTHROPIC_API_KEY is not set in environment variables");
+// Lazy initialization - only create client when needed (not during build)
+let anthropicClient: Anthropic | null = null;
+
+function getAnthropicClient(): Anthropic {
+  if (!anthropicClient) {
+    if (!process.env.ANTHROPIC_API_KEY) {
+      throw new Error("ANTHROPIC_API_KEY is not set in environment variables");
+    }
+    anthropicClient = new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY,
+    });
+  }
+  return anthropicClient;
 }
 
-export const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
+export const anthropic = {
+  messages: {
+    create: async (params: any) => {
+      const client = getAnthropicClient();
+      return client.messages.create(params);
+    },
+  },
+};
 
 /**
  * Generate website design using Claude Sonnet 4.5
@@ -25,7 +41,8 @@ CRITICAL PRINCIPLES:
 
 Return a JSON object with the design specification.`;
 
-  const message = await anthropic.messages.create({
+  const client = getAnthropicClient();
+  const message = await client.messages.create({
     model: "claude-sonnet-4-5-20250929",
     max_tokens: 4096,
     system: systemPrompt,
