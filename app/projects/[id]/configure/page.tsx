@@ -19,6 +19,7 @@ export default function ConfigurePage() {
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [generating, setGenerating] = useState(false);
   const [project, setProject] = useState<any>(null);
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -95,6 +96,37 @@ export default function ConfigurePage() {
   const handleSaveAndExit = async () => {
     await handleSave();
     router.push("/dashboard");
+  };
+
+  const handleGenerateDesigns = async () => {
+    setGenerating(true);
+    setError("");
+
+    try {
+      // Save configuration first
+      await handleSave();
+
+      // Generate designs
+      const response = await fetch("/api/designs/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ projectId }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to generate designs");
+      }
+
+      const data = await response.json();
+
+      // Redirect to designs gallery
+      router.push(`/projects/${projectId}/designs`);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to generate designs");
+    } finally {
+      setGenerating(false);
+    }
   };
 
   if (status === "loading" || loading) {
@@ -295,10 +327,10 @@ export default function ConfigurePage() {
               Save & Exit
             </Button>
             <Button
-              onClick={() => alert("Generate Designs feature coming in Phase 3!")}
-              disabled={saving}
+              onClick={handleGenerateDesigns}
+              disabled={saving || generating}
             >
-              Generate Designs
+              {generating ? "Generating Designs..." : "Generate Designs"}
             </Button>
           </div>
         </div>
