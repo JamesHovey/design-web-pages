@@ -236,9 +236,23 @@ export default function DesignsPage() {
               <h2 className="text-2xl font-bold text-gray-900">
                 {selectedDesign.name} Details
               </h2>
-              <Button onClick={() => handleApprove(selectedDesign.id)}>
-                Approve Design
-              </Button>
+              <div className="flex gap-3">
+                <Button
+                  variant="outline"
+                  onClick={() => window.open(`/api/designs/${selectedDesign.id}/export/pdf`, '_blank')}
+                >
+                  Download PDF
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => window.open(`/api/designs/${selectedDesign.id}/export/elementor`, '_blank')}
+                >
+                  Export Elementor JSON
+                </Button>
+                <Button onClick={() => handleApprove(selectedDesign.id)}>
+                  Approve Design
+                </Button>
+              </div>
             </div>
 
             {/* Design Rationale */}

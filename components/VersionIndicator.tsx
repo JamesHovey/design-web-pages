@@ -1,8 +1,8 @@
 "use client";
 
 export default function VersionIndicator() {
-  const version = "0.1.0";
-  const phase = "Phase 2";
+  const version = "1.0.0";
+  const phase = "Complete";
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
