@@ -4,6 +4,10 @@ import { useSession } from "next-auth/react";
 import { useRouter, useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
+import ViewportSelector from "@/components/projects/ViewportSelector";
+import ColorPicker from "@/components/projects/ColorPicker";
+import FontSelector from "@/components/projects/FontSelector";
+import WidgetSelector from "@/components/projects/WidgetSelector";
 
 export default function ConfigurePage() {
   const { data: session, status } = useSession();
@@ -12,8 +16,16 @@ export default function ConfigurePage() {
   const projectId = params.id as string;
 
   const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
   const [project, setProject] = useState<any>(null);
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
+  // Configuration state
+  const [viewports, setViewports] = useState<string[]>([]);
+  const [colorScheme, setColorScheme] = useState<any>(null);
+  const [fonts, setFonts] = useState<any>(null);
+  const [layoutWidgets, setLayoutWidgets] = useState<string[]>([]);
 
   useEffect(() => {
     if (status === "authenticated" && projectId) {
@@ -29,11 +41,52 @@ export default function ConfigurePage() {
       }
       const data = await response.json();
       setProject(data.project);
+
+      // Initialize configuration state from project data
+      setViewports(data.project.viewports || []);
+      setColorScheme(data.project.colorScheme || null);
+      setFonts(data.project.fonts || null);
+      setLayoutWidgets(data.project.layoutWidgets || []);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load project");
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSave = async () => {
+    setSaving(true);
+    setError("");
+    setSuccessMessage("");
+
+    try {
+      const response = await fetch(`/api/projects/${projectId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          viewports,
+          colorScheme,
+          fonts,
+          layoutWidgets,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save configuration");
+      }
+
+      setSuccessMessage("Configuration saved successfully!");
+      setTimeout(() => setSuccessMessage(""), 3000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to save");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleSaveAndExit = async () => {
+    await handleSave();
+    router.push("/dashboard");
   };
 
   if (status === "loading" || loading) {
@@ -122,6 +175,18 @@ export default function ConfigurePage() {
           </div>
         </div>
 
+        {/* Success/Error Messages */}
+        {successMessage && (
+          <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm mb-6">
+            {successMessage}
+          </div>
+        )}
+        {error && (
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm mb-6">
+            {error}
+          </div>
+        )}
+
         {/* Configuration Sections */}
         <div className="space-y-8">
           {/* Viewport Selection */}
@@ -130,11 +195,7 @@ export default function ConfigurePage() {
             <p className="text-gray-600 mb-6">
               Select which device breakpoints to generate designs for (Elementor breakpoints)
             </p>
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-              <p className="text-sm text-yellow-800">
-                <strong>Coming soon:</strong> Viewport selector component
-              </p>
-            </div>
+            <ViewportSelector value={viewports} onChange={setViewports} />
           </div>
 
           {/* Color Scheme */}
@@ -143,11 +204,11 @@ export default function ConfigurePage() {
             <p className="text-gray-600 mb-6">
               Configure your color palette (auto-generated from logo or custom)
             </p>
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-              <p className="text-sm text-yellow-800">
-                <strong>Coming soon:</strong> Color picker component
-              </p>
-            </div>
+            <ColorPicker
+              value={colorScheme}
+              logoColors={project.logoColors}
+              onChange={setColorScheme}
+            />
           </div>
 
           {/* Typography */}
@@ -156,11 +217,11 @@ export default function ConfigurePage() {
             <p className="text-gray-600 mb-6">
               Select fonts from Google Fonts (AI-recommended or custom)
             </p>
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-              <p className="text-sm text-yellow-800">
-                <strong>Coming soon:</strong> Font selector component
-              </p>
-            </div>
+            <FontSelector
+              value={fonts}
+              industry={project.industry}
+              onChange={setFonts}
+            />
           </div>
 
           {/* Widgets */}
@@ -169,27 +230,44 @@ export default function ConfigurePage() {
             <p className="text-gray-600 mb-6">
               Select Elementor widgets to include in your design
             </p>
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-              <p className="text-sm text-yellow-800">
-                <strong>Coming soon:</strong> Widget selector component
-              </p>
-            </div>
+            <WidgetSelector
+              value={layoutWidgets}
+              siteType={project.siteType}
+              onChange={setLayoutWidgets}
+            />
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="mt-8 flex justify-end gap-4">
+        <div className="mt-8 flex justify-between items-center">
           <Button
             variant="outline"
             onClick={() => router.push("/dashboard")}
+            disabled={saving}
           >
-            Save & Exit
+            Cancel
           </Button>
-          <Button
-            onClick={() => alert("Generate Designs feature coming in Phase 3!")}
-          >
-            Generate Designs
-          </Button>
+          <div className="flex gap-4">
+            <Button
+              variant="outline"
+              onClick={handleSave}
+              disabled={saving}
+            >
+              {saving ? "Saving..." : "Save Configuration"}
+            </Button>
+            <Button
+              onClick={handleSaveAndExit}
+              disabled={saving}
+            >
+              Save & Exit
+            </Button>
+            <Button
+              onClick={() => alert("Generate Designs feature coming in Phase 3!")}
+              disabled={saving}
+            >
+              Generate Designs
+            </Button>
+          </div>
         </div>
       </main>
     </div>
