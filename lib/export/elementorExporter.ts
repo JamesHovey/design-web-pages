@@ -8,6 +8,7 @@ interface ElementorElement {
   elType: string;
   settings: Record<string, any>;
   elements?: ElementorElement[];
+  widgetType?: string;
 }
 
 interface DesignData {
