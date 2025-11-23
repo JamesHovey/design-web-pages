@@ -82,7 +82,7 @@ export function generateElementorJSON(design: DesignData): any {
           id: generateId(),
           elType: "column",
           settings: {},
-          elements: [convertWidgetToElementor(design.widgetStructure.globalHeader)].filter(Boolean),
+          elements: [convertWidgetToElementor(design.widgetStructure.globalHeader)].filter((el): el is ElementorElement => el !== null),
         },
       ],
     };
@@ -103,7 +103,7 @@ export function generateElementorJSON(design: DesignData): any {
           id: generateId(),
           elType: "column",
           settings: {},
-          elements: [convertWidgetToElementor(design.widgetStructure.globalFooter)].filter(Boolean),
+          elements: [convertWidgetToElementor(design.widgetStructure.globalFooter)].filter((el): el is ElementorElement => el !== null),
         },
       ],
     };
