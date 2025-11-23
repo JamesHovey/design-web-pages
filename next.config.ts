@@ -10,11 +10,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  experimental: {
-    turbo: {},
-    serverComponentsExternalPackages: ['puppeteer', 'puppeteer-core', 'puppeteer-extra', 'puppeteer-extra-plugin-stealth'],
-  },
-  webpack: (config, { isServer }) => {
+  serverExternalPackages: ['puppeteer', 'puppeteer-core', 'puppeteer-extra', 'puppeteer-extra-plugin-stealth'],
+  webpack: (config) => {
     // Suppress critical dependency warnings for dynamic requires
     config.module = config.module || {};
     config.module.exprContextCritical = false;
