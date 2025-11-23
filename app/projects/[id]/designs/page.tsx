@@ -30,6 +30,7 @@ export default function DesignsPage() {
   const [designs, setDesigns] = useState<Design[]>([]);
   const [project, setProject] = useState<any>(null);
   const [selectedDesign, setSelectedDesign] = useState<Design | null>(null);
+  const [selectedViewport, setSelectedViewport] = useState<string>("desktop");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -163,6 +164,17 @@ export default function DesignsPage() {
                 <p className="text-sm text-gray-600">{design.description}</p>
               </div>
 
+              {/* Screenshot Preview */}
+              {design.screenshots && Object.keys(design.screenshots).length > 0 && (
+                <div className="aspect-video bg-gray-100 relative overflow-hidden">
+                  <img
+                    src={design.screenshots['desktop'] || design.screenshots[Object.keys(design.screenshots)[0]]}
+                    alt={`${design.name} preview`}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+              )}
+
               {/* Scores */}
               <div className="p-6 bg-gray-50 grid grid-cols-2 gap-4">
                 <div>
@@ -264,6 +276,39 @@ export default function DesignsPage() {
                     <li key={i}>{issue}</li>
                   ))}
                 </ul>
+              </div>
+            )}
+
+            {/* Viewport Screenshots */}
+            {selectedDesign.screenshots && Object.keys(selectedDesign.screenshots).length > 0 && (
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Screenshots</h3>
+
+                {/* Viewport Tabs */}
+                <div className="flex gap-2 mb-4">
+                  {Object.keys(selectedDesign.screenshots).map((viewport) => (
+                    <button
+                      key={viewport}
+                      onClick={() => setSelectedViewport(viewport)}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                        selectedViewport === viewport
+                          ? "bg-blue-600 text-white"
+                          : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                      }`}
+                    >
+                      {viewport.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Screenshot Display */}
+                <div className="border border-gray-300 rounded-lg overflow-hidden bg-gray-100 p-4">
+                  <img
+                    src={selectedDesign.screenshots[selectedViewport]}
+                    alt={`${selectedDesign.name} - ${selectedViewport}`}
+                    className="w-full h-auto shadow-lg"
+                  />
+                </div>
               </div>
             )}
 

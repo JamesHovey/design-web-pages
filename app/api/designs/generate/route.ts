@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db/prisma";
 import { generateDesignVariations } from "@/lib/design/designGenerator";
+import { generateScreenshots } from "@/lib/screenshots/screenshotGenerator";
 
 export async function POST(request: NextRequest) {
   try {
@@ -85,13 +86,37 @@ export async function POST(request: NextRequest) {
               distinctivenessScore,
               rationale: variation.rationale,
               ctaStrategy: variation.ctaStrategy,
-              screenshots: {}, // Will be generated in Phase 4
+              screenshots: {}, // Will be generated asynchronously
               qualityIssues: identifyQualityIssues(variation, accessibilityScore),
               qualityStrengths: identifyQualityStrengths(variation, distinctivenessScore),
             },
           });
         })
       );
+
+      // Generate screenshots for each design (async, don't wait)
+      const viewports = (project.viewports as string[]) || ["desktop"];
+      designs.forEach(async (design) => {
+        try {
+          const screenshots = await generateScreenshots(design.htmlPreview, viewports);
+
+          // Convert base64 to data URLs
+          const screenshotUrls: Record<string, string> = {};
+          Object.entries(screenshots).forEach(([viewport, base64]) => {
+            screenshotUrls[viewport] = `data:image/png;base64,${base64}`;
+          });
+
+          // Update design with screenshots
+          await prisma.design.update({
+            where: { id: design.id },
+            data: { screenshots: screenshotUrls },
+          });
+
+          console.log(`Screenshots generated for design ${design.id}`);
+        } catch (error) {
+          console.error(`Failed to generate screenshots for design ${design.id}:`, error);
+        }
+      });
 
       // Update project status to completed
       await prisma.project.update({
