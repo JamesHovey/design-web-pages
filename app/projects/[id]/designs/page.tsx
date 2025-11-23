@@ -17,6 +17,7 @@ interface Design {
   ctaStrategy: string;
   qualityIssues: string[];
   qualityStrengths: string[];
+  screenshots: Record<string, string>;
   approved: boolean;
 }
 
