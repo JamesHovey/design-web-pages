@@ -44,12 +44,15 @@ export async function POST(request: NextRequest) {
     // Scrape and analyze each competitor
     for (const url of competitorUrls.slice(0, 5)) { // Limit to 5 competitors
       try {
+        // Extract domain from URL for caching
+        const domain = new URL(url).hostname.replace(/^www\./, '');
+
         // Check cache first (7-day TTL)
         const cached = await prisma.competitorCache.findFirst({
           where: {
-            url,
-            createdAt: {
-              gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+            domain,
+            expiresAt: {
+              gte: new Date(),
             },
           },
         });
@@ -116,11 +119,16 @@ Return ONLY valid JSON.`;
 
         competitorData.push(competitorAnalysis);
 
-        // Cache the analysis
+        // Cache the analysis (7-day expiry)
+        const expiresAt = new Date();
+        expiresAt.setDate(expiresAt.getDate() + 7);
+
         await prisma.competitorCache.create({
           data: {
-            url,
+            domain,
+            industry: project.industry || "general",
             analysis: competitorAnalysis,
+            expiresAt,
           },
         });
       } catch (error) {
