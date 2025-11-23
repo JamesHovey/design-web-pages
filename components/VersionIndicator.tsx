@@ -1,8 +1,9 @@
 "use client";
 
 export default function VersionIndicator() {
-  const version = "1.0.0";
-  const phase = "Complete";
+  const version = "1.0.1";
+  const phase = "Deployed";
+  const buildDate = "2025-11-23";
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
@@ -11,8 +12,9 @@ export default function VersionIndicator() {
           <div className="flex items-center gap-2">
             <span className="text-gray-400">v{version}</span>
             <span className="text-gray-600">|</span>
-            <span className="text-blue-400">{phase}</span>
+            <span className="text-green-400">{phase}</span>
           </div>
+          <div className="text-gray-500 text-[10px]">{buildDate}</div>
         </div>
       </div>
     </div>
