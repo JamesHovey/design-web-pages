@@ -35,7 +35,7 @@ yarn-error.log*
 next-env.d.ts
 
 # Prisma
-prisma/migrations/
+# Note: migrations/ must be committed for Railway deployment
 
 # IDE
 .vscode/
