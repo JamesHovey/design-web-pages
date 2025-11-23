@@ -1,0 +1,20 @@
+"use client";
+
+export default function VersionIndicator() {
+  const version = "0.1.0";
+  const phase = "Phase 2";
+
+  return (
+    <div className="fixed bottom-4 right-4 z-50">
+      <div className="bg-gray-900 text-white px-3 py-2 rounded-lg shadow-lg text-xs font-mono">
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-2">
+            <span className="text-gray-400">v{version}</span>
+            <span className="text-gray-600">|</span>
+            <span className="text-blue-400">{phase}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

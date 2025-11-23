@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SessionProvider from "@/components/auth/SessionProvider";
+import VersionIndicator from "@/components/VersionIndicator";
 
 export const metadata: Metadata = {
   title: "Design Web Pages - AI-Powered Website Design Generator",
@@ -16,6 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <SessionProvider>{children}</SessionProvider>
+        <VersionIndicator />
       </body>
     </html>
   );
