@@ -127,7 +127,7 @@ Return ONLY valid JSON.`;
           data: {
             domain,
             industry: project.industry || "general",
-            analysis: competitorAnalysis,
+            analysis: competitorAnalysis as any,
             expiresAt,
           },
         });
