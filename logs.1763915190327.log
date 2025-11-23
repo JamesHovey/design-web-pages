@@ -1,0 +1,238 @@
+2025-11-23T16:24:05.458224252Z [inf]  
+2025-11-23T16:24:08.276273150Z [inf]  [35m[Region: europe-west4][0m
+2025-11-23T16:24:08.319189084Z [inf]  
+2025-11-23T16:24:08.319216466Z [inf]  [38;2;125;86;243m╭─────────────────╮[0m
+2025-11-23T16:24:08.319220688Z [inf]  [38;2;125;86;243m│[0m Railpack 0.13.0 [38;2;125;86;243m│[0m
+2025-11-23T16:24:08.319224137Z [inf]  [38;2;125;86;243m╰─────────────────╯[0m
+2025-11-23T16:24:08.319229021Z [inf]  
+2025-11-23T16:24:08.319232962Z [inf]  [97m↳ Detected Node[0m
+2025-11-23T16:24:08.319236140Z [inf]  [97m↳ Using npm package manager[0m
+2025-11-23T16:24:08.319239077Z [inf]  
+2025-11-23T16:24:08.319242046Z [inf]  [1mPackages[0m
+2025-11-23T16:24:08.319245493Z [inf]  [38;5;238m──────────[0m
+2025-11-23T16:24:08.319248855Z [inf]  [95mnode[0m  [38;5;238m│[0m  [96m22.21.1[0m  [38;5;238m│[0m  railpack default (22)
+2025-11-23T16:24:08.319251902Z [inf]  
+2025-11-23T16:24:08.319254913Z [inf]  [1mSteps[0m
+2025-11-23T16:24:08.319258109Z [inf]  [38;5;238m──────────[0m
+2025-11-23T16:24:08.319260985Z [inf]  [95m▸ install[0m
+2025-11-23T16:24:08.319263800Z [inf]  [38;5;245m$[0m [1mnpm install[0m
+2025-11-23T16:24:08.319267031Z [inf]  
+2025-11-23T16:24:08.319269666Z [inf]  [95m▸ build[0m
+2025-11-23T16:24:08.319272366Z [inf]  [38;5;245m$[0m [1mnpm run build[0m
+2025-11-23T16:24:08.319275178Z [inf]  
+2025-11-23T16:24:08.319277973Z [inf]  [1mDeploy[0m
+2025-11-23T16:24:08.319280621Z [inf]  [38;5;238m──────────[0m
+2025-11-23T16:24:08.319283286Z [inf]  [38;5;245m$[0m [1mnpm run start[0m
+2025-11-23T16:24:08.319285867Z [inf]  
+2025-11-23T16:24:08.319288630Z [inf]  
+2025-11-23T16:24:08.320096938Z [inf]  Successfully prepared Railpack plan for build
+2025-11-23T16:24:08.320125337Z [inf]  
+2025-11-23T16:24:08.320133074Z [inf]  
+2025-11-23T16:24:08.320421974Z [inf]  context: thr7-5H
+2025-11-23T16:24:08.451992895Z [inf]  [internal] load build definition from railpack-plan.json
+2025-11-23T16:24:08.452027417Z [inf]  [internal] load build definition from railpack-plan.json
+2025-11-23T16:24:08.452042921Z [inf]  [internal] load build definition from railpack-plan.json
+2025-11-23T16:24:08.461672688Z [inf]  [internal] load build definition from railpack-plan.json
+2025-11-23T16:24:08.463401548Z [inf]  resolve image config for docker-image://ghcr.io/railwayapp/railpack-frontend:v0.13.0
+2025-11-23T16:24:08.780141905Z [inf]  resolve image config for docker-image://ghcr.io/railwayapp/railpack-frontend:v0.13.0
+2025-11-23T16:24:08.780177202Z [inf]  docker-image://ghcr.io/railwayapp/railpack-frontend:v0.13.0@sha256:6abf5c09474a5a6a6d2317725bf69c99708336e5ad0e6cbae7c5e746a586cc52
+2025-11-23T16:24:08.780238352Z [inf]  docker-image://ghcr.io/railwayapp/railpack-frontend:v0.13.0@sha256:6abf5c09474a5a6a6d2317725bf69c99708336e5ad0e6cbae7c5e746a586cc52
+2025-11-23T16:24:08.784806076Z [inf]  docker-image://ghcr.io/railwayapp/railpack-frontend:v0.13.0@sha256:6abf5c09474a5a6a6d2317725bf69c99708336e5ad0e6cbae7c5e746a586cc52
+2025-11-23T16:24:08.785203910Z [inf]  docker-image://ghcr.io/railwayapp/railpack-frontend:v0.13.0@sha256:6abf5c09474a5a6a6d2317725bf69c99708336e5ad0e6cbae7c5e746a586cc52
+2025-11-23T16:24:08.865892488Z [inf]  load build definition from railpack-plan.json
+2025-11-23T16:24:08.865927401Z [inf]  load build definition from railpack-plan.json
+2025-11-23T16:24:08.865940938Z [inf]  load build definition from railpack-plan.json
+2025-11-23T16:24:08.865950673Z [inf]  load build definition from railpack-plan.json
+2025-11-23T16:24:08.876254788Z [inf]  load build definition from railpack-plan.json
+2025-11-23T16:24:08.963734786Z [inf]  loading .
+2025-11-23T16:24:08.963770943Z [inf]  copy /root/.local/state/mise
+2025-11-23T16:24:08.963777700Z [inf]  copy /etc/mise/config.toml
+2025-11-23T16:24:08.963783644Z [inf]  copy /usr/local/bin/mise
+2025-11-23T16:24:08.963792646Z [inf]  copy /mise/installs
+2025-11-23T16:24:08.963798976Z [inf]  docker-image://ghcr.io/railwayapp/railpack-runtime:latest
+2025-11-23T16:24:08.963805079Z [inf]  install mise packages: node
+2025-11-23T16:24:08.963811130Z [inf]  create mise config
+2025-11-23T16:24:08.963816810Z [inf]  mkdir /etc/mise
+2025-11-23T16:24:08.963824626Z [inf]  docker-image://ghcr.io/railwayapp/railpack-builder:latest
+2025-11-23T16:24:08.963830171Z [inf]  install apt packages: libatomic1
+2025-11-23T16:24:08.963837285Z [inf]  copy / /app
+2025-11-23T16:24:08.963842651Z [inf]  copy /mise/shims
+2025-11-23T16:24:08.963869618Z [inf]  [railpack] merge $packages:apt:runtime, $packages:mise, $build, $build
+2025-11-23T16:24:08.963875840Z [inf]  copy /app
+2025-11-23T16:24:08.963882580Z [inf]  copy /root/.cache
+2025-11-23T16:24:08.963889622Z [inf]  copy /app/node_modules
+2025-11-23T16:24:08.963894752Z [inf]  npm run build
+2025-11-23T16:24:08.963899856Z [inf]  [railpack] secrets hash
+2025-11-23T16:24:08.963905169Z [inf]  copy / /app
+2025-11-23T16:24:08.963914792Z [inf]  npm install
+2025-11-23T16:24:08.963921437Z [inf]  mkdir -p /app/node_modules/.cache
+2025-11-23T16:24:08.963933418Z [inf]  loading .
+2025-11-23T16:24:08.963943872Z [inf]  docker-image://ghcr.io/railwayapp/railpack-builder:latest
+2025-11-23T16:24:08.964208463Z [inf]  [railpack] secrets hash
+2025-11-23T16:24:08.964232354Z [inf]  docker-image://ghcr.io/railwayapp/railpack-runtime:latest
+2025-11-23T16:24:09.216827483Z [inf]  docker-image://ghcr.io/railwayapp/railpack-runtime:latest
+2025-11-23T16:24:09.254353664Z [inf]  docker-image://ghcr.io/railwayapp/railpack-builder:latest
+2025-11-23T16:24:09.255510952Z [inf]  loading .
+2025-11-23T16:24:09.255528601Z [inf]  mkdir /etc/mise
+2025-11-23T16:24:09.255537035Z [inf]  create mise config
+2025-11-23T16:24:09.255548653Z [inf]  install mise packages: node
+2025-11-23T16:24:09.255557795Z [inf]  [railpack] secrets hash
+2025-11-23T16:24:09.255571444Z [inf]  install mise packages: node
+2025-11-23T16:24:09.266553012Z [inf]  [railpack] secrets hash
+2025-11-23T16:24:09.272050113Z [inf]  loading .
+2025-11-23T16:24:09.273082439Z [inf]  copy / /app
+2025-11-23T16:24:09.289943980Z [inf]  copy / /app
+2025-11-23T16:24:09.291072947Z [inf]  mkdir -p /app/node_modules/.cache
+2025-11-23T16:24:09.380549297Z [inf]  mkdir -p /app/node_modules/.cache
+2025-11-23T16:24:09.381683799Z [inf]  npm install
+2025-11-23T16:24:09.622329771Z [inf]  npm warn config production Use `--omit=dev` instead.
+
+2025-11-23T16:24:35.078231157Z [inf]  npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+
+2025-11-23T16:24:35.083842059Z [inf]  npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+
+2025-11-23T16:24:35.123785428Z [inf]  npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+
+2025-11-23T16:24:50.611373484Z [inf]  
+> design-web-pages@0.1.0 postinstall
+> prisma generate
+
+
+2025-11-23T16:24:51.46562033Z [inf]  Prisma schema loaded from prisma/schema.prisma
+
+2025-11-23T16:24:51.69883936Z [inf]  ┌─────────────────────────────────────────────────────────┐
+│  Update available 6.19.0 -> 7.0.0                       │
+│                                                         │
+│  This is a major update - please follow the guide at    │
+│  https://pris.ly/d/major-version-upgrade                │
+│                                                         │
+│  Run the following to update                            │
+│    npm i --save-dev prisma@latest                       │
+│    npm i @prisma/client@latest                          │
+└─────────────────────────────────────────────────────────┘
+
+2025-11-23T16:24:51.699004925Z [inf]  
+✔ Generated Prisma Client (v6.19.0) to ./node_modules/@prisma/client in 80ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Interested in query caching in just a few lines of code? Try Accelerate today! https://pris.ly/tip-3-accelerate
+
+
+2025-11-23T16:24:51.717399104Z [inf]  
+added 555 packages, and audited 556 packages in 42s
+
+2025-11-23T16:24:51.742487252Z [inf]  
+3 vulnerabilities (2 moderate, 1 high)
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+2025-11-23T16:24:52.033660667Z [inf]  npm install
+2025-11-23T16:24:52.035020497Z [inf]  copy / /app
+2025-11-23T16:24:52.195955294Z [inf]  copy / /app
+2025-11-23T16:24:52.197423121Z [inf]  npm run build
+2025-11-23T16:24:52.390845835Z [inf]  npm warn config production Use `--omit=dev` instead.
+
+2025-11-23T16:24:52.402851499Z [inf]  
+> design-web-pages@0.1.0 build
+> bash railway-build.sh
+
+
+2025-11-23T16:24:52.407055992Z [inf]  🚀 Starting Railway build process...
+📦 Generating Prisma client...
+
+2025-11-23T16:24:52.47032203Z [inf]  npm warn config production Use `--omit=dev` instead.
+
+2025-11-23T16:24:53.449244746Z [inf]  Prisma schema loaded from prisma/schema.prisma
+
+2025-11-23T16:24:53.675056934Z [inf]  
+✔ Generated Prisma Client (v6.19.0) to ./node_modules/@prisma/client in 74ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Need your database queries to be 1000x faster? Accelerate offers you that and more: https://pris.ly/tip-2-accelerate
+
+
+2025-11-23T16:24:53.694002246Z [inf]  ⚠️  DATABASE_URL not set - skipping database migration
+⚠️  Make sure to add a PostgreSQL database in Railway dashboard
+🏗️  Building Next.js application...
+
+2025-11-23T16:24:53.757048763Z [inf]  npm warn config production Use `--omit=dev` instead.
+
+2025-11-23T16:24:54.572777157Z [inf]   ⚠ The config property `experimental.turbo` is deprecated. Move this setting to `config.turbopack` as Turbopack is now stable.
+
+2025-11-23T16:24:54.57599061Z [inf]  ⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+
+2025-11-23T16:24:54.628795136Z [inf]     ▲ Next.js 15.4.6
+
+
+2025-11-23T16:24:54.63915632Z [inf]     Creating an optimized production build ...
+
+2025-11-23T16:25:02.017095731Z [inf]  [Error: Cannot apply unknown utility class `border-border`]
+
+2025-11-23T16:25:02.539794114Z [inf]  <w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/app/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!/app/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!/app/app/globals.css': No serializer registered for PostCSSSyntaxError
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> PostCSSSyntaxError
+
+2025-11-23T16:25:02.686366136Z [inf]  Failed to compile.
+
+
+2025-11-23T16:25:02.686591614Z [inf]  ./app/globals.css:1:1
+Syntax error: tailwindcss: /app/app/globals.css Cannot apply unknown utility class `border-border`
+
+[1m[31m>[39m[22m[90m 1 | [39m[36m@import[39m [32m"tailwindcss"[39m[33m;[39m
+ [90m   | [39m[1m[31m^[39m[22m
+ [90m 2 | [39m
+ [90m 3 | [39m[36m@theme[39m [33m{[39m
+
+./app/globals.css
+Syntax error: tailwindcss: /app/app/globals.css Cannot apply unknown utility class `border-border` (1:1)
+
+[1m[31m>[39m[22m[90m 1 | [39m[36m@import[39m [32m"tailwindcss"[39m[33m;[39m
+ [90m   | [39m[1m[31m^[39m[22m
+ [90m 2 | [39m
+ [90m 3 | [39m[36m@theme[39m [33m{[39m
+
+    at tryRunOrWebpackError (/app/node_modules/next/dist/compiled/webpack/bundle5.js:29:316119)
+    at __webpack_require_module__ (/app/node_modules/next/dist/compiled/webpack/bundle5.js:29:131532)
+    at __nested_webpack_require_161494__ (/app/node_modules/next/dist/compiled/webpack/bundle5.js:29:130967)
+    at /app/node_modules/next/dist/compiled/webpack/bundle5.js:29:131824
+    at symbolIterator (/app/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/app/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at Hook.eval [as callAsync] (eval at create (/app/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:15:1)
+    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (/app/node_modules/next/dist/compiled/webpack/bundle5.js:14:6378)
+    at /app/node_modules/next/dist/compiled/webpack/bundle5.js:29:130687
+    at symbolIterator (/app/node_modules/next/dist/compiled/neo-async/async.js:1:14402)
+-- inner error --
+Syntax error: tailwindcss: /app/app/globals.css Cannot apply unknown utility class `border-border` (1:1)
+
+[1m[31m>[39m[22m[90m 1 | [39m[36m@import[39m [32m"tailwindcss"[39m[33m;[39m
+ [90m   | [39m[1m[31m^[39m[22m
+ [90m 2 | [39m
+ [90m 3 | [39m[36m@theme[39m [33m{[39m
+
+    at Object.<anonymous> (/app/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!/app/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!/app/app/globals.css:1:7)
+    at /app/node_modules/next/dist/compiled/webpack/bundle5.js:29:962717
+    at Hook.eval [as call] (eval at create (/app/node_modules/next/dist/compiled/webpack/bundle5.js:14:9002), <anonymous>:7:1)
+    at Hook.CALL_DELEGATE [as _call] (/app/node_modules/next/dist/compiled/webpack/bundle5.js:14:6272)
+    at /app/node_modules/next/dist/compiled/webpack/bundle5.js:29:131565
+    at tryRunOrWebpackError (/app/node_modules/next/dist/compiled/webpack/bundle5.js:29:316073)
+    at __webpack_require_module__ (/app/node_modules/next/dist/compiled/webpack/bundle5.js:29:131532)
+    at __nested_webpack_require_161494__ (/app/node_modules/next/dist/compiled/webpack/bundle5.js:29:130967)
+    at /app/node_modules/next/dist/compiled/webpack/bundle5.js:29:131824
+    at symbolIterator (/app/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+
+Generated code for /app/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!/app/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!/app/app/globals.css
+
+Import trace for requested module:
+./app/globals.css
+
+
+2025-11-23T16:25:02.687817873Z [inf]  
+
+2025-11-23T16:25:02.687855715Z [inf]  > Build failed because of webpack errors
+
+2025-11-23T16:25:02.747545672Z [err]  npm run build
+2025-11-23T16:25:02.760795473Z [err]  ERROR: failed to build: failed to solve: process "npm run build" did not complete successfully: exit code: 1
