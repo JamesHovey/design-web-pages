@@ -11,6 +11,8 @@ export default function NewProjectPage() {
   const router = useRouter();
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [progress, setProgress] = useState("");
 
   if (status === "loading") {
     return (
@@ -28,15 +30,33 @@ export default function NewProjectPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
+    setProgress("Scraping website...");
 
-    // TODO: Implement scraping and project creation
-    console.log("Scraping URL:", url);
+    try {
+      const response = await fetch("/api/scrape", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url }),
+      });
 
-    // Placeholder - will be implemented in Phase 2
-    setTimeout(() => {
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to scrape website");
+      }
+
+      setProgress("Analysis complete! Redirecting...");
+
+      // Redirect to configuration page
+      setTimeout(() => {
+        router.push(`/projects/${data.project.id}/configure`);
+      }, 500);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
       setLoading(false);
-      alert("Scraping functionality coming soon!");
-    }, 1000);
+      setProgress("");
+    }
   };
 
   return (
@@ -97,12 +117,24 @@ export default function NewProjectPage() {
               </ul>
             </div>
 
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                {error}
+              </div>
+            )}
+
+            {progress && (
+              <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm">
+                {progress}
+              </div>
+            )}
+
             <Button
               type="submit"
               className="w-full"
               disabled={loading}
             >
-              {loading ? "Analyzing website..." : "Analyze & Continue"}
+              {loading ? progress || "Analyzing website..." : "Analyze & Continue"}
             </Button>
           </form>
         </div>
