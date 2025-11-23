@@ -1,4 +1,3 @@
-import { getAnthropicClient } from "@/lib/ai/claude";
 import type { Project } from "@prisma/client";
 
 export interface DesignVariation {
