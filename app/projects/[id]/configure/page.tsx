@@ -8,6 +8,8 @@ import ViewportSelector from "@/components/projects/ViewportSelector";
 import ColorPicker from "@/components/projects/ColorPicker";
 import FontSelector from "@/components/projects/FontSelector";
 import WidgetSelector from "@/components/projects/WidgetSelector";
+import CompetitorResearch from "@/components/projects/CompetitorResearch";
+import MediaUpload from "@/components/projects/MediaUpload";
 
 export default function ConfigurePage() {
   const { data: session, status } = useSession();
@@ -26,6 +28,8 @@ export default function ConfigurePage() {
   const [colorScheme, setColorScheme] = useState<any>(null);
   const [fonts, setFonts] = useState<any>(null);
   const [layoutWidgets, setLayoutWidgets] = useState<string[]>([]);
+  const [competitors, setCompetitors] = useState<any[]>([]);
+  const [media, setMedia] = useState<any[]>([]);
 
   useEffect(() => {
     if (status === "authenticated" && projectId) {
@@ -47,6 +51,8 @@ export default function ConfigurePage() {
       setColorScheme(data.project.colorScheme || null);
       setFonts(data.project.fonts || null);
       setLayoutWidgets(data.project.layoutWidgets || []);
+      setCompetitors(data.project.competitors || []);
+      setMedia(data.project.media || []);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load project");
     } finally {
@@ -68,6 +74,8 @@ export default function ConfigurePage() {
           colorScheme,
           fonts,
           layoutWidgets,
+          competitors,
+          media,
         }),
       });
 
@@ -234,6 +242,31 @@ export default function ConfigurePage() {
               value={layoutWidgets}
               siteType={project.siteType}
               onChange={setLayoutWidgets}
+            />
+          </div>
+
+          {/* Competitor Research */}
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Competitor Research</h2>
+            <p className="text-gray-600 mb-6">
+              Analyze competitor websites to identify design opportunities and differentiation strategies
+            </p>
+            <CompetitorResearch
+              projectId={projectId}
+              value={competitors}
+              onChange={setCompetitors}
+            />
+          </div>
+
+          {/* Media Assets */}
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Media Assets</h2>
+            <p className="text-gray-600 mb-6">
+              Add images and videos to be referenced in your AI-generated designs
+            </p>
+            <MediaUpload
+              value={media}
+              onChange={setMedia}
             />
           </div>
         </div>
