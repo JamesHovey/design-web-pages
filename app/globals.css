@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  /* Varied spacing scale following design principles */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2.5rem;
+  --spacing-xl: 4rem;
+  --spacing-2xl: 5rem;
+  --spacing-3xl: 6rem;
+  --spacing-4xl: 7.5rem;
+  --spacing-5xl: 10rem;
+
+  /* Dramatic typography scale */
+  --font-size-xs: 0.875rem;
+  --font-size-sm: 1rem;
+  --font-size-base: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.75rem;
+  --font-size-2xl: 2.5rem;
+  --font-size-3xl: 3rem;
+  --font-size-4xl: 4rem;
+
+  /* Line heights for varied rhythm */
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.3;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+  --line-height-loose: 1.8;
+
+  /* Minimum touch target for accessibility */
+  --touch-target: 44px;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Ensure minimum touch targets for accessibility */
+  button,
+  a,
+  input[type="button"],
+  input[type="submit"] {
+    min-height: var(--touch-target);
+    min-width: var(--touch-target);
+  }
+
+  /* Base typography with generous line height for readability */
+  p {
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* Tight line height for headlines */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: var(--line-height-tight);
+  }
+}

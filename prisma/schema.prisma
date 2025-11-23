@@ -1,0 +1,116 @@
+// Prisma schema for design-web-pages application
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String?
+  passwordHash String
+  role         String    @default("developer")
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  projects     Project[]
+
+  @@index([email])
+}
+
+model Project {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+
+  url             String
+  siteType        String    // "ecommerce" | "leadgen"
+  industry        String?
+
+  viewports       Json      // ["desktop", "laptop", "tablet-portrait", "mobile-portrait"]
+  colorScheme     Json      // { colors: ["#hex"], harmony: "complementary", extractFromLogo: true }
+  fonts           Json      // { primary: "Font Name", secondary: "...", accent: "...", button: "...", form: "...", nav: "..." }
+  layoutWidgets   Json      // ["heading", "image", "button", "form", ...]
+  videoConfig     Json?     // { embedded: bool, background: bool, placeholderUrls: [] }
+
+  scrapedContent  Json?     // Full scraped data
+  competitors     Json?     // [{ url, analysis, layouts, colors, ctas }]
+  logoColors      Json?     // ["#hex1", "#hex2", ...]
+
+  designs         Design[]
+
+  status          String    @default("configuring") // "configuring" | "generating" | "completed" | "failed"
+  errorMessage    String?   @db.Text
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Design {
+  id                   String    @id @default(cuid())
+  projectId            String
+  project              Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  name                 String    // "Conservative" | "Balanced" | "Bold"
+  description          String    @db.Text
+
+  widgetStructure      Json      // Full Elementor widget tree
+  htmlPreview          String    @db.Text
+  cssCode              String    @db.Text
+
+  estimatedBuildTime   Int       // minutes
+  accessibilityScore   Int       // 0-100
+  distinctivenessScore Int       // 0-100
+  rationale            String    @db.Text
+  ctaStrategy          String    @db.Text
+
+  screenshots          Json      // { desktop: "url", laptop: "url", tablet: "url", mobile: "url" }
+
+  qualityIssues        Json?     // ["issue1", "issue2"]
+  qualityStrengths     Json?     // ["strength1", "strength2"]
+
+  approved             Boolean   @default(false)
+  approvedAt           DateTime?
+  approvedBy           String?   // User ID who approved
+
+  createdAt            DateTime  @default(now())
+
+  @@index([projectId])
+  @@index([approved])
+  @@index([createdAt])
+}
+
+model CompetitorCache {
+  id        String   @id @default(cuid())
+  domain    String   @unique
+  industry  String
+  analysis  Json     // Full competitor analysis data
+  createdAt DateTime @default(now())
+  expiresAt DateTime // 7 days from creation
+
+  @@index([domain])
+  @@index([expiresAt])
+}
+
+model ElementorWidget {
+  id            String   @id @default(cuid())
+  widgetId      String   @unique // "heading", "button", etc.
+  name          String
+  category      String   // "basic" | "pro" | "general" | "site" | "single" | "woocommerce"
+
+  bestPractices Json?    // { charLimits: {...}, accessibility: [...], usageContext: [...] }
+  configurable  Json?    // { text: bool, image: bool, video: bool, link: bool, colors: bool }
+  aiHints       Json?    // { commonPlacements: [...], pairsWith: [...], conversionRole: "..." }
+
+  createdAt     DateTime @default(now())
+
+  @@index([category])
+  @@index([widgetId])
+}

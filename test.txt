@@ -1,4 +1,0 @@
-This is a test file created by Claude to verify branch commit functionality.
-
-Branch: claude/github-branching-setup-011GmMmZevakYKo9z3QBCiE4
-Created: 2025-11-23
