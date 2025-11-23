@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 
-export default function GatewayPage() {
+export default function LoginPage() {
   const router = useRouter();
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,19 +20,17 @@ export default function GatewayPage() {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/gateway", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
       });
 
-      const data = await response.json();
-
-      if (data.success) {
-        router.push("/auth/login");
+      if (result?.error) {
+        setError("Invalid email or password");
+      } else if (result?.ok) {
+        router.push("/dashboard");
         router.refresh();
-      } else {
-        setError("Invalid credentials. Please try again.");
       }
     } catch (err) {
       setError("An error occurred. Please try again.");
@@ -45,22 +45,22 @@ export default function GatewayPage() {
         <div className="bg-white rounded-2xl shadow-xl p-8">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              Design Web Pages
+              Welcome Back
             </h1>
             <p className="text-gray-600">
-              AI-Powered Website Design Generator
+              Sign in to your account
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <Input
-              label="Username"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter username"
+              label="Email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@example.com"
               required
-              autoComplete="username"
+              autoComplete="email"
             />
 
             <Input
@@ -68,7 +68,7 @@ export default function GatewayPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter password"
+              placeholder="Enter your password"
               required
               autoComplete="current-password"
             />
@@ -84,12 +84,18 @@ export default function GatewayPage() {
               className="w-full"
               disabled={loading}
             >
-              {loading ? "Authenticating..." : "Access Application"}
+              {loading ? "Signing in..." : "Sign In"}
             </Button>
           </form>
 
-          <div className="mt-6 text-center text-sm text-gray-500">
-            <p>Internal Use Only</p>
+          <div className="mt-6 text-center text-sm">
+            <span className="text-gray-600">Don't have an account? </span>
+            <Link
+              href="/auth/register"
+              className="text-blue-600 hover:text-blue-700 font-medium"
+            >
+              Sign up
+            </Link>
           </div>
         </div>
       </div>
