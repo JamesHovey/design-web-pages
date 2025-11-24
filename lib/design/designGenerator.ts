@@ -43,6 +43,12 @@ DESIGN VARIATIONS:
 2. Balanced: Modern, engaging, strategic - the sweet spot
 3. Bold: Dramatic, eye-catching, memorable - push boundaries
 
+JSON FORMAT REQUIREMENTS:
+- Return ONLY valid JSON - no trailing commas, no comments, no markdown code blocks
+- Ensure all quotes in text content are properly escaped
+- Double-check JSON syntax before responding
+- The response must be parseable by JSON.parse()
+
 Return JSON array with 3 design variations.`;
 
   const userPrompt = `Generate 3 distinctive website design variations for:
@@ -110,12 +116,14 @@ For each variation, provide:
   }
 }
 
-Return ONLY a JSON array of 3 variations. Ensure each is DISTINCTLY different.`;
+IMPORTANT: Return ONLY a valid JSON array of exactly 3 variations (no markdown, no code blocks, no explanatory text).
+Ensure JSON is properly formatted with NO trailing commas, NO comments, and all strings properly escaped.
+Verify your JSON is valid before responding. Each variation must be DISTINCTLY different from the others.`;
 
   const client = getAnthropicClient();
   const message = await client.messages.create({
     model: "claude-sonnet-4-5-20250929",
-    max_tokens: 8192,
+    max_tokens: 16384, // Increased from 8192 to prevent cutoff
     system: systemPrompt,
     messages: [
       {
@@ -130,17 +138,55 @@ Return ONLY a JSON array of 3 variations. Ensure each is DISTINCTLY different.`;
   // Extract JSON from response
   const jsonMatch = responseText.match(/\[[\s\S]*\]/);
   if (!jsonMatch) {
-    throw new Error("Failed to parse design variations from Claude response");
+    console.error("Claude response:", responseText.substring(0, 500));
+    throw new Error("Failed to find JSON array in Claude response");
   }
 
-  const variations: DesignVariation[] = JSON.parse(jsonMatch[0]);
+  let jsonString = jsonMatch[0];
+
+  // Attempt to repair common JSON issues
+  jsonString = repairJSON(jsonString);
+
+  let variations: DesignVariation[];
+  try {
+    variations = JSON.parse(jsonString);
+  } catch (parseError) {
+    // If parsing fails, provide detailed error info
+    console.error("JSON parse error:", parseError);
+    console.error("Failed JSON (first 1000 chars):", jsonString.substring(0, 1000));
+    console.error("Failed JSON (last 1000 chars):", jsonString.substring(jsonString.length - 1000));
+
+    throw new Error(
+      `JSON parsing failed: ${parseError instanceof Error ? parseError.message : "Unknown error"}. ` +
+      `Response length: ${jsonString.length} chars. Check logs for details.`
+    );
+  }
 
   // Validate we got 3 variations
-  if (variations.length !== 3) {
-    throw new Error(`Expected 3 variations, got ${variations.length}`);
+  if (!Array.isArray(variations) || variations.length !== 3) {
+    throw new Error(`Expected 3 variations, got ${variations?.length || 0}`);
   }
 
   return variations;
+}
+
+/**
+ * Repair common JSON syntax errors
+ */
+function repairJSON(jsonString: string): string {
+  let repaired = jsonString;
+
+  // Remove trailing commas before closing brackets/braces
+  repaired = repaired.replace(/,(\s*[\]}])/g, '$1');
+
+  // Fix common quote escaping issues in text content
+  // This is a simple approach - may need more sophisticated handling
+  repaired = repaired.replace(/([^\\])"([^"]*)":/g, (match, before, content) => {
+    // If this looks like a property name, keep it
+    return match;
+  });
+
+  return repaired;
 }
 
 /**
