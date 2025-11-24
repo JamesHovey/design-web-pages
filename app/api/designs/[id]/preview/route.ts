@@ -32,11 +32,11 @@ export async function GET(
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${design.name} - Design Preview</title>
   <style>
-    ${design.cssCode}
+${design.cssCode}
   </style>
 </head>
 <body>
-  ${design.htmlPreview}
+${design.htmlPreview}
 </body>
 </html>`;
 
