@@ -220,11 +220,20 @@ export default function DesignsPage() {
                 </div>
               </div>
 
-              {/* Quick Info */}
+              {/* Quick Info & Actions */}
               <div className="p-6">
-                <p className="text-xs text-gray-600">
+                <p className="text-xs text-gray-600 mb-3">
                   Estimated Build Time: {design.estimatedBuildTime} minutes
                 </p>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open(`/api/designs/${design.id}/preview`, '_blank');
+                  }}
+                  className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+                >
+                  🔗 View HTML
+                </button>
               </div>
             </div>
           ))}
@@ -237,22 +246,35 @@ export default function DesignsPage() {
               <h2 className="text-2xl font-bold text-gray-900">
                 {selectedDesign.name} Details
               </h2>
-              <div className="flex gap-3">
+              <div className="flex items-center gap-3">
                 <Button
-                  variant="outline"
-                  onClick={() => window.open(`/api/designs/${selectedDesign.id}/export/pdf`, '_blank')}
+                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                  onClick={() => window.open(`/api/designs/${selectedDesign.id}/preview`, '_blank')}
                 >
-                  Download PDF
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => window.open(`/api/designs/${selectedDesign.id}/export/elementor`, '_blank')}
-                >
-                  Export Elementor JSON
+                  🔗 View Full HTML Page
                 </Button>
                 <Button onClick={() => handleApprove(selectedDesign.id)}>
                   Approve Design
                 </Button>
+                <div className="relative group">
+                  <button className="text-sm text-gray-600 hover:text-gray-900 px-3 py-2 rounded border border-gray-300 hover:border-gray-400">
+                    Other exports ▾
+                  </button>
+                  <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                    <button
+                      onClick={() => window.open(`/api/designs/${selectedDesign.id}/export/pdf`, '_blank')}
+                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      📄 Download PDF
+                    </button>
+                    <button
+                      onClick={() => window.open(`/api/designs/${selectedDesign.id}/export/elementor`, '_blank')}
+                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      📦 Export Elementor JSON
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
 
