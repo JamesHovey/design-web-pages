@@ -4,7 +4,7 @@ import SessionProvider from "@/components/auth/SessionProvider";
 import VersionIndicator from "@/components/VersionIndicator";
 
 export const metadata: Metadata = {
-  title: "Design Web Pages - AI-Powered Website Design Generator",
+  title: "Turd Polisher - AI-Powered Website Design Generator",
   description: "Create distinctive, production-grade website designs with AI",
 };
 

@@ -214,7 +214,7 @@ export async function generateDesignPDF(design: DesignExportData): Promise<Blob>
     pageHeight - 10
   );
   doc.text(
-    "Design Web Pages - AI-Powered Website Design Generator",
+    "Turd Polisher - AI-Powered Website Design Generator",
     pageWidth - margin - 80,
     pageHeight - 10
   );

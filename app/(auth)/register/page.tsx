@@ -64,7 +64,7 @@ export default function RegisterPage() {
               Create Account
             </h1>
             <p className="text-gray-600">
-              Join the Design Web Pages platform
+              Join the Turd Polisher platform
             </p>
           </div>
 

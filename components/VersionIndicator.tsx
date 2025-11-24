@@ -1,7 +1,7 @@
 "use client";
 
 export default function VersionIndicator() {
-  const version = "1.1.0";
+  const version = "1.1.1";
   const phase = "Deployed";
   const buildDate = "2025-11-24";
 
