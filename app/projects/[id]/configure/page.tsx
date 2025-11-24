@@ -299,6 +299,7 @@ export default function ConfigurePage() {
             <MediaUpload
               value={media}
               onChange={setMedia}
+              industry={project.industry}
             />
           </div>
         </div>
