@@ -11,6 +11,7 @@ import WidgetSelector from "@/components/projects/WidgetSelector";
 import CompetitorResearch from "@/components/projects/CompetitorResearch";
 import MediaUpload from "@/components/projects/MediaUpload";
 import ProgressModal from "@/components/ProgressModal";
+import GlobalHeaderSelector, { GlobalHeaderConfig } from "@/components/projects/GlobalHeaderSelector";
 
 export default function ConfigurePage() {
   const { data: session, status } = useSession();
@@ -34,6 +35,17 @@ export default function ConfigurePage() {
   const [layoutWidgets, setLayoutWidgets] = useState<string[]>([]);
   const [competitors, setCompetitors] = useState<any[]>([]);
   const [media, setMedia] = useState<any[]>([]);
+  const [globalHeaderConfig, setGlobalHeaderConfig] = useState<GlobalHeaderConfig>({
+    siteLogo: true,
+    mainMenu: true,
+    menuItems: ["Home", "Section A", "Section B", "Section C", "About", "Contact"],
+    search: true,
+    searchType: "icon",
+    iconBox: true,
+    iconBoxIcon: "phone",
+    iconBoxPhone: "",
+    cartIcon: true,
+  });
 
   useEffect(() => {
     if (status === "authenticated" && projectId) {
@@ -57,6 +69,17 @@ export default function ConfigurePage() {
       setLayoutWidgets(data.project.layoutWidgets || []);
       setCompetitors(data.project.competitors || []);
       setMedia(data.project.media || []);
+      setGlobalHeaderConfig(data.project.globalHeaderConfig || {
+        siteLogo: true,
+        mainMenu: true,
+        menuItems: ["Home", "Section A", "Section B", "Section C", "About", "Contact"],
+        search: true,
+        searchType: "icon",
+        iconBox: true,
+        iconBoxIcon: "phone",
+        iconBoxPhone: "",
+        cartIcon: true,
+      });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load project");
     } finally {
@@ -80,6 +103,7 @@ export default function ConfigurePage() {
           layoutWidgets,
           competitors,
           media,
+          globalHeaderConfig,
         }),
       });
 
@@ -289,6 +313,24 @@ export default function ConfigurePage() {
               industry={project.industry}
               onChange={setFonts}
             />
+          </div>
+
+          {/* Global Widgets */}
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Global Widgets</h2>
+            <p className="text-gray-600 mb-6">
+              Configure widgets that appear across your entire site (header, footer, etc.)
+            </p>
+
+            {/* Global Header Sub-section */}
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Global Header</h3>
+              <GlobalHeaderSelector
+                value={globalHeaderConfig}
+                onChange={setGlobalHeaderConfig}
+                siteType={project.siteType}
+              />
+            </div>
           </div>
 
           {/* Widgets */}

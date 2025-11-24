@@ -978,6 +978,233 @@ textarea.elementor-field {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ================================
+   GLOBAL HEADER STYLES
+   Professional header widget styles
+   ================================ */
+
+/* Header Structure */
+.elementor-location-header {
+  background: white;
+  box-shadow: var(--professional-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: var(--professional-transition);
+}
+
+.elementor-location-header.elementor-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.elementor-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  padding: 0 var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Site Logo Widget */
+.elementor-site-logo {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.elementor-site-logo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--professional-shadow);
+  transition: var(--professional-transition);
+}
+
+.elementor-site-logo-placeholder:hover {
+  transform: scale(1.05);
+  box-shadow: var(--professional-shadow-hover);
+}
+
+/* Nav Menu Widget */
+.elementor-nav-menu {
+  flex: 1;
+}
+
+.elementor-nav-menu-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.elementor-nav-menu-center .elementor-nav-menu-list {
+  justify-content: center;
+}
+
+.elementor-nav-menu-left .elementor-nav-menu-list {
+  justify-content: flex-start;
+}
+
+.elementor-nav-menu-right .elementor-nav-menu-list {
+  justify-content: flex-end;
+}
+
+.elementor-nav-menu-item {
+  position: relative;
+}
+
+.elementor-nav-menu-link {
+  display: block;
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 16px;
+  transition: var(--professional-transition);
+  border-radius: var(--radius-sm);
+}
+
+.elementor-nav-menu-link:hover,
+.elementor-nav-menu-item.elementor-active .elementor-nav-menu-link {
+  color: var(--primary-color, #007bff);
+  background: rgba(0, 123, 255, 0.05);
+}
+
+/* Search Widget */
+.elementor-search-icon-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.elementor-search-icon {
+  background: none;
+  border: none;
+  padding: var(--spacing-xs);
+  cursor: pointer;
+  color: #333;
+  transition: var(--professional-transition);
+  border-radius: var(--radius-circle);
+}
+
+.elementor-search-icon:hover {
+  background: rgba(0, 123, 255, 0.1);
+  color: var(--primary-color, #007bff);
+  transform: scale(1.1);
+}
+
+.elementor-search-form-wrapper {
+  display: flex;
+}
+
+.elementor-search-form {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  transition: var(--professional-transition);
+}
+
+.elementor-search-form:focus-within {
+  background: white;
+  box-shadow: var(--professional-shadow);
+}
+
+.elementor-search-input {
+  border: none;
+  background: transparent;
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 14px;
+  outline: none;
+  min-width: 200px;
+}
+
+.elementor-search-submit {
+  background: var(--primary-color, #007bff);
+  border: none;
+  border-radius: var(--radius-circle);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  transition: var(--professional-transition);
+}
+
+.elementor-search-submit:hover {
+  transform: scale(1.1);
+  box-shadow: var(--professional-shadow);
+}
+
+/* Cart Icon Widget */
+.elementor-cart-icon-wrapper {
+  position: relative;
+}
+
+.elementor-cart-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs);
+  color: #333;
+  text-decoration: none;
+  border-radius: var(--radius-circle);
+  transition: var(--professional-transition);
+  position: relative;
+}
+
+.elementor-cart-icon-link:hover {
+  background: rgba(0, 123, 255, 0.1);
+  color: var(--primary-color, #007bff);
+  transform: scale(1.1);
+}
+
+.elementor-cart-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--primary-color, #007bff);
+  color: white;
+  border-radius: var(--radius-circle);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: var(--professional-shadow);
+}
+
+/* Responsive Header */
+@media (max-width: 768px) {
+  .elementor-header-container {
+    flex-wrap: wrap;
+    padding: var(--spacing-sm);
+  }
+
+  .elementor-nav-menu-list {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    width: 100%;
+  }
+
+  .elementor-search-input {
+    min-width: 150px;
+  }
+}
+
 /* Custom Design CSS */
 ${design.cssCode}
   </style>

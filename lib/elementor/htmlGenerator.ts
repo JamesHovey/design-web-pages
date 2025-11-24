@@ -788,6 +788,138 @@ export function generateAnimatedHeadlineWidget(widget: any): string {
 }
 
 /**
+ * Generate Site Logo Widget HTML (Header)
+ */
+export function generateSiteLogoWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const width = widget.width || 180;
+  const height = widget.height || 60;
+  const alt = widget.alt || "Site Logo";
+  const imageUrl = widget.imageUrl || null;
+
+  const innerHTML = imageUrl
+    ? `<img src="${imageUrl}" alt="${alt}" width="${width}" height="${height}" class="elementor-site-logo" />`
+    : `<div class="elementor-site-logo-placeholder" style="width: ${width}px; height: ${height}px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-weight: bold; font-size: 24px; border-radius: 8px;">${alt.split(' ')[0] || 'LOGO'}</div>`;
+
+  return generateWidgetWrapper("site-logo", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Nav Menu Widget HTML (Header)
+ */
+export function generateNavMenuWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const items = widget.items || [];
+  const style = widget.style || "horizontal";
+  const alignment = widget.alignment || "center";
+
+  const innerHTML = `<nav class="elementor-nav-menu elementor-nav-menu-${style} elementor-nav-menu-${alignment}">
+    <ul class="elementor-nav-menu-list">
+      ${items.map((item: any, i: number) => `
+        <li class="elementor-nav-menu-item ${i === 0 ? 'elementor-active' : ''}">
+          <a href="${typeof item === 'object' ? (item.link || '#') : '#'}" class="elementor-nav-menu-link">
+            ${typeof item === 'object' ? item.text : item}
+          </a>
+        </li>
+      `).join('')}
+    </ul>
+  </nav>`;
+
+  return generateWidgetWrapper("nav-menu", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Search Widget HTML (Header)
+ */
+export function generateSearchWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const style = widget.style || "icon";
+  const placeholder = widget.placeholder || "Search...";
+
+  const innerHTML = style === "icon"
+    ? `<div class="elementor-search-icon-wrapper">
+        <button class="elementor-search-icon" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </button>
+      </div>`
+    : `<div class="elementor-search-form-wrapper">
+        <form class="elementor-search-form" role="search">
+          <input type="search" placeholder="${placeholder}" class="elementor-search-input" />
+          <button type="submit" class="elementor-search-submit" aria-label="Search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </button>
+        </form>
+      </div>`;
+
+  return generateWidgetWrapper("search", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Cart Icon Widget HTML (Header)
+ */
+export function generateCartIconWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const itemCount = widget.itemCount || 0;
+
+  const innerHTML = `<div class="elementor-cart-icon-wrapper">
+    <a href="#" class="elementor-cart-icon-link">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      </svg>
+      ${itemCount > 0 ? `<span class="elementor-cart-count">${itemCount}</span>` : ''}
+    </a>
+  </div>`;
+
+  return generateWidgetWrapper("cart-icon", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Global Header HTML
+ */
+export function generateGlobalHeaderHTML(headerConfig: any, colors?: any): string {
+  const id = headerConfig.id || generateElementorId();
+  const layout = headerConfig.layout || "standard";
+  const height = headerConfig.height || 80;
+  const backgroundColor = headerConfig.backgroundColor || colors?.colors?.[0] || "#ffffff";
+  const sticky = headerConfig.sticky !== false;
+  const widgets = headerConfig.widgets || [];
+
+  const widgetsHTML = widgets.map((widget: any) => {
+    switch (widget.type) {
+      case "site-logo":
+        return generateSiteLogoWidget(widget);
+      case "nav-menu":
+        return generateNavMenuWidget(widget);
+      case "search":
+        return generateSearchWidget(widget);
+      case "icon-box":
+        return generateIconBoxWidget(widget);
+      case "button":
+        return generateButtonWidget(widget);
+      case "cart-icon":
+        return generateCartIconWidget(widget);
+      default:
+        return `<!-- Unknown header widget: ${widget.type} -->`;
+    }
+  }).join('\n      ');
+
+  return `<!-- Global Header -->
+  <header id="site-header" class="elementor-location-header ${sticky ? 'elementor-sticky' : ''}" data-id="${id}" style="background-color: ${backgroundColor}; min-height: ${height}px;">
+    <div class="elementor-header-container" style="display: flex; align-items: center; justify-content: space-between; padding: 0 var(--spacing-lg); height: ${height}px; max-width: 1200px; margin: 0 auto;">
+      ${widgetsHTML}
+    </div>
+  </header>`;
+}
+
+/**
  * Generate widget HTML based on type
  */
 export function generateWidgetHTML(widget: any, mediaAssets?: any[], project?: any): string {
@@ -869,6 +1001,14 @@ export function generateWidgetHTML(widget: any, mediaAssets?: any[], project?: a
       return generateCountdownWidget(widget);
     case "animated-headline":
       return generateAnimatedHeadlineWidget(widget);
+    case "site-logo":
+      return generateSiteLogoWidget(widget);
+    case "nav-menu":
+      return generateNavMenuWidget(widget);
+    case "search":
+      return generateSearchWidget(widget);
+    case "cart-icon":
+      return generateCartIconWidget(widget);
     default:
       // Fallback for unsupported widgets - return placeholder comment
       return `<!-- Elementor widget type "${widget.type}" not yet implemented -->`;

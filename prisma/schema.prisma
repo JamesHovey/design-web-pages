@@ -34,6 +34,7 @@ model Project {
   colorScheme     Json      // { colors: ["#hex"], harmony: "complementary", extractFromLogo: true }
   fonts           Json      // { primary: "Font Name", secondary: "...", accent: "...", button: "...", form: "...", nav: "..." }
   layoutWidgets   Json      // ["heading", "image", "button", "form", ...]
+  globalHeaderConfig Json?  // { siteLogo: bool, mainMenu: bool, menuItems: [], search: bool, searchType: "icon"|"input-box", iconBox: bool, iconBoxIcon: string, iconBoxPhone: string, cartIcon: bool }
   videoConfig     Json?     // { embedded: bool, background: bool, placeholderUrls: [] }
   media           Json?     // [{ type: "image"|"video", url: string, alt?: string }]
 

@@ -48,9 +48,18 @@ Version X.Y.Z includes:
 
 ## Current Version
 
-**v1.7.0** (November 24, 2025)
+**v1.8.0** (November 24, 2025)
 
 ### Changelog
+
+**v1.8.0** (2025-11-24)
+- **INCREMENTAL APPROACH**: Focus on Global Headers first before body content
+- Global Widgets configuration UI with header widget options
+- Header-only AI design generation system
+- New header widgets: Site Logo, Nav Menu, Search, Icon Box, Cart Icon
+- Professional header CSS with sticky navigation
+- Database schema updated for globalHeaderConfig storage
+- AI prompt redesigned to generate only professional headers
 
 **v1.7.0** (2025-11-24)
 - Professional design patterns from 30-site analysis

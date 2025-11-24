@@ -22,60 +22,50 @@ export interface DesignVariation {
 export async function generateDesignVariations(
   project: any
 ): Promise<DesignVariation[]> {
-  const systemPrompt = `You are an expert website designer creating DISTINCTIVE, production-grade designs compatible with Elementor page builder.
+  const systemPrompt = `You are an expert website designer creating PROFESSIONAL, PRODUCTION-GRADE GLOBAL HEADERS for Elementor websites.
 
-CRITICAL DESIGN PRINCIPLES (YOU MUST FOLLOW):
-1. ❌ AVOID: Centered everything, three-column grids, uniform padding, generic CTAs, cookie-cutter layouts
-2. ✅ USE: Asymmetric layouts (70/30, 60/40 splits), varied spacing (40px-160px), dramatic typography scales
-3. ✅ Industry personality: ${project.industry || "general"} sites need specific visual language
-4. ✅ Strategic color: Use gradients, overlays, and unexpected color combinations from palette
-5. ✅ WCAG AA minimum (AAA preferred): Ensure all text has sufficient contrast
-6. ✅ Specific content: Write real, meaningful copy - NO "Lorem ipsum" or generic phrases
+CURRENT FOCUS: GLOBAL HEADER ONLY
+- We are building incrementally - headers FIRST, then body sections later
+- Generate ONLY the global header structure
+- No body content, no hero sections, no features - JUST the header
 
-ELEMENTOR WIDGET SCHEMA:
-All widgets must include proper Elementor settings structure:
+CRITICAL HEADER DESIGN PRINCIPLES:
+1. ✅ Professional styling: Match the quality of professional Elementor themes (like ThemeForest)
+2. ✅ Industry-appropriate: ${project.industry || "general"} sites need specific visual language
+3. ✅ Strategic layout: Logo placement, navigation hierarchy, CTA visibility
+4. ✅ Professional patterns: Use 8px spacing grid, subtle shadows, smooth transitions
+5. ✅ Smart widget selection: Choose header widgets intelligently based on site type and industry
+6. ✅ Specific content: Write real menu items and contact info - NO "Lorem ipsum"
 
-BASIC WIDGETS:
-- heading: { type: "heading", level: "h1"|"h2"|"h3"|"h4"|"h5"|"h6", text: string, fontSize?: number, fontFamily?: string, position?: "left"|"center"|"right" }
-- text-editor: { type: "text-editor", text: string, fontSize?: number }
-- button: { type: "button", text: string, link?: string, size?: "xs"|"sm"|"md"|"lg"|"xl", style?: "primary"|"secondary", position?: "left"|"center"|"right" }
-- image: { type: "image", url?: string, alt?: string, position?: "left"|"center"|"right" }
-- video: { type: "video", url?: string (YouTube or hosted) }
-- divider: { type: "divider", style?: "solid"|"dashed"|"dotted", width?: number, color?: string }
-- spacer: { type: "spacer", height?: number }
-- google_maps: { type: "google_maps", address?: string, zoom?: number }
-- icon: { type: "icon", icon?: string, view?: "default"|"stacked"|"framed" }
-- icon-box: { type: "icon-box", icon?: string, title?: string, description?: string, alignment?: "left"|"center"|"right" }
-- image-box: { type: "image-box", url?: string, title?: string, description?: string }
-- testimonial: { type: "testimonial", text?: string, name?: string, position?: string }
-- star-rating: { type: "star-rating", rating?: number (1-5) }
-- social-icons: { type: "social-icons", icons?: [{platform: string, url: string}] }
-- counter: { type: "counter", endNumber?: number, title?: string }
-- progress: { type: "progress", title?: string, percent?: number (0-100) }
-- accordion: { type: "accordion", items?: [{title: string, content: string}] }
-- tabs: { type: "tabs", tabs?: [{title: string, content: string}] }
-- alert: { type: "alert", text?: string, type?: "info"|"warning"|"success"|"danger" }
-- icon-list: { type: "icon-list", items?: [{text: string, icon: string}] }
-- image-gallery: { type: "image-gallery", count?: number }
-- image-carousel: { type: "image-carousel", count?: number }
-- toggle: { type: "toggle", items?: [{title: string, content: string}] }
-- html: { type: "html", html?: string }
-- audio: { type: "audio", url?: string }
+HEADER WIDGET SCHEMA (Elementor):
+Use ONLY these widgets for the global header:
 
-ELEMENTOR PRO WIDGETS:
-- call-to-action: { type: "call-to-action", title?: string, description?: string, buttonText?: string, buttonLink?: string }
-- form: { type: "form", fields?: [{type: string, label: string, placeholder: string, required: boolean}], buttonText?: string }
-- price-table: { type: "price-table", title?: string, price?: string, currency?: string, period?: string, features?: string[], buttonText?: string, featured?: boolean }
-- flip-box: { type: "flip-box", frontTitle?: string, frontDescription?: string, backTitle?: string, backDescription?: string, buttonText?: string, buttonLink?: string }
-- countdown: { type: "countdown", dueDate?: string }
-- animated-headline: { type: "animated-headline", beforeText?: string, animatedText?: string[], afterText?: string }
+- site-logo: { type: "site-logo", imageUrl?: string, width?: number, height?: number, alt?: string }
+- nav-menu: { type: "nav-menu", items: [{text: string, link?: string}], style?: "horizontal"|"vertical", alignment?: "left"|"center"|"right" }
+- search: { type: "search", style: "icon"|"input-box", placeholder?: string }
+- icon-box: { type: "icon-box", icon: "phone"|"email"|"location"|"chat", text: string, alignment?: "left"|"center"|"right" }
+- button: { type: "button", text: string, link?: string, size?: "sm"|"md"|"lg", style?: "primary"|"secondary"|"outline" }
+- cart-icon: { type: "cart-icon", itemCount?: number }
 
-WIDGET STRUCTURE RULES:
-- Use only widgets from the selected list: ${JSON.stringify(project.layoutWidgets)}
-- Character limits for headings: H1 max 50, H2 max 60, H3 max 70, H4 max 80
-- Include global-header and global-footer (always required)
-- Apply industry-specific imagery and content themes
-- Ensure all widget properties match the Elementor schema above
+GLOBAL HEADER CONFIGURATION:
+User has configured these header options:
+${JSON.stringify(project.globalHeaderConfig || {})}
+
+HEADER DESIGN RULES:
+1. Choose widgets intelligently based on:
+   - Site type: ${project.siteType} (ecommerce sites should include cart-icon)
+   - Industry: ${project.industry || "general"} (service businesses should include icon-box with phone)
+   - User configuration: Respect the globalHeaderConfig settings
+2. Professional layout patterns:
+   - Standard: Logo left, nav center, CTA right
+   - Classic: Logo left, nav right, search/contact icons far right
+   - Modern: Centered logo, nav below or split navigation
+3. Use the configured menu items: ${JSON.stringify(project.globalHeaderConfig?.menuItems || ["Home", "About", "Services", "Contact"])}
+4. Apply professional design patterns:
+   - 8px spacing grid (8px, 16px, 24px, 32px)
+   - Shadow: 2px 2px 6px 0 rgba(0,0,0,0.3)
+   - Transitions: 0.35s ease-out
+   - Professional typography and color hierarchy
 
 DESIGN VARIATIONS:
 1. Conservative: Professional, trustworthy, safe - but STILL distinctive (not boring!)
@@ -91,74 +81,77 @@ JSON FORMAT REQUIREMENTS:
 
 Return JSON array with 3 design variations.`;
 
-  const userPrompt = `Generate 3 distinctive website design variations for:
+  const userPrompt = `Generate 3 distinctive GLOBAL HEADER designs for:
 
 PROJECT DETAILS:
 - URL: ${project.url}
 - Industry: ${project.industry || "general"}
 - Site Type: ${project.siteType}
-- Selected Viewports: ${JSON.stringify(project.viewports)}
 
 CONFIGURATION:
 - Colors: ${JSON.stringify(project.colorScheme)}
 - Fonts: ${JSON.stringify(project.fonts)}
-- Available Widgets: ${JSON.stringify(project.layoutWidgets)}
+- Header Config: ${JSON.stringify(project.globalHeaderConfig)}
 
-SCRAPED CONTENT (use as inspiration):
-${JSON.stringify(project.scrapedContent).substring(0, 2000)}
+SCRAPED CONTENT (brand info):
+${JSON.stringify(project.scrapedContent).substring(0, 1000)}
 
-COMPETITOR INSIGHTS (differentiate from these):
-${JSON.stringify(project.competitors).substring(0, 1500)}
-
-MEDIA ASSETS AVAILABLE:
-${JSON.stringify(project.media || []).substring(0, 500)}
+IMPORTANT: Generate ONLY the global header - NO body sections, NO hero, NO features.
+Focus on creating 3 professional header variations that differ in layout and style.
 
 For each variation, provide:
 {
   "name": "Conservative" | "Balanced" | "Bold",
-  "description": "Brief description of design approach",
+  "description": "Brief description of header design approach",
   "widgetStructure": {
-    "sections": [
-      {
-        "sectionId": "hero",
-        "layout": "asymmetric-70-30",
-        "spacing": { "top": 120, "bottom": 160 },
-        "widgets": [
-          {
-            "type": "heading",
-            "level": "h1",
-            "text": "Specific compelling headline (max 50 chars)",
-            "fontSize": 72,
-            "fontFamily": "from config",
-            "position": "left",
-            "width": "70%"
-          },
-          {
-            "type": "button",
-            "text": "Specific CTA (not 'Learn More')",
-            "style": "primary",
-            "position": "left"
-          }
-        ]
-      }
-    ],
-    "globalHeader": { ... },
-    "globalFooter": { ... }
+    "globalHeader": {
+      "layout": "standard"|"classic"|"modern",
+      "height": number (60-100px typical),
+      "backgroundColor": string,
+      "sticky": boolean,
+      "widgets": [
+        {
+          "type": "site-logo",
+          "imageUrl": null,
+          "alt": "${project.url} logo",
+          "width": 180,
+          "position": "left"
+        },
+        {
+          "type": "nav-menu",
+          "items": [${JSON.stringify((project.globalHeaderConfig as any)?.menuItems || ["Home", "About", "Services", "Contact"])}],
+          "style": "horizontal",
+          "alignment": "center"|"left"|"right"
+        },
+        {
+          "type": "button",
+          "text": "Specific CTA based on industry",
+          "style": "primary"|"outline",
+          "size": "md",
+          "position": "right"
+        }
+        // Add other widgets based on globalHeaderConfig and site type
+      ]
+    }
   },
-  "rationale": "Why this design works for this industry/audience",
-  "ctaStrategy": "How CTAs are positioned for conversion",
+  "rationale": "Why this header layout works for this industry",
+  "ctaStrategy": "What CTA is used in header and why",
   "designDecisions": {
-    "layoutApproach": "Specific layout strategy",
-    "colorStrategy": "How colors create hierarchy",
-    "typographyScale": "Font size progression",
-    "spacingSystem": "Rhythm and white space",
-    "asymmetry": "How asymmetry creates interest"
+    "layoutApproach": "Header layout pattern and widget arrangement",
+    "colorStrategy": "Header background, text colors, CTA colors",
+    "typographyScale": "Logo and nav menu font sizes",
+    "spacingSystem": "Internal header spacing (8px grid)",
+    "stickyBehavior": "Sticky header on scroll or static"
   }
 }
 
-IMPORTANT: Return ONLY a valid JSON array of exactly 3 variations (no markdown, no code blocks, no explanatory text).
-Ensure JSON is properly formatted with NO trailing commas, NO comments, and all strings properly escaped.
-Verify your JSON is valid before responding. Each variation must be DISTINCTLY different from the others.`;
+IMPORTANT:
+- Return ONLY a valid JSON array of exactly 3 header variations (no markdown, no code blocks)
+- NO body content - ONLY globalHeader structure
+- Choose header widgets intelligently based on site type and globalHeaderConfig
+- Each variation should have a different layout pattern
+- Ensure all JSON is properly formatted with NO trailing commas
+- Each header must be DISTINCTLY different in layout and style`;
 
   const client = getAnthropicClient();
   const message = await client.messages.create({
