@@ -1,0 +1,1951 @@
+
+<!DOCTYPE html>
+
+<html lang="en-US" class="no-js">
+
+<head>
+	<script data-cfasync="false">function dtmuag(){var e=navigator.userAgent;if(e.match(/x11.*ox\/54|id\s4.*us.*ome\/62|oobo|ight|tmet|eadl|ngdo|PTST/i))return!1;if(e.match(/x11.*me\/86\.0/i)){var r=screen.width;if("number"==typeof r&&1367==r)return!1}return!0}var dtmuag_t=50;  var dtmuag_events = ["mouseover", "keydown", "touchmove", "touchstart"];</script><meta charset="UTF-8" /><link rel="preload" href="https://the7.io/elementor-starter/wp-content/cache/fvm/min/1763393015-css576350e61b0f4cbecec4db0b914c012c016af803852148ebd9a2119e4d45b.css" as="style" media="all"  />
+<script data-cfasync="false">if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]iebrowser/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?iebrowser=1"}else{document.location.href=href.replace("#","?iebrowser=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&iebrowser=1"}else{document.location.href=href.replace("#","&iebrowser=1#")}}}}</script>
+<script data-cfasync="false">class FVMLoader{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach(t=>window.addEventListener(t,e.userEventListener,e.eventOptions))}_removeUserInteractionListener(e){this.triggerEvents.forEach(t=>window.removeEventListener(t,e.userEventListener,e.eventOptions))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._runAllDelayedCSS(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("wpr-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=fvmdelay]").forEach(e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)})}_runAllDelayedCSS(){document.querySelectorAll("link[rel=fvmdelay]").forEach(e=>{e.setAttribute("rel","stylesheet")})}async _transformScript(e){return await this._requestAnimFrame(),new Promise(t=>{const n=document.createElement("script");let r;[...e.attributes].forEach(e=>{let t=e.nodeName;"type"!==t&&("data-type"===t&&(t="type",r=e.nodeValue),n.setAttribute(t,e.nodeValue))}),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)})}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"wpr-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(r){e["wpr"+t]=n=r}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("DOMContentLoaded2",()=>t.bind(document)(n))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map(e=>"load"===e||0===e.indexOf("load.")?"wpr-jquery-load":e).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]})}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("DOMContentLoaded2")),await this._requestAnimFrame(),window.dispatchEvent(new Event("DOMContentLoaded2")),await this._requestAnimFrame(),document.dispatchEvent(new Event("wpr-readystatechange")),await this._requestAnimFrame(),document.wpronreadystatechange&&document.wpronreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("wpr-load")),await this._requestAnimFrame(),window.wpronload&&window.wpronload(),await this._requestAnimFrame(),this.allJQueries.forEach(e=>e(window).trigger("wpr-jquery-load")),window.dispatchEvent(new Event("wpr-pageshow")),await this._requestAnimFrame(),window.wpronpageshow&&window.wpronpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let a=e.get(n);void 0===a&&(a=n.nextSibling,e.set(n,a));const s=document.createDocumentFragment();r.setStart(s,0),s.appendChild(r.createContextualFragment(t)),i.insertBefore(s,a)}}async _requestAnimFrame(){return new Promise(e=>requestAnimationFrame(e))}static run(){const e=new FVMLoader(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}FVMLoader.run();</script><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/><title>The7 Elementor Starter &#8211; Perfect basic solution for any business website</title><meta name='robots' content='max-image-preview:large' /><link rel="alternate" type="application/rss+xml" title="The7 Elementor Starter &raquo; Feed" href="https://the7.io/elementor-starter/feed/" /><link rel="alternate" type="application/rss+xml" title="The7 Elementor Starter &raquo; Comments Feed" href="https://the7.io/elementor-starter/comments/feed/" /><link rel="canonical" href="https://the7.io/elementor-starter/" /><meta property="og:site_name" content="The7 Elementor Starter" /><meta property="og:title" content="Home &#8211; 2" /><meta property="og:url" content="https://the7.io/elementor-starter/" /><meta property="og:type" content="website" /><link rel="preload" fetchpriority="low" id="fvmfonts-css" href="https://the7.io/elementor-starter/wp-content/cache/fvm/min/1763393015-css5695e3018f0cdc68339e4e717633b3462b33f2202773011bebf6ae7410fc0.css" as="style" media="all" onload="this.rel='stylesheet';this.onload=null">
+<link rel="stylesheet" href="https://the7.io/elementor-starter/wp-content/cache/fvm/min/1763393015-css576350e61b0f4cbecec4db0b914c012c016af803852148ebd9a2119e4d45b.css" media="all" /><script data-cfasync='false'>if(dtmuag()){window.addEventListener("load",function(){var c=setTimeout(b,dtmuag_t);dtmuag_events.forEach(function(a){window.addEventListener(a,e,{passive:!0})});function e(){b();clearTimeout(c);dtmuag_events.forEach(function(a){window.removeEventListener(a,e,{passive:!0})})}function b(){(function(a){dtmuag_events.forEach(function(a){window.removeEventListener(a,e,{passive:!0})});var b=a.createElement('script'),c=a.scripts[0];b.src='https://the7.io/elementor-starter/wp-content/cache/fvm/min/1763393015-js94b86b4956882898bcde07219681439871a3e97e5b6c4e8105c02e13e82761.js';b.async=false;a.body.appendChild(b);}(document)); }});}</script>
+<script data-cfasync='false'>if(dtmuag()){window.addEventListener("load",function(){var c=setTimeout(b,dtmuag_t);dtmuag_events.forEach(function(a){window.addEventListener(a,e,{passive:!0})});function e(){b();clearTimeout(c);dtmuag_events.forEach(function(a){window.removeEventListener(a,e,{passive:!0})})}function b(){(function(a){dtmuag_events.forEach(function(a){window.removeEventListener(a,e,{passive:!0})});var b=a.createElement('script'),c=a.scripts[0];b.src='https://the7.io/elementor-starter/wp-content/cache/fvm/min/1763393015-js91db58636f59d05be718fbee962874e6d78f7586d06b4ac973802c0ef96c8b.js';b.async=false;b.onload = function () 
+						{
+							var load = document.getElementById("load"); 
+							if(!load.classList.contains("loader-removed")){ 
+								setTimeout(function() {
+									load.className += " loader-removed";
+								}, 100);
+							}
+						};a.body.appendChild(b);}(document)); }});}</script>
+				
+				<link rel="profile" href="https://gmpg.org/xfn/11" />
+	
+
+	<style media="all">img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+		<script id="the7-cloudflare-mobile-menu-fix">
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.querySelectorAll("img").forEach(function(el) {
+                const style = el.getAttribute("style");
+                if (style) {
+                    el.setAttribute("data-cfstyle", style);
+                }
+            });
+        });
+	</script>
+	<script>
+  // List of substrings to detect in the user agent
+  const excludedUserAgents = ['moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0', 'GTmetrix'];
+
+  // Function to check if the current user agent should skip Google Tags
+  function shouldSkipGoogleTags() {
+    // Get the current user agent string
+    const userAgent = navigator.userAgent;
+
+    // Check if the user agent includes any of the excluded substrings
+    for (let i = 0; i < excludedUserAgents.length; i++) {
+      if (userAgent.indexOf(excludedUserAgents[i]) !== -1) {
+        return true; // Skip Google Tags
+      }
+    }
+    return false; // Do not skip Google Tags
+  }
+
+  // Conditionally load the Google Tags script
+  if (!shouldSkipGoogleTags()) {
+    // Load the Google Tags script
+    (function() {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-EDDHX1L15F';
+      document.head.appendChild(script);
+
+      // Initialize Google Analytics
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EDDHX1L15F');
+    })();
+  } else {
+    console.log('Google Tags script skipped for user agent:', navigator.userAgent);
+  }
+</script>
+
+<style id='filebird-block-filebird-gallery-style-inline-css' media="all">ul.filebird-block-filebird-gallery{margin:auto!important;padding:0!important;width:100%}ul.filebird-block-filebird-gallery.layout-grid{display:grid;grid-gap:20px;align-items:stretch;grid-template-columns:repeat(var(--columns),1fr);justify-items:stretch}ul.filebird-block-filebird-gallery.layout-grid li img{border:1px solid #ccc;box-shadow:2px 2px 6px 0 rgba(0,0,0,.3);height:100%;max-width:100%;-o-object-fit:cover;object-fit:cover;width:100%}ul.filebird-block-filebird-gallery.layout-masonry{-moz-column-count:var(--columns);-moz-column-gap:var(--space);column-gap:var(--space);-moz-column-width:var(--min-width);columns:var(--min-width) var(--columns);display:block;overflow:auto}ul.filebird-block-filebird-gallery.layout-masonry li{margin-bottom:var(--space)}ul.filebird-block-filebird-gallery li{list-style:none}ul.filebird-block-filebird-gallery li figure{height:100%;margin:0;padding:0;position:relative;width:100%}ul.filebird-block-filebird-gallery li figure figcaption{background:linear-gradient(0deg,rgba(0,0,0,.7),rgba(0,0,0,.3) 70%,transparent);bottom:0;box-sizing:border-box;color:#fff;font-size:.8em;margin:0;max-height:100%;overflow:auto;padding:3em .77em .7em;position:absolute;text-align:center;width:100%;z-index:2}ul.filebird-block-filebird-gallery li figure figcaption a{color:inherit}</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style id='dt-main-inline-css' media="all">body #load {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  z-index: 9901;
+  opacity: 1;
+  visibility: visible;
+  transition: all .35s ease-out;
+}
+.load-wrap {
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-align: center;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+  -ms-flex-pack: center;
+  -ms-justify-content: center;
+  justify-content: center;
+}
+.load-wrap > svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+#load {
+  background: var(--the7-elementor-beautiful-loading-bg,#ffffff);
+  --the7-beautiful-spinner-color2: var(--the7-beautiful-spinner-color,rgba(0,0,0,0.12));
+}</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://the7.io/elementor-starter/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script src="https://the7.io/elementor-starter/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script id="dt-above-fold-js-extra">
+var dtLocal = {"themeUrl":"https:\/\/the7.io\/elementor-starter\/wp-content\/themes\/dt-the7","passText":"To view this protected post, enter the password below:","moreButtonText":{"loading":"Loading...","loadMore":"Load more"},"postID":"1160","ajaxurl":"https:\/\/the7.io\/elementor-starter\/wp-admin\/admin-ajax.php","REST":{"baseUrl":"https:\/\/the7.io\/elementor-starter\/wp-json\/the7\/v1","endpoints":{"sendMail":"\/send-mail"}},"contactMessages":{"required":"One or more fields have an error. Please check and try again.","terms":"Please accept the privacy policy.","fillTheCaptchaError":"Please, fill the captcha."},"captchaSiteKey":"","ajaxNonce":"bf17d6c545","pageData":{"type":"page","template":"page","layout":null},"themeSettings":{"smoothScroll":"off","lazyLoading":false,"desktopHeader":{"height":""},"ToggleCaptionEnabled":"disabled","ToggleCaption":"Navigation","floatingHeader":{"showAfter":94,"showMenu":false,"height":64,"logo":{"showLogo":true,"html":"","url":"https:\/\/the7.io\/elementor-starter\/"}},"topLine":{"floatingTopLine":{"logo":{"showLogo":false,"html":""}}},"mobileHeader":{"firstSwitchPoint":1150,"secondSwitchPoint":600,"firstSwitchPointHeight":60,"secondSwitchPointHeight":50,"mobileToggleCaptionEnabled":"right","mobileToggleCaption":"Menu"},"stickyMobileHeaderFirstSwitch":{"logo":{"html":""}},"stickyMobileHeaderSecondSwitch":{"logo":{"html":""}},"sidebar":{"switchPoint":992},"boxedWidth":"1280px"},"elementor":{"settings":{"container_width":1250}}};
+var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Share on X","pinterest":"Pin it","linkedin":"Share on Linkedin","whatsapp":"Share on Whatsapp"},"overlayOpacity":"90"};
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+			<style media="all">.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}</style>
+			
+		
+<link rel="icon" href="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2020/02/logo-main-qs-thick.svg" sizes="192x192" />
+
+
+<style id='the7-custom-inline-css' type='text/css' media="all">.sub-nav .menu-item i.fa,
+.sub-nav .menu-item i.fas,
+.sub-nav .menu-item i.far,
+.sub-nav .menu-item i.fab {
+	text-align: center;
+	width: 1.25em;
+}</style>
+</head>
+<body id="the7-body" class="home wp-singular page-template page-template-elementor_header_footer page page-id-1160 wp-custom-logo wp-embed-responsive wp-theme-dt-the7 the7-core-ver-2.7.12 dt-responsive-on right-mobile-menu-close-icon ouside-menu-close-icon mobile-close-right-caption  fade-thin-mobile-menu-close-icon fade-medium-menu-close-icon srcset-enabled btn-flat custom-btn-color custom-btn-hover-color first-switch-logo-left first-switch-menu-right second-switch-logo-left second-switch-menu-right right-mobile-menu layzr-loading-on popup-message-style the7-ver-12.10.0.1 elementor-default elementor-template-full-width elementor-clear-template elementor-kit-2579 elementor-page elementor-page-1160 elementor-page-6261">
+
+<div id="load" class="ring-loader">
+	<div class="load-wrap">
+<style type="text/css" media="all">.the7-spinner {
+        width: 72px;
+        height: 72px;
+        position: relative;
+    }
+    .the7-spinner > div {
+        border-radius: 50%;
+        width: 9px;
+        left: 0;
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        border: 9px solid #fff;
+        width: 72px;
+        height: 72px;
+    }
+    .the7-spinner-ring-bg{
+        opacity: 0.25;
+    }
+    div.the7-spinner-ring {
+        animation: spinner-animation 0.8s cubic-bezier(1, 1, 1, 1) infinite;
+        border-color:var(--the7-beautiful-spinner-color2) transparent transparent transparent;
+    }
+
+    @keyframes spinner-animation{
+        from{
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }</style>
+
+<div class="the7-spinner">
+    <div class="the7-spinner-ring-bg"></div>
+    <div class="the7-spinner-ring"></div>
+</div></div>
+</div>
+<div id="page" >
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+<style id="the7-page-content-style" media="all">#main {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+#main > .wf-wrap {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+@media screen and (max-width: 778px) {
+  #main {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  #main > .wf-wrap {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}</style>		<header data-elementor-type="header" data-elementor-id="6236" class="elementor elementor-6236 elementor-location-header" data-elementor-post-type="elementor_library">
+					<section class="elementor-section elementor-top-section elementor-element elementor-element-7a332a4 the7-e-sticky-overlap-yes the7-e-sticky-row-yes the7-e-sticky-effect-yes elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7a332a4" data-element_type="section" data-settings="{&quot;the7_sticky_row_overlap&quot;:&quot;yes&quot;,&quot;the7_sticky_row&quot;:&quot;yes&quot;,&quot;the7_sticky_effects&quot;:&quot;yes&quot;,&quot;the7_sticky_effects_offset&quot;:10,&quot;the7_sticky_row_devices&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;the7_sticky_row_offset&quot;:0,&quot;the7_sticky_effects_devices&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;]}">
+						<div class="elementor-container elementor-column-gap-no">
+					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-30a725f" data-id="30a725f" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-c18e5d1 the7-img-sticky-size-effect-yes elementor-widget elementor-widget-image" data-id="c18e5d1" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+																<a href="https://the7.io/elementor-starter">
+							<img fetchpriority="high" width="400" height="400" src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2020/02/logo-green.svg" class="attachment-large size-large wp-image-6694" alt="" />								</a>
+															</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-b561b68" data-id="b561b68" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-ede1173 items-decoration-yes decoration-position-top toggle-align-right decoration-downwards sub-icon_align-side toggle-align-tablet-right sub-menu-position-tablet-right sub-menu-position-mobile-justify parent-item-clickable-yes mob-menu-dropdown decoration-align-height sub-menu-position-left dt-sub-menu_align-left sub-icon_position-right elementor-widget elementor-widget-the7_horizontal-menu" data-id="ede1173" data-element_type="widget" data-settings="{&quot;parent_is_clickable&quot;:&quot;yes&quot;,&quot;dropdown&quot;:&quot;tablet&quot;,&quot;dropdown_type&quot;:&quot;dropdown&quot;}" data-widget_type="the7_horizontal-menu.default">
+				<div class="elementor-widget-container">
+					<div class="horizontal-menu-wrap">				<style media="all">@media screen and (max-width: 1024px) {
+						.elementor-widget-the7_horizontal-menu.elementor-widget {
+							--menu-display: none;
+							--mobile-display: inline-flex;
+						}
+					}</style>
+				<div class="horizontal-menu-toggle hidden-on-load" role="button" tabindex="0" aria-label="Menu Toggle" aria-expanded="false"><span class="right menu-toggle-icons" aria-hidden="true" role="presentation"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" x="0px" y="0px" viewbox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"><g>	<path d="M1.5,12.8c5.6,0,12.1,0,17.7,0c0.8,0,2.6,0,3.4,0c1,0,1-1.5,0-1.5c-5.6,0-12.1,0-17.7,0c-0.8,0-2.6,0-3.4,0   C0.5,11.2,0.5,12.8,1.5,12.8L1.5,12.8z"></path></g><g>	<path d="M1.5,5.8c5.6,0,12.1,0,17.7,0c0.8,0,2.6,0,3.4,0c1,0,1-1.5,0-1.5c-5.6,0-12.1,0-17.7,0c-0.8,0-2.6,0-3.4,0   C0.5,4.2,0.5,5.8,1.5,5.8L1.5,5.8z"></path></g><g>	<path d="M1.5,19.8c5.6,0,12.1,0,17.7,0c0.8,0,2.6,0,3.4,0c1,0,1-1.5,0-1.5c-5.6,0-12.1,0-17.7,0c-0.8,0-2.6,0-3.4,0   C0.5,18.2,0.5,19.8,1.5,19.8L1.5,19.8z"></path></g></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" x="0px" y="0px" viewbox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"><path d="M20,18.9c-2.2-2.2-4.5-4.5-6.9-6.9c1.6-1.6,3.1-3.1,4.5-4.5c0.6-0.6,1.8-1.8,2.4-2.4c0.7-0.7-0.4-1.7-1.1-1.1  c-2.2,2.2-4.5,4.5-6.9,6.9c-1.6-1.6-3.1-3.1-4.5-4.5C6.9,5.9,5.7,4.6,5.1,4C4.4,3.4,3.4,4.4,4,5.1c2.2,2.2,4.5,4.5,6.9,6.9  c-1.6,1.6-3.1,3.1-4.5,4.5c-0.6,0.6-1.8,1.8-2.4,2.4c-0.7,0.7,0.4,1.7,1.1,1.1c2.2-2.2,4.5-4.5,6.9-6.9c1.6,1.6,3.1,3.1,4.5,4.5  c0.6,0.6,1.8,1.8,2.4,2.4C19.6,20.6,20.6,19.6,20,18.9z"></path></svg></span></div><nav class="dt-nav-menu-horizontal--main dt-nav-menu-horizontal__container justify-content-end widget-divider- indicator-off"><ul class="dt-nav-menu-horizontal d-flex flex-row justify-content-end"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1160 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-4667 act first has-children depth-0"><a href='https://the7.io/elementor-starter/' data-level='1' aria-haspopup='true' aria-expanded='false'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Home</span></span><span class="submenu-indicator" ><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a><ul class="the7-e-sub-nav horizontal-sub-nav"  role="group"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4649 first depth-1"><a href='https://the7.io/elementor-starter/home-1/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Home – layout 1</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1160 current_page_item menu-item-4650 act depth-1"><a href='https://the7.io/elementor-starter/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Home – layout 2</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6576 depth-1"><a href='https://the7.io/elementor-starter/demo-design-system/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Demo design system</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> </ul></li> <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4668 has-children depth-0"><a href='https://the7.io/elementor-starter/about-normal/' data-level='1' aria-haspopup='true' aria-expanded='false'><span class="item-content"><span class="menu-item-text"><span class="menu-text">About</span></span><span class="submenu-indicator" ><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a><ul class="the7-e-sub-nav horizontal-sub-nav"  role="group"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4651 first depth-1"><a href='https://the7.io/elementor-starter/about-normal/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">About – standard</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4653 depth-1"><a href='https://the7.io/elementor-starter/about-extended/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">About – extended</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> </ul></li> <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4669 has-children depth-0"><a href='https://the7.io/elementor-starter/services-1/' data-level='1' aria-haspopup='true' aria-expanded='false'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Services</span></span><span class="submenu-indicator" ><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a><ul class="the7-e-sub-nav horizontal-sub-nav"  role="group"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4654 first depth-1"><a href='https://the7.io/elementor-starter/services-1/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Services – list with images</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4658 depth-1"><a href='https://the7.io/elementor-starter/services-2/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Services – grid with images</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4656 depth-1"><a href='https://the7.io/elementor-starter/services-3/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Services – grid with icons</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4659 depth-1"><a href='https://the7.io/elementor-starter/service/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Service – single page</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> </ul></li> <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4670 has-children depth-0"><a href='https://the7.io/elementor-starter/portfolio-grid/' data-level='1' aria-haspopup='true' aria-expanded='false'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Portfolio</span></span><span class="submenu-indicator" ><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a><ul class="the7-e-sub-nav horizontal-sub-nav"  role="group"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4660 first depth-1"><a href='https://the7.io/elementor-starter/portfolio-grid/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Portfolio – grid</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4661 depth-1"><a href='https://the7.io/elementor-starter/portfolio-masonry/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Portfolio – masonry</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> <li class="menu-item menu-item-type-post_type menu-item-object-dt_portfolio menu-item-6047 depth-1"><a href='https://the7.io/elementor-starter/project/fusce-eget-arcu/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Portfolio &#8211; single project</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> </ul></li> <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4671 has-children depth-0"><a href='https://the7.io/elementor-starter/blog-grid/' data-level='1' aria-haspopup='true' aria-expanded='false'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Blog</span></span><span class="submenu-indicator" ><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a><ul class="the7-e-sub-nav horizontal-sub-nav"  role="group"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4662 first depth-1"><a href='https://the7.io/elementor-starter/blog-grid/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Blog – grid</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4663 depth-1"><a href='https://the7.io/elementor-starter/blog-masonry/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Blog – masonry</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-6045 depth-1"><a href='https://the7.io/elementor-starter/post007/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Blog &#8211; single post</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> </ul></li> <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-5595 last has-children depth-0"><a href='https://the7.io/elementor-starter/contact-standard/' data-level='1' aria-haspopup='true' aria-expanded='false'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Contact</span></span><span class="submenu-indicator" ><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a><ul class="the7-e-sub-nav horizontal-sub-nav"  role="group"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5597 first depth-1"><a href='https://the7.io/elementor-starter/contact-standard/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Contact – standard</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4666 depth-1"><a href='https://the7.io/elementor-starter/contact-extended/' data-level='2'><span class="item-content"><span class="menu-item-text"><span class="menu-text">Contact – extended</span></span><span class="submenu-indicator" ><i aria-hidden="true" class="desktop-menu-icon fas fa-caret-right"></i><span class="submenu-mob-indicator" ><i aria-hidden="true" class="mobile-menu-icon fas fa-caret-down"></i><i aria-hidden="true" class="mobile-act-icon fas fa-caret-up"></i></span></span></span></a></li> </ul></li> </ul></nav></div>				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				</header>
+		
+
+<div id="main" class="sidebar-none sidebar-divider-off">
+
+	
+	<div class="main-gradient"></div>
+	<div class="wf-wrap">
+	<div class="wf-container-main">
+
+	
+
+
+	<div id="content" class="content" role="main">
+
+				<div data-elementor-type="wp-page" data-elementor-id="1160" class="elementor elementor-1160" data-elementor-post-type="page">
+						<section class="elementor-section elementor-top-section elementor-element elementor-element-6dbf8145 elementor-section-stretched elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="6dbf8145" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;slideshow&quot;,&quot;background_slideshow_transition_duration&quot;:1000,&quot;background_slideshow_gallery&quot;:[{&quot;id&quot;:174,&quot;url&quot;:&quot;https:\/\/the7.io\/elementor-starter\/wp-content\/uploads\/sites\/60\/2019\/11\/bg-dev-studio-08.jpg&quot;},{&quot;id&quot;:28,&quot;url&quot;:&quot;https:\/\/the7.io\/elementor-starter\/wp-content\/uploads\/sites\/60\/2019\/11\/7-bg-15.jpg&quot;},{&quot;id&quot;:29,&quot;url&quot;:&quot;https:\/\/the7.io\/elementor-starter\/wp-content\/uploads\/sites\/60\/2019\/11\/7-bg-25.jpg&quot;},{&quot;id&quot;:15,&quot;url&quot;:&quot;https:\/\/the7.io\/elementor-starter\/wp-content\/uploads\/sites\/60\/2019\/11\/7-bg-145.jpg&quot;}],&quot;background_slideshow_loop&quot;:&quot;yes&quot;,&quot;background_slideshow_slide_duration&quot;:5000,&quot;background_slideshow_slide_transition&quot;:&quot;fade&quot;}">
+							<div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-wider">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-69f6b3bd" data-id="69f6b3bd" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-3caf476 elementor-widget elementor-widget-heading" data-id="3caf476" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">We craft innovative high end digital solutions for clients worldwide.</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-4c8507e elementor-widget elementor-widget-spacer" data-id="4c8507e" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-9aae7ad elementor-widget elementor-widget-heading" data-id="9aae7ad" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h5 class="elementor-heading-title elementor-size-default">Contact us to implement your creative business ideas!</h5>				</div>
+				</div>
+				<div class="elementor-element elementor-element-fbc5c28 elementor-widget elementor-widget-spacer" data-id="fbc5c28" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-f407580 elementor-align-justify elementor-widget__width-initial elementor-widget elementor-widget-the7_button_widget" data-id="f407580" data-element_type="widget" data-widget_type="the7_button_widget.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper"><a href="/elementor-starter/contact/" class="box-button elementor-button elementor-size-lg">Get in touch</a></div>				</div>
+				</div>
+				<div class="elementor-element elementor-element-08f8310 elementor-align-justify elementor-widget__width-initial elementor-widget elementor-widget-the7_button_widget" data-id="08f8310" data-element_type="widget" data-widget_type="the7_button_widget.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper"><a href="/elementor-starter/portfolio/" class="box-button elementor-button elementor-size-lg">Projects showcase</a></div>				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-329ecc50 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="329ecc50" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-wider">
+					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-67164d2" data-id="67164d2" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-30796d35 elementor-widget elementor-widget-heading" data-id="30796d35" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">We are Seven Company</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-edb6abf elementor-widget elementor-widget-spacer" data-id="edb6abf" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-25f7e742 elementor-widget elementor-widget-text-editor" data-id="25f7e742" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Curabitur et mattis ante. Maecenas sit amet commodo tellus. Phasellus fermentum pretium eros, ut faucibus velit auctor eget. Vestibulum semper sed magna pretium congue.</p><p>Phasellus fermentum pretium eros, ut faucibus velit auctor!</p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-536d720 elementor-widget elementor-widget-spacer" data-id="536d720" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-93559ee elementor-widget elementor-widget-the7_button_widget" data-id="93559ee" data-element_type="widget" data-widget_type="the7_button_widget.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper"><a href="/elementor-starter/about/" class="box-button elementor-button elementor-size-md">More about us</a></div>				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-11833757" data-id="11833757" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-705db99 icon-position-mobile-top content-align-left icon-box-vertical-align-top icon-position-left icon-vertical-align-start elementor-widget elementor-widget-the7_icon_box_grid_widget" data-id="705db99" data-element_type="widget" data-widget_type="the7_icon_box_grid_widget.default">
+				<div class="elementor-widget-container">
+					<div class="the7-box-grid-wrapper the7-elementor-widget loading-effect-none the7_icon_box_grid_widget-705db99">			<div class="dt-css-grid">
+									<div class="wf-cell shown">
+						<div class="the7-icon-box-grid">							<div class="box-content-wrapper">
+																	<a class="elementor-icon-div" aria-label="Luctus nec ullamcorper">										<div class="elementor-icon">
+											<i aria-hidden="true" class="feather feather-layers"></i>										</div>
+									</a>																<div class="box-content">
+																													<h4 class="box-heading">
+											<a aria-label="Luctus nec ullamcorper">												Luctus nec ullamcorper											</a>										</h4>
+																												<div class="box-description"><p>Lorem ipsum dolor adipiscing elit. Ut elit tellus dapibus leo!</p></div>
+																										</div>
+							</div>
+						</div>					</div>
+									<div class="wf-cell shown">
+						<div class="the7-icon-box-grid">							<div class="box-content-wrapper">
+																	<a class="elementor-icon-div" aria-label=" Lorem dolor sit amet">										<div class="elementor-icon">
+											<i aria-hidden="true" class="feather feather-key"></i>										</div>
+									</a>																<div class="box-content">
+																													<h4 class="box-heading">
+											<a aria-label=" Lorem dolor sit amet">												 Lorem dolor sit amet											</a>										</h4>
+																												<div class="box-description"><p>Ut elit tellus - luctus nec ullamcorper pulvinar dapibus leo. </p></div>
+																										</div>
+							</div>
+						</div>					</div>
+									<div class="wf-cell shown">
+						<div class="the7-icon-box-grid">							<div class="box-content-wrapper">
+																	<a class="elementor-icon-div" aria-label="100% elit tellus luctus">										<div class="elementor-icon">
+											<i aria-hidden="true" class="feather feather-refresh-cw"></i>										</div>
+									</a>																<div class="box-content">
+																													<h4 class="box-heading">
+											<a aria-label="100% elit tellus luctus">												100% elit tellus luctus											</a>										</h4>
+																												<div class="box-description"><p>Ipsum tellus, luctus nec ullamcorper mattis pulvinar.</p></div>
+																										</div>
+							</div>
+						</div>					</div>
+							</div>
+		</div>				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-352a176 elementor-section-stretched elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="352a176" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-no">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-ee8d0f7" data-id="ee8d0f7" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-624e617 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="624e617" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-custom">
+					<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-c0c3f09" data-id="c0c3f09" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-755f15a elementor-view-default elementor-widget elementor-widget-icon" data-id="755f15a" data-element_type="widget" data-widget_type="icon.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-icon-wrapper">
+			<div class="elementor-icon">
+			<i aria-hidden="true" class="feather feather-calendar"></i>			</div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-625829a elementor-widget elementor-widget-counter" data-id="625829a" data-element_type="widget" data-widget_type="counter.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-counter">
+			<div class="elementor-counter-title">Years in business</div>			<div class="elementor-counter-number-wrapper">
+				<span class="elementor-counter-number-prefix"></span>
+				<span class="elementor-counter-number" data-duration="1000" data-to-value="17" data-from-value="7" data-delimiter=",">7</span>
+				<span class="elementor-counter-number-suffix"></span>
+			</div>
+		</div>
+						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-9886d71" data-id="9886d71" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-2d0c91a elementor-view-default elementor-widget elementor-widget-icon" data-id="2d0c91a" data-element_type="widget" data-widget_type="icon.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-icon-wrapper">
+			<div class="elementor-icon">
+			<i aria-hidden="true" class="feather feather-briefcase"></i>			</div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-246ce32 elementor-widget elementor-widget-counter" data-id="246ce32" data-element_type="widget" data-widget_type="counter.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-counter">
+			<div class="elementor-counter-title">Projects done</div>			<div class="elementor-counter-number-wrapper">
+				<span class="elementor-counter-number-prefix"></span>
+				<span class="elementor-counter-number" data-duration="1000" data-to-value="100" data-from-value="90" data-delimiter=",">90</span>
+				<span class="elementor-counter-number-suffix">+</span>
+			</div>
+		</div>
+						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-0d738a0" data-id="0d738a0" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-0b3b664 elementor-view-default elementor-widget elementor-widget-icon" data-id="0b3b664" data-element_type="widget" data-widget_type="icon.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-icon-wrapper">
+			<div class="elementor-icon">
+			<i aria-hidden="true" class="feather feather-award"></i>			</div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-62a47ec elementor-widget elementor-widget-counter" data-id="62a47ec" data-element_type="widget" data-widget_type="counter.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-counter">
+			<div class="elementor-counter-title">Industry awards</div>			<div class="elementor-counter-number-wrapper">
+				<span class="elementor-counter-number-prefix"></span>
+				<span class="elementor-counter-number" data-duration="1000" data-to-value="15" data-from-value="5" data-delimiter=",">5</span>
+				<span class="elementor-counter-number-suffix"></span>
+			</div>
+		</div>
+						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-ddb6bf6" data-id="ddb6bf6" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-fbae0c8 elementor-view-default elementor-widget elementor-widget-icon" data-id="fbae0c8" data-element_type="widget" data-widget_type="icon.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-icon-wrapper">
+			<div class="elementor-icon">
+			<i aria-hidden="true" class="feather feather-users"></i>			</div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-276c940 elementor-widget elementor-widget-counter" data-id="276c940" data-element_type="widget" data-widget_type="counter.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-counter">
+			<div class="elementor-counter-title">Top professionals</div>			<div class="elementor-counter-number-wrapper">
+				<span class="elementor-counter-number-prefix"></span>
+				<span class="elementor-counter-number" data-duration="1000" data-to-value="24" data-from-value="14" data-delimiter=",">14</span>
+				<span class="elementor-counter-number-suffix"></span>
+			</div>
+		</div>
+						</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-dc7a90c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="dc7a90c" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-no">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-8e4ed73" data-id="8e4ed73" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-506e58c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="506e58c" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-wider">
+					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-2f11607" data-id="2f11607" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-78896a0 elementor-widget__width-initial elementor-widget elementor-widget-heading" data-id="78896a0" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Our Services</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-133d6e8 elementor-widget elementor-widget-spacer" data-id="133d6e8" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-3511e8b elementor-widget__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-text-editor" data-id="3511e8b" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Vestibulum semper &#8211; mattis lacinia sit sem pretium congue. Fusce eget arcu eget nisi mattis lacinia sit amet at sem. Quisque porttitum leo ornare pharetra.</p>								</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-e7cd40a elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e7cd40a" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-wider">
+					<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-67477d2" data-id="67477d2" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-1c98913 elementor-widget elementor-widget-image" data-id="1c98913" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+																<a href="/services/service">
+							<img decoding="async" src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/elementor/thumbs/7-bg-122-ogmb8fyd3ay46yd616rayv7rfpw7gqw9n0gkcgm0cg.jpg" title="7-bg-122" alt="7-bg-122" loading="lazy" />								</a>
+															</div>
+				</div>
+				<div class="elementor-element elementor-element-1f27dcf elementor-widget elementor-widget-spacer" data-id="1f27dcf" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-5ccfdbe elementor-widget elementor-widget-heading" data-id="5ccfdbe" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h3 class="elementor-heading-title elementor-size-default">Web development</h3>				</div>
+				</div>
+				<div class="elementor-element elementor-element-67431f4 elementor-widget elementor-widget-spacer" data-id="67431f4" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-8bd82e6 icon-box-vertical-align-center icon-position-mobile-left content-align-left icon-position-left icon-vertical-align-start elementor-widget elementor-widget-the7_icon_box_grid_widget" data-id="8bd82e6" data-element_type="widget" data-widget_type="the7_icon_box_grid_widget.default">
+				<div class="elementor-widget-container">
+					<div class="the7-box-grid-wrapper the7-elementor-widget loading-effect-none the7_icon_box_grid_widget-8bd82e6">			<div class="dt-css-grid">
+									<div class="wf-cell shown">
+						<a class="the7-icon-box-grid box-hover" aria-label="Web design">							<div class="box-content-wrapper">
+																	<div class="elementor-icon-div">										<div class="elementor-icon">
+											<i aria-hidden="true" class="feather feather-check"></i>										</div>
+									</div>																<div class="box-content">
+																													<h4 class="box-heading">
+																							Web design																					</h4>
+																																			</div>
+							</div>
+						</a>					</div>
+									<div class="wf-cell shown">
+						<a class="the7-icon-box-grid box-hover" aria-label="Hosting solutions">							<div class="box-content-wrapper">
+																	<div class="elementor-icon-div">										<div class="elementor-icon">
+											<i aria-hidden="true" class="feather feather-check"></i>										</div>
+									</div>																<div class="box-content">
+																													<h4 class="box-heading">
+																							Hosting solutions																					</h4>
+																																			</div>
+							</div>
+						</a>					</div>
+									<div class="wf-cell shown">
+						<a class="the7-icon-box-grid box-hover" aria-label="Ecommerce">							<div class="box-content-wrapper">
+																	<div class="elementor-icon-div">										<div class="elementor-icon">
+											<i aria-hidden="true" class="feather feather-check"></i>										</div>
+									</div>																<div class="box-content">
+																													<h4 class="box-heading">
+																							Ecommerce																					</h4>
+																																			</div>
+							</div>
+						</a>					</div>
+									<div class="wf-cell shown">
+						<a class="the7-icon-box-grid box-hover" aria-label="SEO">							<div class="box-content-wrapper">
+																	<div class="elementor-icon-div">										<div class="elementor-icon">
+											<i aria-hidden="true" class="feather feather-check"></i>										</div>
+									</div>																<div class="box-content">
+																													<h4 class="box-heading">
+																							SEO																					</h4>
+																																			</div>
+							</div>
+						</a>					</div>
+							</div>
+		</div>				</div>
+				</div>
+				<div class="elementor-element elementor-element-a958082 elementor-widget elementor-widget-spacer" data-id="a958082" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-0d1eb09 elementor-widget elementor-widget-the7_button_widget" data-id="0d1eb09" data-element_type="widget" data-widget_type="the7_button_widget.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper"><a href="https://the7.io/elementor-starter/service/" class="box-button elementor-button elementor-size-sm">View details</a></div>				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-faa0bc8" data-id="faa0bc8" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-7fe6423 elementor-widget elementor-widget-image" data-id="7fe6423" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+																<a href="/services/service">
+							<img decoding="async" src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/elementor/thumbs/7-bg-125-ogmb8f0iwgwtvcej6ocoedgauc0u91sjavt2v6neio.jpg" title="7-bg-125" alt="7-bg-125" loading="lazy" />								</a>
+															</div>
+				</div>
+				<div class="elementor-element elementor-element-216848f elementor-widget elementor-widget-spacer" data-id="216848f" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-0211cd8 elementor-widget elementor-widget-heading" data-id="0211cd8" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h3 class="elementor-heading-title elementor-size-default">Mobile apps</h3>				</div>
+				</div>
+				<div class="elementor-element elementor-element-0f3a277 elementor-widget elementor-widget-spacer" data-id="0f3a277" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-d40d59e icon-box-vertical-align-center icon-position-mobile-left content-align-left icon-position-left icon-vertical-align-start elementor-widget elementor-widget-the7_icon_box_grid_widget" data-id="d40d59e" data-element_type="widget" data-widget_type="the7_icon_box_grid_widget.default">
+				<div class="elementor-widget-container">
+					<div class="the7-box-grid-wrapper the7-elementor-widget loading-effect-none the7_icon_box_grid_widget-d40d59e">			<div class="dt-css-grid">
+									<div class="wf-cell shown">
+						<a class="the7-icon-box-grid box-hover" aria-label="Prototyping">							<div class="box-content-wrapper">
+																	<div class="elementor-icon-div">										<div class="elementor-icon">
+											<i aria-hidden="true" class="feather feather-check"></i>										</div>
+									</div>																<div class="box-content">
+																													<h4 class="box-heading">
+																							Prototyping																					</h4>
+																																			</div>
+							</div>
+						</a>					</div>
+									<div class="wf-cell shown">
+						<a class="the7-icon-box-grid box-hover" aria-label="Design &amp; development">							<div class="box-content-wrapper">
+																	<div class="elementor-icon-div">										<div class="elementor-icon">
+											<i aria-hidden="true" class="feather feather-check"></i>										</div>
+									</div>																<div class="box-content">
+																													<h4 class="box-heading">
+																							Design &amp; development																					</h4>
+																																			</div>
+							</div>
+						</a>					</div>
+									<div class="wf-cell shown">
+						<a class="the7-icon-box-grid box-hover" aria-label="Testing">							<div class="box-content-wrapper">
+																	<div class="elementor-icon-div">										<div class="elementor-icon">
+											<i aria-hidden="true" class="feather feather-check"></i>										</div>
+									</div>																<div class="box-content">
+																													<h4 class="box-heading">
+																							Testing																					</h4>
+																																			</div>
+							</div>
+						</a>					</div>
+									<div class="wf-cell shown">
+						<a class="the7-icon-box-grid box-hover" aria-label="Support &amp; updates">							<div class="box-content-wrapper">
+																	<div class="elementor-icon-div">										<div class="elementor-icon">
+											<i aria-hidden="true" class="feather feather-check"></i>										</div>
+									</div>																<div class="box-content">
+																													<h4 class="box-heading">
+																							Support &amp; updates																					</h4>
+																																			</div>
+							</div>
+						</a>					</div>
+							</div>
+		</div>				</div>
+				</div>
+				<div class="elementor-element elementor-element-b76f5c2 elementor-widget elementor-widget-spacer" data-id="b76f5c2" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-e790f8c elementor-widget elementor-widget-the7_button_widget" data-id="e790f8c" data-element_type="widget" data-widget_type="the7_button_widget.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper"><a href="https://the7.io/elementor-starter/service/" class="box-button elementor-button elementor-size-sm">View details</a></div>				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-6310ae0" data-id="6310ae0" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-9898193 elementor-widget elementor-widget-image" data-id="9898193" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+																<a href="/services/service">
+							<img decoding="async" src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/elementor/thumbs/el007-ogwhqhwb76m2bb9l0w1mzw60xk2yavdjbiln23nm80.jpg" title="el007" alt="el007" loading="lazy" />								</a>
+															</div>
+				</div>
+				<div class="elementor-element elementor-element-96aa323 elementor-widget elementor-widget-spacer" data-id="96aa323" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-9aaa05d elementor-widget elementor-widget-heading" data-id="9aaa05d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h3 class="elementor-heading-title elementor-size-default">Online marketing</h3>				</div>
+				</div>
+				<div class="elementor-element elementor-element-ee1f1fb elementor-widget elementor-widget-spacer" data-id="ee1f1fb" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-b8df884 icon-box-vertical-align-center icon-position-mobile-left content-align-left icon-position-left icon-vertical-align-start elementor-widget elementor-widget-the7_icon_box_grid_widget" data-id="b8df884" data-element_type="widget" data-widget_type="the7_icon_box_grid_widget.default">
+				<div class="elementor-widget-container">
+					<div class="the7-box-grid-wrapper the7-elementor-widget loading-effect-none the7_icon_box_grid_widget-b8df884">			<div class="dt-css-grid">
+									<div class="wf-cell shown">
+						<a class="the7-icon-box-grid box-hover" aria-label="Content management">							<div class="box-content-wrapper">
+																	<div class="elementor-icon-div">										<div class="elementor-icon">
+											<i aria-hidden="true" class="feather feather-check"></i>										</div>
+									</div>																<div class="box-content">
+																													<h4 class="box-heading">
+																							Content management																					</h4>
+																																			</div>
+							</div>
+						</a>					</div>
+									<div class="wf-cell shown">
+						<a class="the7-icon-box-grid box-hover" aria-label="Photography &amp; illustrations">							<div class="box-content-wrapper">
+																	<div class="elementor-icon-div">										<div class="elementor-icon">
+											<i aria-hidden="true" class="feather feather-check"></i>										</div>
+									</div>																<div class="box-content">
+																													<h4 class="box-heading">
+																							Photography &amp; illustrations																					</h4>
+																																			</div>
+							</div>
+						</a>					</div>
+									<div class="wf-cell shown">
+						<a class="the7-icon-box-grid box-hover" aria-label="Copywriting for social media">							<div class="box-content-wrapper">
+																	<div class="elementor-icon-div">										<div class="elementor-icon">
+											<i aria-hidden="true" class="feather feather-check"></i>										</div>
+									</div>																<div class="box-content">
+																													<h4 class="box-heading">
+																							Copywriting for social media																					</h4>
+																																			</div>
+							</div>
+						</a>					</div>
+							</div>
+		</div>				</div>
+				</div>
+				<div class="elementor-element elementor-element-d615930 elementor-widget elementor-widget-spacer" data-id="d615930" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-cb243f5 elementor-widget elementor-widget-the7_button_widget" data-id="cb243f5" data-element_type="widget" data-widget_type="the7_button_widget.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper"><a href="https://the7.io/elementor-starter/service/" class="box-button elementor-button elementor-size-sm">View details</a></div>				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-f1ff114 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="f1ff114" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-no">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-a5b1eaa" data-id="a5b1eaa" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-82fdd7a elementor-widget elementor-widget-template" data-id="82fdd7a" data-element_type="widget" data-widget_type="template.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-template">
+					<div data-elementor-type="section" data-elementor-id="5084" class="elementor elementor-5084" data-elementor-post-type="elementor_library">
+					<section class="elementor-section elementor-top-section elementor-element elementor-element-61ffd425 elementor-section-height-min-height elementor-section-stretched elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="61ffd425" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-wider">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-7fb96956" data-id="7fb96956" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-6e976345 elementor-widget__width-initial elementor-widget-tablet__width-inherit elementor-widget elementor-widget-heading" data-id="6e976345" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h3 class="elementor-heading-title elementor-size-default">We are open for new projects. Let's bring your creative ideas to life together!</h3>				</div>
+				</div>
+				<div class="elementor-element elementor-element-34afd9b5 content-align-mobile-center icon-position-mobile-top icon-vertical-align-center icon-vertical-align-mobile-center elementor-widget__width-initial elementor-widget-mobile__width-inherit content-align-left icon-box-vertical-align-top icon-position-left elementor-widget elementor-widget-the7_icon_box_widget" data-id="34afd9b5" data-element_type="widget" data-widget_type="the7_icon_box_widget.default">
+				<div class="elementor-widget-container">
+					
+		<div class="the7-box-wrapper the7-elementor-widget the7_icon_box_widget-34afd9b5">			<div class="box-content-wrapper">
+									<a class="elementor-icon-div" >						<div class="elementor-icon">
+							<i aria-hidden="true" class="feather feather-phone-call"></i>						</div>
+					</a>								<div class="box-content">
+																	<h4 class="box-heading">
+							<a >								+001 234 56 78							</a>						</h4>
+										
+					
+				</div>
+			</div>
+		</div>					</div>
+				</div>
+				<div class="elementor-element elementor-element-10a0cbb9 elementor-widget__width-initial elementor-align-justify elementor-widget-tablet__width-initial elementor-widget elementor-widget-the7_button_widget" data-id="10a0cbb9" data-element_type="widget" data-widget_type="the7_button_widget.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper"><a href="/elementor-starter/about/" class="box-button elementor-button elementor-size-lg">Contact us online</a></div>				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				</div>
+				</div>
+						</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-45c2ac4 elementor-section-stretched elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="45c2ac4" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-no">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6e05f9d" data-id="6e05f9d" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-61a1329 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="61a1329" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-wider">
+					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-c5e5a0d" data-id="c5e5a0d" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-ba01e66 elementor-widget__width-initial elementor-widget elementor-widget-heading" data-id="ba01e66" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Recent Projects</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-260e6b5 elementor-widget elementor-widget-spacer" data-id="260e6b5" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-687809e elementor-widget__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-text-editor" data-id="687809e" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Vestibulum semper &#8211; mattis lacinia sit sem pretium congue. Fusce eget arcu eget nisi mattis lacinia sit amet at sem. Quisque porttitum leo ornare pharetra.</p>								</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<div class="elementor-element elementor-element-1d4952b elementor-widget elementor-widget-spacer" data-id="1d4952b" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-76dd1f7 bullets-fill-in arrows-relative-to-box_area preserve-img-ratio-cover elementor-widget elementor-widget-the7_elements_carousel" data-id="76dd1f7" data-element_type="widget" data-settings="{&quot;gap_between_posts&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:30,&quot;sizes&quot;:[]},&quot;widget_columns_wide_desktop&quot;:4,&quot;widget_columns_tablet&quot;:3,&quot;normal_arrow_bg_color&quot;:&quot;#00000080&quot;,&quot;hover_arrow_bg_color&quot;:&quot;#12a594&quot;,&quot;widget_columns&quot;:3,&quot;widget_columns_mobile&quot;:1,&quot;gap_between_posts_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;gap_between_posts_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="the7_elements_carousel.default">
+				<div class="elementor-widget-container">
+					<div class="the7_elements_carousel-76dd1f7 owl-carousel portfolio-carousel-shortcode elementor-owl-carousel-call portfolio-shortcode the7-elementor-widget content-bg-on classic-layout-list description-under-image meta-info-off" data-scroll-mode="1" data-auto-height="false" data-speed="600" data-autoplay="false" data-autoplay_speed=""><article class="post visible post-112 dt_portfolio type-dt_portfolio status-publish has-post-thumbnail hentry dt_portfolio_category-design">
+
+	<div class="post-thumbnail-wrap">
+		<div class="post-thumbnail">
+
+			<a class="post-thumbnail-rollover layzr-bg img-css-resize-wrapper" aria-label="Post image" href="https://the7.io/elementor-starter/project/fusce-eget-arcu/"><img decoding="async" width="950" height="1200" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%20950%201200&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 950px) 100vw, 950px" style="--ratio: 950 / 1200;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-p-096.jpg" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-p-096.jpg 950w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-p-096-238x300.jpg 238w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-p-096-811x1024.jpg 811w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-p-096-768x970.jpg 768w" /><span class="the7-hover-icon"><i aria-hidden="true" class="feather feather-more-horizontal"></i></span></a>
+		</div>
+	</div>
+
+
+<div class="post-entry-content">
+
+	<h3 class="ele-entry-title"><a href="https://the7.io/elementor-starter/project/fusce-eget-arcu/" rel="bookmark" title="Fusce eget arcu">Fusce eget arcu</a></h3>
+</div></article><article class="post visible post-247 dt_portfolio type-dt_portfolio status-publish has-post-thumbnail hentry dt_portfolio_category-branding">
+
+	<div class="post-thumbnail-wrap">
+		<div class="post-thumbnail">
+
+			<a class="post-thumbnail-rollover layzr-bg img-css-resize-wrapper" aria-label="Post image" href="https://the7.io/elementor-starter/project/fusce-varius/"><img decoding="async" width="1500" height="1000" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%201500%201000&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 1500px) 100vw, 1500px" style="--ratio: 1500 / 1000;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-102-2.jpg" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-102-2.jpg 1500w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-102-2-300x200.jpg 300w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-102-2-1024x683.jpg 1024w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-102-2-768x512.jpg 768w" /><span class="the7-hover-icon"><i aria-hidden="true" class="feather feather-more-horizontal"></i></span></a>
+		</div>
+	</div>
+
+
+<div class="post-entry-content">
+
+	<h3 class="ele-entry-title"><a href="https://the7.io/elementor-starter/project/fusce-varius/" rel="bookmark" title="Fusce varius">Fusce varius</a></h3>
+</div></article><article class="post visible post-245 dt_portfolio type-dt_portfolio status-publish has-post-thumbnail hentry dt_portfolio_category-design">
+
+	<div class="post-thumbnail-wrap">
+		<div class="post-thumbnail">
+
+			<a class="post-thumbnail-rollover layzr-bg img-css-resize-wrapper" aria-label="Post image" href="https://the7.io/elementor-starter/project/maecenas-feugiat/"><img decoding="async" width="950" height="1200" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%20950%201200&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 950px) 100vw, 950px" style="--ratio: 950 / 1200;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-119.jpg" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-119.jpg 950w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-119-238x300.jpg 238w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-119-811x1024.jpg 811w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-119-768x970.jpg 768w" /><span class="the7-hover-icon"><i aria-hidden="true" class="feather feather-more-horizontal"></i></span></a>
+		</div>
+	</div>
+
+
+<div class="post-entry-content">
+
+	<h3 class="ele-entry-title"><a href="https://the7.io/elementor-starter/project/maecenas-feugiat/" rel="bookmark" title="Maecenas feugiat">Maecenas feugiat</a></h3>
+</div></article><article class="post visible post-239 dt_portfolio type-dt_portfolio status-publish has-post-thumbnail hentry dt_portfolio_category-marketing">
+
+	<div class="post-thumbnail-wrap">
+		<div class="post-thumbnail">
+
+			<a class="post-thumbnail-rollover layzr-bg img-css-resize-wrapper" aria-label="Post image" href="https://the7.io/elementor-starter/project/nulla-dolor-lorem/"><img decoding="async" width="1200" height="1200" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%201200%201200&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 1200px) 100vw, 1200px" style="--ratio: 1200 / 1200;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-109.jpg" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-109.jpg 1200w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-109-300x300.jpg 300w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-109-1024x1024.jpg 1024w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-109-150x150.jpg 150w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-109-768x768.jpg 768w" /><span class="the7-hover-icon"><i aria-hidden="true" class="feather feather-more-horizontal"></i></span></a>
+		</div>
+	</div>
+
+
+<div class="post-entry-content">
+
+	<h3 class="ele-entry-title"><a href="https://the7.io/elementor-starter/project/nulla-dolor-lorem/" rel="bookmark" title="Nulla dolor lorem">Nulla dolor lorem</a></h3>
+</div></article><article class="post visible post-110 dt_portfolio type-dt_portfolio status-publish has-post-thumbnail hentry dt_portfolio_category-branding dt_portfolio_category-design">
+
+	<div class="post-thumbnail-wrap">
+		<div class="post-thumbnail">
+
+			<a class="post-thumbnail-rollover layzr-bg img-css-resize-wrapper" aria-label="Post image" href="https://the7.io/elementor-starter/project/quisque-porttitor/"><img decoding="async" width="1400" height="1100" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%201400%201100&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 1400px) 100vw, 1400px" style="--ratio: 1400 / 1100;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-201.jpg" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-201.jpg 1400w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-201-300x236.jpg 300w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-201-768x603.jpg 768w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-201-1024x805.jpg 1024w" /><span class="the7-hover-icon"><i aria-hidden="true" class="feather feather-more-horizontal"></i></span></a>
+		</div>
+	</div>
+
+
+<div class="post-entry-content">
+
+	<h3 class="ele-entry-title"><a href="https://the7.io/elementor-starter/project/quisque-porttitor/" rel="bookmark" title="Quisque porttitor">Quisque porttitor</a></h3>
+</div></article><article class="post visible post-66 dt_portfolio type-dt_portfolio status-publish has-post-thumbnail hentry dt_portfolio_category-marketing dt_portfolio_category-photography">
+
+	<div class="post-thumbnail-wrap">
+		<div class="post-thumbnail">
+
+			<a class="post-thumbnail-rollover layzr-bg img-css-resize-wrapper" aria-label="Post image" href="https://the7.io/elementor-starter/project/curabitur-pellen-tesque/"><img decoding="async" width="1400" height="1400" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%201400%201400&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 1400px) 100vw, 1400px" style="--ratio: 1400 / 1400;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-211-1.jpg" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-211-1.jpg 1400w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-211-1-150x150.jpg 150w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-211-1-300x300.jpg 300w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-211-1-768x768.jpg 768w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-211-1-1024x1024.jpg 1024w" /><span class="the7-hover-icon"><i aria-hidden="true" class="feather feather-more-horizontal"></i></span></a>
+		</div>
+	</div>
+
+
+<div class="post-entry-content">
+
+	<h3 class="ele-entry-title"><a href="https://the7.io/elementor-starter/project/curabitur-pellen-tesque/" rel="bookmark" title="Curabitur pellen tesque">Curabitur pellen tesque</a></h3>
+</div></article><article class="post visible post-60 dt_portfolio type-dt_portfolio status-publish has-post-thumbnail hentry dt_portfolio_category-branding dt_portfolio_category-marketing dt_portfolio_category-photography">
+
+	<div class="post-thumbnail-wrap">
+		<div class="post-thumbnail">
+
+			<a class="post-thumbnail-rollover layzr-bg img-css-resize-wrapper" aria-label="Post image" href="https://the7.io/elementor-starter/project/etiam-id-justo/"><img decoding="async" width="950" height="1200" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%20950%201200&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 950px) 100vw, 950px" style="--ratio: 950 / 1200;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-305.jpg" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-305.jpg 950w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-305-238x300.jpg 238w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-305-768x970.jpg 768w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-305-811x1024.jpg 811w" /><span class="the7-hover-icon"><i aria-hidden="true" class="feather feather-more-horizontal"></i></span></a>
+		</div>
+	</div>
+
+
+<div class="post-entry-content">
+
+	<h3 class="ele-entry-title"><a href="https://the7.io/elementor-starter/project/etiam-id-justo/" rel="bookmark" title="Etiam id justo">Etiam id justo</a></h3>
+</div></article><article class="post visible post-58 dt_portfolio type-dt_portfolio status-publish has-post-thumbnail hentry dt_portfolio_category-branding dt_portfolio_category-marketing dt_portfolio_category-photography">
+
+	<div class="post-thumbnail-wrap">
+		<div class="post-thumbnail">
+
+			<a class="post-thumbnail-rollover layzr-bg img-css-resize-wrapper" aria-label="Post image" href="https://the7.io/elementor-starter/project/glavrida-nulla-amen/"><img decoding="async" width="950" height="1200" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%20950%201200&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 950px) 100vw, 950px" style="--ratio: 950 / 1200;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-301-1.jpg" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-301-1.jpg 950w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-301-1-238x300.jpg 238w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-301-1-768x970.jpg 768w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/p-301-1-811x1024.jpg 811w" /><span class="the7-hover-icon"><i aria-hidden="true" class="feather feather-more-horizontal"></i></span></a>
+		</div>
+	</div>
+
+
+<div class="post-entry-content">
+
+	<h3 class="ele-entry-title"><a href="https://the7.io/elementor-starter/project/glavrida-nulla-amen/" rel="bookmark" title="Glavrida nulla amen">Glavrida nulla amen</a></h3>
+</div></article></div><div class="owl-nav disabled"><div class="owl-prev" role="button" tabindex="0" aria-label="Prev slide"><i class="feather feather-chevron-left"></i></div><div class="owl-next" role="button" tabindex="0" aria-label="Next slide"><i class="feather feather-chevron-right"></i></div></div>				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-1ab3067 elementor-section-stretched elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="1ab3067" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-wider">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-b1f7e6d" data-id="b1f7e6d" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-75060d9 arrows-relative-to-box_area slider-layout_1 slider-tablet-default slider-mobile-default slide-h-position-center preserve-img-ratio-cover bullets-small-dot-stroke elementor-widget elementor-widget-the7_content_carousel" data-id="75060d9" data-element_type="widget" data-settings="{&quot;wide_desk_columns&quot;:6,&quot;widget_columns&quot;:5,&quot;widget_columns_tablet&quot;:4,&quot;widget_columns_mobile&quot;:3,&quot;gap_between_posts&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:60,&quot;sizes&quot;:[]},&quot;gap_between_posts_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:40,&quot;sizes&quot;:[]},&quot;gap_between_posts_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]},&quot;normal_arrow_bg_color&quot;:&quot;#FFFFFF00&quot;,&quot;hover_arrow_bg_color&quot;:&quot;#FFFFFF00&quot;}" data-widget_type="the7_content_carousel.default">
+				<div class="elementor-widget-container">
+					<div class="disable-arrows-hover-bg owl-carousel text-and-icon-carousel elementor-owl-carousel-call the7-elementor-widget the7_content_carousel-75060d9" data-scroll-mode="1" data-auto-height="false" data-speed="600" data-autoplay="false" data-autoplay_speed=""><a  class="dt-owl-item-wrap box-hover box-hover"  href="https://the7.io/" target="_blank"><div class="dt-owl-item-inner"><div  class="dt-owl-item-image layzr-bg img-css-resize-wrapper"> <img decoding="async" width="400" height="300" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%20400%20300&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 400px) 100vw, 400px" style="--ratio: 400 / 300;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-23.png" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-23.png 400w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-23-300x225.png 300w" /></div></div></a><a  class="dt-owl-item-wrap box-hover box-hover"  href="https://the7.io/" target="_blank"><div class="dt-owl-item-inner"><div  class="dt-owl-item-image layzr-bg img-css-resize-wrapper"> <img decoding="async" width="400" height="300" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%20400%20300&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 400px) 100vw, 400px" style="--ratio: 400 / 300;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-22.png" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-22.png 400w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-22-300x225.png 300w" /></div></div></a><a  class="dt-owl-item-wrap box-hover box-hover"  href="https://the7.io/" target="_blank"><div class="dt-owl-item-inner"><div  class="dt-owl-item-image layzr-bg img-css-resize-wrapper"> <img decoding="async" width="400" height="300" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%20400%20300&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 400px) 100vw, 400px" style="--ratio: 400 / 300;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-19.png" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-19.png 400w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-19-300x225.png 300w" /></div></div></a><a  class="dt-owl-item-wrap box-hover box-hover"  href="https://the7.io/" target="_blank"><div class="dt-owl-item-inner"><div  class="dt-owl-item-image layzr-bg img-css-resize-wrapper"> <img decoding="async" width="400" height="300" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%20400%20300&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 400px) 100vw, 400px" style="--ratio: 400 / 300;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-18.png" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-18.png 400w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-18-300x225.png 300w" /></div></div></a><a  class="dt-owl-item-wrap box-hover box-hover"  href="https://the7.io/" target="_blank"><div class="dt-owl-item-inner"><div  class="dt-owl-item-image layzr-bg img-css-resize-wrapper"> <img decoding="async" width="400" height="300" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%20400%20300&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 400px) 100vw, 400px" style="--ratio: 400 / 300;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-16.png" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-16.png 400w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-16-300x225.png 300w" /></div></div></a><a  class="dt-owl-item-wrap box-hover box-hover"  href="https://the7.io/" target="_blank"><div class="dt-owl-item-inner"><div  class="dt-owl-item-image layzr-bg img-css-resize-wrapper"> <img decoding="async" width="400" height="300" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%20400%20300&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 400px) 100vw, 400px" style="--ratio: 400 / 300;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-20.png" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-20.png 400w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/4-logo-20-300x225.png 300w" /></div></div></a></div><div class="owl-nav disabled"><div class="owl-prev" role="button" tabindex="0" aria-label="Prev slide"><i class="feather feather-chevron-left"></i></div><div class="owl-next" role="button" tabindex="0" aria-label="Next slide"><i class="feather feather-chevron-right"></i></div></div>				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-31af141 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="31af141" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-wider">
+					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-1078d38" data-id="1078d38" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-64ae4a8 elementor-widget elementor-widget-heading" data-id="64ae4a8" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">News &amp; Announcements</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-0810acf elementor-widget elementor-widget-spacer" data-id="0810acf" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-48cc5c4 elementor-widget elementor-widget-the7_button_widget" data-id="48cc5c4" data-element_type="widget" data-widget_type="the7_button_widget.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper"><a href="/elementor-starter/blog/" class="box-button elementor-button elementor-size-md">More articles</a></div>				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-b4deabe" data-id="b4deabe" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-b36b0a9 image-vertical-align-mobile-start icon-box-vertical-align-top img-align-left image-vertical-align-start preserve-img-ratio-cover slide-h-position-left elementor-widget elementor-widget-the7-elements-simple-posts" data-id="b36b0a9" data-element_type="widget" data-widget_type="the7-elements-simple-posts.default">
+				<div class="elementor-widget-container">
+					<div class="the7-simple-widget-posts the7-elementor-widget the7-elements-simple-posts-b36b0a9 jquery-filter jquery-filter" data-post-limit="-1" data-pagination-mode="none" data-scroll-offset="" aria-live="assertive">			<div class="dt-css-grid custom-pagination-handler" data-columns="{&quot;d&quot;:2,&quot;t&quot;:2,&quot;p&quot;:1,&quot;wd&quot;:&quot;&quot;}">
+									<div class="wf-cell visible">
+						<article class="post visible wrapper post-169 type-post status-publish format-standard has-post-thumbnail hentry category-industry">
+
+							<div class="post-content-wrapper">
+																	<div class="the7-simple-post-thumb">
+										<a class="post-thumbnail-rollover layzr-bg img-css-resize-wrapper" aria-label="Post image" href="https://the7.io/elementor-starter/post002/"><img decoding="async" width="1400" height="1400" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%201400%201400&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 1400px) 100vw, 1400px" style="--ratio: 1400 / 1400;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-126.jpg" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-126.jpg 1400w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-126-150x150.jpg 150w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-126-300x300.jpg 300w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-126-768x768.jpg 768w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-126-1024x1024.jpg 1024w" /><span class="the7-hover-icon"></span></a>									</div>
+																<div class="post-entry-content">
+									<h5 class="heading"><a href="https://the7.io/elementor-starter/post002/" rel="bookmark" title="Fusce aliquam &#8211; a dictum posuere nunc ac suscipit" class="post-title">Fusce aliquam &#8211; a dictum posuere nunc ac suscipit</a></h5><div class="entry-meta"><a href="https://the7.io/elementor-starter/2019/11/13/" title="1:31 pm" class="meta-item data-link" rel="bookmark"><time class="entry-date updated" datetime="2019-11-13T13:31:00+00:00">November 13, 2019</time></a></div>								</div>
+							</div>
+						</article>
+					</div>										<div class="wf-cell visible">
+						<article class="post visible wrapper post-165 type-post status-publish format-standard has-post-thumbnail hentry category-industry">
+
+							<div class="post-content-wrapper">
+																	<div class="the7-simple-post-thumb">
+										<a class="post-thumbnail-rollover layzr-bg img-css-resize-wrapper" aria-label="Post image" href="https://the7.io/elementor-starter/post001/"><img decoding="async" width="1500" height="1000" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%201500%201000&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 1500px) 100vw, 1500px" style="--ratio: 1500 / 1000;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-122.jpg" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-122.jpg 1500w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-122-300x200.jpg 300w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-122-768x512.jpg 768w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-122-1024x683.jpg 1024w" /><span class="the7-hover-icon"></span></a>									</div>
+																<div class="post-entry-content">
+									<h5 class="heading"><a href="https://the7.io/elementor-starter/post001/" rel="bookmark" title="Aliquam erat volutpat nec ullamcorper mattis pulvinar" class="post-title">Aliquam erat volutpat nec ullamcorper mattis pulvinar</a></h5><div class="entry-meta"><a href="https://the7.io/elementor-starter/2019/11/13/" title="12:30 pm" class="meta-item data-link" rel="bookmark"><time class="entry-date updated" datetime="2019-11-13T12:30:04+00:00">November 13, 2019</time></a></div>								</div>
+							</div>
+						</article>
+					</div>										<div class="wf-cell visible">
+						<article class="post visible wrapper post-163 type-post status-publish format-standard has-post-thumbnail hentry category-company">
+
+							<div class="post-content-wrapper">
+																	<div class="the7-simple-post-thumb">
+										<a class="post-thumbnail-rollover layzr-bg img-css-resize-wrapper" aria-label="Post image" href="https://the7.io/elementor-starter/quisque-semper-malesuada-ipsum/"><img decoding="async" width="950" height="1200" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%20950%201200&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 950px) 100vw, 950px" style="--ratio: 950 / 1200;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-129.jpg" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-129.jpg 950w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-129-238x300.jpg 238w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-129-768x970.jpg 768w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-129-811x1024.jpg 811w" /><span class="the7-hover-icon"></span></a>									</div>
+																<div class="post-entry-content">
+									<h5 class="heading"><a href="https://the7.io/elementor-starter/quisque-semper-malesuada-ipsum/" rel="bookmark" title="Quisque semper malesuada ipsum" class="post-title">Quisque semper malesuada ipsum</a></h5><div class="entry-meta"><a href="https://the7.io/elementor-starter/2019/11/13/" title="12:29 pm" class="meta-item data-link" rel="bookmark"><time class="entry-date updated" datetime="2019-11-13T12:29:24+00:00">November 13, 2019</time></a></div>								</div>
+							</div>
+						</article>
+					</div>										<div class="wf-cell visible">
+						<article class="post visible wrapper post-158 type-post status-publish format-standard has-post-thumbnail hentry category-industry">
+
+							<div class="post-content-wrapper">
+																	<div class="the7-simple-post-thumb">
+										<a class="post-thumbnail-rollover layzr-bg img-css-resize-wrapper" aria-label="Post image" href="https://the7.io/elementor-starter/post009/"><img decoding="async" width="1600" height="1000" src="data:image/svg+xml,%3Csvg%20xmlns%3D&#039;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#039;%20viewBox%3D&#039;0%200%201600%201000&#039;%2F%3E" class="attachment-full size-full preload-me aspect lazy lazy-load" alt="" sizes="(max-width: 1600px) 100vw, 1600px" style="--ratio: 1600 / 1000;" data-src="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-25.jpg" loading="eager" data-srcset="https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-25.jpg 1600w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-25-300x188.jpg 300w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-25-768x480.jpg 768w, https://the7.io/elementor-starter/wp-content/uploads/sites/60/2019/11/7-bg-25-1024x640.jpg 1024w" /><span class="the7-hover-icon"></span></a>									</div>
+																<div class="post-entry-content">
+									<h5 class="heading"><a href="https://the7.io/elementor-starter/post009/" rel="bookmark" title="Lorem ipsum turpis 2021: lorem ipsum dolor for nulla glavrida" class="post-title">Lorem ipsum turpis 2021: lorem ipsum dolor for nulla glavrida</a></h5><div class="entry-meta"><a href="https://the7.io/elementor-starter/2019/11/13/" title="12:25 pm" class="meta-item data-link" rel="bookmark"><time class="entry-date updated" datetime="2019-11-13T12:25:17+00:00">November 13, 2019</time></a></div>								</div>
+							</div>
+						</article>
+					</div>								</div>
+		</div>				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				</div>
+		
+	</div>
+
+	
+
+
+			</div>
+		</div>
+
+	
+	</div>
+
+	
+
+
+	
+	<footer id="footer" class="footer solid-bg elementor-footer"  role="contentinfo">
+
+		
+			<div class="wf-wrap">
+				<div class="wf-container-footer">
+					<div class="wf-container">
+								<footer data-elementor-type="footer" data-elementor-id="4232" class="elementor elementor-4232 elementor-location-footer" data-elementor-post-type="elementor_library">
+					<section class="elementor-section elementor-top-section elementor-element elementor-element-be17310 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="be17310" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-no">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-434d776" data-id="434d776" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-43691f1 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="43691f1" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-wider">
+					<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-7b302f0" data-id="7b302f0" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-3608311 content-align-mobile-center icon-position-mobile-top icon-vertical-align-center icon-vertical-align-mobile-center icon-position-tablet-top icon-vertical-align-tablet-start content-align-left icon-box-vertical-align-top icon-position-left elementor-widget elementor-widget-the7_icon_box_widget" data-id="3608311" data-element_type="widget" data-widget_type="the7_icon_box_widget.default">
+				<div class="elementor-widget-container">
+					
+		<div class="the7-box-wrapper the7-elementor-widget the7_icon_box_widget-3608311">			<div class="box-content-wrapper">
+									<a class="elementor-icon-div" >						<div class="elementor-icon">
+							<i aria-hidden="true" class="feather feather-phone-call"></i>						</div>
+					</a>								<div class="box-content">
+																	<h4 class="box-heading">
+							<a >								+001 234 56 78							</a>						</h4>
+																<div class="box-description"><p>Mon. - Fri. 9:00 - 19:00</p></div>
+					
+					
+				</div>
+			</div>
+		</div>					</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-65c6a2b" data-id="65c6a2b" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-3502e3b content-align-mobile-center icon-position-mobile-top icon-vertical-align-center icon-vertical-align-mobile-center icon-position-tablet-top icon-vertical-align-tablet-start content-align-left icon-box-vertical-align-top icon-position-left elementor-widget elementor-widget-the7_icon_box_widget" data-id="3502e3b" data-element_type="widget" data-widget_type="the7_icon_box_widget.default">
+				<div class="elementor-widget-container">
+					
+		<div class="the7-box-wrapper the7-elementor-widget the7_icon_box_widget-3502e3b">			<div class="box-content-wrapper">
+									<a class="elementor-icon-div" >						<div class="elementor-icon">
+							<i aria-hidden="true" class="feather feather-mail"></i>						</div>
+					</a>								<div class="box-content">
+																	<h4 class="box-heading">
+							<a >								hello@dream-theme.com							</a>						</h4>
+																<div class="box-description"><p>General questions and partnership</p></div>
+					
+					
+				</div>
+			</div>
+		</div>					</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-7bc332e" data-id="7bc332e" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-83b4437 elementor-shape-circle e-grid-align-right e-grid-align-tablet-center elementor-grid-0 elementor-widget elementor-widget-social-icons" data-id="83b4437" data-element_type="widget" data-widget_type="social-icons.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-social-icons-wrapper elementor-grid" role="list">
+							<span class="elementor-grid-item" role="listitem">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-facebook elementor-repeater-item-a9861cf" target="_blank">
+						<span class="elementor-screen-only">Facebook</span>
+						<i aria-hidden="true" class="fab fa-facebook"></i>					</a>
+				</span>
+							<span class="elementor-grid-item" role="listitem">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-behance elementor-repeater-item-b301d73" target="_blank">
+						<span class="elementor-screen-only">Behance</span>
+						<i aria-hidden="true" class="fab fa-behance"></i>					</a>
+				</span>
+							<span class="elementor-grid-item" role="listitem">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-repeater-item-fd8b9a7" target="_blank">
+						<span class="elementor-screen-only">Youtube</span>
+						<i aria-hidden="true" class="fab fa-youtube"></i>					</a>
+				</span>
+					</div>
+						</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-a225dae elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="a225dae" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-wider">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-19caf8b" data-id="19caf8b" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-d21eae5 elementor-widget elementor-widget-heading" data-id="d21eae5" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-heading-title elementor-size-default">© Copyright 2024 Dream-Theme. All rights reserved.</div>				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-6768506" data-id="6768506" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-1d921ed elementor-widget__width-auto elementor-widget elementor-widget-the7_button_widget" data-id="1d921ed" data-element_type="widget" data-widget_type="the7_button_widget.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper"><button class="box-button elementor-button elementor-size-xs">Privacy policy</button></div>				</div>
+				</div>
+				<div class="elementor-element elementor-element-fa039f2 elementor-widget__width-auto elementor-widget elementor-widget-the7_button_widget" data-id="fa039f2" data-element_type="widget" data-widget_type="the7_button_widget.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper"><button class="box-button elementor-button elementor-size-xs">Terms &amp; conditions</button></div>				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+					</div>
+		</div>
+					</div>
+		</section>
+				</footer>
+							</div>
+				</div>
+			</div>
+
+			
+	</footer>
+
+			<a href="#" class="scroll-top scroll-top-elementor-icon">
+				<i aria-hidden="true" class="feather feather-arrow-up"></i>				<span class="screen-reader-text">Go to Top</span>
+			</a>
+			
+</div>
+
+
+
+<button popovertarget="demo-panel" class="annoying-button" title="Open list of demos" onclick="window.demopanel.showModal();">
+	<span class="demos-number">73</span>
+	<span class="demos-caption">DEMOS</span>
+</button>
+
+<dialog class="demo-panel" id="demopanel">
+	<div class="filter-panel">
+		<div class="content-wrap">
+			<div class="showing-caption">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewbox="0 0 256 256"><path d="M204,136a12,12,0,0,1-12,12H64a12,12,0,0,1,0-24H192A12,12,0,0,1,204,136Zm28-60H24a12,12,0,0,0,0,24H232a12,12,0,0,0,0-24Zm-80,96H104a12,12,0,0,0,0,24h48a12,12,0,0,0,0-24Z"></path></svg>
+			</div>
+			<div class="categories-wrap">
+				<div class="category-selected">All Demos</div>
+				<nav>
+					<a href="javascript:void(0);" class="act" data-filter="demo-thumb">All Demos</a>
+
+					<a href="javascript:void(0);" data-filter="filter-block-editor">Block Editor (FSE)</a><a href="javascript:void(0);" data-filter="filter-elementor">Elementor</a><a href="javascript:void(0);" data-filter="filter-shop">Shop (WooCommerce)</a><a href="javascript:void(0);" data-filter="filter-wpbakery">WPBakery</a>				</nav>
+			</div>
+			<button  onclick="window.demopanel.close();" class="close-panel" popovertarget="demo-panel" popovertargetaction="hide">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewbox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"></path></svg>
+			</button>
+		</div>
+	</div>
+	<div class="content-panel the7-scrollbar">
+		<div class="content-wrap">
+
+			
+				<a href="https://the7.io/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="The7 Landing Page">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="The7 Landing Page" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/08/main-landing-1080x810.webp 1080w, https://the7.io/wp-content/uploads/2025/08/main-landing-670x503.webp 670w, https://the7.io/wp-content/uploads/2025/08/main-landing-335x251.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">The7 Landing Page</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-2025/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Elementor 2025">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Elementor 2025" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/03/el-2025-03-1080x810.webp 1080w, https://the7.io/wp-content/uploads/2025/03/el-2025-03-670x503.webp 670w, https://the7.io/wp-content/uploads/2025/03/el-2025-03-335x251.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Elementor 2025</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/fse-crypto/?utm_source=demo-panel" class="demo-thumb filter-block-editor" title="Crypto Course">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Crypto Course" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/10/fse-cryptolab.webp 1080w, https://the7.io/wp-content/uploads/2025/10/fse-cryptolab.webp 670w, https://the7.io/wp-content/uploads/2025/10/fse-cryptolab.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Crypto Course</span>
+					<span class="tags-wrap">Block Editor (FSE)</span>
+				</a>
+
+				
+				<a href="https://the7.io/fse-corporate/?utm_source=demo-panel" class="demo-thumb filter-block-editor" title="Corporate">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Corporate" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/08/fse-corporate-1080x810.webp 1080w, https://the7.io/wp-content/uploads/2025/08/fse-corporate-670x503.webp 670w, https://the7.io/wp-content/uploads/2025/08/fse-corporate-335x251.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Corporate</span>
+					<span class="tags-wrap">Block Editor (FSE)</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-ai/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="AI Course">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="AI Course" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/08/fse-ai-course.webp 1080w, https://the7.io/wp-content/uploads/2025/08/fse-ai-course.webp 670w, https://the7.io/wp-content/uploads/2025/08/fse-ai-course.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">AI Course</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/fse-business/?utm_source=demo-panel" class="demo-thumb filter-block-editor" title="Business">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Business" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/07/fse-business-ext-1080x810.webp 1080w, https://the7.io/wp-content/uploads/2025/07/fse-business-ext-670x503.webp 670w, https://the7.io/wp-content/uploads/2025/07/fse-business-ext-335x251.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Business</span>
+					<span class="tags-wrap">Block Editor (FSE)</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-main/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Elementor Classic">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Elementor Classic" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-classic-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-classic-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-classic-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Elementor Classic</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-creative-dark/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="Creative Dark">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Creative Dark" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/03/el-cr-dark-03-1080x810.webp 1080w, https://the7.io/wp-content/uploads/2025/03/el-cr-dark-03-670x503.webp 670w, https://the7.io/wp-content/uploads/2025/03/el-cr-dark-03-335x251.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Creative Dark</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-creative-light/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="Creative Light">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Creative Light" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-cr-light-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-cr-light-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-cr-light-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Creative Light</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/fse-life-coach/?utm_source=demo-panel" class="demo-thumb filter-block-editor" title="Life Coach">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Life Coach" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/06/fse-coach-1080x810.webp 1080w, https://the7.io/wp-content/uploads/2025/06/fse-coach-670x503.webp 670w, https://the7.io/wp-content/uploads/2025/06/fse-coach-335x251.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Life Coach</span>
+					<span class="tags-wrap">Block Editor (FSE)</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-corporate/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Corporate">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Corporate" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-corp-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-corp-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-corp-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Corporate</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/fse-beauty/?utm_source=demo-panel" class="demo-thumb filter-block-editor" title="Beauty Studio">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Beauty Studio" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/05/fse-beauty-st.webp 1080w, https://the7.io/wp-content/uploads/2025/05/fse-beauty-st.webp 670w, https://the7.io/wp-content/uploads/2025/05/fse-beauty-st.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Beauty Studio</span>
+					<span class="tags-wrap">Block Editor (FSE)</span>
+				</a>
+
+				
+				<a href="https://the7.io/fse-brewery/?utm_source=demo-panel" class="demo-thumb filter-block-editor" title="Brewery">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Brewery" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/04/fse-brewery-centered-1080x810.webp 1080w, https://the7.io/wp-content/uploads/2025/04/fse-brewery-centered-670x503.webp 670w, https://the7.io/wp-content/uploads/2025/04/fse-brewery-centered-335x251.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Brewery</span>
+					<span class="tags-wrap">Block Editor (FSE)</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-agency/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="Agency">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Agency" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-agency-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-agency-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-agency-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Agency</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/photography/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="Photography">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Photography" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/06/el-photo-1080x810.webp 1080w, https://the7.io/wp-content/uploads/2025/06/el-photo-670x503.webp 670w, https://the7.io/wp-content/uploads/2025/06/el-photo-335x251.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Photography</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-fashion-2026/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Fashion Store 2026">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Fashion Store 2026" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/05/fsecl-0-1080x810.webp 1080w, https://the7.io/wp-content/uploads/2025/05/fsecl-0-670x503.webp 670w, https://the7.io/wp-content/uploads/2025/05/fsecl-0-335x251.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Fashion Store 2026</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/fse-bakery/?utm_source=demo-panel" class="demo-thumb filter-block-editor" title="Bakery">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Bakery" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/04/fse-bakery-1080x810.webp 1080w, https://the7.io/wp-content/uploads/2025/04/fse-bakery-670x503.webp 670w, https://the7.io/wp-content/uploads/2025/04/fse-bakery-335x251.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Bakery</span>
+					<span class="tags-wrap">Block Editor (FSE)</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-company/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="Company">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Company" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-comp-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-comp-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-comp-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Company</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-business/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="Business">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Business" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-bus-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-bus-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-bus-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Business</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-shop/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Online Shop Classic">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Online Shop Classic" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-shop-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-shop-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-shop-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Online Shop Classic</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/blank-top-menu/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Blank Top Menu">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Blank Top Menu" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-blank-top-04-1080x810.webp 1080w, https://the7.io/wp-content/uploads/2025/01/el-blank-top-04-670x503.webp 670w, https://the7.io/wp-content/uploads/2025/01/el-blank-top-04-335x251.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Blank Top Menu</span>
+					<span class="tags-wrap">Blank, Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/blank-side-menu/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Blank Side Menu">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Blank Side Menu" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-blank-side-004-1080x810.webp 1080w, https://the7.io/wp-content/uploads/2025/01/el-blank-side-004-670x503.webp 670w, https://the7.io/wp-content/uploads/2025/01/el-blank-side-004-335x251.webp 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Blank Side Menu</span>
+					<span class="tags-wrap">Blank, Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/consulting/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Consulting">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Consulting" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-cons-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-cons-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-cons-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Consulting</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-product/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Product">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Product" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-product-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-product-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-product-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Product</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/business-advisors/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Business Advisors">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Business Advisors" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-adv-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-adv-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-adv-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Business Advisors</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/winery/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Winery">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Winery" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/04/el-winery-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/04/el-winery-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/04/el-winery-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Winery</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/brand-shop/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Brand Shop">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Brand Shop" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-shop-wear-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-shop-wear-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-shop-wear-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Brand Shop</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-minimal-creative-light/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="Minimal Creative Light">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Minimal Creative Light" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-cr-min-light-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-cr-min-light-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-cr-min-light-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Minimal Creative Light</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-minimal-creative-dark/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="Minimal Creative Dark">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Minimal Creative Dark" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-cr-min-dark-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-cr-min-dark-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-cr-min-dark-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Minimal Creative Dark</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/online-courses/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Online Courses">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Online Courses" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-online-c-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-online-c-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-online-c-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Online Courses</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/accounting/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="Accounting">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Accounting" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-acc-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-acc-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-acc-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Accounting</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/logistics/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="Logistics">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Logistics" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-log-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-log-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-log-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Logistics</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-coffee/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Coffee Roasters">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Coffee Roasters" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-coffee-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-coffee-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-coffee-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Coffee Roasters</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-starter/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="Starter">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Starter" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/04/el-starter-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/04/el-starter-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/04/el-starter-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Starter</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/coach/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Coach">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Coach" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-online-c-1-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-online-c-1-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-online-c-1-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Coach</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/cbd/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="CBD Shop">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="CBD Shop" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-coach-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-coach-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-coach-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">CBD Shop</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/elementor-restaurant/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="Restaurant">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Restaurant" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-rest-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-rest-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-rest-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Restaurant</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/fashion-store/?utm_source=demo-panel" class="demo-thumb filter-elementor filter-shop" title="Fashion Store">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Fashion Store" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-fash-shop-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-fash-shop-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-fash-shop-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Fashion Store</span>
+					<span class="tags-wrap">Elementor, Shop</span>
+				</a>
+
+				
+				<a href="https://the7.io/fashion-blog/?utm_source=demo-panel" class="demo-thumb filter-elementor" title="Fashion Blog">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Fashion Blog" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/el-blog-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/el-blog-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/el-blog-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Fashion Blog</span>
+					<span class="tags-wrap">Elementor</span>
+				</a>
+
+				
+				<a href="https://the7.io/main/?utm_source=demo-panel" class="demo-thumb filter-shop filter-wpbakery" title="WPBakery Main Demo">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="WPBakery Main Demo" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2025/01/b-main-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2025/01/b-main-670x503.jpg 670w, https://the7.io/wp-content/uploads/2025/01/b-main-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">WPBakery Main Demo</span>
+					<span class="tags-wrap">Shop, WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/company/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Company">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Company" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-comp-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-comp-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-comp-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Company</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/construction/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Construction">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Construction" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/constrstarter-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/constrstarter-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/constrstarter-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Construction</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/wpbakery-starter/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Starter">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Starter" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-starter-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-starter-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-starter-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Starter</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/corporate/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Corporate">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Corporate" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-corp-1-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-corp-1-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-corp-1-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Corporate</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/business-one-page/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Business One Page">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Business One Page" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-small-store-1-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-small-store-1-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-small-store-1-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Business One Page</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/yoga/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Yoga">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Yoga" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-yoga-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-yoga-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-yoga-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Yoga</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/news/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Blog &amp; News">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Blog &amp; News" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-news-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-news-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-news-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Blog &amp; News</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/small-store/?utm_source=demo-panel" class="demo-thumb filter-shop filter-wpbakery" title="Small Store">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Small Store" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-small-store-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-small-store-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-small-store-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Small Store</span>
+					<span class="tags-wrap">Shop, WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/clothing/?utm_source=demo-panel" class="demo-thumb filter-shop filter-wpbakery" title="Clothing Store">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Clothing Store" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-cl-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-cl-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-cl-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Clothing Store</span>
+					<span class="tags-wrap">Shop, WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/digital-agency/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Digital Agency">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Digital Agency" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-studio-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-studio-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-studio-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Digital Agency</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/hotel/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Hotel">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Hotel" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-hotel-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-hotel-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-hotel-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Hotel</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/one-page/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="One Page Creative">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="One Page Creative" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-one-page-creative-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-one-page-creative-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-one-page-creative-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">One Page Creative</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/agency/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Agency">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Agency" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-agency-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-agency-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-agency-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Agency</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/marketing-agency/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Marketing Agency">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Marketing Agency" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-mark-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-mark-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-mark-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Marketing Agency</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/modern-business/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Modern Business">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Modern Business" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-modern-business-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-modern-business-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-modern-business-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Modern Business</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/dental/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Dental Clinic">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Dental Clinic" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-dent-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-dent-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-dent-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Dental Clinic</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/weed/?utm_source=demo-panel" class="demo-thumb filter-shop filter-wpbakery" title="Medical Cannabis">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Medical Cannabis" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-one-page-business-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-one-page-business-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-one-page-business-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Medical Cannabis</span>
+					<span class="tags-wrap">Shop, WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/nutritionist/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Nutritionist">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Nutritionist" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-nutr-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-nutr-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-nutr-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Nutritionist</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/restaurant/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Restaurant">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Restaurant" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-resto-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-resto-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-resto-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Restaurant</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/software-company/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Software Company">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Software Company" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-soft-dev-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-soft-dev-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-soft-dev-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Software Company</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/shop/?utm_source=demo-panel" class="demo-thumb filter-shop filter-wpbakery" title="Shop">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Shop" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-shop-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-shop-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-shop-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Shop</span>
+					<span class="tags-wrap">Shop, WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/beauty-studio/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Beauty Studio">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Beauty Studio" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-beauty-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-beauty-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-beauty-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Beauty Studio</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/product/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Product">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Product" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-product-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-product-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-product-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Product</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/coffee/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Coffee">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Coffee" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-coffee-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-coffee-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-coffee-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Coffee</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/church/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Church">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Church" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-church-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-church-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-church-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Church</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/psy/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Psychology">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Psychology" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-psy-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-psy-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-psy-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Psychology</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/medical/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Medical Clinic">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Medical Clinic" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-med-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-med-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-med-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Medical Clinic</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/ecommerce-book/?utm_source=demo-panel" class="demo-thumb filter-shop filter-wpbakery" title="Book Store">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Book Store" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-book-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-book-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-book-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Book Store</span>
+					<span class="tags-wrap">Shop, WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/expedition/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Travel Agency">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Travel Agency" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-exp-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-exp-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-exp-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Travel Agency</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/law/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Law Firm">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Law Firm" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-law-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-law-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-law-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Law Firm</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/wedding/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Wedding">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Wedding" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-wedding-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-wedding-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-wedding-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Wedding</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/coming-soon-01/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Coming Soon Simple">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Coming Soon Simple" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-cs-1-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-cs-1-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-cs-1-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Coming Soon Simple</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+				<a href="https://the7.io/coming-soon-02/?utm_source=demo-panel" class="demo-thumb filter-wpbakery" title="Coming Soon Slideshow">
+					<span class="image-wrap">
+						<img class="load-on-click" alt="Coming Soon Slideshow" loading="lazy" decoding="async" data-srcset="https://the7.io/wp-content/uploads/2024/02/b-cs-2-1080x810.jpg 1080w, https://the7.io/wp-content/uploads/2024/02/b-cs-2-670x503.jpg 670w, https://the7.io/wp-content/uploads/2024/02/b-cs-2-335x251.jpg 335w" sizes="(min-width: 910px) 335px, (min-width: 620px) 395px, calc(100vw - 80px)" width="1080" height="810">					</span>
+					<span class="caption-wrap">Coming Soon Slideshow</span>
+					<span class="tags-wrap">WPBakery</span>
+				</a>
+
+				
+		</div>
+	</div>
+</dialog>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/elementor-starter\/*"},{"not":{"href_matches":["\/elementor-starter\/wp-*.php","\/elementor-starter\/wp-admin\/*","\/elementor-starter\/wp-content\/uploads\/sites\/60\/*","\/elementor-starter\/wp-content\/*","\/elementor-starter\/wp-content\/plugins\/*","\/elementor-starter\/wp-content\/themes\/dt-the7\/*","\/elementor-starter\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+			<script>
+				const lazyloadRunObserver = () => {
+					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+						entries.forEach( ( entry ) => {
+							if ( entry.isIntersecting ) {
+								let lazyloadBackground = entry.target;
+								if( lazyloadBackground ) {
+									lazyloadBackground.classList.add( 'e-lazyloaded' );
+								}
+								lazyloadBackgroundObserver.unobserve( entry.target );
+							}
+						});
+					}, { rootMargin: '200px 0px 200px 0px' } );
+					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+						lazyloadBackgroundObserver.observe( lazyloadBackground );
+					} );
+				};
+				const events = [
+					'DOMContentLoaded',
+					'elementor/lazyload/observe',
+				];
+				events.forEach( ( event ) => {
+					document.addEventListener( event, lazyloadRunObserver );
+				} );
+			</script>
+			
+
+
+<script src="https://the7.io/elementor-starter/wp-includes/js/dist/hooks.min.js?ver=4d63a3d491d11ffd8ac6" id="wp-hooks-js"></script>
+<script src="https://the7.io/elementor-starter/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6" id="wp-i18n-js"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script src="https://the7.io/elementor-starter/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.1.3" id="swv-js"></script>
+<script id="contact-form-7-js-before">
+var wpcf7 = {
+    "api": {
+        "root": "https:\/\/the7.io\/elementor-starter\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    }
+};
+</script>
+<script src="https://the7.io/elementor-starter/wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.1.3" id="contact-form-7-js"></script>
+
+
+<script src="https://the7.io/elementor-starter/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js"></script>
+<script id="elementor-frontend-js-before">
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"3.32.4","is_static":false,"experimentalFeatures":{"theme_builder_v2":true,"home_screen":true,"global_classes_should_enforce_capabilities":true,"e_variables":true,"cloud-library":true,"e_opt_in_v4_page":true,"import-export-customization":true,"e_pro_variables":true},"urls":{"assets":"https:\/\/the7.io\/elementor-starter\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/the7.io\/elementor-starter\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/the7.io\/elementor-starter\/wp-content\/uploads\/sites\/60"},"nonces":{"floatingButtonsClickTracking":"391b3ee875"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description"},"post":{"id":1160,"title":"The7%20Elementor%20Starter%20%E2%80%93%20Perfect%20basic%20solution%20for%20any%20business%20website","excerpt":"","featuredImage":false}};
+</script>
+
+
+
+
+
+
+
+
+
+
+<script src="https://the7.io/elementor-starter/wp-content/plugins/dt-demostand/assets/public.js?ver=4.0.2" id="dt-demostand-public-js"></script>
+
+<script id="elementor-pro-frontend-js-before">
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/the7.io\/elementor-starter\/wp-admin\/admin-ajax.php","nonce":"b65225d361","urls":{"assets":"https:\/\/the7.io\/elementor-starter\/wp-content\/plugins\/pro-elements\/assets\/","rest":"https:\/\/the7.io\/elementor-starter\/wp-json\/"},"settings":{"lazy_load_background_images":true},"popup":{"hasPopUps":false},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"},"x-twitter":{"title":"X"},"threads":{"title":"Threads"}},"facebook_sdk":{"lang":"en_US","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/the7.io\/elementor-starter\/wp-content\/plugins\/pro-elements\/modules\/lottie\/assets\/animations\/default.json"}};
+</script>
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="pswp__bg"></div>
+	<div class="pswp__scroll-wrap">
+		<div class="pswp__container">
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+		</div>
+		<div class="pswp__ui pswp__ui--hidden">
+			<div class="pswp__top-bar">
+				<div class="pswp__counter"></div>
+				<button class="pswp__button pswp__button--close" title="Close (Esc)" aria-label="Close (Esc)"></button>
+				<button class="pswp__button pswp__button--share" title="Share" aria-label="Share"></button>
+				<button class="pswp__button pswp__button--fs" title="Toggle fullscreen" aria-label="Toggle fullscreen"></button>
+				<button class="pswp__button pswp__button--zoom" title="Zoom in/out" aria-label="Zoom in/out"></button>
+				<div class="pswp__preloader">
+					<div class="pswp__preloader__icn">
+						<div class="pswp__preloader__cut">
+							<div class="pswp__preloader__donut"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+				<div class="pswp__share-tooltip"></div> 
+			</div>
+			<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)" aria-label="Previous (arrow left)">
+			</button>
+			<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)" aria-label="Next (arrow right)">
+			</button>
+			<div class="pswp__caption">
+				<div class="pswp__caption__center"></div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
