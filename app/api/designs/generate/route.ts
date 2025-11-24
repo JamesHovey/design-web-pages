@@ -147,8 +147,9 @@ export async function POST(request: NextRequest) {
     }
   } catch (error) {
     console.error("Error generating designs:", error);
+    const errorMessage = error instanceof Error ? error.message : "Failed to generate designs";
     return NextResponse.json(
-      { error: "Failed to generate designs" },
+      { error: errorMessage, details: error instanceof Error ? error.stack : undefined },
       { status: 500 }
     );
   }

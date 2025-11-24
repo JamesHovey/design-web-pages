@@ -10,6 +10,7 @@ import FontSelector from "@/components/projects/FontSelector";
 import WidgetSelector from "@/components/projects/WidgetSelector";
 import CompetitorResearch from "@/components/projects/CompetitorResearch";
 import MediaUpload from "@/components/projects/MediaUpload";
+import ProgressModal from "@/components/ProgressModal";
 
 export default function ConfigurePage() {
   const { data: session, status } = useSession();
@@ -20,6 +21,8 @@ export default function ConfigurePage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [generating, setGenerating] = useState(false);
+  const [generationStage, setGenerationStage] = useState<"saving" | "analyzing" | "generating" | "screenshots" | "complete" | "error">("saving");
+  const [generationError, setGenerationError] = useState("");
   const [project, setProject] = useState<any>(null);
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -100,13 +103,23 @@ export default function ConfigurePage() {
 
   const handleGenerateDesigns = async () => {
     setGenerating(true);
+    setGenerationError("");
     setError("");
 
     try {
-      // Save configuration first
+      // Stage 1: Saving configuration
+      setGenerationStage("saving");
       await handleSave();
 
-      // Generate designs
+      // Small delay to show the stage
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      // Stage 2: Analyzing requirements
+      setGenerationStage("analyzing");
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // Stage 3: Generating designs
+      setGenerationStage("generating");
       const response = await fetch("/api/designs/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -120,12 +133,26 @@ export default function ConfigurePage() {
 
       const data = await response.json();
 
+      // Stage 4: Screenshots (these generate in background)
+      setGenerationStage("screenshots");
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      // Stage 5: Complete
+      setGenerationStage("complete");
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
       // Redirect to designs gallery
       router.push(`/projects/${projectId}/designs`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to generate designs");
+      const errorMsg = err instanceof Error ? err.message : "Failed to generate designs";
+      setGenerationStage("error");
+      setGenerationError(errorMsg);
+      setError(errorMsg);
     } finally {
-      setGenerating(false);
+      // Don't reset generating here - let the modal stay open
+      setTimeout(() => {
+        setGenerating(false);
+      }, 2000);
     }
   };
 
@@ -336,6 +363,13 @@ export default function ConfigurePage() {
           </div>
         </div>
       </main>
+
+      {/* Progress Modal */}
+      <ProgressModal
+        isOpen={generating}
+        stage={generationStage}
+        error={generationError}
+      />
     </div>
   );
 }
