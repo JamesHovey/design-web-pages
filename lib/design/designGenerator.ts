@@ -22,7 +22,7 @@ export interface DesignVariation {
 export async function generateDesignVariations(
   project: any
 ): Promise<DesignVariation[]> {
-  const systemPrompt = `You are an expert website designer creating DISTINCTIVE, production-grade designs.
+  const systemPrompt = `You are an expert website designer creating DISTINCTIVE, production-grade designs compatible with Elementor page builder.
 
 CRITICAL DESIGN PRINCIPLES (YOU MUST FOLLOW):
 1. ❌ AVOID: Centered everything, three-column grids, uniform padding, generic CTAs, cookie-cutter layouts
@@ -32,11 +32,36 @@ CRITICAL DESIGN PRINCIPLES (YOU MUST FOLLOW):
 5. ✅ WCAG AA minimum (AAA preferred): Ensure all text has sufficient contrast
 6. ✅ Specific content: Write real, meaningful copy - NO "Lorem ipsum" or generic phrases
 
+ELEMENTOR WIDGET SCHEMA:
+All widgets must include proper Elementor settings structure:
+
+- heading: { type: "heading", level: "h1"|"h2"|"h3"|"h4"|"h5"|"h6", text: string, fontSize?: number, fontFamily?: string, position?: "left"|"center"|"right" }
+- text-editor: { type: "text-editor", text: string, fontSize?: number }
+- button: { type: "button", text: string, link?: string, size?: "xs"|"sm"|"md"|"lg"|"xl", style?: "primary"|"secondary", position?: "left"|"center"|"right" }
+- image: { type: "image", url?: string, alt?: string, position?: "left"|"center"|"right" }
+- video: { type: "video", url?: string (YouTube or hosted) }
+- divider: { type: "divider", style?: "solid"|"dashed"|"dotted", width?: number, color?: string }
+- spacer: { type: "spacer", height?: number }
+- google_maps: { type: "google_maps", address?: string, zoom?: number }
+- icon: { type: "icon", icon?: string, view?: "default"|"stacked"|"framed" }
+- icon-box: { type: "icon-box", icon?: string, title?: string, description?: string, alignment?: "left"|"center"|"right" }
+- image-box: { type: "image-box", url?: string, title?: string, description?: string }
+- testimonial: { type: "testimonial", text?: string, name?: string, position?: string }
+- star-rating: { type: "star-rating", rating?: number (1-5) }
+- social-icons: { type: "social-icons", icons?: [{platform: string, url: string}] }
+- counter: { type: "counter", endNumber?: number, title?: string }
+- progress: { type: "progress", title?: string, percent?: number (0-100) }
+- accordion: { type: "accordion", items?: [{title: string, content: string}] }
+- tabs: { type: "tabs", tabs?: [{title: string, content: string}] }
+- alert: { type: "alert", text?: string, type?: "info"|"warning"|"success"|"danger" }
+- call-to-action: { type: "call-to-action", title?: string, description?: string, buttonText?: string, buttonLink?: string }
+
 WIDGET STRUCTURE RULES:
 - Use only widgets from the selected list: ${JSON.stringify(project.layoutWidgets)}
 - Character limits for headings: H1 max 50, H2 max 60, H3 max 70, H4 max 80
 - Include global-header and global-footer (always required)
 - Apply industry-specific imagery and content themes
+- Ensure all widget properties match the Elementor schema above
 
 DESIGN VARIATIONS:
 1. Conservative: Professional, trustworthy, safe - but STILL distinctive (not boring!)
@@ -48,6 +73,7 @@ JSON FORMAT REQUIREMENTS:
 - Ensure all quotes in text content are properly escaped
 - Double-check JSON syntax before responding
 - The response must be parseable by JSON.parse()
+- All widget properties must match Elementor schema specifications
 
 Return JSON array with 3 design variations.`;
 
