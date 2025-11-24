@@ -2,11 +2,53 @@
 
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import Button from "@/components/ui/Button";
+
+interface Design {
+  id: string;
+  name: string;
+  createdAt: string;
+  accessibilityScore: number;
+  distinctivenessScore: number;
+}
+
+interface Project {
+  id: string;
+  url: string;
+  siteType: string;
+  industry: string | null;
+  status: string;
+  createdAt: string;
+  designs: Design[];
+}
 
 export default function DashboardPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loadingProjects, setLoadingProjects] = useState(true);
+
+  // Fetch projects when component mounts
+  useEffect(() => {
+    if (status === "authenticated") {
+      fetchProjects();
+    }
+  }, [status]);
+
+  const fetchProjects = async () => {
+    try {
+      const response = await fetch("/api/projects");
+      if (response.ok) {
+        const data = await response.json();
+        setProjects(data.projects || []);
+      }
+    } catch (error) {
+      console.error("Error fetching projects:", error);
+    } finally {
+      setLoadingProjects(false);
+    }
+  };
 
   if (status === "loading") {
     return (
@@ -162,16 +204,113 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Recent Projects Section (placeholder) */}
+        {/* Recent Projects Section */}
         <div className="mt-12">
           <h3 className="text-xl font-bold text-gray-900 mb-4">
             Recent Projects
           </h3>
-          <div className="bg-white rounded-lg shadow p-8 text-center">
-            <p className="text-gray-500">
-              No projects yet. Start by creating a new design project above.
-            </p>
-          </div>
+
+          {loadingProjects ? (
+            <div className="bg-white rounded-lg shadow p-8 text-center">
+              <p className="text-gray-500">Loading projects...</p>
+            </div>
+          ) : projects.length === 0 ? (
+            <div className="bg-white rounded-lg shadow p-8 text-center">
+              <p className="text-gray-500">
+                No projects yet. Start by creating a new design project above.
+              </p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projects.map((project) => (
+                <div
+                  key={project.id}
+                  className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200 overflow-hidden cursor-pointer"
+                  onClick={() => router.push(`/projects/${project.id}`)}
+                >
+                  <div className="p-6">
+                    {/* Project Header */}
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-gray-900 mb-1 truncate">
+                          {project.url}
+                        </h4>
+                        <div className="flex items-center gap-2 text-sm text-gray-500">
+                          <span className="capitalize">{project.siteType}</span>
+                          {project.industry && (
+                            <>
+                              <span>•</span>
+                              <span className="capitalize">{project.industry}</span>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                      <span
+                        className={`px-2 py-1 text-xs font-medium rounded-full ${
+                          project.status === "completed"
+                            ? "bg-green-100 text-green-800"
+                            : project.status === "generating"
+                            ? "bg-blue-100 text-blue-800"
+                            : project.status === "failed"
+                            ? "bg-red-100 text-red-800"
+                            : "bg-gray-100 text-gray-800"
+                        }`}
+                      >
+                        {project.status}
+                      </span>
+                    </div>
+
+                    {/* Designs Count */}
+                    <div className="mb-4">
+                      <p className="text-sm text-gray-600">
+                        {project.designs.length} {project.designs.length === 1 ? "design" : "designs"} generated
+                      </p>
+                    </div>
+
+                    {/* Designs List */}
+                    {project.designs.length > 0 && (
+                      <div className="border-t border-gray-100 pt-4 space-y-2">
+                        {project.designs.slice(0, 3).map((design) => (
+                          <div
+                            key={design.id}
+                            className="flex items-center justify-between text-sm"
+                          >
+                            <span className="text-gray-700 truncate flex-1">
+                              {design.name}
+                            </span>
+                            <div className="flex items-center gap-2 ml-2">
+                              <span className="text-xs text-gray-500">
+                                {design.accessibilityScore}%
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                        {project.designs.length > 3 && (
+                          <p className="text-xs text-gray-500 pt-2">
+                            +{project.designs.length - 3} more
+                          </p>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Created Date */}
+                    <div className="mt-4 pt-4 border-t border-gray-100">
+                      <p className="text-xs text-gray-500">
+                        Created {new Date(project.createdAt).toLocaleDateString()}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* View Project Button */}
+                  <div className="bg-gray-50 px-6 py-3 border-t border-gray-100">
+                    <button className="text-sm font-medium text-blue-600 hover:text-blue-700">
+                      View Project →
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </main>
     </div>
