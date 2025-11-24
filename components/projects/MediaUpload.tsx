@@ -6,9 +6,10 @@ import Button from "@/components/ui/Button";
 interface MediaItem {
   type: "image" | "video";
   url: string;
-  source: "upload" | "url" | "unsplash";
+  source: "upload" | "url" | "unsplash" | "pexels";
   name?: string;
   photographer?: string;
+  duration?: number;
 }
 
 interface MediaUploadProps {
@@ -26,9 +27,21 @@ interface UnsplashImage {
   photographerUrl: string;
 }
 
+interface PexelsVideo {
+  id: number;
+  url: string;
+  thumbnail: string;
+  width: number;
+  height: number;
+  duration: number;
+  creator: string;
+  creatorUrl: string;
+}
+
 export default function MediaUpload({ value = [], onChange, industry }: MediaUploadProps) {
   const [media, setMedia] = useState<MediaItem[]>(value);
   const [activeTab, setActiveTab] = useState<"url" | "stock" | "upload">("stock");
+  const [stockMediaType, setStockMediaType] = useState<"photos" | "videos">("photos");
 
   // URL tab state
   const [mediaUrl, setMediaUrl] = useState("");
@@ -37,6 +50,7 @@ export default function MediaUpload({ value = [], onChange, industry }: MediaUpl
   // Stock photos state
   const [searchQuery, setSearchQuery] = useState(industry || "");
   const [stockImages, setStockImages] = useState<UnsplashImage[]>([]);
+  const [stockVideos, setStockVideos] = useState<PexelsVideo[]>([]);
   const [searching, setSearching] = useState(false);
   const [searchError, setSearchError] = useState("");
 
@@ -76,6 +90,14 @@ export default function MediaUpload({ value = [], onChange, industry }: MediaUpl
       return;
     }
 
+    if (stockMediaType === "photos") {
+      await handleSearchPhotos();
+    } else {
+      await handleSearchVideos();
+    }
+  };
+
+  const handleSearchPhotos = async () => {
     setSearching(true);
     setSearchError("");
 
@@ -91,8 +113,33 @@ export default function MediaUpload({ value = [], onChange, industry }: MediaUpl
 
       const data = await response.json();
       setStockImages(data.images);
+      setStockVideos([]); // Clear videos
     } catch (err) {
       setSearchError(err instanceof Error ? err.message : "Failed to search images");
+    } finally {
+      setSearching(false);
+    }
+  };
+
+  const handleSearchVideos = async () => {
+    setSearching(true);
+    setSearchError("");
+
+    try {
+      const response = await fetch(
+        `/api/videos/search?query=${encodeURIComponent(searchQuery)}&per_page=15`
+      );
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to search videos");
+      }
+
+      const data = await response.json();
+      setStockVideos(data.videos);
+      setStockImages([]); // Clear images
+    } catch (err) {
+      setSearchError(err instanceof Error ? err.message : "Failed to search videos");
     } finally {
       setSearching(false);
     }
@@ -112,10 +159,31 @@ export default function MediaUpload({ value = [], onChange, industry }: MediaUpl
     onChange?.(updated);
   };
 
+  const handleAddStockVideo = (video: PexelsVideo) => {
+    const newMedia: MediaItem = {
+      type: "video",
+      url: video.url,
+      source: "pexels",
+      name: `${video.creator} video`,
+      photographer: video.creator,
+      duration: video.duration,
+    };
+
+    const updated = [...media, newMedia];
+    setMedia(updated);
+    onChange?.(updated);
+  };
+
   const handleRemove = (index: number) => {
     const updated = media.filter((_, i) => i !== index);
     setMedia(updated);
     onChange?.(updated);
+  };
+
+  const formatDuration = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
   return (
@@ -131,7 +199,7 @@ export default function MediaUpload({ value = [], onChange, industry }: MediaUpl
                 : "border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300"
             }`}
           >
-            📸 Stock Photos (Free)
+            📸 Stock Media (Free)
           </button>
           <button
             onClick={() => setActiveTab("url")}
@@ -157,22 +225,52 @@ export default function MediaUpload({ value = [], onChange, industry }: MediaUpl
         </div>
       </div>
 
-      {/* Stock Photos Tab */}
+      {/* Stock Media Tab */}
       {activeTab === "stock" && (
         <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Search Free Stock Photos
-          </h3>
-          <p className="text-sm text-gray-600 mb-4">
-            High-quality images from Unsplash - Free for commercial use
-          </p>
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900">
+                Search Free Stock Media
+              </h3>
+              <p className="text-sm text-gray-600">
+                {stockMediaType === "photos"
+                  ? "High-quality images from Unsplash"
+                  : "HD & 4K videos from Pexels"} - Free for commercial use
+              </p>
+            </div>
+
+            {/* Photos/Videos Toggle */}
+            <div className="flex bg-white border border-gray-300 rounded-lg overflow-hidden">
+              <button
+                onClick={() => setStockMediaType("photos")}
+                className={`px-4 py-2 text-sm font-medium transition-colors ${
+                  stockMediaType === "photos"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-700 hover:bg-gray-50"
+                }`}
+              >
+                📸 Photos
+              </button>
+              <button
+                onClick={() => setStockMediaType("videos")}
+                className={`px-4 py-2 text-sm font-medium transition-colors ${
+                  stockMediaType === "videos"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-700 hover:bg-gray-50"
+                }`}
+              >
+                🎬 Videos
+              </button>
+            </div>
+          </div>
 
           <div className="flex gap-3 mb-6">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={`Search for "${industry || 'business'}" photos...`}
+              placeholder={`Search for "${industry || 'business'}" ${stockMediaType}...`}
               className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               onKeyPress={(e) => e.key === "Enter" && handleSearchStock()}
             />
@@ -187,7 +285,8 @@ export default function MediaUpload({ value = [], onChange, industry }: MediaUpl
             </div>
           )}
 
-          {stockImages.length > 0 && (
+          {/* Stock Photos Grid */}
+          {stockMediaType === "photos" && stockImages.length > 0 && (
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {stockImages.map((image) => (
                 <div
@@ -231,7 +330,55 @@ export default function MediaUpload({ value = [], onChange, industry }: MediaUpl
             </div>
           )}
 
-          {stockImages.length === 0 && !searching && (
+          {/* Stock Videos Grid */}
+          {stockMediaType === "videos" && stockVideos.length > 0 && (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {stockVideos.map((video) => (
+                <div
+                  key={video.id}
+                  className="relative group border border-gray-200 rounded-lg overflow-hidden hover:border-blue-500 transition-colors cursor-pointer"
+                  onClick={() => handleAddStockVideo(video)}
+                >
+                  <div className="aspect-square bg-gray-100">
+                    <img
+                      src={video.thumbnail}
+                      alt={`Video by ${video.creator}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Play icon overlay */}
+                  <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-opacity flex items-center justify-center">
+                    <div className="bg-white/90 rounded-full p-3">
+                      <svg
+                        className="w-8 h-8 text-blue-600"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Duration badge */}
+                  <div className="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                    {formatDuration(video.duration)}
+                  </div>
+
+                  <div className="p-2 bg-white">
+                    <p className="text-xs text-gray-500 truncate">
+                      by {video.creator}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Empty state */}
+          {((stockMediaType === "photos" && stockImages.length === 0) ||
+            (stockMediaType === "videos" && stockVideos.length === 0)) &&
+            !searching && (
             <div className="text-center py-12">
               <svg
                 className="mx-auto h-12 w-12 text-gray-400"
@@ -239,15 +386,24 @@ export default function MediaUpload({ value = [], onChange, industry }: MediaUpl
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
+                {stockMediaType === "photos" ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  />
+                )}
               </svg>
               <p className="mt-2 text-sm text-gray-600">
-                Search for high-quality stock photos
+                Search for high-quality stock {stockMediaType}
               </p>
               <p className="text-xs text-gray-500 mt-1">
                 Try searching for your industry: "{industry || 'business'}"
@@ -354,19 +510,19 @@ export default function MediaUpload({ value = [], onChange, industry }: MediaUpl
                     />
                   </div>
                 ) : (
-                  <div className="aspect-square bg-gray-900 flex items-center justify-center">
+                  <div className="aspect-square bg-gray-900 flex items-center justify-center relative">
                     <svg
                       className="w-12 h-12 text-white"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                      <path
-                        fillRule="evenodd"
-                        d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                        clipRule="evenodd"
-                      />
+                      <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                     </svg>
+                    {item.duration && (
+                      <div className="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                        {formatDuration(item.duration)}
+                      </div>
+                    )}
                   </div>
                 )}
 
@@ -398,8 +554,8 @@ export default function MediaUpload({ value = [], onChange, industry }: MediaUpl
       {/* Info Note */}
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
         <p className="text-sm text-blue-800">
-          <strong>Stock Photos:</strong> Free high-quality images from Unsplash.
-          Photos will be referenced in AI-generated designs. Attribution to photographers is appreciated but not required.
+          <strong>Free Stock Media:</strong> Photos from Unsplash, Videos from Pexels.
+          All media is free for commercial use. Attribution to creators is appreciated but not required.
         </p>
       </div>
     </div>
