@@ -1,0 +1,753 @@
+[
+  {
+    "industry": "Pharmaceutical",
+    "name": "Balanced",
+    "description": "Professional pharmaceutical homepage with trust-building elements, compliance messaging, and clear product information hierarchy",
+    "widgetStructure": {
+      "sections": [
+        {
+          "sectionId": "hero",
+          "layout": "asymmetric-60-40",
+          "spacing": {"top": 100, "bottom": 120},
+          "background": "linear-gradient(135deg, #0052CC 0%, #2684FF 100%)",
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h1",
+              "text": "Advanced Healthcare Solutions You Can Trust",
+              "fontSize": 64,
+              "color": "#FFFFFF",
+              "position": "left",
+              "width": "60%"
+            },
+            {
+              "type": "text-editor",
+              "text": "ISO 9001 certified pharmaceutical manufacturing delivering precision medicine to over 50 countries worldwide since 1998.",
+              "fontSize": 18,
+              "color": "#E3F2FD",
+              "width": "60%"
+            },
+            {
+              "type": "button",
+              "text": "View Our Research Pipeline",
+              "style": "primary",
+              "size": "lg",
+              "position": "left",
+              "background": "#FFFFFF",
+              "color": "#0052CC"
+            },
+            {
+              "type": "image",
+              "alt": "Modern pharmaceutical laboratory",
+              "position": "right",
+              "width": "40%",
+              "style": "rounded-lg shadow-2xl"
+            }
+          ]
+        },
+        {
+          "sectionId": "trust-badges",
+          "layout": "centered",
+          "spacing": {"top": 80, "bottom": 80},
+          "background": "#F8F9FA",
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h3",
+              "text": "Trusted by Leading Healthcare Institutions",
+              "fontSize": 20,
+              "color": "#546E7A",
+              "position": "center"
+            },
+            {
+              "type": "icon-list",
+              "items": [
+                {"text": "FDA Approved Facilities", "icon": "fas fa-check-circle"},
+                {"text": "GMP Certified", "icon": "fas fa-certificate"},
+                {"text": "ISO 9001:2015", "icon": "fas fa-award"},
+                {"text": "Clinical Trial Partners", "icon": "fas fa-flask"}
+              ],
+              "layout": "grid-4-col",
+              "alignment": "center"
+            }
+          ]
+        },
+        {
+          "sectionId": "product-categories",
+          "layout": "grid-3-col",
+          "spacing": {"top": 100, "bottom": 100},
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h2",
+              "text": "Our Therapeutic Areas",
+              "fontSize": 48,
+              "position": "center",
+              "marginBottom": 60
+            },
+            {
+              "type": "icon-box",
+              "icon": "fas fa-heartbeat",
+              "title": "Cardiovascular Health",
+              "description": "Next-generation treatments for heart disease and hypertension with proven efficacy in 200+ clinical studies.",
+              "alignment": "center",
+              "iconSize": 64,
+              "iconColor": "#0052CC"
+            },
+            {
+              "type": "icon-box",
+              "icon": "fas fa-brain",
+              "title": "Neurology & Mental Health",
+              "description": "Breakthrough therapies for Alzheimer's, Parkinson's, and depression improving quality of life.",
+              "alignment": "center",
+              "iconSize": 64,
+              "iconColor": "#0052CC"
+            },
+            {
+              "type": "icon-box",
+              "icon": "fas fa-dna",
+              "title": "Oncology & Immunology",
+              "description": "Precision medicine targeting specific cancer markers with minimal side effects and improved outcomes.",
+              "alignment": "center",
+              "iconSize": 64,
+              "iconColor": "#0052CC"
+            }
+          ]
+        },
+        {
+          "sectionId": "research-cta",
+          "layout": "asymmetric-50-50",
+          "spacing": {"top": 120, "bottom": 120},
+          "background": "#0052CC",
+          "widgets": [
+            {
+              "type": "image",
+              "alt": "Pharmaceutical research and development",
+              "position": "left",
+              "width": "50%"
+            },
+            {
+              "type": "heading",
+              "level": "h2",
+              "text": "Pioneering Research That Saves Lives",
+              "fontSize": 42,
+              "color": "#FFFFFF",
+              "position": "left"
+            },
+            {
+              "type": "text-editor",
+              "text": "Our dedicated R&D team of 450+ scientists works across 12 research centers globally, investing $2.3B annually in developing tomorrow's breakthrough treatments.",
+              "fontSize": 18,
+              "color": "#E3F2FD",
+              "lineHeight": 1.8
+            },
+            {
+              "type": "counter",
+              "endNumber": 78,
+              "title": "Active Clinical Trials",
+              "color": "#FFFFFF"
+            },
+            {
+              "type": "counter",
+              "endNumber": 234,
+              "title": "Patents Granted",
+              "color": "#FFFFFF"
+            },
+            {
+              "type": "button",
+              "text": "Explore Our Pipeline",
+              "style": "secondary",
+              "size": "lg",
+              "background": "#FFFFFF",
+              "color": "#0052CC"
+            }
+          ]
+        },
+        {
+          "sectionId": "testimonials",
+          "layout": "centered",
+          "spacing": {"top": 100, "bottom": 100},
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h2",
+              "text": "Healthcare Professional Reviews",
+              "fontSize": 42,
+              "position": "center",
+              "marginBottom": 60
+            },
+            {
+              "type": "testimonial",
+              "text": "The efficacy data on their cardiovascular line is exceptional. We've seen 40% better patient outcomes compared to previous treatments.",
+              "name": "Dr. Sarah Chen",
+              "position": "Chief Cardiologist, Massachusetts General Hospital",
+              "image": "testimonial-1.jpg"
+            },
+            {
+              "type": "star-rating",
+              "rating": 5,
+              "alignment": "center"
+            }
+          ]
+        },
+        {
+          "sectionId": "compliance-footer",
+          "layout": "full-width",
+          "spacing": {"top": 60, "bottom": 60},
+          "background": "#F8F9FA",
+          "widgets": [
+            {
+              "type": "text-editor",
+              "text": "Important Safety Information: Please consult your healthcare provider before starting any new medication. View full prescribing information and medication guides.",
+              "fontSize": 14,
+              "color": "#546E7A",
+              "position": "center",
+              "fontStyle": "italic"
+            }
+          ]
+        }
+      ]
+    },
+    "rationale": "Pharmaceutical sites require trust-building through certifications, clinical data, and professional imagery. The asymmetric hero balances authority (bold headline) with credibility (lab imagery). Blue gradient conveys trust and medical professionalism. Counter widgets showcase research investment. Compliance messaging is essential.",
+    "ctaStrategy": "Primary CTA focuses on research pipeline (transparency builds trust). Secondary CTAs for specific therapeutic areas allow self-segmentation. Compliance footer is required for pharmaceutical advertising.",
+    "designDecisions": {
+      "layoutApproach": "Asymmetric 60/40 hero with centered content sections creates professionalism while maintaining visual interest",
+      "colorStrategy": "Medical blue (#0052CC) throughout establishes trust; white space emphasizes cleanliness and precision",
+      "typographyScale": "Large headings (64px/48px/42px) establish authority; 18px body text ensures readability for medical content",
+      "spacingSystem": "Generous spacing (100-120px) reflects pharmaceutical precision and allows complex information to breathe",
+      "asymmetry": "Hero uses 60/40 split; alternating left/right sections create visual rhythm without sacrificing professionalism"
+    }
+  },
+  {
+    "industry": "Plumber",
+    "name": "Balanced",
+    "description": "Local plumbing service homepage emphasizing emergency availability, service areas, and immediate booking with trust signals",
+    "widgetStructure": {
+      "sections": [
+        {
+          "sectionId": "hero",
+          "layout": "centered-overlay",
+          "spacing": {"top": 140, "bottom": 140},
+          "background": "url('plumber-hero.jpg') overlay rgba(0, 56, 101, 0.85)",
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h1",
+              "text": "24/7 Emergency Plumbing Across Greater Manchester",
+              "fontSize": 58,
+              "color": "#FFFFFF",
+              "position": "center",
+              "fontWeight": 800
+            },
+            {
+              "type": "text-editor",
+              "text": "30-Minute Response Time • Licensed & Insured • No Callout Fees",
+              "fontSize": 22,
+              "color": "#FFD54F",
+              "position": "center",
+              "fontWeight": 600
+            },
+            {
+              "type": "button",
+              "text": "Call Now: 0161-555-7890",
+              "style": "primary",
+              "size": "xl",
+              "position": "center",
+              "background": "#FF6B35",
+              "fontSize": 24,
+              "icon": "fas fa-phone-alt"
+            },
+            {
+              "type": "button",
+              "text": "Book Online in 60 Seconds",
+              "style": "secondary",
+              "size": "lg",
+              "position": "center",
+              "background": "transparent",
+              "border": "2px solid #FFFFFF",
+              "color": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "sectionId": "trust-bar",
+          "layout": "grid-4-col",
+          "spacing": {"top": 60, "bottom": 60},
+          "background": "#FFF3E0",
+          "widgets": [
+            {
+              "type": "icon-box",
+              "icon": "fas fa-clock",
+              "title": "24/7 Emergency",
+              "description": "Available every day, including bank holidays",
+              "alignment": "center",
+              "iconColor": "#FF6B35"
+            },
+            {
+              "type": "icon-box",
+              "icon": "fas fa-shield-alt",
+              "title": "Fully Insured",
+              "description": "£5M public liability coverage",
+              "alignment": "center",
+              "iconColor": "#FF6B35"
+            },
+            {
+              "type": "icon-box",
+              "icon": "fas fa-star",
+              "title": "4.9★ Rating",
+              "description": "From 340+ verified reviews",
+              "alignment": "center",
+              "iconColor": "#FF6B35"
+            },
+            {
+              "type": "icon-box",
+              "icon": "fas fa-pound-sign",
+              "title": "Fixed Pricing",
+              "description": "No hidden costs or surprises",
+              "alignment": "center",
+              "iconColor": "#FF6B35"
+            }
+          ]
+        },
+        {
+          "sectionId": "services",
+          "layout": "grid-3-col",
+          "spacing": {"top": 100, "bottom": 80},
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h2",
+              "text": "Our Plumbing Services",
+              "fontSize": 44,
+              "position": "left",
+              "marginBottom": 50
+            },
+            {
+              "type": "image-box",
+              "url": "emergency-repairs.jpg",
+              "title": "Emergency Repairs",
+              "description": "Burst pipes, blocked drains, water leaks - we'll fix it fast. Average arrival time: 28 minutes.",
+              "buttonText": "From £85",
+              "style": "card-hover-lift"
+            },
+            {
+              "type": "image-box",
+              "url": "boiler-service.jpg",
+              "title": "Boiler Installation & Service",
+              "description": "Gas Safe registered engineers for all boiler work. 10-year warranty on new installations.",
+              "buttonText": "From £1,200",
+              "style": "card-hover-lift"
+            },
+            {
+              "type": "image-box",
+              "url": "bathroom-fitting.jpg",
+              "title": "Bathroom Fitting",
+              "description": "Complete bathroom renovations from design to final fitting. View our portfolio of 200+ projects.",
+              "buttonText": "Free Quote",
+              "style": "card-hover-lift"
+            }
+          ]
+        },
+        {
+          "sectionId": "social-proof",
+          "layout": "asymmetric-40-60",
+          "spacing": {"top": 100, "bottom": 100},
+          "background": "#003865",
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h2",
+              "text": "Trusted by 12,000+ Manchester Homes",
+              "fontSize": 38,
+              "color": "#FFFFFF",
+              "position": "left"
+            },
+            {
+              "type": "image-carousel",
+              "count": 6,
+              "images": ["before-after-1.jpg", "before-after-2.jpg", "before-after-3.jpg"],
+              "caption": "Real projects from real customers"
+            },
+            {
+              "type": "testimonial",
+              "text": "Pipe burst at 2am on a Sunday. They answered immediately and had someone here within 30 minutes. Absolute lifesavers!",
+              "name": "James Morrison",
+              "position": "Didsbury Resident",
+              "color": "#FFFFFF"
+            },
+            {
+              "type": "star-rating",
+              "rating": 5
+            },
+            {
+              "type": "button",
+              "text": "Read 340+ Reviews on Trustpilot",
+              "style": "secondary",
+              "size": "md",
+              "background": "transparent",
+              "border": "2px solid #FFD54F",
+              "color": "#FFD54F"
+            }
+          ]
+        },
+        {
+          "sectionId": "coverage-map",
+          "layout": "asymmetric-50-50",
+          "spacing": {"top": 80, "bottom": 80},
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h2",
+              "text": "Serving Greater Manchester",
+              "fontSize": 40,
+              "position": "left"
+            },
+            {
+              "type": "icon-list",
+              "items": [
+                {"text": "City Centre", "icon": "fas fa-map-marker-alt"},
+                {"text": "Salford & Trafford", "icon": "fas fa-map-marker-alt"},
+                {"text": "Stockport & Didsbury", "icon": "fas fa-map-marker-alt"},
+                {"text": "Bolton & Bury", "icon": "fas fa-map-marker-alt"},
+                {"text": "Oldham & Rochdale", "icon": "fas fa-map-marker-alt"},
+                {"text": "Wigan & Leigh", "icon": "fas fa-map-marker-alt"}
+              ],
+              "layout": "grid-2-col"
+            },
+            {
+              "type": "google_maps",
+              "address": "Manchester, UK",
+              "zoom": 11
+            }
+          ]
+        },
+        {
+          "sectionId": "final-cta",
+          "layout": "centered",
+          "spacing": {"top": 100, "bottom": 100},
+          "background": "linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)",
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h2",
+              "text": "Need a Plumber? We're Ready Now.",
+              "fontSize": 42,
+              "color": "#FFFFFF",
+              "position": "center"
+            },
+            {
+              "type": "call-to-action",
+              "title": "Emergency or Scheduled Work",
+              "description": "Talk to a qualified plumber in 30 seconds. No automated menus, no waiting.",
+              "buttonText": "Call 0161-555-7890",
+              "buttonLink": "tel:01615557890",
+              "background": "#FFFFFF",
+              "buttonColor": "#FF6B35"
+            }
+          ]
+        }
+      ]
+    },
+    "rationale": "Local service businesses need immediate trust signals and clear CTAs. Phone number prominence is critical. Orange/blue creates urgency while maintaining professionalism. Social proof (reviews, project count) overcomes skepticism. Service area specificity builds local credibility.",
+    "ctaStrategy": "Primary CTA is phone number (immediate action for emergencies). Secondary CTA is online booking (convenience for non-urgent). Multiple CTAs throughout page maintain conversion opportunities. Trust badges reduce friction.",
+    "designDecisions": {
+      "layoutApproach": "Centered hero with high-contrast overlay ensures phone number visibility; grid sections for service clarity",
+      "colorStrategy": "Orange (#FF6B35) creates urgency; navy blue (#003865) builds trust; yellow accents (#FFD54F) for emphasis",
+      "typographyScale": "Bold headlines (58px/44px/40px) grab attention; 22px subheadings ensure key details are readable",
+      "spacingSystem": "Tighter spacing (60-100px) maintains energy and urgency appropriate for emergency service",
+      "asymmetry": "Centered hero for maximum CTA impact; alternating 40/60 and 50/50 splits in content sections maintain interest"
+    }
+  },
+  {
+    "industry": "Car Sales",
+    "name": "Balanced",
+    "description": "Modern car dealership homepage with inventory showcase, financing options, and test drive booking emphasizing selection and convenience",
+    "widgetStructure": {
+      "sections": [
+        {
+          "sectionId": "hero",
+          "layout": "full-width-video",
+          "spacing": {"top": 160, "bottom": 160},
+          "background": "url('showroom-video.mp4') overlay rgba(17, 24, 39, 0.7)",
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h1",
+              "text": "Find Your Perfect Drive at AutoElite Manchester",
+              "fontSize": 68,
+              "color": "#FFFFFF",
+              "position": "center",
+              "fontWeight": 800
+            },
+            {
+              "type": "text-editor",
+              "text": "450+ Premium & Economy Vehicles • Part-Exchange Welcome • Finance from 4.9% APR",
+              "fontSize": 20,
+              "color": "#F3F4F6",
+              "position": "center"
+            },
+            {
+              "type": "form",
+              "title": "Search Our Inventory",
+              "fields": [
+                {"type": "select", "label": "Make", "placeholder": "Any Make", "options": ["Audi", "BMW", "Mercedes", "Volkswagen", "Ford"], "required": false},
+                {"type": "select", "label": "Body Type", "placeholder": "Any Type", "options": ["Sedan", "SUV", "Hatchback", "Estate"], "required": false},
+                {"type": "number", "label": "Max Price", "placeholder": "£50,000", "required": false}
+              ],
+              "buttonText": "Search 450 Cars",
+              "buttonColor": "#DC2626",
+              "style": "inline-form glass-effect"
+            }
+          ]
+        },
+        {
+          "sectionId": "featured-inventory",
+          "layout": "full-width",
+          "spacing": {"top": 100, "bottom": 80},
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h2",
+              "text": "Featured This Week",
+              "fontSize": 46,
+              "position": "left",
+              "marginBottom": 50
+            },
+            {
+              "type": "image-carousel",
+              "count": 8,
+              "autoplay": false,
+              "navigation": true,
+              "style": "card-carousel"
+            }
+          ]
+        },
+        {
+          "sectionId": "why-choose",
+          "layout": "grid-3-col",
+          "spacing": {"top": 100, "bottom": 100},
+          "background": "#F9FAFB",
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h2",
+              "text": "Why Choose AutoElite?",
+              "fontSize": 42,
+              "position": "center",
+              "marginBottom": 70,
+              "fullWidth": true
+            },
+            {
+              "type": "flip-box",
+              "frontTitle": "Flexible Finance",
+              "frontDescription": "4.9% APR Representative",
+              "frontIcon": "fas fa-credit-card",
+              "backTitle": "Instant Approval",
+              "backDescription": "Online decision in 60 seconds. No impact on credit score. Part-exchange adds to deposit.",
+              "buttonText": "Get Pre-Approved",
+              "buttonLink": "/finance",
+              "style": "modern-3d"
+            },
+            {
+              "type": "flip-box",
+              "frontTitle": "Quality Assured",
+              "frontDescription": "150-Point Inspection",
+              "frontIcon": "fas fa-shield-check",
+              "backTitle": "Full History Check",
+              "backDescription": "Every car HPI checked, professionally valeted, and comes with 12-month warranty as standard.",
+              "buttonText": "Learn More",
+              "buttonLink": "/warranty",
+              "style": "modern-3d"
+            },
+            {
+              "type": "flip-box",
+              "frontTitle": "Test Drive Today",
+              "frontDescription": "Same-Day Availability",
+              "frontIcon": "fas fa-car",
+              "backTitle": "Book in 2 Minutes",
+              "backDescription": "Choose your preferred time slot online. We'll have your car ready when you arrive.",
+              "buttonText": "Book Test Drive",
+              "buttonLink": "/test-drive",
+              "style": "modern-3d"
+            }
+          ]
+        },
+        {
+          "sectionId": "value-proposition",
+          "layout": "asymmetric-50-50",
+          "spacing": {"top": 120, "bottom": 120},
+          "widgets": [
+            {
+              "type": "image",
+              "url": "happy-customers.jpg",
+              "alt": "Happy car buyers at AutoElite showroom",
+              "position": "left",
+              "style": "rounded-xl shadow-2xl"
+            },
+            {
+              "type": "heading",
+              "level": "h2",
+              "text": "The UK's Most Transparent Car Dealer",
+              "fontSize": 40,
+              "position": "left"
+            },
+            {
+              "type": "text-editor",
+              "text": "No hidden fees. No pushy sales tactics. Just honest advice and fair prices on quality vehicles.",
+              "fontSize": 19,
+              "color": "#4B5563",
+              "lineHeight": 1.7
+            },
+            {
+              "type": "icon-list",
+              "items": [
+                {"text": "Online price is final price - no negotiation games", "icon": "fas fa-check"},
+                {"text": "14-day money-back guarantee if you change your mind", "icon": "fas fa-check"},
+                {"text": "Free home delivery within 50 miles", "icon": "fas fa-check"},
+                {"text": "Part-exchange valued in 10 minutes with instant payment", "icon": "fas fa-check"}
+              ],
+              "iconColor": "#DC2626",
+              "fontSize": 17
+            },
+            {
+              "type": "button",
+              "text": "Read Our Customer Stories",
+              "style": "primary",
+              "size": "lg",
+              "background": "#DC2626"
+            }
+          ]
+        },
+        {
+          "sectionId": "finance-calculator",
+          "layout": "centered-boxed",
+          "spacing": {"top": 100, "bottom": 100},
+          "background": "#111827",
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h2",
+              "text": "See What You Can Afford",
+              "fontSize": 42,
+              "color": "#FFFFFF",
+              "position": "center",
+              "marginBottom": 60
+            },
+            {
+              "type": "form",
+              "title": "Finance Calculator",
+              "description": "Get an instant estimate - no obligation, no credit check",
+              "fields": [
+                {"type": "number", "label": "Car Price", "placeholder": "£25,000", "required": true},
+                {"type": "number", "label": "Deposit", "placeholder": "£5,000", "required": true},
+                {"type": "select", "label": "Loan Term", "options": ["24 months", "36 months", "48 months", "60 months"], "required": true}
+              ],
+              "buttonText": "Calculate Monthly Payment",
+              "buttonColor": "#DC2626",
+              "style": "modern-dark-form",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "type": "text-editor",
+              "text": "4.9% APR Representative. Subject to status. Terms & conditions apply.",
+              "fontSize": 14,
+              "color": "#9CA3AF",
+              "position": "center",
+              "fontStyle": "italic"
+            }
+          ]
+        },
+        {
+          "sectionId": "testimonials",
+          "layout": "grid-3-col",
+          "spacing": {"top": 100, "bottom": 100},
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h2",
+              "text": "What Our Customers Say",
+              "fontSize": 42,
+              "position": "center",
+              "marginBottom": 60,
+              "fullWidth": true
+            },
+            {
+              "type": "testimonial",
+              "text": "Bought my BMW 3 Series here. The whole process was smooth - no pressure, fair part-exchange value, and the car is perfect.",
+              "name": "Sarah Thompson",
+              "position": "Verified Buyer",
+              "rating": 5
+            },
+            {
+              "type": "testimonial",
+              "text": "Finance approval took literally 2 minutes online. Picked up my Audi A4 the next day. Best car buying experience I've had.",
+              "name": "Michael Chen",
+              "position": "Verified Buyer",
+              "rating": 5
+            },
+            {
+              "type": "testimonial",
+              "text": "Part-exchanged my old car and drove away in a newer model same day. Transparent pricing and friendly staff.",
+              "name": "Emma Roberts",
+              "position": "Verified Buyer",
+              "rating": 5
+            }
+          ]
+        },
+        {
+          "sectionId": "urgency-cta",
+          "layout": "full-width-centered",
+          "spacing": {"top": 120, "bottom": 120},
+          "background": "linear-gradient(135deg, #DC2626 0%, #991B1B 100%)",
+          "widgets": [
+            {
+              "type": "heading",
+              "level": "h2",
+              "text": "Your Next Car is Waiting",
+              "fontSize": 48,
+              "color": "#FFFFFF",
+              "position": "center"
+            },
+            {
+              "type": "text-editor",
+              "text": "Visit our showroom today or browse 450+ vehicles online. Same-day test drives available.",
+              "fontSize": 20,
+              "color": "#FEE2E2",
+              "position": "center",
+              "marginBottom": 40
+            },
+            {
+              "type": "button",
+              "text": "View Full Inventory",
+              "style": "primary",
+              "size": "xl",
+              "position": "center",
+              "background": "#FFFFFF",
+              "color": "#DC2626",
+              "marginRight": 20
+            },
+            {
+              "type": "button",
+              "text": "Book a Test Drive",
+              "style": "secondary",
+              "size": "xl",
+              "position": "center",
+              "background": "transparent",
+              "border": "2px solid #FFFFFF",
+              "color": "#FFFFFF"
+            }
+          ]
+        }
+      ]
+    },
+    "rationale": "Car dealerships need to showcase inventory while reducing buying friction. Search functionality in hero allows immediate inventory filtering. Flip boxes create engagement while explaining value props. Finance calculator builds confidence. Social proof (testimonials) overcomes skepticism about car dealers.",
+    "ctaStrategy": "Primary CTA is inventory search (self-service browsing). Secondary CTAs for test drives and finance approval create multiple conversion paths. Money-back guarantee and transparent pricing reduce purchase anxiety.",
+    "designDecisions": {
+      "layoutApproach": "Full-width hero with embedded search creates immediate utility; grid and 50/50 layouts balance content density",
+      "colorStrategy": "Red (#DC2626) creates excitement and urgency; dark backgrounds (#111827) feel premium; white space prevents overwhelm",
+      "typographyScale": "Large headlines (68px/46px/42px) compete with automotive advertising standards; 20px subheadings ensure readability",
+      "spacingSystem": "Generous spacing (100-120px) reflects premium positioning while maintaining browsing momentum",
+      "asymmetry": "Centered hero for search form usability; 50/50 splits for value proposition content create balance and professionalism"
+    }
+  }
+]
