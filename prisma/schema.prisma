@@ -35,6 +35,7 @@ model Project {
   fonts           Json      // { primary: "Font Name", secondary: "...", accent: "...", button: "...", form: "...", nav: "..." }
   layoutWidgets   Json      // ["heading", "image", "button", "form", ...]
   videoConfig     Json?     // { embedded: bool, background: bool, placeholderUrls: [] }
+  media           Json?     // [{ type: "image"|"video", url: string, alt?: string }]
 
   scrapedContent  Json?     // Full scraped data
   competitors     Json?     // [{ url, analysis, layouts, colors, ctas }]
