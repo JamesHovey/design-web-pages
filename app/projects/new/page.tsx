@@ -27,6 +27,17 @@ export default function NewProjectPage() {
     return null;
   }
 
+  const normalizeUrl = (inputUrl: string): string => {
+    let normalized = inputUrl.trim();
+
+    // If no protocol, add https://
+    if (!normalized.match(/^https?:\/\//i)) {
+      normalized = `https://${normalized}`;
+    }
+
+    return normalized;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -34,10 +45,13 @@ export default function NewProjectPage() {
     setProgress("Scraping website...");
 
     try {
+      // Normalize the URL before sending
+      const normalizedUrl = normalizeUrl(url);
+
       const response = await fetch("/api/scrape", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({ url: normalizedUrl }),
       });
 
       const data = await response.json();
@@ -97,10 +111,10 @@ export default function NewProjectPage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <Input
               label="Website URL"
-              type="url"
+              type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="https://example.com"
+              placeholder="example.com or https://www.example.com"
               required
             />
 
