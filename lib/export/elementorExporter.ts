@@ -409,6 +409,153 @@ function convertWidgetToElementor(widget: any): ElementorElement | null {
         },
       };
 
+    case "image-gallery":
+    case "gallery":
+      return {
+        id: generateId(),
+        elType: "widget",
+        widgetType: "image-gallery",
+        isInner: false,
+        settings: {
+          ...baseSettings,
+          gallery: widget.images || [],
+        },
+      };
+
+    case "image-carousel":
+    case "carousel":
+      return {
+        id: generateId(),
+        elType: "widget",
+        widgetType: "image-carousel",
+        isInner: false,
+        settings: {
+          ...baseSettings,
+          slides: widget.slides || [],
+        },
+      };
+
+    case "icon-list":
+      return {
+        id: generateId(),
+        elType: "widget",
+        widgetType: "icon-list",
+        isInner: false,
+        settings: {
+          ...baseSettings,
+          icon_list: widget.items || [],
+        },
+      };
+
+    case "toggle":
+      return {
+        id: generateId(),
+        elType: "widget",
+        widgetType: "toggle",
+        isInner: false,
+        settings: {
+          ...baseSettings,
+          tabs: widget.items || [],
+        },
+      };
+
+    case "html":
+      return {
+        id: generateId(),
+        elType: "widget",
+        widgetType: "html",
+        isInner: false,
+        settings: {
+          ...baseSettings,
+          html: widget.html || "",
+        },
+      };
+
+    case "audio":
+      return {
+        id: generateId(),
+        elType: "widget",
+        widgetType: "audio",
+        isInner: false,
+        settings: {
+          ...baseSettings,
+          audio_url: widget.url || "",
+        },
+      };
+
+    case "form":
+      return {
+        id: generateId(),
+        elType: "widget",
+        widgetType: "form",
+        isInner: false,
+        settings: {
+          ...baseSettings,
+          form_fields: widget.fields || [],
+          button_text: widget.buttonText || "Submit",
+        },
+      };
+
+    case "price-table":
+      return {
+        id: generateId(),
+        elType: "widget",
+        widgetType: "price-table",
+        isInner: false,
+        settings: {
+          ...baseSettings,
+          heading: widget.title || "Basic Plan",
+          price: widget.price || "29",
+          currency_symbol: widget.currency || "$",
+          period: widget.period || "mo",
+          features_list: widget.features || [],
+          button_text: widget.buttonText || "Get Started",
+          featured: widget.featured ? "yes" : "no",
+        },
+      };
+
+    case "flip-box":
+      return {
+        id: generateId(),
+        elType: "widget",
+        widgetType: "flip-box",
+        isInner: false,
+        settings: {
+          ...baseSettings,
+          front_title: widget.frontTitle || "Front Title",
+          front_description: widget.frontDescription || "",
+          back_title: widget.backTitle || "Back Title",
+          back_description: widget.backDescription || "",
+          button_text: widget.buttonText || "",
+        },
+      };
+
+    case "countdown":
+      return {
+        id: generateId(),
+        elType: "widget",
+        widgetType: "countdown",
+        isInner: false,
+        settings: {
+          ...baseSettings,
+          due_date: widget.dueDate || "",
+        },
+      };
+
+    case "animated-headline":
+      return {
+        id: generateId(),
+        elType: "widget",
+        widgetType: "animated-headline",
+        isInner: false,
+        settings: {
+          ...baseSettings,
+          before_text: widget.beforeText || "",
+          rotating_text: widget.animatedText || [],
+          after_text: widget.afterText || "",
+        },
+      };
+
     case "global-header":
     case "global-footer":
       // These are handled specially in the main function

@@ -460,6 +460,334 @@ export function generateCallToActionWidget(widget: any, project: any): string {
 }
 
 /**
+ * Generate Image Gallery Widget HTML
+ */
+export function generateImageGalleryWidget(widget: any, mediaAssets?: any[]): string {
+  const id = widget.id || generateElementorId();
+  const count = widget.count || widget.settings?.gallery?.length || 6;
+
+  const images = Array.from({ length: count }, (_, i) => {
+    if (mediaAssets && mediaAssets.length > 0) {
+      const img = mediaAssets[i % mediaAssets.length];
+      return img?.url || `https://via.placeholder.com/400x300?text=Gallery+${i + 1}`;
+    }
+    return `https://via.placeholder.com/400x300?text=Gallery+${i + 1}`;
+  });
+
+  const innerHTML = `<div class="elementor-gallery elementor-gallery-grid">
+    ${images.map((url, i) => `
+      <div class="elementor-gallery-item">
+        <a href="${url}" class="elementor-gallery-item-link">
+          <img src="${url}" alt="Gallery Image ${i + 1}" class="elementor-gallery-item-image" loading="lazy" />
+          <div class="elementor-gallery-item-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </a>
+      </div>
+    `).join('')}
+  </div>`;
+
+  return generateWidgetWrapper("image-gallery", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Image Carousel Widget HTML
+ */
+export function generateImageCarouselWidget(widget: any, mediaAssets?: any[]): string {
+  const id = widget.id || generateElementorId();
+  const count = widget.count || widget.settings?.slides?.length || 3;
+
+  const slides = Array.from({ length: count }, (_, i) => {
+    if (mediaAssets && mediaAssets.length > 0) {
+      const img = mediaAssets[i % mediaAssets.length];
+      return img?.url || `https://via.placeholder.com/1200x500?text=Slide+${i + 1}`;
+    }
+    return `https://via.placeholder.com/1200x500?text=Slide+${i + 1}`;
+  });
+
+  const innerHTML = `<div class="elementor-image-carousel">
+    <div class="elementor-carousel-slides">
+      ${slides.map((url, i) => `
+        <div class="elementor-carousel-slide ${i === 0 ? 'active' : ''}">
+          <img src="${url}" alt="Slide ${i + 1}" />
+        </div>
+      `).join('')}
+    </div>
+    <button class="elementor-carousel-nav elementor-carousel-prev" aria-label="Previous">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="elementor-carousel-nav elementor-carousel-next" aria-label="Next">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="elementor-carousel-indicators">
+      ${slides.map((_, i) => `
+        <button class="elementor-carousel-indicator ${i === 0 ? 'active' : ''}" data-slide="${i}"></button>
+      `).join('')}
+    </div>
+  </div>`;
+
+  return generateWidgetWrapper("image-carousel", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Icon List Widget HTML
+ */
+export function generateIconListWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const items = widget.items || widget.settings?.icon_list || [
+    { text: "List Item 1", icon: "fas fa-check" },
+    { text: "List Item 2", icon: "fas fa-check" },
+    { text: "List Item 3", icon: "fas fa-check" }
+  ];
+
+  const innerHTML = `<ul class="elementor-icon-list-items">
+    ${items.map((item: any) => `
+      <li class="elementor-icon-list-item">
+        <span class="elementor-icon-list-icon">
+          <i class="${item.icon || 'fas fa-check'}" aria-hidden="true"></i>
+        </span>
+        <span class="elementor-icon-list-text">${item.text || item.title || "List Item"}</span>
+      </li>
+    `).join('')}
+  </ul>`;
+
+  return generateWidgetWrapper("icon-list", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Toggle Widget HTML
+ */
+export function generateToggleWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const items = widget.items || widget.settings?.tabs || [
+    { title: "Toggle Item 1", content: "Content for toggle 1" },
+    { title: "Toggle Item 2", content: "Content for toggle 2" }
+  ];
+
+  const innerHTML = `<div class="elementor-toggle" role="tablist">
+    ${items.map((item: any, i: number) => `
+      <div class="elementor-toggle-item">
+        <div class="elementor-tab-title" data-tab="${i + 1}" role="tab">
+          <span class="elementor-toggle-icon elementor-toggle-icon-closed">
+            <i class="fas fa-plus"></i>
+          </span>
+          <span class="elementor-toggle-icon elementor-toggle-icon-opened">
+            <i class="fas fa-minus"></i>
+          </span>
+          <a class="elementor-toggle-title" tabindex="0">${item.title}</a>
+        </div>
+        <div class="elementor-tab-content elementor-clearfix" data-tab="${i + 1}" role="tabpanel">
+          <p>${item.content}</p>
+        </div>
+      </div>
+    `).join('')}
+  </div>`;
+
+  return generateWidgetWrapper("toggle", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate HTML Widget HTML
+ */
+export function generateHTMLWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const html = widget.html || widget.settings?.html || "<p>Custom HTML content</p>";
+
+  const innerHTML = `<div class="elementor-html-widget">
+    ${html}
+  </div>`;
+
+  return generateWidgetWrapper("html", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Audio Widget HTML
+ */
+export function generateAudioWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const audioUrl = widget.url || widget.settings?.audio_url || "";
+
+  const innerHTML = `<div class="elementor-audio-widget">
+    <audio controls class="elementor-audio-player">
+      <source src="${audioUrl}" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>`;
+
+  return generateWidgetWrapper("audio", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Form Widget HTML (Pro)
+ */
+export function generateFormWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const fields = widget.fields || widget.settings?.form_fields || [
+    { type: "text", label: "Name", placeholder: "Your name", required: true },
+    { type: "email", label: "Email", placeholder: "your@email.com", required: true },
+    { type: "textarea", label: "Message", placeholder: "Your message", required: false }
+  ];
+  const buttonText = widget.buttonText || widget.settings?.button_text || "Submit";
+
+  const innerHTML = `<form class="elementor-form">
+    ${fields.map((field: any, i: number) => {
+      const fieldId = `form-field-${id}-${i}`;
+      if (field.type === "textarea") {
+        return `
+          <div class="elementor-field-group elementor-column elementor-col-100">
+            <label for="${fieldId}" class="elementor-field-label">${field.label}${field.required ? ' *' : ''}</label>
+            <textarea id="${fieldId}" name="form_fields[${field.label.toLowerCase()}]" class="elementor-field elementor-size-sm" rows="4" placeholder="${field.placeholder || ''}" ${field.required ? 'required' : ''}></textarea>
+          </div>
+        `;
+      }
+      return `
+        <div class="elementor-field-group elementor-column elementor-col-100">
+          <label for="${fieldId}" class="elementor-field-label">${field.label}${field.required ? ' *' : ''}</label>
+          <input type="${field.type || 'text'}" id="${fieldId}" name="form_fields[${field.label.toLowerCase()}]" class="elementor-field elementor-size-sm" placeholder="${field.placeholder || ''}" ${field.required ? 'required' : ''} />
+        </div>
+      `;
+    }).join('')}
+    <div class="elementor-field-group elementor-column elementor-col-100">
+      <button type="submit" class="elementor-button elementor-size-sm">
+        <span class="elementor-button-text">${buttonText}</span>
+      </button>
+    </div>
+  </form>`;
+
+  return generateWidgetWrapper("form", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Price Table Widget HTML (Pro)
+ */
+export function generatePriceTableWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const title = widget.title || widget.settings?.heading || "Basic Plan";
+  const price = widget.price || widget.settings?.price || "29";
+  const currency = widget.currency || widget.settings?.currency_symbol || "$";
+  const period = widget.period || widget.settings?.period || "mo";
+  const features = widget.features || widget.settings?.features_list || [
+    "Feature 1",
+    "Feature 2",
+    "Feature 3"
+  ];
+  const buttonText = widget.buttonText || widget.settings?.button_text || "Get Started";
+  const buttonLink = widget.buttonLink || widget.settings?.link?.url || "#";
+  const featured = widget.featured || widget.settings?.featured === "yes";
+
+  const innerHTML = `<div class="elementor-price-table ${featured ? 'elementor-price-table-featured' : ''}">
+    ${featured ? '<div class="elementor-price-table-ribbon"><span>Popular</span></div>' : ''}
+    <div class="elementor-price-table-header">
+      <h3 class="elementor-price-table-heading">${title}</h3>
+    </div>
+    <div class="elementor-price-table-price">
+      <span class="elementor-price-table-currency">${currency}</span>
+      <span class="elementor-price-table-integer">${price}</span>
+      <span class="elementor-price-table-period">/${period}</span>
+    </div>
+    <ul class="elementor-price-table-features-list">
+      ${features.map((feature: any) => `
+        <li class="elementor-price-table-feature-item">
+          <i class="fas fa-check elementor-price-table-feature-icon"></i>
+          <span>${typeof feature === 'string' ? feature : feature.text}</span>
+        </li>
+      `).join('')}
+    </ul>
+    <div class="elementor-price-table-footer">
+      <a href="${buttonLink}" class="elementor-price-table-button elementor-button elementor-size-md">
+        ${buttonText}
+      </a>
+    </div>
+  </div>`;
+
+  return generateWidgetWrapper("price-table", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Flip Box Widget HTML (Pro)
+ */
+export function generateFlipBoxWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const frontTitle = widget.frontTitle || widget.settings?.front_title || "Front Title";
+  const frontDescription = widget.frontDescription || widget.settings?.front_description || "Front description";
+  const backTitle = widget.backTitle || widget.settings?.back_title || "Back Title";
+  const backDescription = widget.backDescription || widget.settings?.back_description || "Back description";
+  const buttonText = widget.buttonText || widget.settings?.button_text;
+  const buttonLink = widget.buttonLink || widget.settings?.link?.url || "#";
+
+  const innerHTML = `<div class="elementor-flip-box">
+    <div class="elementor-flip-box-layer elementor-flip-box-front">
+      <div class="elementor-flip-box-layer-inner">
+        <h3 class="elementor-flip-box-layer-title">${frontTitle}</h3>
+        <div class="elementor-flip-box-layer-description">${frontDescription}</div>
+      </div>
+    </div>
+    <div class="elementor-flip-box-layer elementor-flip-box-back">
+      <div class="elementor-flip-box-layer-inner">
+        <h3 class="elementor-flip-box-layer-title">${backTitle}</h3>
+        <div class="elementor-flip-box-layer-description">${backDescription}</div>
+        ${buttonText ? `
+          <a href="${buttonLink}" class="elementor-flip-box-button elementor-button elementor-size-sm">
+            ${buttonText}
+          </a>
+        ` : ''}
+      </div>
+    </div>
+  </div>`;
+
+  return generateWidgetWrapper("flip-box", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Countdown Widget HTML (Pro)
+ */
+export function generateCountdownWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const dueDate = widget.dueDate || widget.settings?.due_date || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+
+  const innerHTML = `<div class="elementor-countdown-wrapper">
+    <div class="elementor-countdown-item">
+      <span class="elementor-countdown-digits" data-type="days">7</span>
+      <span class="elementor-countdown-label">Days</span>
+    </div>
+    <div class="elementor-countdown-item">
+      <span class="elementor-countdown-digits" data-type="hours">12</span>
+      <span class="elementor-countdown-label">Hours</span>
+    </div>
+    <div class="elementor-countdown-item">
+      <span class="elementor-countdown-digits" data-type="minutes">34</span>
+      <span class="elementor-countdown-label">Minutes</span>
+    </div>
+    <div class="elementor-countdown-item">
+      <span class="elementor-countdown-digits" data-type="seconds">56</span>
+      <span class="elementor-countdown-label">Seconds</span>
+    </div>
+  </div>`;
+
+  return generateWidgetWrapper("countdown", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Animated Headline Widget HTML (Pro)
+ */
+export function generateAnimatedHeadlineWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const beforeText = widget.beforeText || widget.settings?.before_text || "We are";
+  const animatedText = widget.animatedText || widget.settings?.rotating_text || ["Creative", "Professional", "Innovative"];
+  const afterText = widget.afterText || widget.settings?.after_text || "";
+
+  const innerHTML = `<div class="elementor-headline">
+    <span class="elementor-headline-plain-text elementor-headline-text-wrapper">${beforeText} </span>
+    <div class="elementor-headline-dynamic-wrapper elementor-headline-text-wrapper">
+      <span class="elementor-headline-dynamic-text elementor-headline-text-active">${Array.isArray(animatedText) ? animatedText[0] : animatedText}</span>
+    </div>
+    ${afterText ? `<span class="elementor-headline-plain-text elementor-headline-text-wrapper"> ${afterText}</span>` : ''}
+  </div>`;
+
+  return generateWidgetWrapper("animated-headline", id, widget.settings, innerHTML);
+}
+
+/**
  * Generate widget HTML based on type
  */
 export function generateWidgetHTML(widget: any, mediaAssets?: any[], project?: any): string {
@@ -517,6 +845,30 @@ export function generateWidgetHTML(widget: any, mediaAssets?: any[], project?: a
       return generateAlertWidget(widget);
     case "call-to-action":
       return generateCallToActionWidget(widget, project);
+    case "image-gallery":
+    case "gallery":
+      return generateImageGalleryWidget(widget, mediaAssets);
+    case "image-carousel":
+    case "carousel":
+      return generateImageCarouselWidget(widget, mediaAssets);
+    case "icon-list":
+      return generateIconListWidget(widget);
+    case "toggle":
+      return generateToggleWidget(widget);
+    case "html":
+      return generateHTMLWidget(widget);
+    case "audio":
+      return generateAudioWidget(widget);
+    case "form":
+      return generateFormWidget(widget);
+    case "price-table":
+      return generatePriceTableWidget(widget);
+    case "flip-box":
+      return generateFlipBoxWidget(widget);
+    case "countdown":
+      return generateCountdownWidget(widget);
+    case "animated-headline":
+      return generateAnimatedHeadlineWidget(widget);
     default:
       // Fallback for unsupported widgets - return placeholder comment
       return `<!-- Elementor widget type "${widget.type}" not yet implemented -->`;

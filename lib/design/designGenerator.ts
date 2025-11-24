@@ -35,6 +35,7 @@ CRITICAL DESIGN PRINCIPLES (YOU MUST FOLLOW):
 ELEMENTOR WIDGET SCHEMA:
 All widgets must include proper Elementor settings structure:
 
+BASIC WIDGETS:
 - heading: { type: "heading", level: "h1"|"h2"|"h3"|"h4"|"h5"|"h6", text: string, fontSize?: number, fontFamily?: string, position?: "left"|"center"|"right" }
 - text-editor: { type: "text-editor", text: string, fontSize?: number }
 - button: { type: "button", text: string, link?: string, size?: "xs"|"sm"|"md"|"lg"|"xl", style?: "primary"|"secondary", position?: "left"|"center"|"right" }
@@ -54,7 +55,20 @@ All widgets must include proper Elementor settings structure:
 - accordion: { type: "accordion", items?: [{title: string, content: string}] }
 - tabs: { type: "tabs", tabs?: [{title: string, content: string}] }
 - alert: { type: "alert", text?: string, type?: "info"|"warning"|"success"|"danger" }
+- icon-list: { type: "icon-list", items?: [{text: string, icon: string}] }
+- image-gallery: { type: "image-gallery", count?: number }
+- image-carousel: { type: "image-carousel", count?: number }
+- toggle: { type: "toggle", items?: [{title: string, content: string}] }
+- html: { type: "html", html?: string }
+- audio: { type: "audio", url?: string }
+
+ELEMENTOR PRO WIDGETS:
 - call-to-action: { type: "call-to-action", title?: string, description?: string, buttonText?: string, buttonLink?: string }
+- form: { type: "form", fields?: [{type: string, label: string, placeholder: string, required: boolean}], buttonText?: string }
+- price-table: { type: "price-table", title?: string, price?: string, currency?: string, period?: string, features?: string[], buttonText?: string, featured?: boolean }
+- flip-box: { type: "flip-box", frontTitle?: string, frontDescription?: string, backTitle?: string, backDescription?: string, buttonText?: string, buttonLink?: string }
+- countdown: { type: "countdown", dueDate?: string }
+- animated-headline: { type: "animated-headline", beforeText?: string, animatedText?: string[], afterText?: string }
 
 WIDGET STRUCTURE RULES:
 - Use only widgets from the selected list: ${JSON.stringify(project.layoutWidgets)}
