@@ -127,14 +127,14 @@ export async function scrapeWebsite(url: string): Promise<ScrapedData> {
     }
 
     // Wait a bit to let JavaScript and any protection mechanisms settle
-    await page.waitForTimeout(2000);
+    await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 2000)));
 
     // Simulate human-like mouse movement
     try {
       await page.mouse.move(100, 100);
-      await page.waitForTimeout(100);
+      await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 100)));
       await page.mouse.move(200, 200);
-      await page.waitForTimeout(100);
+      await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 100)));
     } catch (mouseError) {
       // Ignore mouse movement errors
       console.log("Mouse simulation failed, continuing...");
