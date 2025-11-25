@@ -74,7 +74,9 @@ export default function NewProjectPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to scrape website");
+        // Use the detailed error message from the API
+        const errorMessage = data.message || data.error || "Failed to scrape website";
+        throw new Error(errorMessage);
       }
 
       setProgress("Analysis complete! Redirecting...");
@@ -149,8 +151,19 @@ export default function NewProjectPage() {
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
-                {error}
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                <div className="font-semibold mb-1">Error</div>
+                <div className="text-sm">{error}</div>
+                {error.includes("403") && (
+                  <div className="mt-3 text-sm bg-yellow-50 border border-yellow-200 text-yellow-800 p-3 rounded">
+                    <strong>Tip:</strong> Some websites block automated access. You can:
+                    <ul className="list-disc list-inside mt-1 ml-2">
+                      <li>Try again in a few minutes</li>
+                      <li>Use a different website URL</li>
+                      <li>Contact support if this persists</li>
+                    </ul>
+                  </div>
+                )}
               </div>
             )}
 

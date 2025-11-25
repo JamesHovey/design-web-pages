@@ -28,29 +28,114 @@ export async function scrapeWebsite(url: string): Promise<ScrapedData> {
   try {
     browser = await puppeteer.launch({
       headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-blink-features=AutomationControlled",
+        "--disable-features=IsolateOrigins,site-per-process",
+      ],
     });
 
     const page = await browser.newPage();
+
+    // Set realistic viewport
     await page.setViewport({ width: 1920, height: 1080 });
 
-    // Set a user agent to avoid blocking
+    // Set multiple headers to appear more like a real browser
     await page.setUserAgent(
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
     );
 
+    await page.setExtraHTTPHeaders({
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+      'Accept-Language': 'en-US,en;q=0.9',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'DNT': '1',
+      'Connection': 'keep-alive',
+      'Upgrade-Insecure-Requests': '1',
+      'Sec-Fetch-Dest': 'document',
+      'Sec-Fetch-Mode': 'navigate',
+      'Sec-Fetch-Site': 'none',
+      'Sec-Fetch-User': '?1',
+      'Cache-Control': 'max-age=0',
+    });
+
+    // Override navigator properties to hide automation
+    await page.evaluateOnNewDocument(() => {
+      // Override the navigator.webdriver property
+      Object.defineProperty(navigator, 'webdriver', {
+        get: () => false,
+      });
+
+      // Mock plugins and languages to appear more realistic
+      Object.defineProperty(navigator, 'plugins', {
+        get: () => [1, 2, 3, 4, 5],
+      });
+
+      Object.defineProperty(navigator, 'languages', {
+        get: () => ['en-US', 'en'],
+      });
+
+      // Add chrome property
+      (window as any).chrome = {
+        runtime: {},
+      };
+
+      // Mock permissions
+      const originalQuery = window.navigator.permissions.query;
+      window.navigator.permissions.query = (parameters: any) =>
+        parameters.name === 'notifications'
+          ? Promise.resolve({ state: 'denied' } as PermissionStatus)
+          : originalQuery(parameters);
+    });
+
     // Navigate to the page with error handling
+    let response;
     try {
-      await page.goto(url, {
+      response = await page.goto(url, {
         waitUntil: "networkidle2",
         timeout: 30000
       });
     } catch (navError) {
       // Try with a more lenient wait condition if networkidle2 fails
-      await page.goto(url, {
+      response = await page.goto(url, {
         waitUntil: "domcontentloaded",
         timeout: 30000
       });
+    }
+
+    // Check if we got blocked (403, 429, etc.)
+    if (response) {
+      const status = response.status();
+      if (status === 403) {
+        throw new Error(
+          `Access denied (403). The website "${new URL(url).hostname}" is blocking automated access. ` +
+          `This is common for sites with anti-bot protection. Try entering the content manually or contact the site owner.`
+        );
+      } else if (status === 429) {
+        throw new Error(
+          `Too many requests (429). The website "${new URL(url).hostname}" is rate-limiting our requests. ` +
+          `Please try again in a few minutes.`
+        );
+      } else if (status >= 400) {
+        throw new Error(
+          `HTTP ${status} error when accessing ${url}. The page may not exist or may be temporarily unavailable.`
+        );
+      }
+    }
+
+    // Wait a bit to let JavaScript and any protection mechanisms settle
+    await page.waitForTimeout(2000);
+
+    // Simulate human-like mouse movement
+    try {
+      await page.mouse.move(100, 100);
+      await page.waitForTimeout(100);
+      await page.mouse.move(200, 200);
+      await page.waitForTimeout(100);
+    } catch (mouseError) {
+      // Ignore mouse movement errors
+      console.log("Mouse simulation failed, continuing...");
     }
 
     // Extract page data
