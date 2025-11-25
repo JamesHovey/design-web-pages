@@ -1,0 +1,218 @@
+2025-11-25T16:45:31.961920049Z [inf]  
+2025-11-25T16:45:34.998227235Z [inf]  [35m[Region: europe-west4][0m
+2025-11-25T16:45:35.042228733Z [inf]  
+2025-11-25T16:45:35.042267993Z [inf]  [38;2;125;86;243m╭─────────────────╮[0m
+2025-11-25T16:45:35.042272749Z [inf]  [38;2;125;86;243m│[0m Railpack 0.14.0 [38;2;125;86;243m│[0m
+2025-11-25T16:45:35.042276021Z [inf]  [38;2;125;86;243m╰─────────────────╯[0m
+2025-11-25T16:45:35.042280689Z [inf]  
+2025-11-25T16:45:35.042283891Z [inf]  [97m↳ Detected Node[0m
+2025-11-25T16:45:35.042286729Z [inf]  [97m↳ Using npm package manager[0m
+2025-11-25T16:45:35.042290092Z [inf]  [97m↳ Installing puppeteer dependencies[0m
+2025-11-25T16:45:35.042293029Z [inf]  
+2025-11-25T16:45:35.042296406Z [inf]  [1mPackages[0m
+2025-11-25T16:45:35.042299326Z [inf]  [38;5;238m──────────[0m
+2025-11-25T16:45:35.042302513Z [inf]  [95mnode[0m  [38;5;238m│[0m  [96m22.21.1[0m  [38;5;238m│[0m  railpack default (22)
+2025-11-25T16:45:35.042305919Z [inf]  
+2025-11-25T16:45:35.042308633Z [inf]  [1mSteps[0m
+2025-11-25T16:45:35.042311649Z [inf]  [38;5;238m──────────[0m
+2025-11-25T16:45:35.042314459Z [inf]  [95m▸ install[0m
+2025-11-25T16:45:35.042317360Z [inf]  [38;5;245m$[0m [1mnpm ci[0m
+2025-11-25T16:45:35.042320500Z [inf]  
+2025-11-25T16:45:35.042323549Z [inf]  [95m▸ build[0m
+2025-11-25T16:45:35.042326529Z [inf]  [38;5;245m$[0m [1mnpm run build[0m
+2025-11-25T16:45:35.042329646Z [inf]  
+2025-11-25T16:45:35.042332793Z [inf]  [1mDeploy[0m
+2025-11-25T16:45:35.042335459Z [inf]  [38;5;238m──────────[0m
+2025-11-25T16:45:35.042338127Z [inf]  [38;5;245m$[0m [1mnpm run start[0m
+2025-11-25T16:45:35.042340841Z [inf]  
+2025-11-25T16:45:35.042343711Z [inf]  
+2025-11-25T16:45:35.043840431Z [inf]  Successfully prepared Railpack plan for build
+2025-11-25T16:45:35.043873083Z [inf]  
+2025-11-25T16:45:35.043880864Z [inf]  
+2025-11-25T16:45:35.044293946Z [inf]  context: 4642-2vuu
+2025-11-25T16:45:35.200248395Z [inf]  [internal] load build definition from railpack-plan.json
+2025-11-25T16:45:35.200305305Z [inf]  [internal] load build definition from railpack-plan.json
+2025-11-25T16:45:35.200320296Z [inf]  [internal] load build definition from railpack-plan.json
+2025-11-25T16:45:35.216003946Z [inf]  [internal] load build definition from railpack-plan.json
+2025-11-25T16:45:35.218451123Z [inf]  resolve image config for docker-image://ghcr.io/railwayapp/railpack-frontend:v0.14.0
+2025-11-25T16:45:35.552368395Z [inf]  resolve image config for docker-image://ghcr.io/railwayapp/railpack-frontend:v0.14.0
+2025-11-25T16:45:35.552940109Z [inf]  docker-image://ghcr.io/railwayapp/railpack-frontend:v0.14.0@sha256:58444818af5cd8f3d8b463e9b6caf803586c4eb088b1ce195b8c0626a39e11ec
+2025-11-25T16:45:35.552982003Z [inf]  docker-image://ghcr.io/railwayapp/railpack-frontend:v0.14.0@sha256:58444818af5cd8f3d8b463e9b6caf803586c4eb088b1ce195b8c0626a39e11ec
+2025-11-25T16:45:35.558467726Z [inf]  docker-image://ghcr.io/railwayapp/railpack-frontend:v0.14.0@sha256:58444818af5cd8f3d8b463e9b6caf803586c4eb088b1ce195b8c0626a39e11ec
+2025-11-25T16:45:35.558583392Z [inf]  docker-image://ghcr.io/railwayapp/railpack-frontend:v0.14.0@sha256:58444818af5cd8f3d8b463e9b6caf803586c4eb088b1ce195b8c0626a39e11ec
+2025-11-25T16:45:35.659104478Z [inf]  load build definition from railpack-plan.json
+2025-11-25T16:45:35.659146561Z [inf]  load build definition from railpack-plan.json
+2025-11-25T16:45:35.659159580Z [inf]  load build definition from railpack-plan.json
+2025-11-25T16:45:35.659170614Z [inf]  load build definition from railpack-plan.json
+2025-11-25T16:45:35.673890351Z [inf]  load build definition from railpack-plan.json
+2025-11-25T16:45:35.688914444Z [inf]  loading .
+2025-11-25T16:45:35.688950099Z [inf]  copy /root/.local/state/mise
+2025-11-25T16:45:35.688956826Z [inf]  npm run build
+2025-11-25T16:45:35.688963047Z [inf]  copy /mise/shims
+2025-11-25T16:45:35.688970622Z [inf]  [railpack] secrets hash
+2025-11-25T16:45:35.688980327Z [inf]  mkdir -p /app/node_modules/.cache
+2025-11-25T16:45:35.688986686Z [inf]  copy / /app
+2025-11-25T16:45:35.688992388Z [inf]  create mise config
+2025-11-25T16:45:35.688997896Z [inf]  mkdir /etc/mise
+2025-11-25T16:45:35.689003569Z [inf]  docker-image://ghcr.io/railwayapp/railpack-runtime:latest
+2025-11-25T16:45:35.689012909Z [inf]  install apt packages: ca-certificates fonts-liberation gconf-service libappindicator1 libasound2 libatk1.0-0 libatomic1 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils xvfb
+2025-11-25T16:45:35.689019050Z [inf]  copy / /app
+2025-11-25T16:45:35.689025213Z [inf]  npm ci
+2025-11-25T16:45:35.689033366Z [inf]  install mise packages: node
+2025-11-25T16:45:35.689042396Z [inf]  copy /mise/installs
+2025-11-25T16:45:35.689047689Z [inf]  copy /app/node_modules
+2025-11-25T16:45:35.689052456Z [inf]  docker-image://ghcr.io/railwayapp/railpack-builder:latest
+2025-11-25T16:45:35.689057637Z [inf]  copy /etc/mise/config.toml
+2025-11-25T16:45:35.689063349Z [inf]  copy /usr/local/bin/mise
+2025-11-25T16:45:35.689082104Z [inf]  [railpack] merge $packages:apt:runtime, $packages:mise, $build, $build
+2025-11-25T16:45:35.689087989Z [inf]  copy /app
+2025-11-25T16:45:35.689095016Z [inf]  copy /root/.cache
+2025-11-25T16:45:35.689565508Z [inf]  docker-image://ghcr.io/railwayapp/railpack-runtime:latest
+2025-11-25T16:45:35.689580635Z [inf]  loading .
+2025-11-25T16:45:35.689586637Z [inf]  [railpack] secrets hash
+2025-11-25T16:45:35.689598484Z [inf]  docker-image://ghcr.io/railwayapp/railpack-builder:latest
+2025-11-25T16:45:35.957599846Z [inf]  docker-image://ghcr.io/railwayapp/railpack-runtime:latest
+2025-11-25T16:45:35.980002607Z [inf]  docker-image://ghcr.io/railwayapp/railpack-builder:latest
+2025-11-25T16:45:35.983044505Z [inf]  loading .
+2025-11-25T16:45:35.983100303Z [inf]  [railpack] secrets hash
+2025-11-25T16:45:36.001321332Z [inf]  [railpack] secrets hash
+2025-11-25T16:45:36.073255581Z [inf]  loading .
+2025-11-25T16:45:36.076403992Z [inf]  mkdir /etc/mise
+2025-11-25T16:45:36.076436562Z [inf]  create mise config
+2025-11-25T16:45:36.076445455Z [inf]  install mise packages: node
+2025-11-25T16:45:36.076457612Z [inf]  copy / /app
+2025-11-25T16:45:36.114172757Z [inf]  copy / /app
+2025-11-25T16:45:36.116446198Z [inf]  mkdir -p /app/node_modules/.cache
+2025-11-25T16:45:36.224239789Z [inf]  mkdir -p /app/node_modules/.cache
+2025-11-25T16:45:36.226691222Z [inf]  npm ci
+2025-11-25T16:45:36.526862804Z [inf]  npm warn config production Use `--omit=dev` instead.
+
+2025-11-25T16:45:41.040471262Z [inf]  npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+
+2025-11-25T16:45:41.11873981Z [inf]  npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+
+2025-11-25T16:45:41.164944586Z [inf]  npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+
+2025-11-25T16:45:53.024529011Z [inf]  
+> design-web-pages@0.1.0 postinstall
+> prisma generate
+
+
+2025-11-25T16:45:53.946330671Z [inf]  Prisma schema loaded from prisma/schema.prisma
+
+2025-11-25T16:45:54.198586895Z [inf]  ┌─────────────────────────────────────────────────────────┐
+│  Update available 6.19.0 -> 7.0.1                       │
+│                                                         │
+│  This is a major update - please follow the guide at    │
+│  https://pris.ly/d/major-version-upgrade                │
+│                                                         │
+│  Run the following to update                            │
+│    npm i --save-dev prisma@latest                       │
+│    npm i @prisma/client@latest                          │
+└─────────────────────────────────────────────────────────┘
+
+2025-11-25T16:45:54.198671082Z [inf]  
+✔ Generated Prisma Client (v6.19.0) to ./node_modules/@prisma/client in 88ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Need your database queries to be 1000x faster? Accelerate offers you that and more: https://pris.ly/tip-2-accelerate
+
+
+2025-11-25T16:45:54.22146268Z [inf]  
+added 610 packages, and audited 611 packages in 18s
+
+2025-11-25T16:45:54.25392359Z [inf]  
+3 vulnerabilities (2 moderate, 1 high)
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+2025-11-25T16:45:54.758259257Z [inf]  npm ci
+2025-11-25T16:45:54.760903433Z [inf]  copy / /app
+2025-11-25T16:45:54.991147504Z [inf]  copy / /app
+2025-11-25T16:45:54.993755177Z [inf]  npm run build
+2025-11-25T16:45:55.235636948Z [inf]  npm warn config production Use `--omit=dev` instead.
+
+2025-11-25T16:45:55.253038419Z [inf]  
+> design-web-pages@0.1.0 build
+> bash railway-build.sh
+
+
+2025-11-25T16:45:55.257700713Z [inf]  🚀 Starting Railway build process...
+📦 Generating Prisma client...
+
+2025-11-25T16:45:55.326392223Z [inf]  npm warn config production Use `--omit=dev` instead.
+
+2025-11-25T16:45:56.40727868Z [inf]  Prisma schema loaded from prisma/schema.prisma
+
+2025-11-25T16:45:56.654126157Z [inf]  
+✔ Generated Prisma Client (v6.19.0) to ./node_modules/@prisma/client in 85ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+
+2025-11-25T16:45:56.673913812Z [inf]  🗄️  Attempting database migrations...
+
+2025-11-25T16:45:56.740318836Z [inf]  npm warn config production Use `--omit=dev` instead.
+
+2025-11-25T16:45:57.740809515Z [inf]  Prisma schema loaded from prisma/schema.prisma
+
+2025-11-25T16:45:57.742934059Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+
+2025-11-25T16:45:57.817709107Z [inf]  
+
+2025-11-25T16:45:57.817868151Z [inf]  Error: P1001: Can't reach database server at `postgres.railway.internal:5432`
+
+Please make sure your database server is running at `postgres.railway.internal:5432`.
+
+2025-11-25T16:45:57.832941716Z [inf]  ⚠️  Database migration failed (database may not be available during build)
+⚠️  Migrations will run automatically on first application start
+⚠️  Continuing with build...
+
+2025-11-25T16:45:57.832957518Z [inf]  🏗️  Building Next.js application...
+
+2025-11-25T16:45:57.9002549Z [inf]  npm warn config production Use `--omit=dev` instead.
+
+2025-11-25T16:45:58.773042907Z [inf]  ⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+
+2025-11-25T16:45:58.829631635Z [inf]     ▲ Next.js 15.4.6
+
+2025-11-25T16:45:58.829649014Z [inf]  
+
+2025-11-25T16:45:58.843219127Z [inf]     Creating an optimized production build ...
+
+2025-11-25T16:46:06.847625958Z [inf]  Failed to compile.
+
+
+2025-11-25T16:46:06.847652079Z [inf]  ./lib/elementor/htmlGenerator.ts
+Error:   [31mx[0m Expected unicode escape
+     ,-[[36;1;4m/app/lib/elementor/htmlGenerator.ts[0m:229:1]
+ [2m226[0m | 
+ [2m227[0m |   // SVG Icons for professional header elements
+ [2m228[0m |   const iconMap: Record<string, string> = {
+ [2m229[0m |     phone: \`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>\`,
+     : [35;1m           ^[0m
+ [2m230[0m |     email: \`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>\`,
+ [2m231[0m |     location: \`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>\`,
+ [2m232[0m |     chat: \`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>\`,
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./lib/elementor/htmlGenerator.ts
+./app/api/designs/generate/route.ts
+
+
+2025-11-25T16:46:06.848345456Z [inf]  
+
+2025-11-25T16:46:06.848515046Z [inf]  > Build failed because of webpack errors
+
+2025-11-25T16:46:07.805549976Z [err]  npm run build
+2025-11-25T16:46:07.831217071Z [err]  ERROR: failed to build: failed to solve: process "npm run build" did not complete successfully: exit code: 1
