@@ -4,7 +4,7 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db/prisma";
 import { generateDesignVariations } from "@/lib/design/designGenerator";
 import { generateScreenshots } from "@/lib/screenshots/screenshotGenerator";
-import { generateContainerHTML, generateWidgetHTML, generateElementorId } from "@/lib/elementor/htmlGenerator";
+import { generateContainerHTML, generateWidgetHTML, generateElementorId, generateGlobalHeaderHTML } from "@/lib/elementor/htmlGenerator";
 
 export async function POST(request: NextRequest) {
   try {
@@ -203,96 +203,22 @@ function calculateDistinctivenessScore(variation: any, competitors: any): number
 }
 
 /**
- * Generate Elementor-compatible HTML preview with full widget support
+ * Generate Elementor-compatible HTML preview - GLOBAL HEADER ONLY
+ * This focuses exclusively on generating professional global headers
  */
 function generateHTMLPreview(variation: any, project: any): string {
-  const sections = variation.widgetStructure?.sections || [];
-  const mediaAssets = (project.media as any[]) || [];
-  const colors = (project.colorScheme?.colors || []) as string[];
-  const primaryColor = colors[0] || "#007bff";
+  // Extract globalHeader from the widget structure
+  const globalHeader = variation.widgetStructure?.globalHeader;
 
-  const sectionHTML = sections.map((section: any) => {
-    const widgets = section.widgets || [];
+  if (!globalHeader) {
+    console.warn("No globalHeader found in variation:", variation.name);
+    return `<!-- No global header defined for ${variation.name} -->`;
+  }
 
-    // Generate widget HTML using Elementor utilities
-    const widgetHTML = widgets.map((widget: any) => {
-      // Handle special widgets that need custom rendering
-      if (widget.type === "global-header") {
-        return `<header class="elementor-location-header" data-elementor-type="header" data-elementor-id="${generateElementorId()}">
-          <div class="elementor-section-wrap">
-            <div class="elementor-element e-flex e-con-boxed e-con" data-element_type="container">
-              <div class="e-con-inner" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                <div style="font-size: 24px; font-weight: 700; color: ${primaryColor};">${project.industry || "Brand"}</div>
-                <nav style="display: flex; gap: 30px;">
-                  ${(widget.menuItems || ["Home", "About", "Services", "Contact"]).map((item: string) =>
-                    `<a href="#" style="color: #333; text-decoration: none; font-weight: 500;">${item}</a>`
-                  ).join("")}
-                </nav>
-              </div>
-            </div>
-          </div>
-        </header>`;
-      }
+  // Generate professional header HTML using the specialized generator
+  const headerHTML = generateGlobalHeaderHTML(globalHeader, project.colorScheme);
 
-      if (widget.type === "global-footer") {
-        return `<footer class="elementor-location-footer" data-elementor-type="footer" data-elementor-id="${generateElementorId()}">
-          <div class="elementor-section-wrap">
-            <div class="elementor-element e-flex e-con-boxed e-con" data-element_type="container">
-              <div class="e-con-inner" style="background: #1a1a1a; color: white; padding: 60px 40px 30px;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
-                  <div>
-                    <h3 style="font-size: 20px; margin: 0 0 20px 0; color: ${primaryColor};">${project.industry || "Company"}</h3>
-                    <p style="color: #aaa; line-height: 1.6;">Your trusted partner for quality services and products.</p>
-                  </div>
-                  <div>
-                    <h4 style="font-size: 16px; margin: 0 0 20px 0;">Quick Links</h4>
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
-                      ${["About", "Services", "Contact", "Privacy"].map(link =>
-                        `<a href="#" style="color: #aaa; text-decoration: none;">${link}</a>`
-                      ).join("")}
-                    </div>
-                  </div>
-                  <div>
-                    <h4 style="font-size: 16px; margin: 0 0 20px 0;">Contact</h4>
-                    <p style="color: #aaa; line-height: 1.8; margin: 0;">Email: info@company.com<br>Phone: (555) 123-4567</p>
-                  </div>
-                </div>
-                <div style="border-top: 1px solid #333; padding-top: 30px; text-align: center; color: #666;">
-                  © ${new Date().getFullYear()} ${project.industry || "Company"}. All rights reserved.
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>`;
-      }
-
-      // For all other widgets, use the Elementor HTML generator
-      return generateWidgetHTML(widget, mediaAssets, project);
-    }).join("\n");
-
-    // Wrap widgets in Elementor container
-    return generateContainerHTML(
-      {
-        id: generateElementorId(),
-        elType: "container",
-        settings: {
-          content_width: "boxed",
-          padding: {
-            top: section.spacing?.top || 60,
-            right: 40,
-            bottom: section.spacing?.bottom || 60,
-            left: 40,
-            unit: "px"
-          },
-          background_background: section.background ? "classic" : undefined,
-          background_color: section.background || undefined,
-        },
-      },
-      widgetHTML
-    );
-  }).join("\n");
-
-  return sectionHTML;
+  return headerHTML;
 }
 
 /**
