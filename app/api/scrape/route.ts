@@ -103,6 +103,7 @@ export async function POST(request: NextRequest) {
         url,
         siteType: classification.siteType,
         industry: classification.industry,
+        industryDesignGuidance: classification.industryDesignGuidance,
         scrapedContent: scrapedData as any,
         logoColors: logoColors,
         // Default configuration values

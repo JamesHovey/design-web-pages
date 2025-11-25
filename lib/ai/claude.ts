@@ -25,48 +25,72 @@ export const anthropic = {
 };
 
 /**
- * Classify website industry using Claude AI
- * Analyzes scraped content to determine the business industry
+ * Advanced industry classification using Claude AI
+ * Returns industry identifier and design personality guidance for ANY business type
+ * NO RESTRICTIONS - can identify any industry intelligently
  */
-export async function classifyIndustry(content: string, url: string): Promise<string | undefined> {
-  const systemPrompt = `You are an expert at identifying business industries from website content.
+export async function classifyIndustry(content: string, url: string): Promise<{
+  industry: string;
+  designGuidance: string;
+} | undefined> {
+  const systemPrompt = `You are an expert business analyst and web design consultant.
 
-Analyze the provided website content and determine the primary industry category.
+Analyze the website content and provide:
+1. PRIMARY industry classification
+2. Industry-specific web design guidance
 
-Available industries:
-- transportation (vehicle transport, shipping, logistics, freight, courier, haulage, moving services)
-- automotive (car repair, mechanics, garages, MOT testing, vehicle servicing)
-- legal (law firms, solicitors, attorneys, barristers)
-- healthcare (medical, clinics, hospitals, doctors, health services)
-- restaurant (restaurants, cafes, food service, catering)
-- saas (software, platforms, web apps, SaaS products)
-- fashion (clothing, apparel, fashion retail)
-- real-estate (property sales, estate agents, real estate)
-- finance (banking, investment, financial services, insurance)
-- construction (builders, contractors, renovation, construction services)
-- education (schools, universities, training, courses)
+CLASSIFICATION REQUIREMENTS:
+- Identify the core business activity
+- Be specific (e.g., "vehicle-transport" not just "transportation")
+- Use kebab-case (e.g., "dental-practice", "wedding-photography", "craft-brewery")
+- Consider URL domain for context
+- Can be ANY industry - you are not limited to a predefined list
+- Use standard industry terminology
 
-Return ONLY the industry name from the list above, or "unknown" if none match well.
-Do not include any explanation or additional text.`;
+ANALYZE:
+- Products/services offered
+- Target audience and language tone
+- Industry terminology and jargon
+- Business model (B2B, B2C, local service, national, etc.)
+- Professional credentials/certifications mentioned
+- Geographic scope (local, regional, national, international)
+
+DESIGN GUIDANCE SHOULD SPECIFY:
+- Color psychology for this specific industry
+- Typography approach (modern/traditional, serif/sans-serif)
+- Imagery style (photography, illustrations, icons)
+- Layout patterns successful in this industry
+- Trust signals customers expect
+- Conversion elements (CTAs, forms, booking, etc.)
+- Visual tone (professional, friendly, luxurious, edgy, etc.)
+
+Return ONLY valid JSON with this structure:
+{
+  "industry": "specific-industry-identifier",
+  "designGuidance": "Comprehensive design personality: [colors, typography, imagery, layout patterns, trust signals, conversion elements]"
+}`;
 
   try {
     const client = getAnthropicClient();
     const message = await client.messages.create({
       model: "claude-sonnet-4-5-20250929",
-      max_tokens: 50,
+      max_tokens: 400,
       system: systemPrompt,
       messages: [
         {
           role: "user",
-          content: `URL: ${url}\n\nWebsite content:\n${content.substring(0, 3000)}`,
+          content: `URL: ${url}\n\nWebsite content:\n${content.substring(0, 4000)}`,
         },
       ],
     });
 
     const response = message.content[0];
     if (response.type === "text") {
-      const industry = response.text.trim().toLowerCase();
-      return industry === "unknown" ? undefined : industry;
+      const result = JSON.parse(response.text.trim());
+      return {
+        industry: result.industry?.toLowerCase() || "general-business",
+        designGuidance: result.designGuidance || "Modern, professional aesthetic",
+      };
     }
 
     return undefined;

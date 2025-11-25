@@ -30,6 +30,7 @@ model Project {
   url             String
   siteType        String    // "ecommerce" | "leadgen"
   industry        String?
+  industryDesignGuidance String? @db.Text // AI-generated design guidance for this specific industry
 
   viewports       Json      // ["desktop", "laptop", "tablet-portrait", "mobile-portrait"]
   colorScheme     Json      // { colors: ["#hex"], harmony: "complementary", extractFromLogo: true }

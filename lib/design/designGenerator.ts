@@ -37,6 +37,8 @@ CRITICAL HEADER DESIGN PRINCIPLES:
 5. ✅ Smart widget selection: Choose header widgets intelligently based on site type and industry
 6. ✅ Specific content: Write real menu items and contact info - NO "Lorem ipsum"
 
+${project.industryDesignGuidance ? `\nINDUSTRY-SPECIFIC DESIGN GUIDANCE FOR ${project.industry?.toUpperCase()}:\n${project.industryDesignGuidance}\n` : ''}
+
 HEADER WIDGET SCHEMA (Elementor):
 Use ONLY these widgets for the global header:
 

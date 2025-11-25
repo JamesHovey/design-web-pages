@@ -18,6 +18,12 @@ export async function runMigrations() {
       ADD COLUMN IF NOT EXISTS "screenshot" TEXT
     `);
 
+    // Add industryDesignGuidance column if it doesn't exist
+    await prisma.$executeRawUnsafe(`
+      ALTER TABLE "Project"
+      ADD COLUMN IF NOT EXISTS "industryDesignGuidance" TEXT
+    `);
+
     console.log('✅ Database schema is up to date');
     return true;
   } catch (error) {

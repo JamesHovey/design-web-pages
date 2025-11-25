@@ -11,6 +11,7 @@ export interface DesignPromptInput {
   widgets: string[];
   siteType: SiteType;
   industry?: string;
+  industryDesignGuidance?: string; // AI-generated design guidance specific to this industry
 }
 
 /**
@@ -70,13 +71,13 @@ export function generateDesignPrompt(
   variation: DesignVariation
 ): string {
   const variationGuidance = getVariationGuidance(variation);
-  const industryPersonality = getIndustryPersonality(input.industry, input.siteType);
+  const industryPersonality = input.industryDesignGuidance || getIndustryPersonality(input.industry, input.siteType);
 
   return `Generate a ${variation} website design for a ${input.siteType} ${input.industry || "business"}.
 
 ${variationGuidance}
 
-INDUSTRY PERSONALITY:
+INDUSTRY-SPECIFIC DESIGN GUIDANCE:
 ${industryPersonality}
 
 SCRAPED CONTENT:
@@ -138,21 +139,9 @@ function getVariationGuidance(variation: DesignVariation): string {
 }
 
 function getIndustryPersonality(industry?: string, siteType?: SiteType): string {
-  if (!industry) return "Modern, professional aesthetic";
+  // Fallback only - should use AI-generated industryDesignGuidance from database
+  if (!industry) return "Modern, professional aesthetic appropriate for the business type";
 
-  const personalities: Record<string, string> = {
-    transportation: "Bold action imagery (trucks, vehicles in motion), strong CTAs, trust badges, route/coverage maps, professional blue/orange tones",
-    automotive: "Vehicle showcase imagery, service bay photos, trust certifications, clean modern layouts, tech-forward design",
-    legal: "Navy/burgundy colors, serif accents, structured layouts, generous whitespace, professional photography",
-    fashion: "Masonry galleries, editorial layouts, fashion-forward fonts, image-heavy, asymmetric grids",
-    saas: "Product screenshots, modern sans-serif, clean lines, integration logos, feature comparison tables",
-    restaurant: "Full-bleed food photography, warm colors, distinctive display fonts, menu highlights",
-    healthcare: "Calming blues/greens, friendly imagery, clean organized layouts, trust signals",
-    finance: "Navy/green tones, conservative layouts, trust indicators, professional imagery",
-    "real-estate": "Large property images, map integrations, clean listing cards, aspirational imagery",
-    construction: "Project galleries, before/after showcases, safety certifications, bold typography, industrial color schemes",
-    education: "Bright engaging colors, student imagery, course highlights, testimonials, clear information hierarchy",
-  };
-
-  return personalities[industry] || "Modern, industry-appropriate aesthetic";
+  // Generic fallback if AI guidance not available
+  return `Industry-appropriate design for ${industry} business: professional aesthetic with relevant imagery, appropriate color psychology, and conversion-focused layout`;
 }

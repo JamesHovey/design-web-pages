@@ -7,6 +7,7 @@ export interface ClassificationResult {
   siteType: SiteType;
   confidence: number;
   industry?: string;
+  industryDesignGuidance?: string;
   conversionGoals: string[];
 }
 
@@ -59,8 +60,8 @@ export async function classifySite(scrapedData: ScrapedData, url: string): Promi
   const siteType: SiteType = ecommerceScore > leadgenScore ? "ecommerce" : "leadgen";
   const confidence = Math.max(ecommerceScore, leadgenScore) / 10; // Normalize to 0-1
 
-  // Detect industry using Claude AI for accurate classification
-  const industry = await classifyIndustry(content, url);
+  // Detect industry using Claude AI for accurate classification (unrestricted - handles ANY industry)
+  const industryResult = await classifyIndustry(content, url);
 
   // Identify conversion goals
   const conversionGoals = identifyConversionGoals(siteType, buttons, hasContactForm);
@@ -68,7 +69,8 @@ export async function classifySite(scrapedData: ScrapedData, url: string): Promi
   return {
     siteType,
     confidence: Math.min(confidence, 1),
-    industry,
+    industry: industryResult?.industry,
+    industryDesignGuidance: industryResult?.designGuidance,
     conversionGoals,
   };
 }
