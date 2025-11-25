@@ -23,6 +23,7 @@ export default function NewProjectPage() {
     siteType: false,
     industry: false,
     logoColors: false,
+    designGeneration: false,
   });
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -82,6 +83,7 @@ export default function NewProjectPage() {
       siteType: false,
       industry: false,
       logoColors: false,
+      designGeneration: false,
     });
 
     try {
@@ -125,12 +127,16 @@ export default function NewProjectPage() {
         setDetectionStatus(prev => ({ ...prev, logoColors: true }));
       }, 900);
 
-      setProgress("Detection complete! Redirecting...");
-
-      // Redirect to configuration page
+      // Start design generation status
       setTimeout(() => {
-        router.push(`/projects/${data.project.id}/configure`);
+        setProgress("Generating global header designs with AI...");
+        setDetectionStatus(prev => ({ ...prev, designGeneration: true }));
       }, 1200);
+
+      // Wait for designs to be generated, then redirect to designs page
+      setTimeout(() => {
+        router.push(`/projects/${data.project.id}/designs`);
+      }, 5000); // Increased time to allow for design generation
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
       setLoading(false);
@@ -140,6 +146,7 @@ export default function NewProjectPage() {
         siteType: false,
         industry: false,
         logoColors: false,
+        designGeneration: false,
       });
     }
   };
@@ -373,6 +380,20 @@ export default function NewProjectPage() {
                       {detectionStatus.logoColors ? 'Logo colors extracted' : 'Extracting logo colors...'}
                     </span>
                   </div>
+
+                  {/* Design Generation */}
+                  <div className="flex items-center space-x-3">
+                    {detectionStatus.designGeneration ? (
+                      <div className="w-5 h-5 border-2 border-blue-300 border-t-blue-600 rounded-full animate-spin flex-shrink-0"></div>
+                    ) : detectionStatus.logoColors ? (
+                      <div className="w-5 h-5 border-2 border-gray-300 rounded-full flex-shrink-0"></div>
+                    ) : (
+                      <div className="w-5 h-5 border-2 border-gray-300 rounded-full flex-shrink-0"></div>
+                    )}
+                    <span className={`text-sm font-medium ${detectionStatus.designGeneration ? 'text-blue-700' : detectionStatus.logoColors ? 'text-gray-500' : 'text-gray-500'}`}>
+                      {detectionStatus.designGeneration ? 'Generating global header designs with Claude AI...' : 'Preparing to generate designs...'}
+                    </span>
+                  </div>
                 </div>
               </div>
             )}
@@ -387,9 +408,11 @@ export default function NewProjectPage() {
                   <li>Site classification (E-commerce vs Lead Generation)</li>
                   <li>Industry detection using AI</li>
                   <li>Logo color extraction</li>
+                  <li>🎨 <strong>Global header designs generated with Claude AI</strong></li>
+                  <li>🖼️ Media assets fetched (images & videos)</li>
                 </ul>
                 <p className="text-xs text-blue-700 mt-3 font-medium">
-                  💡 Just enter a valid URL above - detection starts automatically!
+                  💡 Just enter a valid URL above - everything happens automatically!
                 </p>
               </div>
             )}
