@@ -5,7 +5,6 @@ import { prisma } from "@/lib/db/prisma";
 import { scrapeWebsiteHybrid } from "@/lib/scraping/hybridScraper";
 import { classifySite } from "@/lib/scraping/siteClassifier";
 import { extractLogoColors } from "@/lib/colors/colorExtractor";
-import { autoPopulateMedia } from "@/lib/media/autoPopulate";
 
 export async function POST(request: NextRequest) {
   try {
@@ -98,26 +97,9 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Step 3.5: Auto-populate media assets based on industry
-    let mediaAssets: any[] = [];
-    if (classification.industry) {
-      try {
-        console.log(`Auto-populating media for industry: ${classification.industry}`);
-        const mediaResult = await autoPopulateMedia(classification.industry);
-
-        if (mediaResult.success) {
-          mediaAssets = mediaResult.media;
-          console.log(`✓ Auto-populated ${mediaAssets.length} media assets (${mediaResult.searchQuery})`);
-        } else {
-          console.warn(`⚠ Failed to auto-populate media: ${mediaResult.error}`);
-        }
-      } catch (error) {
-        console.error("Error auto-populating media:", error);
-        // Continue without auto-populated media
-      }
-    }
-
     // Step 4: Create project in database
+    // NOTE: Media fetching now happens AFTER Claude designs the layout (in /api/designs/generate)
+    // This ensures we only fetch the media that's actually needed
     console.log("Creating project in database...");
     const project = await prisma.project.create({
       data: {
@@ -129,7 +111,7 @@ export async function POST(request: NextRequest) {
         scrapedContent: scrapedData as any,
         logoUrl: logoUrl,
         logoColors: logoColors,
-        media: mediaAssets, // Include auto-populated media
+        media: [], // Media will be fetched after design generation
         // Default configuration values
         viewports: ["desktop", "laptop", "tablet-portrait", "mobile-portrait"],
         colorScheme: {

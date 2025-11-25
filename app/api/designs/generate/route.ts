@@ -5,6 +5,8 @@ import { prisma } from "@/lib/db/prisma";
 import { generateDesignVariations } from "@/lib/design/designGenerator";
 import { generateScreenshots } from "@/lib/screenshots/screenshotGenerator";
 import { generateContainerHTML, generateWidgetHTML, generateElementorId, generateGlobalHeaderHTML } from "@/lib/elementor/htmlGenerator";
+import { analyzeAllVariations } from "@/lib/media/mediaAnalyzer";
+import { autoPopulateMedia } from "@/lib/media/autoPopulate";
 
 export async function POST(request: NextRequest) {
   try {
@@ -57,6 +59,41 @@ export async function POST(request: NextRequest) {
     try {
       // Generate 3 design variations using Claude
       const variations = await generateDesignVariations(project);
+
+      // INTELLIGENT MEDIA FETCHING: Analyze variations to determine media needs
+      console.log("[Design Generation] Analyzing media requirements...");
+      const mediaRequirements = analyzeAllVariations(variations);
+      console.log(`[Design Generation] Media needed: ${mediaRequirements.images} images, ${mediaRequirements.videos} videos`);
+
+      // Fetch media ONLY if widgets actually need it
+      let mediaAssets: any[] = [];
+      if (mediaRequirements.images > 0 || mediaRequirements.videos > 0) {
+        console.log(`[Design Generation] Fetching media for industry: ${project.industry}`);
+        const mediaResult = await autoPopulateMedia(project.industry || "general");
+
+        if (mediaResult.success) {
+          // Limit fetched media to what's actually needed
+          const neededImages = mediaResult.media
+            .filter((m: any) => m.type === "image")
+            .slice(0, mediaRequirements.images);
+          const neededVideos = mediaResult.media
+            .filter((m: any) => m.type === "video")
+            .slice(0, mediaRequirements.videos);
+
+          mediaAssets = [...neededImages, ...neededVideos];
+          console.log(`✓ Fetched ${neededImages.length} images and ${neededVideos.length} videos (only what's needed)`);
+
+          // Update project with fetched media
+          await prisma.project.update({
+            where: { id: project.id },
+            data: { media: mediaAssets },
+          });
+        } else {
+          console.warn(`⚠ Media fetch failed: ${mediaResult.error}`);
+        }
+      } else {
+        console.log("[Design Generation] No media widgets detected - skipping media fetch");
+      }
 
       // Calculate quality scores for each variation
       const designs = await Promise.all(

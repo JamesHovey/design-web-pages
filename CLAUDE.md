@@ -60,9 +60,17 @@ Version X.Y.Z includes:
 
 ## Current Version
 
-**v1.13.0** (November 25, 2025)
+**v1.19.0** (November 25, 2025)
 
 ### Changelog
+
+**v1.19.0** (2025-11-25)
+- **INTELLIGENT MEDIA FETCHING**: Media now fetched AFTER Claude designs layout (not during URL detection)
+- Analyzes widget structures to determine exact media requirements
+- Fetches only the images/videos actually needed by the design
+- Significantly faster URL detection (no waiting for Unsplash/Pexels APIs)
+- More efficient: no wasted API calls for unused media assets
+- New media analyzer utility to scan widget structures
 
 **v1.13.0** (2025-11-25)
 - **AUTOMATIC URL DETECTION**: Enter a URL and detection starts automatically (no button click needed)
