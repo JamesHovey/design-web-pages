@@ -283,9 +283,6 @@ export default function ConfigurePage() {
           {/* Viewport Selection */}
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Viewport Selection</h2>
-            <p className="text-gray-600 mb-6">
-              Select which device breakpoints to generate designs for (Elementor breakpoints)
-            </p>
             <ViewportSelector value={viewports} onChange={setViewports} />
           </div>
 
@@ -331,19 +328,6 @@ export default function ConfigurePage() {
                 siteType={project.siteType}
               />
             </div>
-          </div>
-
-          {/* Widgets */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Layout Widgets</h2>
-            <p className="text-gray-600 mb-6">
-              Select Elementor widgets to include in your design
-            </p>
-            <WidgetSelector
-              value={layoutWidgets}
-              siteType={project.siteType}
-              onChange={setLayoutWidgets}
-            />
           </div>
 
           {/* Competitor Research */}
