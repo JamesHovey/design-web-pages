@@ -6,7 +6,7 @@ import Button from "@/components/ui/Button";
 interface MediaItem {
   type: "image" | "video";
   url: string;
-  source: "upload" | "url" | "unsplash" | "pexels";
+  source: "url" | "unsplash" | "pexels";
   name?: string;
   photographer?: string;
   duration?: number;
@@ -40,7 +40,7 @@ interface PexelsVideo {
 
 export default function MediaUpload({ value = [], onChange, industry }: MediaUploadProps) {
   const [media, setMedia] = useState<MediaItem[]>(value);
-  const [activeTab, setActiveTab] = useState<"url" | "stock" | "upload">("stock");
+  const [activeTab, setActiveTab] = useState<"url" | "stock">("stock");
   const [stockMediaType, setStockMediaType] = useState<"photos" | "videos">("photos");
 
   // URL tab state
@@ -210,17 +210,6 @@ export default function MediaUpload({ value = [], onChange, industry }: MediaUpl
             }`}
           >
             🔗 Add by URL
-          </button>
-          <button
-            onClick={() => setActiveTab("upload")}
-            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors opacity-50 cursor-not-allowed ${
-              activeTab === "upload"
-                ? "border-blue-600 text-blue-600"
-                : "border-transparent text-gray-600"
-            }`}
-            disabled
-          >
-            ⬆️ Upload (Coming Soon)
           </button>
         </div>
       </div>
@@ -459,32 +448,6 @@ export default function MediaUpload({ value = [], onChange, industry }: MediaUpl
         </div>
       )}
 
-      {/* Upload Tab */}
-      {activeTab === "upload" && (
-        <div className="border border-gray-200 rounded-lg p-6 bg-gray-50 opacity-50">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Upload from Computer</h3>
-          <div className="space-y-4">
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-              <svg
-                className="mx-auto h-12 w-12 text-gray-400"
-                stroke="currentColor"
-                fill="none"
-                viewBox="0 0 48 48"
-              >
-                <path
-                  d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <p className="mt-2 text-sm text-gray-600">Coming Soon: Cloud Storage Integration</p>
-              <p className="text-xs text-gray-500 mt-1">Upload images and videos directly from your computer</p>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Media Library */}
       {media.length > 0 && (
         <div className="border border-gray-200 rounded-lg p-6 bg-white">
@@ -554,8 +517,8 @@ export default function MediaUpload({ value = [], onChange, industry }: MediaUpl
       {/* Info Note */}
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
         <p className="text-sm text-blue-800">
-          <strong>Free Stock Media:</strong> Photos from Unsplash, Videos from Pexels.
-          All media is free for commercial use. Attribution to creators is appreciated but not required.
+          <strong>How Media Works:</strong> Media assets are automatically populated from free stock APIs (Unsplash for photos, Pexels for videos) based on your industry.
+          Search above to find additional assets or replace auto-selected media. All media is free for commercial use.
         </p>
       </div>
     </div>

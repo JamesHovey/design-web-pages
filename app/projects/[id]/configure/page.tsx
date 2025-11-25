@@ -270,45 +270,21 @@ export default function ConfigurePage() {
             <p className="text-sm text-gray-600 mb-2">Site Logo</p>
             <div className="flex items-center gap-4">
               {project.logoUrl ? (
-                <div className="flex items-center gap-4">
-                  <img
-                    src={project.logoUrl}
-                    alt="Site logo"
-                    className="h-16 w-auto object-contain border border-gray-200 rounded p-2 bg-white"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = 'none';
-                      (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
-                    }}
-                  />
-                  <div className="hidden text-sm text-gray-500">Logo failed to load</div>
-                  <button
-                    type="button"
-                    className="text-sm text-blue-600 hover:text-blue-700 underline"
-                    onClick={() => {
-                      // TODO: Implement logo upload
-                      alert('Logo upload feature coming soon!');
-                    }}
-                  >
-                    Change Logo
-                  </button>
-                </div>
+                <img
+                  src={project.logoUrl}
+                  alt="Site logo"
+                  className="h-16 w-auto object-contain border border-gray-200 rounded p-2 bg-white"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).style.display = 'none';
+                    (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
               ) : (
-                <div className="flex items-center gap-4">
-                  <div className="h-16 w-32 border-2 border-dashed border-gray-300 rounded flex items-center justify-center bg-gray-50">
-                    <span className="text-sm text-gray-400">No logo</span>
-                  </div>
-                  <button
-                    type="button"
-                    className="text-sm text-blue-600 hover:text-blue-700 underline"
-                    onClick={() => {
-                      // TODO: Implement logo upload
-                      alert('Logo upload feature coming soon!');
-                    }}
-                  >
-                    Upload Logo
-                  </button>
+                <div className="h-16 w-32 border-2 border-dashed border-gray-300 rounded flex items-center justify-center bg-gray-50">
+                  <span className="text-sm text-gray-400">No logo detected</span>
                 </div>
               )}
+              <div className="hidden text-sm text-gray-500">Logo failed to load</div>
             </div>
           </div>
         </div>
@@ -394,7 +370,8 @@ export default function ConfigurePage() {
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Media Assets</h2>
             <p className="text-gray-600 mb-6">
-              Add images and videos to be referenced in your AI-generated designs
+              Images and videos are automatically sourced from stock APIs based on your industry.
+              You can search for additional media or override the auto-selected assets below.
             </p>
             <MediaUpload
               value={media}
