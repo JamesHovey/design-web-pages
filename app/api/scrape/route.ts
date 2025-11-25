@@ -82,9 +82,11 @@ export async function POST(request: NextRequest) {
     console.log("Classifying site...");
     const classification = await classifySite(scrapedData, validatedUrl.toString());
 
-    // Step 3: Extract logo colors (if logo exists)
+    // Step 3: Extract logo URL and colors (if logo exists)
+    let logoUrl: string | null = null;
     let logoColors: string[] = [];
     if (scrapedData.logo?.src) {
+      logoUrl = scrapedData.logo.src;
       try {
         console.log("Extracting logo colors...");
         const colors = await extractLogoColors(scrapedData.logo.src);
@@ -105,6 +107,7 @@ export async function POST(request: NextRequest) {
         industry: classification.industry,
         industryDesignGuidance: classification.industryDesignGuidance,
         scrapedContent: scrapedData as any,
+        logoUrl: logoUrl,
         logoColors: logoColors,
         // Default configuration values
         viewports: ["desktop", "laptop", "tablet-portrait", "mobile-portrait"],
@@ -137,6 +140,7 @@ export async function POST(request: NextRequest) {
         url: project.url,
         siteType: project.siteType,
         industry: project.industry,
+        logoUrl: project.logoUrl,
         logoColors,
         classification: {
           confidence: classification.confidence,

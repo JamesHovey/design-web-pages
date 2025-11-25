@@ -42,7 +42,7 @@ ${getIndustryHeaderGuidance(project.industry, project.siteType)}
 HEADER WIDGET SCHEMA (Elementor):
 Use ONLY these widgets for the global header:
 
-- site-logo: { type: "site-logo", imageUrl?: string, width?: number, height?: number, alt?: string }
+- site-logo: { type: "site-logo", imageUrl: "${project.logoUrl || null}", width?: number, height?: number, alt?: string }
 - nav-menu: { type: "nav-menu", items: [{text: string, link?: string}], style?: "horizontal"|"vertical", alignment?: "left"|"center"|"right" }
 - search: { type: "search", style: "icon"|"input-box", placeholder?: string }
 - icon-box: { type: "icon-box", icon: "phone"|"email"|"location"|"chat", text: string, alignment?: "left"|"center"|"right" }
@@ -114,7 +114,7 @@ For each variation, provide:
       "widgets": [
         {
           "type": "site-logo",
-          "imageUrl": null,
+          "imageUrl": ${project.logoUrl ? `"${project.logoUrl}"` : "null"},
           "alt": "${project.url} logo",
           "width": 180,
           "position": "left"

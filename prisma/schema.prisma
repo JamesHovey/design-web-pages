@@ -44,6 +44,7 @@ model Project {
   screenshot      String?   @db.Text // Base64 screenshot of the original site
   competitors     Json?     // [{ url, analysis, layouts, colors, ctas }]
   logoColors      Json?     // ["#hex1", "#hex2", ...]
+  logoUrl         String?   // Extracted logo URL from scraped website
 
   designs         Design[]
 

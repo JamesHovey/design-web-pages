@@ -233,7 +233,7 @@ export default function ConfigurePage() {
         {/* Project Info */}
         <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
           <h2 className="text-xl font-bold text-gray-900 mb-4">Project Details</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div>
               <p className="text-sm text-gray-600">Website URL</p>
               <p className="font-medium text-gray-900 truncate">{project.url}</p>
@@ -262,6 +262,53 @@ export default function ConfigurePage() {
                   <p className="text-sm text-gray-500">None extracted</p>
                 )}
               </div>
+            </div>
+          </div>
+
+          {/* Site Logo Display */}
+          <div className="border-t pt-4">
+            <p className="text-sm text-gray-600 mb-2">Site Logo</p>
+            <div className="flex items-center gap-4">
+              {project.logoUrl ? (
+                <div className="flex items-center gap-4">
+                  <img
+                    src={project.logoUrl}
+                    alt="Site logo"
+                    className="h-16 w-auto object-contain border border-gray-200 rounded p-2 bg-white"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                      (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
+                    }}
+                  />
+                  <div className="hidden text-sm text-gray-500">Logo failed to load</div>
+                  <button
+                    type="button"
+                    className="text-sm text-blue-600 hover:text-blue-700 underline"
+                    onClick={() => {
+                      // TODO: Implement logo upload
+                      alert('Logo upload feature coming soon!');
+                    }}
+                  >
+                    Change Logo
+                  </button>
+                </div>
+              ) : (
+                <div className="flex items-center gap-4">
+                  <div className="h-16 w-32 border-2 border-dashed border-gray-300 rounded flex items-center justify-center bg-gray-50">
+                    <span className="text-sm text-gray-400">No logo</span>
+                  </div>
+                  <button
+                    type="button"
+                    className="text-sm text-blue-600 hover:text-blue-700 underline"
+                    onClick={() => {
+                      // TODO: Implement logo upload
+                      alert('Logo upload feature coming soon!');
+                    }}
+                  >
+                    Upload Logo
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
