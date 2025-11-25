@@ -1146,7 +1146,7 @@ textarea.elementor-field {
   display: block;
   padding: 10px 18px;
   text-decoration: none;
-  color: #333;
+  color: inherit;
   font-weight: 600;
   font-size: 15px;
   transition: var(--professional-transition);
@@ -1172,7 +1172,7 @@ textarea.elementor-field {
   border: none;
   padding: var(--spacing-xs);
   cursor: pointer;
-  color: #333;
+  color: inherit;
   transition: var(--professional-transition);
   border-radius: var(--radius-circle);
 }
@@ -1239,7 +1239,7 @@ textarea.elementor-field {
   align-items: center;
   justify-content: center;
   padding: var(--spacing-xs);
-  color: #333;
+  color: inherit;
   text-decoration: none;
   border-radius: var(--radius-circle);
   transition: var(--professional-transition);

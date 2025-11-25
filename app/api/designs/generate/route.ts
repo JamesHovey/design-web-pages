@@ -7,6 +7,7 @@ import { generateScreenshots } from "@/lib/screenshots/screenshotGenerator";
 import { generateContainerHTML, generateWidgetHTML, generateElementorId, generateGlobalHeaderHTML } from "@/lib/elementor/htmlGenerator";
 import { analyzeAllVariations } from "@/lib/media/mediaAnalyzer";
 import { autoPopulateMedia } from "@/lib/media/autoPopulate";
+import { getContrastSafeTextColor, getHeaderTextColor, getButtonColors, checkContrast } from "@/lib/colors/accessibilityChecker";
 
 export async function POST(request: NextRequest) {
   try {
@@ -199,6 +200,26 @@ export async function POST(request: NextRequest) {
  */
 function calculateAccessibilityScore(variation: any): number {
   let score = 100;
+  let contrastChecks = 0;
+  let contrastPasses = 0;
+
+  // Check header contrast if present
+  const globalHeader = variation.widgetStructure?.globalHeader;
+  if (globalHeader?.backgroundColor) {
+    const headerBg = globalHeader.backgroundColor;
+    const headerTextColor = getHeaderTextColor(headerBg);
+
+    // Check contrast ratio
+    const contrast = checkContrast(headerTextColor, headerBg, false);
+
+    contrastChecks++;
+    if (contrast.passesAA) {
+      contrastPasses++;
+    } else {
+      score -= 25; // Major penalty for failing header contrast
+      console.warn(`Header contrast FAILS: ${headerTextColor} on ${headerBg} = ${contrast.ratio}:1`);
+    }
+  }
 
   // Check if all text has adequate font size (minimum 16px for body)
   const sections = variation.widgetStructure?.sections || [];
@@ -212,6 +233,11 @@ function calculateAccessibilityScore(variation: any): number {
       }
     });
   });
+
+  // Bonus points for passing all contrast checks
+  if (contrastChecks > 0 && contrastPasses === contrastChecks) {
+    score += 10;
+  }
 
   // Ensure score stays in valid range
   return Math.max(0, Math.min(100, score));
@@ -259,13 +285,24 @@ function generateHTMLPreview(variation: any, project: any): string {
 }
 
 /**
- * Generate CSS code for the design
+ * Generate CSS code for the design WITH PROPER CONTRAST
  */
 function generateCSSCode(variation: any, project: any): string {
   const colors = (project.colorScheme?.colors || []) as string[];
   const fonts = project.fonts || {};
 
-  return `/* ${variation.name} Design - Generated CSS */
+  // Extract header background color
+  const headerBg = variation.widgetStructure?.globalHeader?.backgroundColor || "#ffffff";
+
+  // Calculate contrast-safe text colors
+  const headerTextColor = getHeaderTextColor(headerBg);
+  const bodyBgColor = "#ffffff";
+  const bodyTextColor = getContrastSafeTextColor(bodyBgColor);
+
+  // Get button colors with proper contrast
+  const primaryBtnColors = getButtonColors(colors[0] || "#007bff");
+
+  return `/* ${variation.name} Design - Generated CSS with WCAG AA Contrast */
 
 * {
   box-sizing: border-box;
@@ -277,21 +314,30 @@ function generateCSSCode(variation: any, project: any): string {
   --accent-color: ${colors[2] || "#28a745"};
   --primary-font: ${fonts.primary || "'Inter', system-ui, -apple-system, sans-serif"};
   --secondary-font: ${fonts.secondary || "Georgia, serif"};
+
+  /* CONTRAST-SAFE COLORS - WCAG AA Compliant */
+  --header-bg: ${headerBg};
+  --header-text: ${headerTextColor};
+  --body-bg: ${bodyBgColor};
+  --body-text: ${bodyTextColor};
+  --button-bg: ${primaryBtnColors.background};
+  --button-text: ${primaryBtnColors.text};
 }
 
 body {
   font-family: var(--primary-font);
-  color: #333;
+  color: var(--body-text);
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  background: #ffffff;
+  background: var(--body-bg);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--primary-font);
   font-weight: 700;
   line-height: 1.2;
+  color: inherit;
 }
 
 a {
@@ -317,6 +363,38 @@ button, .btn {
 button:hover, .btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* PROFESSIONAL HEADER CONTRAST - Override hardcoded colors */
+.elementor-location-header {
+  background-color: var(--header-bg) !important;
+  color: var(--header-text) !important;
+}
+
+.elementor-location-header * {
+  color: var(--header-text) !important;
+}
+
+.elementor-location-header .elementor-nav-menu-link {
+  color: var(--header-text) !important;
+}
+
+.elementor-location-header .elementor-button {
+  background-color: var(--button-bg) !important;
+  color: var(--button-text) !important;
+}
+
+.elementor-location-header .elementor-search-icon,
+.elementor-location-header .elementor-cart-icon-link {
+  color: var(--header-text) !important;
+}
+
+.elementor-location-header .header-icon-box-link {
+  color: var(--header-text) !important;
+}
+
+.elementor-location-header .header-icon-box-text {
+  color: var(--header-text) !important;
 }
 
 /* Responsive Design */

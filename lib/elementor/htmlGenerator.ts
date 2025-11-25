@@ -249,12 +249,12 @@ export function generateIconBoxWidget(widget: any): string {
   // Header-style icon box (compact, horizontal, prominent for contact info)
   if (isHeader) {
     const innerHTML = `<a href="${href}" class="header-icon-box-link" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; transition: all 0.35s ease-out; padding: 10px 16px; border-radius: 8px; background: rgba(255, 255, 255, 0.05);">
-      <div class="header-icon-box-icon" style="flex-shrink: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; opacity: 0.9;">
+      <div class="header-icon-box-icon" style="flex-shrink: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; color: inherit; opacity: 0.9;">
         ${iconHTML}
       </div>
-      <div class="header-icon-box-content" style="line-height: 1.25; display: flex; flex-direction: column; gap: 2px;">
-        ${description ? `<div class="header-icon-box-label" style="font-size: 11px; opacity: 0.8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; line-height: 1; margin-bottom: 2px;">${description}</div>` : ''}
-        <div class="header-icon-box-text" style="font-size: 16px; font-weight: 700; white-space: nowrap; letter-spacing: 0.3px; line-height: 1;">${text}</div>
+      <div class="header-icon-box-content" style="line-height: 1.25; display: flex; flex-direction: column; gap: 2px; color: inherit;">
+        ${description ? `<div class="header-icon-box-label" style="font-size: 11px; opacity: 0.8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; line-height: 1; margin-bottom: 2px; color: inherit;">${description}</div>` : ''}
+        <div class="header-icon-box-text" style="font-size: 16px; font-weight: 700; white-space: nowrap; letter-spacing: 0.3px; line-height: 1; color: inherit;">${text}</div>
       </div>
     </a>`;
 
@@ -867,7 +867,7 @@ export function generateNavMenuWidget(widget: any): string {
     <ul class="dt-nav-menu-horizontal d-flex flex-row justify-content-${alignment === 'center' ? 'center' : alignment === 'right' ? 'end' : 'start'}" style="list-style: none; margin: 0; padding: 0; display: flex; gap: var(--spacing-md); align-items: center;">
       ${items.map((item: any, i: number) => `
         <li class="menu-item ${i === 0 ? 'current-menu-item' : ''}" style="position: relative;">
-          <a href="${typeof item === 'object' ? (item.link || '#') : '#'}" class="elementor-nav-menu-link" style="display: block; padding: var(--spacing-sm) var(--spacing-md); text-decoration: none; color: #333; font-weight: 500; font-size: 16px; transition: var(--professional-transition); border-radius: var(--radius-sm);">
+          <a href="${typeof item === 'object' ? (item.link || '#') : '#'}" class="elementor-nav-menu-link" style="display: block; padding: var(--spacing-sm) var(--spacing-md); text-decoration: none; color: inherit; font-weight: 500; font-size: 16px; transition: var(--professional-transition); border-radius: var(--radius-sm);">
             <span class="menu-item-text">${typeof item === 'object' ? item.text : item}</span>
           </a>
         </li>
@@ -976,15 +976,15 @@ export function generateGlobalHeaderHTML(headerConfig: any, colors?: any): strin
   // Build header with professional Elementor structure
   return `<!-- Global Header - Professional Elementor Pattern -->
 <header data-elementor-type="header" data-elementor-id="${id}" class="elementor elementor-${id} elementor-location-header" data-elementor-post-type="elementor_library">
-  <div class="elementor-element ${elementId} ${sticky ? 'the7-e-sticky-row-yes the7-e-sticky-effect-yes the7-e-sticky-overlap-yes the7-e-sticky-scrollup-yes' : ''} e-flex e-con-boxed e-con e-parent" data-id="${elementId}" data-element_type="container" ${sticky ? `data-settings='{"the7_sticky_row":"yes","the7_sticky_effects":"yes","the7_sticky_row_devices":["desktop","tablet","mobile"]}'` : ''} style="background-color: ${backgroundColor};">
-    <div class="e-con-inner" style="min-height: ${height}px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; gap: 40px;">
+  <div class="elementor-element ${elementId} ${sticky ? 'the7-e-sticky-row-yes the7-e-sticky-effect-yes the7-e-sticky-overlap-yes the7-e-sticky-scrollup-yes' : ''} e-flex e-con-boxed e-con e-parent" data-id="${elementId}" data-element_type="container" ${sticky ? `data-settings='{"the7_sticky_row":"yes","the7_sticky_effects":"yes","the7_sticky_row_devices":["desktop","tablet","mobile"]}'` : ''} style="background-color: ${backgroundColor}; width: 100%;">
+    <div class="e-con-inner" style="width: 100%; min-height: ${height}px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; gap: 40px; max-width: 1200px; margin: 0 auto;">
       ${logoHTML}
 
-      <div class="elementor-element elementor-element-nav-${generateElementorId()} e-con-full e-flex e-con e-child" data-element_type="container" style="flex: 1;">
+      <div class="elementor-element elementor-element-nav-${generateElementorId()} e-con-full e-flex e-con e-child" data-element_type="container" style="flex: 1; display: flex; align-items: center;">
         ${navHTML}
       </div>
 
-      <div class="elementor-element elementor-element-actions-${generateElementorId()} e-con-full e-flex e-con e-child" data-element_type="container" style="display: flex; align-items: center; gap: 20px;">
+      <div class="elementor-element elementor-element-actions-${generateElementorId()} e-con-full e-flex e-con e-child" data-element_type="container" style="display: flex; align-items: center; gap: 20px; flex-shrink: 0;">
         ${rightWidgetsHTML}
       </div>
     </div>

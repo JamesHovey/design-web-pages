@@ -126,3 +126,101 @@ export function suggestAccessibleColor(
 
   return adjusted.hex();
 }
+
+/**
+ * Determine if a color is light or dark
+ * Returns true if the color is light (luminance > 0.5)
+ */
+export function isLightColor(color: string): boolean {
+  try {
+    const luminance = chroma(color).luminance();
+    return luminance > 0.5;
+  } catch (error) {
+    console.error(`Error checking if color is light: ${color}`, error);
+    return true; // Default to light if error
+  }
+}
+
+/**
+ * Get a contrast-safe text color for a given background
+ * Returns white for dark backgrounds, dark gray for light backgrounds
+ * Ensures WCAG AA compliance (4.5:1 ratio minimum)
+ */
+export function getContrastSafeTextColor(
+  backgroundColor: string,
+  targetRatio: number = 4.5
+): string {
+  try {
+    const isLight = isLightColor(backgroundColor);
+
+    // Start with standard text colors
+    let textColor = isLight ? "#1a1a1a" : "#ffffff";
+
+    // Verify contrast and adjust if needed
+    const contrast = chroma.contrast(textColor, backgroundColor);
+
+    if (contrast < targetRatio) {
+      // If contrast is insufficient, use suggestAccessibleColor
+      textColor = suggestAccessibleColor(textColor, backgroundColor, targetRatio);
+    }
+
+    return textColor;
+  } catch (error) {
+    console.error(`Error getting contrast-safe text color for ${backgroundColor}:`, error);
+    return "#1a1a1a"; // Safe fallback
+  }
+}
+
+/**
+ * Get professional header text color based on background
+ * Optimized for navigation menus and header elements
+ */
+export function getHeaderTextColor(backgroundColor: string): string {
+  const isLight = isLightColor(backgroundColor);
+
+  // For light backgrounds: use dark gray for professional look
+  // For dark backgrounds: use white for maximum readability
+  if (isLight) {
+    const darkText = "#2d3748"; // Professional dark gray
+    const contrast = chroma.contrast(darkText, backgroundColor);
+
+    // Ensure at least 4.5:1 contrast
+    if (contrast >= 4.5) {
+      return darkText;
+    } else {
+      return suggestAccessibleColor(darkText, backgroundColor, 4.5);
+    }
+  } else {
+    const lightText = "#ffffff";
+    const contrast = chroma.contrast(lightText, backgroundColor);
+
+    // Ensure at least 4.5:1 contrast
+    if (contrast >= 4.5) {
+      return lightText;
+    } else {
+      return suggestAccessibleColor(lightText, backgroundColor, 4.5);
+    }
+  }
+}
+
+/**
+ * Get professional button colors with proper contrast
+ * Returns { background, text } ensuring WCAG AA compliance
+ */
+export function getButtonColors(
+  brandColor: string,
+  forDarkBackground: boolean = false
+): { background: string; text: string } {
+  let bgColor = brandColor;
+
+  // Ensure button background is vibrant enough
+  const buttonBg = chroma(bgColor);
+
+  // Determine optimal text color for button
+  const textColor = getContrastSafeTextColor(bgColor, 4.5);
+
+  return {
+    background: bgColor,
+    text: textColor
+  };
+}
