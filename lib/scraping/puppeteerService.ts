@@ -23,15 +23,35 @@ export interface ScrapedData {
  * Scrape a website using Puppeteer with stealth plugin
  */
 export async function scrapeWebsite(url: string): Promise<ScrapedData> {
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+  let browser;
 
   try {
+    browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
+
     const page = await browser.newPage();
     await page.setViewport({ width: 1920, height: 1080 });
-    await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
+
+    // Set a user agent to avoid blocking
+    await page.setUserAgent(
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    );
+
+    // Navigate to the page with error handling
+    try {
+      await page.goto(url, {
+        waitUntil: "networkidle2",
+        timeout: 30000
+      });
+    } catch (navError) {
+      // Try with a more lenient wait condition if networkidle2 fails
+      await page.goto(url, {
+        waitUntil: "domcontentloaded",
+        timeout: 30000
+      });
+    }
 
     // Extract page data
     const scrapedData = await page.evaluate(() => {
@@ -112,7 +132,24 @@ export async function scrapeWebsite(url: string): Promise<ScrapedData> {
       url,
       ...scrapedData,
     };
+  } catch (error) {
+    // Provide more detailed error messages
+    if (error instanceof Error) {
+      if (error.message.includes('net::ERR_NAME_NOT_RESOLVED')) {
+        throw new Error(`Could not resolve domain: ${url}. Please check the URL is correct.`);
+      } else if (error.message.includes('net::ERR_CONNECTION_REFUSED')) {
+        throw new Error(`Connection refused by ${url}. The website may be down.`);
+      } else if (error.message.includes('net::ERR_CONNECTION_TIMED_OUT')) {
+        throw new Error(`Connection timed out for ${url}. The website may be slow or blocking requests.`);
+      } else if (error.message.includes('Timeout')) {
+        throw new Error(`Request timed out for ${url}. The website took too long to respond.`);
+      }
+    }
+    // Re-throw original error if no specific handling
+    throw error;
   } finally {
-    await browser.close();
+    if (browser) {
+      await browser.close();
+    }
   }
 }

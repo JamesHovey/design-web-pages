@@ -28,18 +28,30 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate URL format
+    let validatedUrl: URL;
     try {
-      new URL(url);
-    } catch {
+      validatedUrl = new URL(url);
+
+      // Ensure protocol is http or https
+      if (!['http:', 'https:'].includes(validatedUrl.protocol)) {
+        return NextResponse.json(
+          { error: "URL must use http or https protocol" },
+          { status: 400 }
+        );
+      }
+    } catch (urlError) {
       return NextResponse.json(
-        { error: "Invalid URL format" },
+        {
+          error: "Invalid URL format",
+          message: urlError instanceof Error ? urlError.message : "Please enter a valid URL"
+        },
         { status: 400 }
       );
     }
 
     // Step 1: Scrape the website
-    console.log(`Scraping website: ${url}`);
-    const scrapedData = await scrapeWebsite(url);
+    console.log(`Scraping website: ${validatedUrl.toString()}`);
+    const scrapedData = await scrapeWebsite(validatedUrl.toString());
 
     // Step 2: Classify site type and detect industry
     console.log("Classifying site...");

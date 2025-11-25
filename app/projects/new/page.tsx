@@ -30,12 +30,29 @@ export default function NewProjectPage() {
   const normalizeUrl = (inputUrl: string): string => {
     let normalized = inputUrl.trim();
 
+    // Remove trailing slashes
+    normalized = normalized.replace(/\/+$/, "");
+
     // If no protocol, add https://
     if (!normalized.match(/^https?:\/\//i)) {
       normalized = `https://${normalized}`;
     }
 
-    return normalized;
+    // Parse and reconstruct URL to ensure it's valid
+    try {
+      const urlObj = new URL(normalized);
+
+      // Remove trailing slash from pathname if present
+      if (urlObj.pathname.endsWith('/') && urlObj.pathname.length > 1) {
+        urlObj.pathname = urlObj.pathname.slice(0, -1);
+      }
+
+      return urlObj.toString();
+    } catch (e) {
+      // If URL parsing fails, return the normalized string anyway
+      // The API will handle the validation
+      return normalized;
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
