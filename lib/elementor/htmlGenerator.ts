@@ -226,11 +226,11 @@ export function generateIconBoxWidget(widget: any): string {
 
   // SVG Icons for professional header elements
   const iconMap: Record<string, string> = {
-    phone: \`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>\`,
-    email: \`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>\`,
-    location: \`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>\`,
-    chat: \`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>\`,
-    star: \`★\`
+    phone: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>',
+    email: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>',
+    location: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>',
+    chat: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>',
+    star: '★'
   };
 
   const iconHTML = iconMap[iconType] || iconMap.star;
@@ -239,39 +239,39 @@ export function generateIconBoxWidget(widget: any): string {
   let href = link;
   if (link === "#" || link === "") {
     if (iconType === "phone") {
-      href = \`tel:\${text.replace(/[^0-9+]/g, "")}\`;
+      href = `tel:${text.replace(/[^0-9+]/g, "")}`;
     } else if (iconType === "email") {
-      href = \`mailto:\${text}\`;
+      href = `mailto:${text}`;
     }
   }
 
   // Header-style icon box (compact, horizontal, prominent for contact info)
   if (isHeader) {
-    const innerHTML = \`<a href="\${href}" class="header-icon-box-link" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; transition: var(--professional-transition); padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-sm);">
+    const innerHTML = `<a href="${href}" class="header-icon-box-link" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; transition: var(--professional-transition); padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-sm);">
       <div class="header-icon-box-icon" style="flex-shrink: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;">
-        \${iconHTML}
+        ${iconHTML}
       </div>
       <div class="header-icon-box-content" style="line-height: 1.3;">
-        \${description ? \`<div class="header-icon-box-label" style="font-size: 12px; opacity: 0.75; font-weight: 500; margin-bottom: 2px;">\${description}</div>\` : ''}
-        <div class="header-icon-box-text" style="font-size: \${description ? '16px' : '15px'}; font-weight: 600; white-space: nowrap;">\${text}</div>
+        ${description ? `<div class="header-icon-box-label" style="font-size: 12px; opacity: 0.75; font-weight: 500; margin-bottom: 2px;">${description}</div>` : ''}
+        <div class="header-icon-box-text" style="font-size: ${description ? '16px' : '15px'}; font-weight: 600; white-space: nowrap;">${text}</div>
       </div>
-    </a>\`;
+    </a>`;
 
     return generateWidgetWrapper("icon-box", id, widget.settings, innerHTML);
   }
 
   // Standard icon box (feature boxes for body content)
-  const innerHTML = \`<div class="elementor-icon-box-wrapper" style="text-align: \${alignment};">
+  const innerHTML = `<div class="elementor-icon-box-wrapper" style="text-align: ${alignment};">
     <div class="elementor-icon-box-icon">
-      <span class="elementor-icon elementor-animation-">\${iconType === 'star' ? iconHTML : \`<span class="elementor-icon-svg">\${iconHTML}</span>\`}</span>
+      <span class="elementor-icon elementor-animation-">${iconType === 'star' ? iconHTML : `<span class="elementor-icon-svg">${iconHTML}</span>`}</span>
     </div>
     <div class="elementor-icon-box-content">
       <h3 class="elementor-icon-box-title">
-        <span>\${text}</span>
+        <span>${text}</span>
       </h3>
-      \${description ? \`<p class="elementor-icon-box-description">\${description}</p>\` : ''}
+      ${description ? `<p class="elementor-icon-box-description">${description}</p>` : ''}
     </div>
-  </div>\`;
+  </div>`;
 
   return generateWidgetWrapper("icon-box", id, widget.settings, innerHTML);
 }
