@@ -1,4 +1,5 @@
 import { ScrapedData } from "./puppeteerService";
+import { classifyIndustry } from "@/lib/ai/claude";
 
 export type SiteType = "ecommerce" | "leadgen";
 
@@ -12,8 +13,9 @@ export interface ClassificationResult {
 /**
  * Classify website as e-commerce or lead generation
  * Checks for shopping cart, product pages, checkout vs contact forms
+ * Uses Claude AI to intelligently detect industry
  */
-export function classifySite(scrapedData: ScrapedData): ClassificationResult {
+export async function classifySite(scrapedData: ScrapedData, url: string): Promise<ClassificationResult> {
   const content = scrapedData.content.toLowerCase();
   const buttons = scrapedData.buttons.map((b) => b.text.toLowerCase());
   const forms = scrapedData.forms;
@@ -57,8 +59,8 @@ export function classifySite(scrapedData: ScrapedData): ClassificationResult {
   const siteType: SiteType = ecommerceScore > leadgenScore ? "ecommerce" : "leadgen";
   const confidence = Math.max(ecommerceScore, leadgenScore) / 10; // Normalize to 0-1
 
-  // Detect industry (basic heuristics - can be enhanced with AI)
-  const industry = detectIndustry(content);
+  // Detect industry using Claude AI for accurate classification
+  const industry = await classifyIndustry(content, url);
 
   // Identify conversion goals
   const conversionGoals = identifyConversionGoals(siteType, buttons, hasContactForm);
@@ -69,27 +71,6 @@ export function classifySite(scrapedData: ScrapedData): ClassificationResult {
     industry,
     conversionGoals,
   };
-}
-
-function detectIndustry(content: string): string | undefined {
-  const industries = [
-    { name: "legal", keywords: ["law", "attorney", "lawyer", "legal"] },
-    { name: "healthcare", keywords: ["health", "medical", "doctor", "clinic"] },
-    { name: "restaurant", keywords: ["restaurant", "food", "menu", "dining"] },
-    { name: "saas", keywords: ["software", "platform", "dashboard", "api"] },
-    { name: "fashion", keywords: ["fashion", "clothing", "apparel", "style"] },
-    { name: "real-estate", keywords: ["property", "real estate", "home", "listing"] },
-    { name: "finance", keywords: ["finance", "investment", "banking", "loan"] },
-  ];
-
-  for (const industry of industries) {
-    const matches = industry.keywords.filter((keyword) => content.includes(keyword)).length;
-    if (matches >= 2) {
-      return industry.name;
-    }
-  }
-
-  return undefined;
 }
 
 function identifyConversionGoals(

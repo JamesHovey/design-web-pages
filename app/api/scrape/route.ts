@@ -78,9 +78,9 @@ export async function POST(request: NextRequest) {
     const scrapedData = scrapeResult.data!;
     console.log(`[Scrape API] Scraping succeeded using method: ${scrapeResult.method}`);
 
-    // Step 2: Classify site type and detect industry
+    // Step 2: Classify site type and detect industry using Claude AI
     console.log("Classifying site...");
-    const classification = classifySite(scrapedData);
+    const classification = await classifySite(scrapedData, validatedUrl.toString());
 
     // Step 3: Extract logo colors (if logo exists)
     let logoColors: string[] = [];
