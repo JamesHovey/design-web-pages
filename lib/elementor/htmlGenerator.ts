@@ -126,12 +126,13 @@ export function generateButtonWidget(widget: any): string {
   const id = widget.id || generateElementorId();
   const text = widget.text || widget.settings?.text || "Click Here";
   const link = widget.link || widget.settings?.link?.url || "#";
-  const size = widget.settings?.size || "sm";
+  const size = widget.size || widget.settings?.size || "md";
+  const style = widget.style || widget.settings?.style || "primary";
 
   const innerHTML = `<div class="elementor-button-wrapper">
-    <a class="elementor-button elementor-button-link elementor-size-${size}" href="${link}" role="button">
+    <a class="elementor-button elementor-button-link elementor-size-${size}" href="${link}" role="button" style="font-weight: 700; letter-spacing: 0.8px;">
       <span class="elementor-button-content-wrapper">
-        <span class="elementor-button-text">${text}</span>
+        <span class="elementor-button-text" style="font-weight: 700; letter-spacing: 0.8px;">${text}</span>
       </span>
     </a>
   </div>`;
@@ -247,13 +248,13 @@ export function generateIconBoxWidget(widget: any): string {
 
   // Header-style icon box (compact, horizontal, prominent for contact info)
   if (isHeader) {
-    const innerHTML = `<a href="${href}" class="header-icon-box-link" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; transition: var(--professional-transition); padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-sm);">
-      <div class="header-icon-box-icon" style="flex-shrink: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;">
+    const innerHTML = `<a href="${href}" class="header-icon-box-link" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; transition: all 0.35s ease-out; padding: 10px 16px; border-radius: 8px; background: rgba(255, 255, 255, 0.05);">
+      <div class="header-icon-box-icon" style="flex-shrink: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; opacity: 0.9;">
         ${iconHTML}
       </div>
-      <div class="header-icon-box-content" style="line-height: 1.3;">
-        ${description ? `<div class="header-icon-box-label" style="font-size: 12px; opacity: 0.75; font-weight: 500; margin-bottom: 2px;">${description}</div>` : ''}
-        <div class="header-icon-box-text" style="font-size: ${description ? '16px' : '15px'}; font-weight: 600; white-space: nowrap;">${text}</div>
+      <div class="header-icon-box-content" style="line-height: 1.25; display: flex; flex-direction: column; gap: 2px;">
+        ${description ? `<div class="header-icon-box-label" style="font-size: 11px; opacity: 0.8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; line-height: 1; margin-bottom: 2px;">${description}</div>` : ''}
+        <div class="header-icon-box-text" style="font-size: 16px; font-weight: 700; white-space: nowrap; letter-spacing: 0.3px; line-height: 1;">${text}</div>
       </div>
     </a>`;
 
@@ -976,14 +977,14 @@ export function generateGlobalHeaderHTML(headerConfig: any, colors?: any): strin
   return `<!-- Global Header - Professional Elementor Pattern -->
 <header data-elementor-type="header" data-elementor-id="${id}" class="elementor elementor-${id} elementor-location-header" data-elementor-post-type="elementor_library">
   <div class="elementor-element ${elementId} ${sticky ? 'the7-e-sticky-row-yes the7-e-sticky-effect-yes the7-e-sticky-overlap-yes the7-e-sticky-scrollup-yes' : ''} e-flex e-con-boxed e-con e-parent" data-id="${elementId}" data-element_type="container" ${sticky ? `data-settings='{"the7_sticky_row":"yes","the7_sticky_effects":"yes","the7_sticky_row_devices":["desktop","tablet","mobile"]}'` : ''} style="background-color: ${backgroundColor};">
-    <div class="e-con-inner" style="min-height: ${height}px; display: flex; align-items: center; justify-content: space-between; padding: 0 var(--spacing-lg);">
+    <div class="e-con-inner" style="min-height: ${height}px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; gap: 40px;">
       ${logoHTML}
 
-      <div class="elementor-element elementor-element-nav-${generateElementorId()} e-con-full e-flex e-con e-child" data-element_type="container">
+      <div class="elementor-element elementor-element-nav-${generateElementorId()} e-con-full e-flex e-con e-child" data-element_type="container" style="flex: 1;">
         ${navHTML}
       </div>
 
-      <div class="elementor-element elementor-element-actions-${generateElementorId()} e-con-full e-flex e-con e-child" data-element_type="container" style="display: flex; align-items: center; gap: var(--spacing-md);">
+      <div class="elementor-element elementor-element-actions-${generateElementorId()} e-con-full e-flex e-con e-child" data-element_type="container" style="display: flex; align-items: center; gap: 20px;">
         ${rightWidgetsHTML}
       </div>
     </div>

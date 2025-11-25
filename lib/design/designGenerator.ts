@@ -54,6 +54,8 @@ Use ONLY these widgets for the global header:
 - button: { type: "button", text: string, link?: string, size?: "sm"|"md"|"lg", style?: "primary"|"secondary"|"outline" }
   * CRITICAL: Use industry-appropriate CTA text - NOT generic "Get Started"
   * Examples: "Get A Quote", "Contact Us", "Book Consultation", "Get In Touch", "Speak To An Expert"
+  * Size: Use "md" or "lg" for header CTAs (buttons should be prominent)
+  * Professional buttons are LARGE with high contrast colors
 - cart-icon: { type: "cart-icon", itemCount?: number }
 
 GLOBAL HEADER CONFIGURATION:
@@ -70,11 +72,13 @@ HEADER DESIGN RULES:
    - Classic: Logo left, nav right, search/contact icons far right
    - Modern: Logo left, nav right, phone + CTA far right (MOST PROFESSIONAL)
 3. Use the configured menu items: ${JSON.stringify(project.globalHeaderConfig?.menuItems || ["Home", "About", "Services", "Contact"])}
-4. Background colors - NOT just white!:
-   - Conservative: White (#ffffff) or light gray (#f8f9fa)
-   - Balanced: Brand primary color OR white with colored shadow
-   - Bold: Dark (#1a1a2e, #2c3e50) OR vibrant brand color
-   - Match the industry vibe and brand colors
+4. Background colors - PROFESSIONAL PATTERNS ONLY:
+   - Conservative: Pure white (#ffffff) or very light gray (#f8f9fa, #fafbfc)
+   - Balanced: White with subtle shadow OR very light tint of brand color (95% white + 5% brand)
+   - Bold: Dark sophisticated (#1a1a2e, #2c3e50, #1e293b) OR subtle gradient on white
+   - NEVER use solid bright colors as header background (looks amateur)
+   - Brand colors go on BUTTONS and ACCENTS, not backgrounds
+   - Professional rule: Header backgrounds should be neutral (white/light/dark), buttons should be colorful
 5. Contact prominence:
    - For service businesses: ALWAYS include prominent phone icon-box
    - Phone should have isHeader: true for proper styling
@@ -86,10 +90,27 @@ HEADER DESIGN RULES:
    - Transitions: 0.35s ease-out
    - Professional typography and color hierarchy
 
-DESIGN VARIATIONS:
-1. Conservative: Professional, trustworthy, safe - but STILL distinctive (not boring!)
-2. Balanced: Modern, engaging, strategic - the sweet spot
-3. Bold: Dramatic, eye-catching, memorable - push boundaries
+DESIGN VARIATIONS - HEADER EXAMPLES:
+1. Conservative:
+   - Background: Pure white (#ffffff)
+   - Logo: 180px wide, professional
+   - Nav: Centered, clean menu items
+   - Right: Phone icon-box + Medium button with brand color
+   - Professional, trustworthy, safe - but STILL distinctive
+
+2. Balanced:
+   - Background: Light gray (#f8f9fa) or white with subtle shadow
+   - Logo: 200px wide with prominent brand colors
+   - Nav: Right-aligned with good spacing
+   - Right: Large phone icon-box + Large colorful button
+   - Modern, engaging, strategic - the sweet spot
+
+3. Bold:
+   - Background: Dark sophisticated (#2c3e50) with white/light text
+   - Logo: 220px wide, high contrast
+   - Nav: Right-aligned with hover effects
+   - Right: Extra prominent phone + Bold contrasting button
+   - Dramatic, eye-catching, memorable - push boundaries
 
 JSON FORMAT REQUIREMENTS:
 - Return ONLY valid JSON - no trailing commas, no comments, no markdown code blocks
@@ -144,11 +165,13 @@ For each variation, provide:
         },
         {
           "type": "button",
-          "text": "Specific CTA based on industry",
-          "style": "primary"|"outline",
-          "size": "md",
+          "text": "Specific CTA based on industry (e.g., 'Get Free Quote', 'Book Now', 'Contact Us')",
+          "style": "primary",
+          "size": "md" or "lg",
           "position": "right"
         }
+        // CRITICAL: For service businesses, include icon-box with phone BEFORE the button
+        // Example right section for vehicle transport: [icon-box (phone), button]
         // Add other widgets based on globalHeaderConfig and site type
       ]
     }
