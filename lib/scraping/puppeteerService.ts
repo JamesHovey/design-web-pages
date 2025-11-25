@@ -17,6 +17,8 @@ export interface ScrapedData {
   forms: Array<{ action: string; fields: string[] }>;
   buttons: Array<{ text: string; href?: string }>;
   logo?: { src: string; alt: string };
+  screenshot?: string; // Base64 encoded screenshot
+  scrapingError?: string; // If scraping failed but screenshot succeeded
 }
 
 /**

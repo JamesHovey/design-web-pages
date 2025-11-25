@@ -39,6 +39,7 @@ model Project {
   media           Json?     // [{ type: "image"|"video", url: string, alt?: string }]
 
   scrapedContent  Json?     // Full scraped data
+  screenshot      String?   @db.Text // Base64 screenshot of the original site
   competitors     Json?     // [{ url, analysis, layouts, colors, ctas }]
   logoColors      Json?     // ["#hex1", "#hex2", ...]
 
