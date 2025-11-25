@@ -45,8 +45,15 @@ Use ONLY these widgets for the global header:
 - site-logo: { type: "site-logo", imageUrl: "${project.logoUrl || null}", width?: number, height?: number, alt?: string }
 - nav-menu: { type: "nav-menu", items: [{text: string, link?: string}], style?: "horizontal"|"vertical", alignment?: "left"|"center"|"right" }
 - search: { type: "search", style: "icon"|"input-box", placeholder?: string }
-- icon-box: { type: "icon-box", icon: "phone"|"email"|"location"|"chat", text: string, alignment?: "left"|"center"|"right" }
+- icon-box: { type: "icon-box", icon: "phone"|"email"|"location"|"chat", text: string, description?: string, isHeader: true, link?: string }
+  * IMPORTANT: For headers, ALWAYS set isHeader: true
+  * For phone: text should be the actual phone number (e.g., "01306 775010" or "+1 (212) 424-6015")
+  * For phone: description can be "Call us:" or "24/7 Support" or similar
+  * For email: text should be the email address, description can be "Email us:"
+  * icon-box creates prominent, professional contact widgets with icon + text layout
 - button: { type: "button", text: string, link?: string, size?: "sm"|"md"|"lg", style?: "primary"|"secondary"|"outline" }
+  * CRITICAL: Use industry-appropriate CTA text - NOT generic "Get Started"
+  * Examples: "Get A Quote", "Contact Us", "Book Consultation", "Get In Touch", "Speak To An Expert"
 - cart-icon: { type: "cart-icon", itemCount?: number }
 
 GLOBAL HEADER CONFIGURATION:
@@ -61,9 +68,19 @@ HEADER DESIGN RULES:
 2. Professional layout patterns:
    - Standard: Logo left, nav center, CTA right
    - Classic: Logo left, nav right, search/contact icons far right
-   - Modern: Centered logo, nav below or split navigation
+   - Modern: Logo left, nav right, phone + CTA far right (MOST PROFESSIONAL)
 3. Use the configured menu items: ${JSON.stringify(project.globalHeaderConfig?.menuItems || ["Home", "About", "Services", "Contact"])}
-4. Apply professional design patterns:
+4. Background colors - NOT just white!:
+   - Conservative: White (#ffffff) or light gray (#f8f9fa)
+   - Balanced: Brand primary color OR white with colored shadow
+   - Bold: Dark (#1a1a2e, #2c3e50) OR vibrant brand color
+   - Match the industry vibe and brand colors
+5. Contact prominence:
+   - For service businesses: ALWAYS include prominent phone icon-box
+   - Phone should have isHeader: true for proper styling
+   - Use description field for "Call us:" or "24/7 Support"
+   - Position phone prominently in right section before CTA button
+6. Apply professional design patterns:
    - 8px spacing grid (8px, 16px, 24px, 32px)
    - Shadow: 2px 2px 6px 0 rgba(0,0,0,0.3)
    - Transitions: 0.35s ease-out
@@ -240,10 +257,11 @@ function getIndustryHeaderGuidance(industry?: string, siteType?: string): string
     "vehicle-transport": `
 INDUSTRY-SPECIFIC HEADER DESIGN FOR VEHICLE TRANSPORT:
 ✅ Layout Pattern: Logo left, Nav menu (Services, Fleet, Tracking, Contact), Phone icon-box with "24/7 Dispatch", CTA "Get Quote"
-✅ Widget Selection: site-logo, nav-menu, icon-box (phone), button
+✅ Widget Selection: site-logo, nav-menu, icon-box (phone with isHeader: true), button
 ✅ Menu Items: ["Home", "Services", "Fleet", "Track Shipment", "Get Quote", "Contact"]
 ✅ CTA Text: "Get Free Quote" or "Book Transport" (NOT "Get Started")
-✅ Icon Box: Phone with actual dispatch number prominently displayed
+✅ Phone Icon-Box: { icon: "phone", text: "1-800-TRANSPORT", description: "24/7 Dispatch", isHeader: true }
+✅ Background Color: White or light blue (#f0f4f8) - Professional and clean
 ✅ Colors: Blues (#003d82, #0066cc) and grays for trust and reliability
 ✅ Height: 80-90px for professional appearance
 ✅ Sticky: YES - users need access to contact info while scrolling`,
@@ -251,10 +269,11 @@ INDUSTRY-SPECIFIC HEADER DESIGN FOR VEHICLE TRANSPORT:
     "restaurant": `
 INDUSTRY-SPECIFIC HEADER DESIGN FOR RESTAURANT:
 ✅ Layout Pattern: Logo left, Nav menu center, Phone icon-box + CTA "Reserve Table"
-✅ Widget Selection: site-logo, nav-menu, icon-box (phone), button
+✅ Widget Selection: site-logo, nav-menu, icon-box (phone with isHeader: true), button
 ✅ Menu Items: ["Menu", "Reservations", "Our Story", "Catering", "Contact", "Order Online"]
 ✅ CTA Text: "Reserve Table" or "Order Now" (NOT "Get Started")
-✅ Icon Box: Phone for reservations
+✅ Phone Icon-Box: { icon: "phone", text: "(555) 123-4567", description: "Call to Reserve", isHeader: true }
+✅ Background Color: Warm tones OR white with warm-colored CTA
 ✅ Colors: Warm appetizing colors (reds #c41e3a, oranges #ff6b35, earth tones)
 ✅ Height: 70-80px, elegant but not overwhelming
 ✅ Sticky: YES - access to reservations while browsing menu`,

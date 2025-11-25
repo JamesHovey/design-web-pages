@@ -215,6 +215,63 @@ body {
   line-height: 1.6;
 }
 
+/* Header Icon Box Widget - Professional Contact Info Style */
+.header-icon-box-widget {
+  flex-shrink: 0;
+}
+
+.header-icon-box-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--professional-transition);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+}
+
+.header-icon-box-link:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+.header-icon-box-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color, #007bff);
+}
+
+.header-icon-box-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.header-icon-box-content {
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-icon-box-label {
+  font-size: 12px;
+  opacity: 0.75;
+  font-weight: 500;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.header-icon-box-text {
+  font-weight: 600;
+  white-space: nowrap;
+  color: inherit;
+}
+
 /* Image Box Widget */
 .elementor-image-box-wrapper {
   text-align: center;
