@@ -3,6 +3,21 @@ set -e
 
 echo "🚀 Starting application..."
 
+# Detect Chromium executable for Puppeteer
+# In Railway/Nixpacks, Chromium is installed via nix
+if command -v chromium &> /dev/null; then
+  export PUPPETEER_EXECUTABLE_PATH=$(command -v chromium)
+  echo "✅ Found Chromium at: $PUPPETEER_EXECUTABLE_PATH"
+elif command -v chromium-browser &> /dev/null; then
+  export PUPPETEER_EXECUTABLE_PATH=$(command -v chromium-browser)
+  echo "✅ Found Chromium at: $PUPPETEER_EXECUTABLE_PATH"
+elif command -v google-chrome &> /dev/null; then
+  export PUPPETEER_EXECUTABLE_PATH=$(command -v google-chrome)
+  echo "✅ Found Chrome at: $PUPPETEER_EXECUTABLE_PATH"
+else
+  echo "⚠️  No Chromium/Chrome found - Puppeteer will use bundled version"
+fi
+
 # Run database migrations on startup
 if [ -n "$DATABASE_URL" ]; then
   echo "🗄️  Running database migrations..."

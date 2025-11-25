@@ -1,0 +1,14 @@
+# Nixpacks configuration for Railway deployment
+# This ensures Chromium is installed for Puppeteer
+
+[phases.setup]
+# Install Chromium and required dependencies for Puppeteer
+nixPkgs = ["...", "chromium"]
+
+[phases.install]
+cmds = [
+  "npm install"
+]
+
+[start]
+cmd = "bash railway-start.sh"

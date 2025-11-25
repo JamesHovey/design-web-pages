@@ -28,13 +28,23 @@ export async function scrapeWebsite(url: string): Promise<ScrapedData> {
   let browser;
 
   try {
+    // Determine which Chromium executable to use
+    // In Railway/Nixpacks, Chromium is installed via nix and available at /nix/store
+    // In local dev, Puppeteer uses its bundled Chromium
+    const chromiumExecutable = process.env.CHROMIUM_PATH ||
+                                process.env.PUPPETEER_EXECUTABLE_PATH ||
+                                undefined; // Let Puppeteer use default
+
     browser = await puppeteer.launch({
       headless: true,
+      executablePath: chromiumExecutable,
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
         "--disable-blink-features=AutomationControlled",
         "--disable-features=IsolateOrigins,site-per-process",
+        "--disable-dev-shm-usage", // Overcome limited resource problems
+        "--disable-gpu", // Applicable to Docker/Railway environments
       ],
     });
 
@@ -222,7 +232,15 @@ export async function scrapeWebsite(url: string): Promise<ScrapedData> {
   } catch (error) {
     // Provide more detailed error messages
     if (error instanceof Error) {
-      if (error.message.includes('net::ERR_NAME_NOT_RESOLVED')) {
+      // Browser launch errors
+      if (error.message.includes('Failed to launch') || error.message.includes('Could not find browser')) {
+        throw new Error(
+          `Puppeteer could not launch browser. This may be due to missing Chromium installation. ` +
+          `If you're seeing this in production, contact support. Error: ${error.message}`
+        );
+      }
+      // Network errors
+      else if (error.message.includes('net::ERR_NAME_NOT_RESOLVED')) {
         throw new Error(`Could not resolve domain: ${url}. Please check the URL is correct.`);
       } else if (error.message.includes('net::ERR_CONNECTION_REFUSED')) {
         throw new Error(`Connection refused by ${url}. The website may be down.`);

@@ -55,6 +55,7 @@ export async function POST(request: NextRequest) {
 
     // Step 1: Scrape the website using hybrid approach
     console.log(`Scraping website: ${validatedUrl.toString()}`);
+    console.log(`Puppeteer executable path: ${process.env.PUPPETEER_EXECUTABLE_PATH || 'default'}`);
     const scrapeResult = await scrapeWebsiteHybrid(validatedUrl.toString());
 
     // Check if scraping failed and manual upload is needed
