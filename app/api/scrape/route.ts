@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db/prisma";
-import { scrapeWebsite } from "@/lib/scraping/puppeteerService";
+import { scrapeWebsiteHybrid } from "@/lib/scraping/hybridScraper";
 import { classifySite } from "@/lib/scraping/siteClassifier";
 import { extractLogoColors } from "@/lib/colors/colorExtractor";
 
@@ -49,9 +49,34 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Step 1: Scrape the website
+    // Step 1: Scrape the website using hybrid approach
     console.log(`Scraping website: ${validatedUrl.toString()}`);
-    const scrapedData = await scrapeWebsite(validatedUrl.toString());
+    const scrapeResult = await scrapeWebsiteHybrid(validatedUrl.toString());
+
+    // Check if scraping failed and manual upload is needed
+    if (!scrapeResult.success) {
+      if (scrapeResult.needsManualUpload) {
+        return NextResponse.json(
+          {
+            error: "Website blocked automated access",
+            message: scrapeResult.error,
+            needsManualUpload: true,
+          },
+          { status: 403 }
+        );
+      } else {
+        return NextResponse.json(
+          {
+            error: "Failed to scrape website",
+            message: scrapeResult.error,
+          },
+          { status: 500 }
+        );
+      }
+    }
+
+    const scrapedData = scrapeResult.data!;
+    console.log(`[Scrape API] Scraping succeeded using method: ${scrapeResult.method}`);
 
     // Step 2: Classify site type and detect industry
     console.log("Classifying site...");

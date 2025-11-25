@@ -13,6 +13,8 @@ export default function NewProjectPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [progress, setProgress] = useState("");
+  const [needsManualUpload, setNeedsManualUpload] = useState(false);
+  const [screenshot, setScreenshot] = useState<File | null>(null);
 
   if (status === "loading") {
     return (
@@ -55,11 +57,67 @@ export default function NewProjectPage() {
     }
   };
 
+  const handleScreenshotUpload = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!screenshot) {
+      setError("Please select a screenshot to upload");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+    setProgress("Analyzing screenshot...");
+
+    try {
+      // Normalize the URL
+      const normalizedUrl = normalizeUrl(url);
+
+      // Convert screenshot to base64
+      const reader = new FileReader();
+      reader.readAsDataURL(screenshot);
+
+      await new Promise((resolve, reject) => {
+        reader.onload = resolve;
+        reader.onerror = reject;
+      });
+
+      const base64Screenshot = reader.result as string;
+
+      // Send to screenshot analysis API
+      const response = await fetch("/api/scrape/screenshot", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          url: normalizedUrl,
+          screenshot: base64Screenshot,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to analyze screenshot");
+      }
+
+      setProgress("Analysis complete! Redirecting...");
+
+      // Redirect to configuration page
+      setTimeout(() => {
+        router.push(`/projects/${data.project.id}/configure`);
+      }, 500);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+      setLoading(false);
+      setProgress("");
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     setProgress("Scraping website...");
+    setNeedsManualUpload(false);
 
     try {
       // Normalize the URL before sending
@@ -74,6 +132,15 @@ export default function NewProjectPage() {
       const data = await response.json();
 
       if (!response.ok) {
+        // Check if manual upload is needed
+        if (data.needsManualUpload) {
+          setNeedsManualUpload(true);
+          setError(data.message || "Website blocks automated access. Please upload a screenshot instead.");
+          setLoading(false);
+          setProgress("");
+          return;
+        }
+
         // Use the detailed error message from the API
         const errorMessage = data.message || data.error || "Failed to scrape website";
         throw new Error(errorMessage);
@@ -154,16 +221,76 @@ export default function NewProjectPage() {
               <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
                 <div className="font-semibold mb-1">Error</div>
                 <div className="text-sm">{error}</div>
-                {error.includes("403") && (
-                  <div className="mt-3 text-sm bg-yellow-50 border border-yellow-200 text-yellow-800 p-3 rounded">
-                    <strong>Tip:</strong> Some websites block automated access. You can:
-                    <ul className="list-disc list-inside mt-1 ml-2">
-                      <li>Try again in a few minutes</li>
-                      <li>Use a different website URL</li>
-                      <li>Contact support if this persists</li>
-                    </ul>
+              </div>
+            )}
+
+            {needsManualUpload && (
+              <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-6 space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0">
+                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                   </div>
-                )}
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-blue-900 mb-2">
+                      Upload a Screenshot Instead
+                    </h3>
+                    <p className="text-sm text-blue-800 mb-4">
+                      This website blocks automated access. No problem! Take a screenshot of the site and upload it here.
+                      Our AI will analyze the design, colors, layout, and content from your screenshot.
+                    </p>
+
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-blue-900 mb-2">
+                          Upload Screenshot (PNG, JPG, or WebP)
+                        </label>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => setScreenshot(e.target.files?.[0] || null)}
+                          className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent p-2"
+                        />
+                        {screenshot && (
+                          <p className="mt-2 text-sm text-green-700">
+                            ✓ {screenshot.name} ({(screenshot.size / 1024 / 1024).toFixed(2)} MB)
+                          </p>
+                        )}
+                      </div>
+
+                      <div className="bg-blue-100 p-3 rounded text-sm text-blue-800">
+                        <strong>Tips for best results:</strong>
+                        <ul className="list-disc list-inside mt-1 ml-2 space-y-1">
+                          <li>Capture the full homepage (scroll to include all sections)</li>
+                          <li>Use desktop view for best analysis</li>
+                          <li>Ensure text is readable and colors are accurate</li>
+                          <li>Include the header, hero section, and main content</li>
+                        </ul>
+                      </div>
+
+                      <Button
+                        onClick={handleScreenshotUpload}
+                        disabled={!screenshot || loading}
+                        className="w-full"
+                      >
+                        {loading ? "Analyzing Screenshot..." : "Analyze Screenshot & Continue"}
+                      </Button>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setNeedsManualUpload(false);
+                          setScreenshot(null);
+                          setError("");
+                        }}
+                        className="w-full text-sm text-blue-700 hover:text-blue-900 underline"
+                      >
+                        ← Try automatic scraping again
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
 
@@ -173,13 +300,15 @@ export default function NewProjectPage() {
               </div>
             )}
 
-            <Button
-              type="submit"
-              className="w-full"
-              disabled={loading}
-            >
-              {loading ? progress || "Analyzing website..." : "Analyze & Continue"}
-            </Button>
+            {!needsManualUpload && (
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={loading}
+              >
+                {loading ? progress || "Analyzing website..." : "Analyze & Continue"}
+              </Button>
+            )}
           </form>
         </div>
       </main>
