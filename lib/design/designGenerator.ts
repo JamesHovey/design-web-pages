@@ -37,7 +37,7 @@ CRITICAL HEADER DESIGN PRINCIPLES:
 5. ✅ Smart widget selection: Choose header widgets intelligently based on site type and industry
 6. ✅ Specific content: Write real menu items and contact info - NO "Lorem ipsum"
 
-${project.industryDesignGuidance ? `\nINDUSTRY-SPECIFIC DESIGN GUIDANCE FOR ${project.industry?.toUpperCase()}:\n${project.industryDesignGuidance}\n` : ''}
+${getIndustryHeaderGuidance(project.industry, project.siteType)}
 
 HEADER WIDGET SCHEMA (Elementor):
 Use ONLY these widgets for the global header:
@@ -222,6 +222,156 @@ function repairJSON(jsonString: string): string {
   });
 
   return repaired;
+}
+
+/**
+ * Get industry-specific header design guidance
+ * Provides detailed header patterns, widget selection, and design approach per industry
+ */
+function getIndustryHeaderGuidance(industry?: string, siteType?: string): string {
+  if (!industry) {
+    return `\nGENERAL HEADER DESIGN:
+- Use standard header pattern: Logo left, Navigation center/right, CTA button right
+- Include all configured widgets from globalHeaderConfig
+- Professional, clean layout appropriate for any business`;
+  }
+
+  const industryGuidance: Record<string, string> = {
+    "vehicle-transport": `
+INDUSTRY-SPECIFIC HEADER DESIGN FOR VEHICLE TRANSPORT:
+✅ Layout Pattern: Logo left, Nav menu (Services, Fleet, Tracking, Contact), Phone icon-box with "24/7 Dispatch", CTA "Get Quote"
+✅ Widget Selection: site-logo, nav-menu, icon-box (phone), button
+✅ Menu Items: ["Home", "Services", "Fleet", "Track Shipment", "Get Quote", "Contact"]
+✅ CTA Text: "Get Free Quote" or "Book Transport" (NOT "Get Started")
+✅ Icon Box: Phone with actual dispatch number prominently displayed
+✅ Colors: Blues (#003d82, #0066cc) and grays for trust and reliability
+✅ Height: 80-90px for professional appearance
+✅ Sticky: YES - users need access to contact info while scrolling`,
+
+    "restaurant": `
+INDUSTRY-SPECIFIC HEADER DESIGN FOR RESTAURANT:
+✅ Layout Pattern: Logo left, Nav menu center, Phone icon-box + CTA "Reserve Table"
+✅ Widget Selection: site-logo, nav-menu, icon-box (phone), button
+✅ Menu Items: ["Menu", "Reservations", "Our Story", "Catering", "Contact", "Order Online"]
+✅ CTA Text: "Reserve Table" or "Order Now" (NOT "Get Started")
+✅ Icon Box: Phone for reservations
+✅ Colors: Warm appetizing colors (reds #c41e3a, oranges #ff6b35, earth tones)
+✅ Height: 70-80px, elegant but not overwhelming
+✅ Sticky: YES - access to reservations while browsing menu`,
+
+    "dental-practice": `
+INDUSTRY-SPECIFIC HEADER DESIGN FOR DENTAL PRACTICE:
+✅ Layout Pattern: Logo left, Nav center, Phone icon-box + CTA "Book Appointment"
+✅ Widget Selection: site-logo, nav-menu, icon-box (phone), button
+✅ Menu Items: ["Services", "New Patients", "Insurance", "About Dr. [Name]", "Contact"]
+✅ CTA Text: "Book Appointment" or "Schedule Visit" (NOT "Get Started")
+✅ Icon Box: Phone with practice number
+✅ Colors: Calming blues (#4a90e2, #87ceeb) and clean whites for trust
+✅ Height: 75-85px, professional medical appearance
+✅ Sticky: YES - easy appointment booking access`,
+
+    "law-firm": `
+INDUSTRY-SPECIFIC HEADER DESIGN FOR LAW FIRM:
+✅ Layout Pattern: Logo left, Nav right, Phone icon-box, CTA "Free Consultation"
+✅ Widget Selection: site-logo, nav-menu, icon-box (phone), button
+✅ Menu Items: ["Practice Areas", "Attorneys", "Case Results", "Testimonials", "Contact"]
+✅ CTA Text: "Free Consultation" or "Speak to Attorney" (NOT "Get Started")
+✅ Icon Box: Phone with office number
+✅ Colors: Traditional authoritative (navy #1a365d, burgundy #722f37, gold accents)
+✅ Height: 85-95px, substantial and professional
+✅ Sticky: YES - prominent contact access`,
+
+    "real-estate": `
+INDUSTRY-SPECIFIC HEADER DESIGN FOR REAL ESTATE:
+✅ Layout Pattern: Logo left, Nav center, Search icon, CTA "View Listings"
+✅ Widget Selection: site-logo, nav-menu, search, button
+✅ Menu Items: ["Buy", "Sell", "Rent", "Agents", "Neighborhoods", "Contact"]
+✅ CTA Text: "View Listings" or "Schedule Showing" (NOT "Get Started")
+✅ Search: Property search icon prominently displayed
+✅ Colors: Professional modern (blues #2c5aa0, grays #6b7280, clean whites)
+✅ Height: 75-85px, modern professional
+✅ Sticky: YES - search and contact access while browsing`,
+
+    "fitness": `
+INDUSTRY-SPECIFIC HEADER DESIGN FOR FITNESS GYM:
+✅ Layout Pattern: Logo left, Nav center, CTA "Start Free Trial"
+✅ Widget Selection: site-logo, nav-menu, button
+✅ Menu Items: ["Classes", "Trainers", "Memberships", "Schedule", "Join Now"]
+✅ CTA Text: "Start Free Trial" or "Join Now" (NOT "Get Started")
+✅ Colors: Energetic bold (red #e53e3e, orange #dd6b20, black #1a202c)
+✅ Height: 70-80px, dynamic and bold
+✅ Sticky: YES - easy class scheduling access`,
+
+    "beauty-salon": `
+INDUSTRY-SPECIFIC HEADER DESIGN FOR BEAUTY SALON/SPA:
+✅ Layout Pattern: Logo center or left, Nav right, Phone icon-box, CTA "Book Now"
+✅ Widget Selection: site-logo, nav-menu, icon-box (phone), button
+✅ Menu Items: ["Services", "Stylists", "Gallery", "Products", "Book Online"]
+✅ CTA Text: "Book Appointment" or "Book Now" (NOT "Get Started")
+✅ Icon Box: Phone for appointments
+✅ Colors: Elegant soft (rose gold #b76e79, soft pink #f7d7dc, cream #faf8f3)
+✅ Height: 70-80px, elegant and refined
+✅ Sticky: Optional - depends on aesthetic preference`,
+
+    "home-services": `
+INDUSTRY-SPECIFIC HEADER DESIGN FOR HOME SERVICES (Plumbing/HVAC/Electric):
+✅ Layout Pattern: Logo left, Nav center, Phone icon-box (prominent), CTA "Emergency Service"
+✅ Widget Selection: site-logo, nav-menu, icon-box (phone), button
+✅ Menu Items: ["Services", "Emergency", "Service Areas", "About", "Contact"]
+✅ CTA Text: "Call Now" or "24/7 Emergency" (NOT "Get Started")
+✅ Icon Box: Large phone number for emergency calls
+✅ Colors: Trust colors (blue #2563eb, orange #f97316 for urgency)
+✅ Height: 80-90px, phone number needs prominence
+✅ Sticky: YES - emergency contact must be always visible`,
+
+    "photography": `
+INDUSTRY-SPECIFIC HEADER DESIGN FOR PHOTOGRAPHY:
+✅ Layout Pattern: Minimal - Logo left or center, minimal nav, CTA "View Portfolio"
+✅ Widget Selection: site-logo, nav-menu (minimal), button
+✅ Menu Items: ["Portfolio", "Services", "About", "Contact"] - KEEP IT MINIMAL
+✅ CTA Text: "View Portfolio" or "Book Session" (NOT "Get Started")
+✅ Colors: Minimalist (black #000000, white #ffffff, subtle accent)
+✅ Height: 60-70px, minimal to showcase photography
+✅ Sticky: Optional - depends on gallery scroll experience`,
+
+    "insurance": `
+INDUSTRY-SPECIFIC HEADER DESIGN FOR INSURANCE:
+✅ Layout Pattern: Logo left, Nav center, Phone icon-box, CTA "Get Quote"
+✅ Widget Selection: site-logo, nav-menu, icon-box (phone), button
+✅ Menu Items: ["Insurance Types", "Get Quote", "Claims", "About", "Contact"]
+✅ CTA Text: "Get Free Quote" or "Compare Plans" (NOT "Get Started")
+✅ Icon Box: Phone for agent contact
+✅ Colors: Reassuring trust (blue #1e40af, green #059669)
+✅ Height: 80-90px, professional financial services
+✅ Sticky: YES - quote access while browsing`,
+
+    "ecommerce": `
+INDUSTRY-SPECIFIC HEADER DESIGN FOR E-COMMERCE:
+✅ Layout Pattern: Logo left, Nav center, Search, Cart icon right
+✅ Widget Selection: site-logo, nav-menu, search, cart-icon
+✅ Menu Items: Based on product categories from site
+✅ Search: Input box or icon - REQUIRED for ecommerce
+✅ Cart Icon: REQUIRED - show item count
+✅ Colors: Brand-appropriate, clear visual hierarchy
+✅ Height: 70-80px, functional and clean
+✅ Sticky: YES - cart and search always accessible`,
+
+    "leadgen": `
+INDUSTRY-SPECIFIC HEADER DESIGN FOR LEAD GENERATION:
+✅ Layout Pattern: Logo left, Nav center/right, Phone icon-box, strong CTA
+✅ Widget Selection: site-logo, nav-menu, icon-box (phone or email), button
+✅ Menu Items: Service-focused navigation
+✅ CTA Text: Industry-specific action (e.g., "Free Consultation", "Get Quote")
+✅ Icon Box: Primary contact method (phone or email)
+✅ Colors: Trust-building, industry-appropriate
+✅ Height: 75-85px, professional
+✅ Sticky: YES - lead capture access while scrolling`,
+  };
+
+  // Use industry-specific guidance or fall back to site-type guidance
+  const guidance = industryGuidance[industry] || industryGuidance[siteType || "leadgen"] || industryGuidance["leadgen"];
+
+  return guidance;
 }
 
 /**
