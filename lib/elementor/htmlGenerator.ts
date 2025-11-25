@@ -788,7 +788,7 @@ export function generateAnimatedHeadlineWidget(widget: any): string {
 }
 
 /**
- * Generate Site Logo Widget HTML (Header)
+ * Generate Site Logo Widget HTML (Header) - PROFESSIONAL PATTERN
  */
 export function generateSiteLogoWidget(widget: any): string {
   const id = widget.id || generateElementorId();
@@ -798,14 +798,24 @@ export function generateSiteLogoWidget(widget: any): string {
   const imageUrl = widget.imageUrl || null;
 
   const innerHTML = imageUrl
-    ? `<img src="${imageUrl}" alt="${alt}" width="${width}" height="${height}" class="elementor-site-logo" />`
-    : `<div class="elementor-site-logo-placeholder" style="width: ${width}px; height: ${height}px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-weight: bold; font-size: 24px; border-radius: 8px;">${alt.split(' ')[0] || 'LOGO'}</div>`;
+    ? `<a class="the7-logo-wrap img-css-resize-wrapper" href="/" style="display: inline-block;">
+        <img src="${imageUrl}" alt="${alt}" width="${width}" height="${height}" class="elementor-site-logo" style="max-width: 100%; height: auto;" />
+      </a>`
+    : `<a class="the7-logo-wrap img-css-resize-wrapper" href="/" style="display: inline-block;">
+        <div class="elementor-site-logo-placeholder" style="width: ${width}px; height: ${height}px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--primary-color, #667eea) 0%, var(--secondary-color, #764ba2) 100%); color: white; font-weight: bold; font-size: 24px; border-radius: var(--radius-sm); box-shadow: var(--professional-shadow);">
+          ${alt.split(' ')[0] || 'LOGO'}
+        </div>
+      </a>`;
 
-  return generateWidgetWrapper("site-logo", id, widget.settings, innerHTML);
+  return `<div class="elementor-element elementor-element-${id} content-align-center sticky-logo-style-y sticky-logo-y elementor-widget elementor-widget-the7-logo-widget" data-id="${id}" data-element_type="widget" data-widget_type="the7-logo-widget.default">
+    <div class="elementor-widget-container">
+      ${innerHTML}
+    </div>
+  </div>`;
 }
 
 /**
- * Generate Nav Menu Widget HTML (Header)
+ * Generate Nav Menu Widget HTML (Header) - PROFESSIONAL PATTERN
  */
 export function generateNavMenuWidget(widget: any): string {
   const id = widget.id || generateElementorId();
@@ -813,19 +823,23 @@ export function generateNavMenuWidget(widget: any): string {
   const style = widget.style || "horizontal";
   const alignment = widget.alignment || "center";
 
-  const innerHTML = `<nav class="elementor-nav-menu elementor-nav-menu-${style} elementor-nav-menu-${alignment}">
-    <ul class="elementor-nav-menu-list">
+  const innerHTML = `<nav class="dt-nav-menu-horizontal--main dt-nav-menu-horizontal__container justify-content-${alignment === 'center' ? 'center' : alignment === 'right' ? 'end' : 'start'}">
+    <ul class="dt-nav-menu-horizontal d-flex flex-row justify-content-${alignment === 'center' ? 'center' : alignment === 'right' ? 'end' : 'start'}" style="list-style: none; margin: 0; padding: 0; display: flex; gap: var(--spacing-md); align-items: center;">
       ${items.map((item: any, i: number) => `
-        <li class="elementor-nav-menu-item ${i === 0 ? 'elementor-active' : ''}">
-          <a href="${typeof item === 'object' ? (item.link || '#') : '#'}" class="elementor-nav-menu-link">
-            ${typeof item === 'object' ? item.text : item}
+        <li class="menu-item ${i === 0 ? 'current-menu-item' : ''}" style="position: relative;">
+          <a href="${typeof item === 'object' ? (item.link || '#') : '#'}" class="elementor-nav-menu-link" style="display: block; padding: var(--spacing-sm) var(--spacing-md); text-decoration: none; color: #333; font-weight: 500; font-size: 16px; transition: var(--professional-transition); border-radius: var(--radius-sm);">
+            <span class="menu-item-text">${typeof item === 'object' ? item.text : item}</span>
           </a>
         </li>
       `).join('')}
     </ul>
   </nav>`;
 
-  return generateWidgetWrapper("nav-menu", id, widget.settings, innerHTML);
+  return `<div class="elementor-element elementor-element-${id} sub-icon_align-side elementor-widget-width-auto elementor-widget elementor-widget-the7_horizontal-menu" data-id="${id}" data-element_type="widget" data-widget_type="the7_horizontal-menu.default">
+    <div class="elementor-widget-container">
+      ${innerHTML}
+    </div>
+  </div>`;
 }
 
 /**
@@ -882,22 +896,30 @@ export function generateCartIconWidget(widget: any): string {
 }
 
 /**
- * Generate Global Header HTML
+ * Generate Global Header HTML - PROFESSIONAL ELEMENTOR PATTERN
+ * Matches the exact structure and classes used in professional Elementor themes
  */
 export function generateGlobalHeaderHTML(headerConfig: any, colors?: any): string {
-  const id = headerConfig.id || generateElementorId();
+  const id = headerConfig.id || Math.floor(Math.random() * 10000);
+  const elementId = `element-${generateElementorId()}`;
   const layout = headerConfig.layout || "standard";
   const height = headerConfig.height || 80;
   const backgroundColor = headerConfig.backgroundColor || colors?.colors?.[0] || "#ffffff";
   const sticky = headerConfig.sticky !== false;
   const widgets = headerConfig.widgets || [];
 
-  const widgetsHTML = widgets.map((widget: any) => {
+  // Separate widgets by position for proper layout
+  const logoWidget = widgets.find((w: any) => w.type === "site-logo");
+  const navWidget = widgets.find((w: any) => w.type === "nav-menu");
+  const rightWidgets = widgets.filter((w: any) =>
+    w.type !== "site-logo" && w.type !== "nav-menu"
+  );
+
+  // Generate widget HTML
+  const logoHTML = logoWidget ? generateSiteLogoWidget(logoWidget) : '';
+  const navHTML = navWidget ? generateNavMenuWidget(navWidget) : '';
+  const rightWidgetsHTML = rightWidgets.map((widget: any) => {
     switch (widget.type) {
-      case "site-logo":
-        return generateSiteLogoWidget(widget);
-      case "nav-menu":
-        return generateNavMenuWidget(widget);
       case "search":
         return generateSearchWidget(widget);
       case "icon-box":
@@ -907,16 +929,27 @@ export function generateGlobalHeaderHTML(headerConfig: any, colors?: any): strin
       case "cart-icon":
         return generateCartIconWidget(widget);
       default:
-        return `<!-- Unknown header widget: ${widget.type} -->`;
+        return `<!-- Unknown widget: ${widget.type} -->`;
     }
-  }).join('\n      ');
+  }).join('\n        ');
 
-  return `<!-- Global Header -->
-  <header id="site-header" class="elementor-location-header ${sticky ? 'elementor-sticky' : ''}" data-id="${id}" style="background-color: ${backgroundColor}; min-height: ${height}px;">
-    <div class="elementor-header-container" style="display: flex; align-items: center; justify-content: space-between; padding: 0 var(--spacing-lg); height: ${height}px; max-width: 1200px; margin: 0 auto;">
-      ${widgetsHTML}
+  // Build header with professional Elementor structure
+  return `<!-- Global Header - Professional Elementor Pattern -->
+<header data-elementor-type="header" data-elementor-id="${id}" class="elementor elementor-${id} elementor-location-header" data-elementor-post-type="elementor_library">
+  <div class="elementor-element ${elementId} ${sticky ? 'the7-e-sticky-row-yes the7-e-sticky-effect-yes the7-e-sticky-overlap-yes the7-e-sticky-scrollup-yes' : ''} e-flex e-con-boxed e-con e-parent" data-id="${elementId}" data-element_type="container" ${sticky ? `data-settings='{"the7_sticky_row":"yes","the7_sticky_effects":"yes","the7_sticky_row_devices":["desktop","tablet","mobile"]}'` : ''} style="background-color: ${backgroundColor};">
+    <div class="e-con-inner" style="min-height: ${height}px; display: flex; align-items: center; justify-content: space-between; padding: 0 var(--spacing-lg);">
+      ${logoHTML}
+
+      <div class="elementor-element elementor-element-nav-${generateElementorId()} e-con-full e-flex e-con e-child" data-element_type="container">
+        ${navHTML}
+      </div>
+
+      <div class="elementor-element elementor-element-actions-${generateElementorId()} e-con-full e-flex e-con e-child" data-element_type="container" style="display: flex; align-items: center; gap: var(--spacing-md);">
+        ${rightWidgetsHTML}
+      </div>
     </div>
-  </header>`;
+  </div>
+</header>`;
 }
 
 /**
