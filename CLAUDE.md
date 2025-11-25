@@ -4,6 +4,8 @@
 
 **IMPORTANT: After every significant change, update the version number.**
 
+**🔒 AUTOMATED ENFORCEMENT:** A pre-commit hook automatically enforces version updates. If you commit significant changes without updating the version, the commit will be blocked with a clear error message.
+
 ### Version Update Process
 
 1. **Update the version in:** `/components/VersionIndicator.tsx`
@@ -12,6 +14,16 @@
    - **MAJOR** (1.x.x): Breaking changes, major feature overhauls
    - **MINOR** (x.7.x): New features, significant improvements
    - **PATCH** (x.x.1): Bug fixes, small improvements
+
+### Pre-Commit Hook
+
+Location: `.git/hooks/pre-commit`
+
+**What it does:**
+- Detects changes to significant files (`/app`, `/lib`, `/components`, database schema, etc.)
+- Blocks commits if `VersionIndicator.tsx` wasn't also updated
+- Shows a clear error message explaining what needs to be done
+- Allows commits to proceed when version is properly updated
 
 ### Examples of Changes That Require Version Updates
 
