@@ -60,9 +60,17 @@ Version X.Y.Z includes:
 
 ## Current Version
 
-**v1.8.0** (November 24, 2025)
+**v1.13.0** (November 25, 2025)
 
 ### Changelog
+
+**v1.13.0** (2025-11-25)
+- **AUTOMATIC URL DETECTION**: Enter a URL and detection starts automatically (no button click needed)
+- Real-time progress animation showing detection stages
+- Visual indicators for: Content extraction, Site type, Industry, Logo colors
+- Fallback industry detection when AI classification fails
+- Improved error logging for debugging industry detection
+- Enhanced UX with 800ms debounce for URL validation
 
 **v1.8.0** (2025-11-24)
 - **INCREMENTAL APPROACH**: Focus on Global Headers first before body content

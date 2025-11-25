@@ -72,6 +72,8 @@ Return ONLY valid JSON with this structure:
 
   try {
     const client = getAnthropicClient();
+    console.log(`[Industry Classifier] Analyzing URL: ${url}`);
+
     const message = await client.messages.create({
       model: "claude-sonnet-4-5-20250929",
       max_tokens: 400,
@@ -86,16 +88,27 @@ Return ONLY valid JSON with this structure:
 
     const response = message.content[0];
     if (response.type === "text") {
+      console.log(`[Industry Classifier] AI Response: ${response.text.substring(0, 200)}...`);
+
       const result = JSON.parse(response.text.trim());
+      const industry = result.industry?.toLowerCase() || "general-business";
+      const designGuidance = result.designGuidance || "Modern, professional aesthetic";
+
+      console.log(`[Industry Classifier] SUCCESS - Industry: ${industry}`);
+
       return {
-        industry: result.industry?.toLowerCase() || "general-business",
-        designGuidance: result.designGuidance || "Modern, professional aesthetic",
+        industry,
+        designGuidance,
       };
     }
 
+    console.warn("[Industry Classifier] FAILED - Response was not text type");
     return undefined;
   } catch (error) {
-    console.error("Industry classification error:", error);
+    console.error("[Industry Classifier] ERROR:", error instanceof Error ? error.message : String(error));
+    if (error instanceof Error && error.stack) {
+      console.error("[Industry Classifier] Stack:", error.stack);
+    }
     return undefined;
   }
 }

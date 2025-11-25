@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function NewProjectPage() {
   const { data: session, status } = useSession();
@@ -15,6 +15,134 @@ export default function NewProjectPage() {
   const [progress, setProgress] = useState("");
   const [needsManualUpload, setNeedsManualUpload] = useState(false);
   const [screenshot, setScreenshot] = useState<File | null>(null);
+
+  // Auto-detection states
+  const [isValidUrl, setIsValidUrl] = useState(false);
+  const [detectionStatus, setDetectionStatus] = useState({
+    scraping: false,
+    siteType: false,
+    industry: false,
+    logoColors: false,
+  });
+  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Auto-detect when valid URL is entered
+  useEffect(() => {
+    // Clear previous timer
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+
+    // Reset validation state
+    setIsValidUrl(false);
+
+    // Don't process if URL is empty or already loading
+    if (!url.trim() || loading) {
+      return;
+    }
+
+    // Debounce URL validation (wait 800ms after user stops typing)
+    debounceTimerRef.current = setTimeout(() => {
+      validateAndStartDetection();
+    }, 800);
+
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
+  }, [url]);
+
+  const validateAndStartDetection = () => {
+    const normalizedUrl = normalizeUrl(url);
+
+    // Validate URL
+    try {
+      const urlObj = new URL(normalizedUrl);
+      if (['http:', 'https:'].includes(urlObj.protocol)) {
+        setIsValidUrl(true);
+        // Automatically start detection
+        startAutoDetection(normalizedUrl);
+      }
+    } catch (e) {
+      // Invalid URL, do nothing
+      setIsValidUrl(false);
+    }
+  };
+
+  const startAutoDetection = async (normalizedUrl: string) => {
+    setLoading(true);
+    setError("");
+    setProgress("Analyzing website...");
+    setNeedsManualUpload(false);
+
+    // Reset detection status
+    setDetectionStatus({
+      scraping: false,
+      siteType: false,
+      industry: false,
+      logoColors: false,
+    });
+
+    try {
+      // Start scraping animation
+      setTimeout(() => {
+        setDetectionStatus(prev => ({ ...prev, scraping: true }));
+      }, 100);
+
+      const response = await fetch("/api/scrape", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: normalizedUrl }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Check if manual upload is needed
+        if (data.needsManualUpload) {
+          setNeedsManualUpload(true);
+          setError(data.message || "Website blocks automated access. Please upload a screenshot instead.");
+          setLoading(false);
+          setProgress("");
+          return;
+        }
+
+        const errorMessage = data.message || data.error || "Failed to scrape website";
+        throw new Error(errorMessage);
+      }
+
+      // Simulate progressive detection updates
+      setTimeout(() => {
+        setDetectionStatus(prev => ({ ...prev, siteType: true }));
+      }, 300);
+
+      setTimeout(() => {
+        setDetectionStatus(prev => ({ ...prev, industry: true }));
+      }, 600);
+
+      setTimeout(() => {
+        setDetectionStatus(prev => ({ ...prev, logoColors: true }));
+      }, 900);
+
+      setProgress("Detection complete! Redirecting...");
+
+      // Redirect to configuration page
+      setTimeout(() => {
+        router.push(`/projects/${data.project.id}/configure`);
+      }, 1200);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+      setLoading(false);
+      setProgress("");
+      setDetectionStatus({
+        scraping: false,
+        siteType: false,
+        industry: false,
+        logoColors: false,
+      });
+    }
+  };
 
   if (status === "loading") {
     return (
@@ -114,49 +242,7 @@ export default function NewProjectPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setError("");
-    setProgress("Scraping website...");
-    setNeedsManualUpload(false);
-
-    try {
-      // Normalize the URL before sending
-      const normalizedUrl = normalizeUrl(url);
-
-      const response = await fetch("/api/scrape", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: normalizedUrl }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        // Check if manual upload is needed
-        if (data.needsManualUpload) {
-          setNeedsManualUpload(true);
-          setError(data.message || "Website blocks automated access. Please upload a screenshot instead.");
-          setLoading(false);
-          setProgress("");
-          return;
-        }
-
-        // Use the detailed error message from the API
-        const errorMessage = data.message || data.error || "Failed to scrape website";
-        throw new Error(errorMessage);
-      }
-
-      setProgress("Analysis complete! Redirecting...");
-
-      // Redirect to configuration page
-      setTimeout(() => {
-        router.push(`/projects/${data.project.id}/configure`);
-      }, 500);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
-      setLoading(false);
-      setProgress("");
-    }
+    // Auto-detection handles everything, so form submission is disabled
   };
 
   return (
@@ -204,18 +290,109 @@ export default function NewProjectPage() {
               required
             />
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h3 className="font-medium text-blue-900 mb-2">
-                What happens next?
-              </h3>
-              <ul className="text-sm text-blue-800 space-y-1 list-disc list-inside">
-                <li>Automatic content and structure extraction</li>
-                <li>Site classification (E-commerce vs Lead Generation)</li>
-                <li>Logo color extraction</li>
-                <li>Competitor research and analysis</li>
-                <li>Industry detection</li>
-              </ul>
-            </div>
+            {/* Detection Progress Indicator */}
+            {loading && (
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-6 space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="flex-shrink-0">
+                    <svg className="animate-spin h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-blue-900">
+                      Analyzing Website
+                    </h3>
+                    <p className="text-sm text-blue-700">
+                      Automatic detection in progress...
+                    </p>
+                  </div>
+                </div>
+
+                {/* Detection Steps */}
+                <div className="space-y-3 pl-11">
+                  {/* Scraping */}
+                  <div className="flex items-center space-x-3">
+                    {detectionStatus.scraping ? (
+                      <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ) : (
+                      <div className="w-5 h-5 border-2 border-blue-300 border-t-blue-600 rounded-full animate-spin flex-shrink-0"></div>
+                    )}
+                    <span className={`text-sm font-medium ${detectionStatus.scraping ? 'text-green-700' : 'text-blue-700'}`}>
+                      {detectionStatus.scraping ? 'Content extracted' : 'Extracting content...'}
+                    </span>
+                  </div>
+
+                  {/* Site Type */}
+                  <div className="flex items-center space-x-3">
+                    {detectionStatus.siteType ? (
+                      <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ) : detectionStatus.scraping ? (
+                      <div className="w-5 h-5 border-2 border-blue-300 border-t-blue-600 rounded-full animate-spin flex-shrink-0"></div>
+                    ) : (
+                      <div className="w-5 h-5 border-2 border-gray-300 rounded-full flex-shrink-0"></div>
+                    )}
+                    <span className={`text-sm font-medium ${detectionStatus.siteType ? 'text-green-700' : detectionStatus.scraping ? 'text-blue-700' : 'text-gray-500'}`}>
+                      {detectionStatus.siteType ? 'Site type detected' : 'Detecting site type...'}
+                    </span>
+                  </div>
+
+                  {/* Industry */}
+                  <div className="flex items-center space-x-3">
+                    {detectionStatus.industry ? (
+                      <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ) : detectionStatus.siteType ? (
+                      <div className="w-5 h-5 border-2 border-blue-300 border-t-blue-600 rounded-full animate-spin flex-shrink-0"></div>
+                    ) : (
+                      <div className="w-5 h-5 border-2 border-gray-300 rounded-full flex-shrink-0"></div>
+                    )}
+                    <span className={`text-sm font-medium ${detectionStatus.industry ? 'text-green-700' : detectionStatus.siteType ? 'text-blue-700' : 'text-gray-500'}`}>
+                      {detectionStatus.industry ? 'Industry identified' : 'Identifying industry...'}
+                    </span>
+                  </div>
+
+                  {/* Logo Colors */}
+                  <div className="flex items-center space-x-3">
+                    {detectionStatus.logoColors ? (
+                      <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ) : detectionStatus.industry ? (
+                      <div className="w-5 h-5 border-2 border-blue-300 border-t-blue-600 rounded-full animate-spin flex-shrink-0"></div>
+                    ) : (
+                      <div className="w-5 h-5 border-2 border-gray-300 rounded-full flex-shrink-0"></div>
+                    )}
+                    <span className={`text-sm font-medium ${detectionStatus.logoColors ? 'text-green-700' : detectionStatus.industry ? 'text-blue-700' : 'text-gray-500'}`}>
+                      {detectionStatus.logoColors ? 'Logo colors extracted' : 'Extracting logo colors...'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {!loading && !error && (
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <h3 className="font-medium text-blue-900 mb-2">
+                  What happens automatically?
+                </h3>
+                <ul className="text-sm text-blue-800 space-y-1 list-disc list-inside">
+                  <li>Automatic content and structure extraction</li>
+                  <li>Site classification (E-commerce vs Lead Generation)</li>
+                  <li>Industry detection using AI</li>
+                  <li>Logo color extraction</li>
+                </ul>
+                <p className="text-xs text-blue-700 mt-3 font-medium">
+                  💡 Just enter a valid URL above - detection starts automatically!
+                </p>
+              </div>
+            )}
 
             {error && (
               <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
@@ -294,20 +471,10 @@ export default function NewProjectPage() {
               </div>
             )}
 
-            {progress && (
+            {progress && !loading && (
               <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm">
                 {progress}
               </div>
-            )}
-
-            {!needsManualUpload && (
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={loading}
-              >
-                {loading ? progress || "Analyzing website..." : "Analyze & Continue"}
-              </Button>
             )}
           </form>
         </div>
