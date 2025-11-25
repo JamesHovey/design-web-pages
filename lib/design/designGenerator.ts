@@ -1,4 +1,6 @@
 import type { Project } from "@prisma/client";
+import * as fs from "fs";
+import * as path from "path";
 
 export interface DesignVariation {
   name: "Conservative" | "Balanced" | "Bold";
@@ -24,15 +26,26 @@ export async function generateDesignVariations(
 ): Promise<DesignVariation[]> {
   const systemPrompt = `You are an expert website designer creating PROFESSIONAL, PRODUCTION-GRADE GLOBAL HEADERS for Elementor websites.
 
+🖼️ PROFESSIONAL REFERENCES PROVIDED:
+You will be shown 10 professional WordPress/Elementor header screenshots as visual examples.
+Study these carefully to understand:
+- Professional layout patterns (logo left, nav center/right, CTA placement)
+- Widget arrangements (search, cart, phone icons, buttons)
+- Visual hierarchy and spacing
+- Color schemes and contrast
+- Professional vs. amateur design patterns
+- Two-row headers (utility bar + main nav)
+- Contact prominence (phone numbers, CTAs)
+
 CURRENT FOCUS: GLOBAL HEADER ONLY
 - We are building incrementally - headers FIRST, then body sections later
 - Generate ONLY the global header structure
 - No body content, no hero sections, no features - JUST the header
 
 CRITICAL HEADER DESIGN PRINCIPLES:
-1. ✅ Professional styling: Match the quality of professional Elementor themes (like ThemeForest)
+1. ✅ Professional styling: Match the quality shown in the reference screenshots
 2. ✅ Industry-appropriate: ${project.industry || "general"} sites need specific visual language
-3. ✅ Strategic layout: Logo placement, navigation hierarchy, CTA visibility
+3. ✅ Strategic layout: Logo placement, navigation hierarchy, CTA visibility (as seen in examples)
 4. ✅ Professional patterns: Use 8px spacing grid, subtle shadows, smooth transitions
 5. ✅ Smart widget selection: Choose header widgets intelligently based on site type and industry
 6. ✅ Specific content: Write real menu items and contact info - NO "Lorem ipsum"
@@ -196,6 +209,23 @@ IMPORTANT:
 - Each header must be DISTINCTLY different in layout and style`;
 
   const client = getAnthropicClient();
+
+  // Load professional header screenshot references
+  const headerScreenshots = loadHeaderScreenshots();
+
+  // Construct multi-modal message content with images + text
+  const messageContent: Array<any> = [
+    {
+      type: "text",
+      text: "Here are 10 professional WordPress/Elementor header examples to reference. Study these carefully for professional design patterns, layouts, widget usage, spacing, and visual hierarchy:",
+    },
+    ...headerScreenshots,
+    {
+      type: "text",
+      text: userPrompt,
+    },
+  ];
+
   const message = await client.messages.create({
     model: "claude-sonnet-4-5-20250929",
     max_tokens: 16384, // Increased from 8192 to prevent cutoff
@@ -203,7 +233,7 @@ IMPORTANT:
     messages: [
       {
         role: "user",
-        content: userPrompt,
+        content: messageContent,
       },
     ],
   });
@@ -414,6 +444,51 @@ INDUSTRY-SPECIFIC HEADER DESIGN FOR LEAD GENERATION:
   const guidance = industryGuidance[industry] || industryGuidance[siteType || "leadgen"] || industryGuidance["leadgen"];
 
   return guidance;
+}
+
+/**
+ * Load professional header screenshot references
+ * Returns a curated selection of 10 professional Elementor headers as base64 images
+ */
+function loadHeaderScreenshots(): Array<{ type: "image"; source: { type: "base64"; media_type: string; data: string } }> {
+  const screenshotDir = path.join(process.cwd(), "public", "reference-headers");
+
+  // Curated selection of 10 representative professional headers
+  // Selected for diversity: various industries, layouts, and styles
+  const selectedScreenshots = [
+    "s1.png",   // Dark sophisticated header
+    "s5.png",   // Orange branded header with prominent phone
+    "s12.png",  // Two-row header with dual phone numbers
+    "s20.png",  // Two-row utility bar pattern
+    "s22.png",  // Purple/dark top bar with white main nav
+    "s30.png",  // Clean white professional header
+    "s45.png",  // Two-row with consultation CTA
+    "s50.png",  // Announcement bar example
+    "s55.png",  // Centered logo variation
+    "s59.png",  // Modern e-commerce header
+  ];
+
+  const imageBlocks: Array<{ type: "image"; source: { type: "base64"; media_type: string; data: string } }> = [];
+
+  for (const filename of selectedScreenshots) {
+    const filepath = path.join(screenshotDir, filename);
+
+    if (fs.existsSync(filepath)) {
+      const imageBuffer = fs.readFileSync(filepath);
+      const base64Image = imageBuffer.toString("base64");
+
+      imageBlocks.push({
+        type: "image",
+        source: {
+          type: "base64",
+          media_type: "image/png",
+          data: base64Image,
+        },
+      });
+    }
+  }
+
+  return imageBlocks;
 }
 
 /**
