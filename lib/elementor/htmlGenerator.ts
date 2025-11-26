@@ -828,6 +828,85 @@ export function generateAnimatedHeadlineWidget(widget: any): string {
 }
 
 /**
+ * Generate Blockquote Widget HTML
+ */
+export function generateBlockquoteWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const content = widget.content || widget.settings?.blockquote_content || "Inspirational quote goes here.";
+  const author = widget.author || widget.settings?.author_name || "";
+  const position = widget.position || widget.settings?.author_title || "";
+  const alignment = widget.settings?.blockquote_alignment || "left";
+
+  const innerHTML = `<blockquote class="elementor-blockquote" style="text-align: ${alignment};">
+    <p class="elementor-blockquote__content">${content}</p>
+    ${author ? `
+      <footer class="elementor-blockquote__footer">
+        <cite class="elementor-blockquote__author">
+          ${author}${position ? `, <span class="elementor-blockquote__author-title">${position}</span>` : ''}
+        </cite>
+      </footer>
+    ` : ''}
+  </blockquote>`;
+
+  return generateWidgetWrapper("blockquote", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Price List Widget HTML (Pro)
+ */
+export function generatePriceListWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const items = widget.items || widget.settings?.price_list || [
+    { title: "Service 1", price: "$99", description: "Service description" },
+    { title: "Service 2", price: "$149", description: "Service description" },
+    { title: "Service 3", price: "$199", description: "Service description" }
+  ];
+
+  const innerHTML = `<ul class="elementor-price-list">
+    ${items.map((item: any) => `
+      <li class="elementor-price-list-item">
+        <div class="elementor-price-list-header">
+          <span class="elementor-price-list-title">${item.title || item.name || "Item"}</span>
+          <span class="elementor-price-list-separator"></span>
+          <span class="elementor-price-list-price">${item.price || "$0"}</span>
+        </div>
+        ${item.description ? `
+          <p class="elementor-price-list-description">${item.description}</p>
+        ` : ''}
+      </li>
+    `).join('')}
+  </ul>`;
+
+  return generateWidgetWrapper("price-list", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Shortcode Widget HTML
+ */
+export function generateShortcodeWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const shortcode = widget.shortcode || widget.settings?.shortcode || "[shortcode]";
+
+  const innerHTML = `<div class="elementor-shortcode">
+    ${shortcode}
+  </div>`;
+
+  return generateWidgetWrapper("shortcode", id, widget.settings, innerHTML);
+}
+
+/**
+ * Generate Menu Anchor Widget HTML
+ */
+export function generateMenuAnchorWidget(widget: any): string {
+  const id = widget.id || generateElementorId();
+  const anchorId = widget.anchorId || widget.settings?.anchor_id || id;
+
+  const innerHTML = `<div class="elementor-menu-anchor" id="${anchorId}"></div>`;
+
+  return generateWidgetWrapper("menu-anchor", id, widget.settings, innerHTML);
+}
+
+/**
  * Generate Site Logo Widget HTML (Header) - PROFESSIONAL PATTERN
  */
 export function generateSiteLogoWidget(widget: any): string {
@@ -1078,6 +1157,14 @@ export function generateWidgetHTML(widget: any, mediaAssets?: any[], project?: a
       return generateCountdownWidget(widget);
     case "animated-headline":
       return generateAnimatedHeadlineWidget(widget);
+    case "blockquote":
+      return generateBlockquoteWidget(widget);
+    case "price-list":
+      return generatePriceListWidget(widget);
+    case "shortcode":
+      return generateShortcodeWidget(widget);
+    case "menu-anchor":
+      return generateMenuAnchorWidget(widget);
     case "site-logo":
       return generateSiteLogoWidget(widget);
     case "nav-menu":

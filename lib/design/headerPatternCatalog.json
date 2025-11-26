@@ -1,0 +1,1230 @@
+{
+  "version": "1.0.0",
+  "description": "Comprehensive catalog of 54 professional header patterns for AI-driven design generation",
+  "patterns": [
+    {
+      "id": "header1",
+      "name": "Vibrant Gradient Modern",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "linear-gradient(90deg, #FF6B9D 0%, #C06C84 50%, #6C5B7B 100%)",
+        "style": "gradient-vibrant",
+        "textColor": "white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "ctaPosition": "far-right"
+      },
+      "widgets": ["logo", "nav", "button"],
+      "bestFor": {
+        "industries": ["creative", "events", "entertainment", "marketing", "design"],
+        "siteTypes": ["leadgen", "portfolio"],
+        "vibe": "bold, modern, creative"
+      }
+    },
+    {
+      "id": "header2",
+      "name": "Corporate Two-Tier Contact",
+      "structure": "two-row-utility",
+      "complexity": "moderate",
+      "colorScheme": {
+        "utilityBar": "#f8f9fa",
+        "mainHeader": "white",
+        "style": "clean-corporate",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "utilityContent": ["phone", "email", "search"]
+      },
+      "widgets": ["utilityBar", "phone", "email", "search", "logo", "nav", "userIcon", "cartIcon"],
+      "bestFor": {
+        "industries": ["business", "consulting", "professional-services", "b2b"],
+        "siteTypes": ["leadgen", "ecommerce"],
+        "vibe": "professional, accessible, service-oriented"
+      }
+    },
+    {
+      "id": "header3",
+      "name": "Minimalist Hamburger",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "rgba(0,0,0,0.3)",
+        "style": "overlay-dark",
+        "textColor": "white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "hidden",
+        "hamburgerMenu": true
+      },
+      "widgets": ["logo", "hamburgerMenu"],
+      "bestFor": {
+        "industries": ["technology", "mobile-first", "creative"],
+        "siteTypes": ["portfolio", "leadgen"],
+        "vibe": "modern, mobile-friendly, minimal"
+      }
+    },
+    {
+      "id": "header4",
+      "name": "Consulting Professional",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "white",
+        "style": "clean-light",
+        "textColor": "dark",
+        "accentColor": "orange"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "ctaPosition": "far-right"
+      },
+      "widgets": ["logo", "nav", "phone", "cartIcon"],
+      "bestFor": {
+        "industries": ["consulting", "professional-services", "business"],
+        "siteTypes": ["leadgen"],
+        "vibe": "clean, professional, trustworthy"
+      }
+    },
+    {
+      "id": "header5",
+      "name": "E-commerce Announcement",
+      "structure": "two-row-announcement",
+      "complexity": "moderate",
+      "colorScheme": {
+        "announcementBar": "#1a73e8",
+        "mainHeader": "white",
+        "style": "ecommerce-promo",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "left-center",
+        "announcementContent": "promotional-message"
+      },
+      "widgets": ["announcementBar", "closeButton", "logo", "nav", "search", "cartIcon"],
+      "bestFor": {
+        "industries": ["retail", "ecommerce", "fashion", "consumer-goods"],
+        "siteTypes": ["ecommerce"],
+        "vibe": "promotional, sales-focused, dynamic"
+      }
+    },
+    {
+      "id": "header6",
+      "name": "E-commerce Centered Logo",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "white",
+        "style": "clean-ecommerce",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "center",
+        "navPosition": "split",
+        "utilityIcons": "right"
+      },
+      "widgets": ["nav", "logo", "search", "userIcon", "cartIcon"],
+      "bestFor": {
+        "industries": ["fashion", "luxury", "retail", "ecommerce"],
+        "siteTypes": ["ecommerce"],
+        "vibe": "elegant, centered, fashion-forward"
+      }
+    },
+    {
+      "id": "header7",
+      "name": "Corporate Dark Hero",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "rgba(0,0,0,0.5)",
+        "style": "overlay-dark",
+        "textColor": "white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "socialIcons": "right"
+      },
+      "widgets": ["logo", "nav", "socialIcons"],
+      "bestFor": {
+        "industries": ["corporate", "technology", "business"],
+        "siteTypes": ["leadgen"],
+        "vibe": "bold, modern, professional"
+      }
+    },
+    {
+      "id": "header8",
+      "name": "Tech Agency Bold",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#1e3a5f",
+        "style": "solid-dark-blue",
+        "textColor": "white",
+        "accentColor": "orange"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "ctaPosition": "far-right"
+      },
+      "widgets": ["logo", "nav", "search", "button"],
+      "bestFor": {
+        "industries": ["technology", "agency", "saas", "software"],
+        "siteTypes": ["leadgen"],
+        "vibe": "tech-forward, confident, modern"
+      }
+    },
+    {
+      "id": "header9",
+      "name": "Restaurant Two-Tier Dark",
+      "structure": "two-row-utility",
+      "complexity": "complex",
+      "colorScheme": {
+        "utilityBar": "#1a1a1a",
+        "mainHeader": "rgba(0,0,0,0.8)",
+        "style": "restaurant-premium",
+        "textColor": "white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "utilityContent": ["phone", "hours", "location", "socialIcons"]
+      },
+      "widgets": ["utilityBar", "phone", "hours", "location", "socialIcons", "logo", "nav", "button"],
+      "bestFor": {
+        "industries": ["restaurant", "hospitality", "food", "bakery"],
+        "siteTypes": ["leadgen"],
+        "vibe": "premium, welcoming, informative"
+      }
+    },
+    {
+      "id": "header10",
+      "name": "Shop Centered Promo",
+      "structure": "two-row-announcement",
+      "complexity": "moderate",
+      "colorScheme": {
+        "announcementBar": "#ffc107",
+        "mainHeader": "white",
+        "style": "ecommerce-sale",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "center",
+        "navPosition": "below-logo",
+        "announcementContent": "returns-policy"
+      },
+      "widgets": ["announcementBar", "logo", "nav", "search", "wishlist", "userIcon", "cartIcon"],
+      "bestFor": {
+        "industries": ["retail", "ecommerce", "fashion"],
+        "siteTypes": ["ecommerce"],
+        "vibe": "friendly, sale-focused, customer-service"
+      }
+    },
+    {
+      "id": "header11",
+      "name": "Portfolio Minimalist",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "white",
+        "style": "ultra-minimal",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "right",
+        "spacing": "generous"
+      },
+      "widgets": ["textLogo", "nav"],
+      "bestFor": {
+        "industries": ["creative", "portfolio", "personal-brand", "photography"],
+        "siteTypes": ["portfolio"],
+        "vibe": "elegant, sophisticated, minimal"
+      }
+    },
+    {
+      "id": "header12",
+      "name": "Agency Dark Modern",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#0f1419",
+        "style": "solid-dark",
+        "textColor": "white",
+        "accentColor": "cyan"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center",
+        "ctaPosition": "far-right"
+      },
+      "widgets": ["logo", "nav", "button"],
+      "bestFor": {
+        "industries": ["agency", "technology", "saas", "startup"],
+        "siteTypes": ["leadgen"],
+        "vibe": "modern, tech-savvy, sleek"
+      }
+    },
+    {
+      "id": "header13",
+      "name": "Brewery Dark Hero",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "rgba(0,0,0,0.6)",
+        "style": "overlay-dark",
+        "textColor": "white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "socialIcons": "right"
+      },
+      "widgets": ["logo", "nav", "socialIcons"],
+      "bestFor": {
+        "industries": ["brewery", "restaurant", "bar", "hospitality"],
+        "siteTypes": ["leadgen"],
+        "vibe": "bold, lifestyle, social"
+      }
+    },
+    {
+      "id": "header14",
+      "name": "Service Business Warm",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#f5f1ed",
+        "style": "warm-light",
+        "textColor": "dark",
+        "accentColor": "burgundy"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "ctaPosition": "far-right"
+      },
+      "widgets": ["logo", "nav", "button"],
+      "bestFor": {
+        "industries": ["spa", "wellness", "beauty", "hospitality"],
+        "siteTypes": ["leadgen"],
+        "vibe": "warm, welcoming, luxury"
+      }
+    },
+    {
+      "id": "header15",
+      "name": "Service Professional Contact",
+      "structure": "two-row-utility",
+      "complexity": "moderate",
+      "colorScheme": {
+        "utilityBar": "#2c5f7f",
+        "mainHeader": "white",
+        "style": "corporate-contact",
+        "textColor": "white-then-dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "utilityContent": ["phone", "email", "hours"]
+      },
+      "widgets": ["utilityBar", "phone", "email", "hours", "logo", "nav", "dropdown", "button"],
+      "bestFor": {
+        "industries": ["professional-services", "legal", "medical", "consulting"],
+        "siteTypes": ["leadgen"],
+        "vibe": "professional, accessible, service-first"
+      }
+    },
+    {
+      "id": "header16",
+      "name": "Life Coach Modern",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#1a4d5e",
+        "style": "solid-teal",
+        "textColor": "white",
+        "accentColor": "turquoise"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "ctaPosition": "far-right"
+      },
+      "widgets": ["logo", "nav", "button"],
+      "bestFor": {
+        "industries": ["coaching", "wellness", "personal-development", "consulting"],
+        "siteTypes": ["leadgen"],
+        "vibe": "calm, professional, growth-oriented"
+      }
+    },
+    {
+      "id": "header17",
+      "name": "Creative Agency Light",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#e8f4f8",
+        "style": "light-blue-gradient",
+        "textColor": "dark",
+        "accentColor": "blue"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "ctaPosition": "far-right"
+      },
+      "widgets": ["logo", "nav", "button"],
+      "bestFor": {
+        "industries": ["creative", "agency", "marketing", "design"],
+        "siteTypes": ["leadgen"],
+        "vibe": "creative, friendly, approachable"
+      }
+    },
+    {
+      "id": "header18",
+      "name": "Creative Agency Dark",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#0a1628",
+        "style": "solid-dark",
+        "textColor": "white",
+        "accentColor": "turquoise"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "ctaPosition": "far-right"
+      },
+      "widgets": ["logo", "nav", "button"],
+      "bestFor": {
+        "industries": ["creative", "agency", "design", "technology"],
+        "siteTypes": ["leadgen"],
+        "vibe": "bold, modern, creative"
+      }
+    },
+    {
+      "id": "header19",
+      "name": "Corporate Blue Clean",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#1e4d9f",
+        "style": "solid-blue",
+        "textColor": "white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "utilityIcons": "right"
+      },
+      "widgets": ["logo", "nav", "search", "userIcon", "cartIcon"],
+      "bestFor": {
+        "industries": ["corporate", "technology", "ecommerce"],
+        "siteTypes": ["ecommerce", "leadgen"],
+        "vibe": "professional, trustworthy, corporate"
+      }
+    },
+    {
+      "id": "header20",
+      "name": "Simple Clean White",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "white",
+        "style": "clean-minimal",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "right"
+      },
+      "widgets": ["logo", "nav"],
+      "bestFor": {
+        "industries": ["any", "corporate", "portfolio", "business"],
+        "siteTypes": ["leadgen", "portfolio"],
+        "vibe": "clean, universal, professional"
+      }
+    },
+    {
+      "id": "header21",
+      "name": "Education Gradient Modern",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "linear-gradient(135deg, #F093FB 0%, #F5576C 100%)",
+        "style": "gradient-warm",
+        "textColor": "white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "ctaPosition": "far-right"
+      },
+      "widgets": ["logo", "nav", "button"],
+      "bestFor": {
+        "industries": ["education", "training", "courses", "technology"],
+        "siteTypes": ["leadgen"],
+        "vibe": "modern, energetic, innovative"
+      }
+    },
+    {
+      "id": "header22",
+      "name": "Corporate Blue Professional",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#1c3d6b",
+        "style": "solid-blue-corporate",
+        "textColor": "white",
+        "accentColor": "light-blue"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "ctaPosition": "far-right"
+      },
+      "widgets": ["logo", "nav", "dropdown", "button"],
+      "bestFor": {
+        "industries": ["corporate", "business", "finance", "professional-services"],
+        "siteTypes": ["leadgen"],
+        "vibe": "corporate, trustworthy, established"
+      }
+    },
+    {
+      "id": "header23",
+      "name": "Tech Crypto Modern",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#0d1117",
+        "style": "dark-tech",
+        "textColor": "white",
+        "accentColor": "green"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "ctaPosition": "far-right"
+      },
+      "widgets": ["logo", "nav", "button"],
+      "bestFor": {
+        "industries": ["technology", "crypto", "fintech", "startup"],
+        "siteTypes": ["leadgen"],
+        "vibe": "cutting-edge, tech-forward, modern"
+      }
+    },
+    {
+      "id": "header24",
+      "name": "Multi-Service Dark",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#1a1a1a",
+        "style": "solid-dark",
+        "textColor": "white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "utilityIcons": "right"
+      },
+      "widgets": ["logo", "nav", "dropdown", "search", "userIcon", "cartIcon"],
+      "bestFor": {
+        "industries": ["corporate", "business", "ecommerce"],
+        "siteTypes": ["ecommerce", "leadgen"],
+        "vibe": "professional, versatile, modern"
+      }
+    },
+    {
+      "id": "header25",
+      "name": "Technical Split Header",
+      "structure": "split-design",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "split-white-dark",
+        "style": "technical-minimal",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "right"
+      },
+      "widgets": ["textLogo", "nav"],
+      "bestFor": {
+        "industries": ["technology", "science", "research", "b2b"],
+        "siteTypes": ["leadgen"],
+        "vibe": "technical, professional, analytical"
+      }
+    },
+    {
+      "id": "header26",
+      "name": "Industrial Minimalist",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "white",
+        "style": "ultra-clean",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "right"
+      },
+      "widgets": ["textLogo", "nav"],
+      "bestFor": {
+        "industries": ["industrial", "manufacturing", "b2b", "technology"],
+        "siteTypes": ["leadgen"],
+        "vibe": "clean, industrial, no-nonsense"
+      }
+    },
+    {
+      "id": "header27",
+      "name": "B2B Two-Tier Premium",
+      "structure": "two-row-utility",
+      "complexity": "complex",
+      "colorScheme": {
+        "utilityBar": "white",
+        "mainHeader": "#5b4b8a",
+        "style": "corporate-split",
+        "textColor": "mixed"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center",
+        "utilityContent": ["phone", "email", "hours", "search", "account"]
+      },
+      "widgets": ["utilityBar", "phone", "email", "hours", "search", "accountLinks", "logo", "nav", "dropdown"],
+      "bestFor": {
+        "industries": ["b2b", "manufacturing", "industrial", "wholesale"],
+        "siteTypes": ["ecommerce", "leadgen"],
+        "vibe": "comprehensive, professional, information-rich"
+      }
+    },
+    {
+      "id": "header28",
+      "name": "Tech Component Simple",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "white",
+        "style": "clean-tech",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "ctaPosition": "far-right"
+      },
+      "widgets": ["logo", "nav", "button", "search"],
+      "bestFor": {
+        "industries": ["technology", "manufacturing", "b2b"],
+        "siteTypes": ["leadgen"],
+        "vibe": "clean, technical, straightforward"
+      }
+    },
+    {
+      "id": "header29",
+      "name": "Equestrian Premium",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#2a4563",
+        "style": "solid-blue-premium",
+        "textColor": "white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "phoneProminence": "high"
+      },
+      "widgets": ["logo", "phone", "nav"],
+      "bestFor": {
+        "industries": ["equestrian", "sports", "premium-services", "training"],
+        "siteTypes": ["leadgen"],
+        "vibe": "premium, specialist, contact-focused"
+      }
+    },
+    {
+      "id": "header30",
+      "name": "B2B Two-Tier Search",
+      "structure": "two-row-utility",
+      "complexity": "moderate",
+      "colorScheme": {
+        "utilityBar": "#2c4a3e",
+        "mainHeader": "white",
+        "style": "corporate-utility",
+        "textColor": "mixed"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "utilityContent": ["search", "phone", "ctas"]
+      },
+      "widgets": ["utilityBar", "search", "phone", "button", "logo", "nav", "dropdown"],
+      "bestFor": {
+        "industries": ["b2b", "home-services", "contractors", "industrial"],
+        "siteTypes": ["leadgen", "ecommerce"],
+        "vibe": "service-oriented, accessible, professional"
+      }
+    },
+    {
+      "id": "header31",
+      "name": "Home Services Contact",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#6b5b4a",
+        "style": "solid-warm",
+        "textColor": "white",
+        "accentColor": "cream"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "ctaPosition": "far-right"
+      },
+      "widgets": ["logo", "nav", "phone", "button"],
+      "bestFor": {
+        "industries": ["home-services", "flooring", "construction", "contractors"],
+        "siteTypes": ["leadgen"],
+        "vibe": "trustworthy, professional, service-focused"
+      }
+    },
+    {
+      "id": "header32",
+      "name": "Luxury Interiors Split",
+      "structure": "split-design",
+      "complexity": "simple",
+      "colorScheme": {
+        "leftSide": "white",
+        "rightSide": "image-overlay",
+        "style": "luxury-split",
+        "textColor": "dark-then-white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "right"
+      },
+      "widgets": ["textLogo", "nav"],
+      "bestFor": {
+        "industries": ["interior-design", "luxury", "furniture", "architecture"],
+        "siteTypes": ["portfolio", "leadgen"],
+        "vibe": "luxury, sophisticated, visual"
+      }
+    },
+    {
+      "id": "header33",
+      "name": "Activity Venue Two-CTA",
+      "structure": "single-row",
+      "complexity": "moderate",
+      "colorScheme": {
+        "background": "white",
+        "style": "clean-activity",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "multipleCtasPosition": "far-right"
+      },
+      "widgets": ["logo", "tagline", "nav", "button", "button"],
+      "bestFor": {
+        "industries": ["activities", "entertainment", "events", "venues"],
+        "siteTypes": ["leadgen"],
+        "vibe": "fun, action-oriented, multiple-offerings"
+      }
+    },
+    {
+      "id": "header34",
+      "name": "Fitness Multi-CTA Bold",
+      "structure": "single-row",
+      "complexity": "moderate",
+      "colorScheme": {
+        "background": "white",
+        "style": "fitness-bold",
+        "textColor": "dark",
+        "ctaColors": "varied"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center",
+        "multipleCtasPosition": "top-right"
+      },
+      "widgets": ["logo", "tagline", "nav", "dropdown", "button", "button", "button"],
+      "bestFor": {
+        "industries": ["fitness", "gym", "sports", "wellness"],
+        "siteTypes": ["leadgen"],
+        "vibe": "energetic, action-driven, membership-focused"
+      }
+    },
+    {
+      "id": "header35",
+      "name": "Charity Two-Tier Multi-CTA",
+      "structure": "two-row-utility",
+      "complexity": "complex",
+      "colorScheme": {
+        "utilityBar": "#2f6b4f",
+        "mainHeader": "white",
+        "style": "charity-nonprofit",
+        "textColor": "white-then-dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center",
+        "utilityContent": ["search", "phone", "donate", "adopt", "shop"]
+      },
+      "widgets": ["utilityBar", "search", "phone", "button", "button", "button", "cartIcon", "logo", "nav", "dropdown"],
+      "bestFor": {
+        "industries": ["charity", "nonprofit", "animal-rescue", "fundraising"],
+        "siteTypes": ["leadgen", "ecommerce"],
+        "vibe": "mission-driven, action-oriented, multi-purpose"
+      }
+    },
+    {
+      "id": "header36",
+      "name": "Charity Two-Tier Hours",
+      "structure": "two-row-utility",
+      "complexity": "complex",
+      "colorScheme": {
+        "utilityBar": "#f8f9fa",
+        "mainHeader": "white",
+        "style": "charity-informative",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center",
+        "utilityContent": ["hours", "donate", "tickets", "donate"]
+      },
+      "widgets": ["utilityBar", "hours", "button", "button", "button", "cartIcon", "logo", "nav", "dropdown"],
+      "bestFor": {
+        "industries": ["charity", "museum", "attraction", "nonprofit"],
+        "siteTypes": ["leadgen", "ecommerce"],
+        "vibe": "welcoming, informative, visitor-focused"
+      }
+    },
+    {
+      "id": "header37",
+      "name": "Professional Services Minimal Dark",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "black",
+        "style": "minimal-dark",
+        "textColor": "white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "ctaPosition": "far-right"
+      },
+      "widgets": ["logo", "nav", "button"],
+      "bestFor": {
+        "industries": ["professional-services", "consulting", "architecture", "engineering"],
+        "siteTypes": ["leadgen"],
+        "vibe": "premium, minimal, sophisticated"
+      }
+    },
+    {
+      "id": "header38",
+      "name": "Adventure Two-Tier Social",
+      "structure": "two-row-utility",
+      "complexity": "moderate",
+      "colorScheme": {
+        "utilityBar": "black",
+        "mainHeader": "white",
+        "style": "adventure-social",
+        "textColor": "white-then-dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "utilityContent": ["phone", "socialIcons"]
+      },
+      "widgets": ["utilityBar", "phone", "socialIcons", "logo", "nav", "dropdown"],
+      "bestFor": {
+        "industries": ["adventure", "tourism", "outdoor", "events"],
+        "siteTypes": ["leadgen"],
+        "vibe": "adventurous, social, lifestyle"
+      }
+    },
+    {
+      "id": "header39",
+      "name": "Activity Center Multi-CTA",
+      "structure": "single-row",
+      "complexity": "moderate",
+      "colorScheme": {
+        "background": "white",
+        "style": "clean-multi-action",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center",
+        "multipleCtasPosition": "right"
+      },
+      "widgets": ["logo", "tagline", "nav", "button", "button"],
+      "bestFor": {
+        "industries": ["activities", "climbing", "sports", "entertainment"],
+        "siteTypes": ["leadgen"],
+        "vibe": "active, fun, booking-focused"
+      }
+    },
+    {
+      "id": "header40",
+      "name": "B2B Consulting Professional",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "white",
+        "style": "clean-corporate",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right"
+      },
+      "widgets": ["logo", "nav", "dropdown"],
+      "bestFor": {
+        "industries": ["consulting", "b2b", "professional-services"],
+        "siteTypes": ["leadgen"],
+        "vibe": "professional, straightforward, corporate"
+      }
+    },
+    {
+      "id": "header41",
+      "name": "Agriculture Two-Tier Social",
+      "structure": "two-row-utility",
+      "complexity": "moderate",
+      "colorScheme": {
+        "utilityBar": "#f5f1e8",
+        "mainHeader": "white",
+        "style": "agriculture-friendly",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "center",
+        "navPosition": "center",
+        "utilityContent": ["cta", "socialIcons"]
+      },
+      "widgets": ["utilityBar", "button", "socialIcons", "logo", "nav", "dropdown"],
+      "bestFor": {
+        "industries": ["agriculture", "farming", "events", "community"],
+        "siteTypes": ["leadgen"],
+        "vibe": "community-focused, traditional, welcoming"
+      }
+    },
+    {
+      "id": "header42",
+      "name": "Event Venue Three-Tier",
+      "structure": "three-row",
+      "complexity": "complex",
+      "colorScheme": {
+        "topBar": "#f8f9fa",
+        "utilityBar": "#f5efe0",
+        "mainHeader": "white",
+        "style": "venue-comprehensive",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "center",
+        "navPosition": "center",
+        "utilityContent": ["cta", "socialIcons"]
+      },
+      "widgets": ["topBar", "button", "socialIcons", "utilityBar", "logo", "nav", "dropdown"],
+      "bestFor": {
+        "industries": ["events", "venues", "agriculture", "shows"],
+        "siteTypes": ["leadgen", "ecommerce"],
+        "vibe": "comprehensive, informative, event-focused"
+      }
+    },
+    {
+      "id": "header43",
+      "name": "Adventure Sports Two-Tier",
+      "structure": "two-row-utility",
+      "complexity": "moderate",
+      "colorScheme": {
+        "utilityBar": "black",
+        "mainHeader": "white",
+        "style": "adventure-contact",
+        "textColor": "white-then-dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "utilityContent": ["phone", "socialIcons"]
+      },
+      "widgets": ["utilityBar", "phone", "socialIcons", "logo", "nav"],
+      "bestFor": {
+        "industries": ["adventure", "outdoor", "tourism", "sports"],
+        "siteTypes": ["leadgen"],
+        "vibe": "adventurous, social, contact-focused"
+      }
+    },
+    {
+      "id": "header44",
+      "name": "B2B HR Multi-Contact",
+      "structure": "single-row",
+      "complexity": "moderate",
+      "colorScheme": {
+        "background": "#1b5968",
+        "style": "corporate-teal",
+        "textColor": "white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "phonePosition": "prominent-right"
+      },
+      "widgets": ["logo", "nav", "phone", "phone", "languageSelector", "button"],
+      "bestFor": {
+        "industries": ["b2b", "hr", "payroll", "professional-services"],
+        "siteTypes": ["leadgen"],
+        "vibe": "professional, international, service-oriented"
+      }
+    },
+    {
+      "id": "header45",
+      "name": "Industrial Two-Tier Hamburger",
+      "structure": "two-row-utility",
+      "complexity": "moderate",
+      "colorScheme": {
+        "utilityBar": "rgba(0,0,0,0.8)",
+        "mainHeader": "rgba(255,255,255,0.95)",
+        "style": "industrial-overlay",
+        "textColor": "white-then-dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "hidden",
+        "utilityContent": ["phone"],
+        "hamburgerMenu": true
+      },
+      "widgets": ["utilityBar", "phone", "logo", "hamburgerMenu"],
+      "bestFor": {
+        "industries": ["industrial", "signage", "manufacturing", "contractors"],
+        "siteTypes": ["leadgen"],
+        "vibe": "industrial, mobile-friendly, contact-focused"
+      }
+    },
+    {
+      "id": "header46",
+      "name": "Industrial Two-Tier Phone Hero",
+      "structure": "two-row-utility",
+      "complexity": "moderate",
+      "colorScheme": {
+        "utilityBar": "rgba(0,0,0,0.7)",
+        "mainHeader": "rgba(255,255,255,0.9)",
+        "style": "service-hero",
+        "textColor": "white-then-dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "utilityContent": ["phone-prominent"]
+      },
+      "widgets": ["utilityBar", "phone", "logo", "nav", "dropdown"],
+      "bestFor": {
+        "industries": ["contractors", "home-services", "industrial", "emergency-services"],
+        "siteTypes": ["leadgen"],
+        "vibe": "urgent, call-focused, service-ready"
+      }
+    },
+    {
+      "id": "header47",
+      "name": "Service Business Phone Right",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "white",
+        "style": "clean-service",
+        "textColor": "dark",
+        "phoneColor": "blue"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "phonePosition": "prominent-top-right"
+      },
+      "widgets": ["logo", "phone", "nav"],
+      "bestFor": {
+        "industries": ["home-services", "security", "contractors", "local-business"],
+        "siteTypes": ["leadgen"],
+        "vibe": "service-ready, call-focused, straightforward"
+      }
+    },
+    {
+      "id": "header48",
+      "name": "Junk Removal Phone CTA",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "white",
+        "style": "clean-service-orange",
+        "textColor": "dark",
+        "accentColor": "orange"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "phonePosition": "prominent-right"
+      },
+      "widgets": ["logo", "nav", "dropdown", "phone", "button"],
+      "bestFor": {
+        "industries": ["home-services", "removal", "cleaning", "local-services"],
+        "siteTypes": ["leadgen"],
+        "vibe": "friendly, accessible, action-oriented"
+      }
+    },
+    {
+      "id": "header49",
+      "name": "Corporate Green Clean",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#1a5d3f",
+        "style": "solid-green-corporate",
+        "textColor": "white",
+        "accentColor": "orange"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "phonePosition": "prominent-right"
+      },
+      "widgets": ["logo", "nav", "dropdown", "phone", "button"],
+      "bestFor": {
+        "industries": ["corporate", "environmental", "green-business", "professional-services"],
+        "siteTypes": ["leadgen"],
+        "vibe": "professional, eco-friendly, trustworthy"
+      }
+    },
+    {
+      "id": "header50",
+      "name": "Energy Orange Bold",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#ff8833",
+        "style": "solid-orange-energy",
+        "textColor": "white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "phonePosition": "right"
+      },
+      "widgets": ["logo", "nav", "dropdown", "phone"],
+      "bestFor": {
+        "industries": ["energy", "solar", "utilities", "sustainability"],
+        "siteTypes": ["leadgen"],
+        "vibe": "energetic, bold, environmental"
+      }
+    },
+    {
+      "id": "header51",
+      "name": "Energy Service Bold",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "#ff6600",
+        "style": "solid-orange-bright",
+        "textColor": "white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right",
+        "phonePosition": "prominent-right"
+      },
+      "widgets": ["logo", "nav", "dropdown", "phone"],
+      "bestFor": {
+        "industries": ["energy", "solar", "home-services", "sustainability"],
+        "siteTypes": ["leadgen"],
+        "vibe": "bold, energetic, action-oriented"
+      }
+    },
+    {
+      "id": "header52",
+      "name": "Membership Multi-Action",
+      "structure": "single-row",
+      "complexity": "moderate",
+      "colorScheme": {
+        "background": "white",
+        "style": "clean-membership",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center",
+        "multipleCtasPosition": "right",
+        "socialIcons": "right"
+      },
+      "widgets": ["logo", "nav", "button", "button", "button", "socialIcons", "cartIcon"],
+      "bestFor": {
+        "industries": ["membership", "association", "nonprofit", "professional-org"],
+        "siteTypes": ["leadgen", "ecommerce"],
+        "vibe": "professional, membership-driven, multi-action"
+      }
+    },
+    {
+      "id": "header53",
+      "name": "Film Production Elegant Dark",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "black",
+        "style": "elegant-dark",
+        "textColor": "white"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "center-right"
+      },
+      "widgets": ["logo", "nav", "dropdown"],
+      "bestFor": {
+        "industries": ["film", "production", "creative", "media"],
+        "siteTypes": ["portfolio", "leadgen"],
+        "vibe": "elegant, creative, cinematic"
+      }
+    },
+    {
+      "id": "header54",
+      "name": "Modern Clean White Simple",
+      "structure": "single-row",
+      "complexity": "simple",
+      "colorScheme": {
+        "background": "white",
+        "style": "ultra-clean-modern",
+        "textColor": "dark"
+      },
+      "layout": {
+        "logoPosition": "left",
+        "navPosition": "right"
+      },
+      "widgets": ["logo", "nav"],
+      "bestFor": {
+        "industries": ["any", "professional-services", "portfolio", "corporate"],
+        "siteTypes": ["leadgen", "portfolio"],
+        "vibe": "clean, modern, universal"
+      }
+    }
+  ],
+  "archetypes": {
+    "simple-clean": ["header11", "header20", "header25", "header26", "header54"],
+    "ecommerce": ["header5", "header6", "header10", "header19", "header24"],
+    "corporate-twotier": ["header2", "header15", "header27", "header30", "header35", "header36"],
+    "service-contact": ["header9", "header31", "header47", "header48", "header49"],
+    "bold-gradient": ["header1", "header17", "header18", "header21"],
+    "dark-modern": ["header3", "header7", "header8", "header12", "header13", "header23", "header37", "header53"],
+    "multi-cta": ["header33", "header34", "header39", "header52"],
+    "phone-prominent": ["header29", "header44", "header45", "header46", "header50", "header51"]
+  }
+}
