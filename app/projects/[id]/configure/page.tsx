@@ -13,6 +13,7 @@ import MediaUpload from "@/components/projects/MediaUpload";
 import ProgressModal from "@/components/ProgressModal";
 import GlobalHeaderSelector, { GlobalHeaderConfig } from "@/components/projects/GlobalHeaderSelector";
 import GlobalHeaderPreview from "@/components/projects/GlobalHeaderPreview";
+import ReferenceStyleSelector, { ReferenceStyleConfig } from "@/components/projects/ReferenceStyleSelector";
 
 export default function ConfigurePage() {
   const { data: session, status } = useSession();
@@ -46,6 +47,10 @@ export default function ConfigurePage() {
     iconBoxIcon: "phone",
     iconBoxPhone: "",
     cartIcon: true,
+  });
+  const [referenceStyleConfig, setReferenceStyleConfig] = useState<ReferenceStyleConfig>({
+    mode: "industry-matched",
+    count: 10,
   });
 
   useEffect(() => {
@@ -81,6 +86,11 @@ export default function ConfigurePage() {
         iconBoxPhone: "",
         cartIcon: true,
       });
+      setReferenceStyleConfig({
+        mode: data.project.referenceStyleMode || "industry-matched",
+        count: data.project.referenceCount || 10,
+        customFiles: data.project.customReferenceFiles || [],
+      });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load project");
     } finally {
@@ -105,6 +115,9 @@ export default function ConfigurePage() {
           competitors,
           media,
           globalHeaderConfig,
+          referenceStyleMode: referenceStyleConfig.mode,
+          referenceCount: referenceStyleConfig.count,
+          customReferenceFiles: referenceStyleConfig.customFiles,
         }),
       });
 
@@ -386,6 +399,19 @@ export default function ConfigurePage() {
               value={media}
               onChange={setMedia}
               industry={project.industry}
+            />
+          </div>
+
+          {/* Reference Style Selection */}
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">AI Reference Selection</h2>
+            <p className="text-gray-600 mb-6">
+              Control how AI selects reference designs to inspire your unique layouts.
+              This affects the variety and style of generated designs.
+            </p>
+            <ReferenceStyleSelector
+              value={referenceStyleConfig}
+              onChange={setReferenceStyleConfig}
             />
           </div>
         </div>

@@ -33,6 +33,7 @@ export default function DesignsPage() {
   const [selectedDesign, setSelectedDesign] = useState<Design | null>(null);
   const [selectedViewport, setSelectedViewport] = useState<string>("desktop");
   const [error, setError] = useState("");
+  const [regenerating, setRegenerating] = useState(false);
 
   useEffect(() => {
     if (status === "authenticated" && projectId) {
@@ -86,6 +87,45 @@ export default function DesignsPage() {
     }
   };
 
+  const handleRegenerate = async () => {
+    if (!confirm("This will delete existing designs and generate new ones. Continue?")) {
+      return;
+    }
+
+    setRegenerating(true);
+    setError("");
+
+    try {
+      // Call regenerate API endpoint
+      const response = await fetch(`/api/designs/regenerate`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ projectId }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to regenerate designs");
+      }
+
+      // Refresh the designs list
+      await fetchDesigns();
+
+      // Auto-select first design
+      const designsResponse = await fetch(`/api/projects/${projectId}/designs`);
+      if (designsResponse.ok) {
+        const designsData = await designsResponse.json();
+        if (designsData.designs.length > 0) {
+          setSelectedDesign(designsData.designs[0]);
+        }
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to regenerate designs");
+    } finally {
+      setRegenerating(false);
+    }
+  };
+
   if (status === "loading" || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -129,11 +169,20 @@ export default function DesignsPage() {
             >
               ← Back to Configuration
             </Button>
-            <div>
+            <div className="text-center">
               <h1 className="text-2xl font-bold text-gray-900">Design Variations</h1>
               <p className="text-sm text-gray-600">{project?.url}</p>
             </div>
-            <div className="w-32"></div>
+            <Button
+              onClick={handleRegenerate}
+              disabled={regenerating}
+              className="bg-purple-600 hover:bg-purple-700 text-white flex items-center gap-2"
+            >
+              <svg className={`w-4 h-4 ${regenerating ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              {regenerating ? "Regenerating..." : "Regenerate Designs"}
+            </Button>
           </div>
         </div>
       </header>

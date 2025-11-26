@@ -189,15 +189,23 @@ export interface DesignVariation {
 /**
  * Generate 3 design variations using Claude Sonnet 4.5
  * Applies critical design principles to avoid generic AI patterns
+ *
+ * @param project - Project data including configuration and metadata
+ * @param referenceMode - How to select reference screenshots (defaults to project config or "industry-matched")
  */
 export async function generateDesignVariations(
-  project: any
+  project: any,
+  referenceMode?: "all" | "random" | "industry-matched" | "curated" | "custom"
 ): Promise<DesignVariation[]> {
   // 🔥 TEST MODE: Return hardcoded s1.png-style headers
   if (S1_TEST_MODE) {
     console.log("🔥 S1 TEST MODE ACTIVE: Returning hardcoded s1.png-style headers");
     return generateS1StyleHeaders(project);
   }
+
+  // Determine reference selection mode
+  const mode = referenceMode || project.referenceStyleMode || "industry-matched";
+  console.log(`[Design Generation] Using reference mode: ${mode}`);
 
   const systemPrompt = `You are an expert website designer creating PROFESSIONAL, PRODUCTION-GRADE GLOBAL HEADERS for Elementor websites.
 
@@ -423,8 +431,14 @@ For each variation, provide:
 
   const client = getAnthropicClient();
 
-  // Load professional header screenshot references
-  const headerScreenshots = loadHeaderScreenshots();
+  // Load professional header screenshot references with selected mode
+  const headerScreenshots = loadHeaderScreenshots(mode, {
+    industry: project.industry,
+    count: project.referenceCount,
+    customFiles: project.customReferenceFiles,
+  });
+
+  console.log(`[Design Generation] Loaded ${headerScreenshots.length} reference screenshots using ${mode} mode`);
 
   // Construct multi-modal message content with images + text
   const messageContent: Array<any> = [
@@ -660,27 +674,118 @@ INDUSTRY-SPECIFIC HEADER DESIGN FOR LEAD GENERATION:
 }
 
 /**
- * Load professional header screenshot references
- * Returns a curated selection of 10 professional Elementor headers as base64 images
+ * Industry-to-screenshot mapping for intelligent reference selection
+ * Maps industries to the most relevant header screenshot files
  */
-function loadHeaderScreenshots(): Array<{ type: "image"; source: { type: "base64"; media_type: string; data: string } }> {
+const INDUSTRY_SCREENSHOT_MAP: Record<string, string[]> = {
+  "vehicle-transport": ["s5.png", "s12.png", "s20.png", "s30.png", "s45.png"],
+  "restaurant": ["s22.png", "s30.png", "s45.png", "s50.png", "s55.png"],
+  "dental-practice": ["s1.png", "s20.png", "s30.png", "s45.png", "s59.png"],
+  "law-firm": ["s1.png", "s12.png", "s20.png", "s22.png", "s30.png"],
+  "real-estate": ["s1.png", "s5.png", "s30.png", "s45.png", "s59.png"],
+  "fitness": ["s5.png", "s22.png", "s30.png", "s45.png", "s55.png"],
+  "beauty-salon": ["s22.png", "s30.png", "s45.png", "s50.png", "s55.png"],
+  "home-services": ["s5.png", "s12.png", "s20.png", "s30.png", "s45.png"],
+  "photography": ["s1.png", "s30.png", "s45.png", "s55.png", "s59.png"],
+  "insurance": ["s1.png", "s12.png", "s20.png", "s30.png", "s45.png"],
+  "ecommerce": ["s1.png", "s5.png", "s30.png", "s55.png", "s59.png"],
+  "leadgen": ["s1.png", "s5.png", "s12.png", "s20.png", "s30.png"],
+  "b2b": ["s1.png", "s12.png", "s20.png", "s30.png", "s45.png"],
+};
+
+/**
+ * Get all available screenshot filenames
+ */
+function getAllScreenshots(): string[] {
   const screenshotDir = path.join(process.cwd(), "public", "reference-headers");
 
-  // Curated selection of 10 representative professional headers
-  // Selected for diversity: various industries, layouts, and styles
-  const selectedScreenshots = [
-    "s1.png",   // Dark sophisticated header
-    "s5.png",   // Orange branded header with prominent phone
-    "s12.png",  // Two-row header with dual phone numbers
-    "s20.png",  // Two-row utility bar pattern
-    "s22.png",  // Purple/dark top bar with white main nav
-    "s30.png",  // Clean white professional header
-    "s45.png",  // Two-row with consultation CTA
-    "s50.png",  // Announcement bar example
-    "s55.png",  // Centered logo variation
-    "s59.png",  // Modern e-commerce header
-  ];
+  if (!fs.existsSync(screenshotDir)) {
+    console.warn("Reference headers directory not found:", screenshotDir);
+    return [];
+  }
 
+  return fs.readdirSync(screenshotDir)
+    .filter(file => file.endsWith('.png'))
+    .sort(); // Sort for consistent ordering
+}
+
+/**
+ * Load professional header screenshot references
+ * Supports multiple selection modes for maximum flexibility
+ *
+ * @param mode - Selection mode: "all" | "random" | "industry-matched" | "curated" | "custom"
+ * @param options - Additional options (industry, count, customFiles)
+ * @returns Array of base64-encoded header images
+ */
+function loadHeaderScreenshots(
+  mode: "all" | "random" | "industry-matched" | "curated" | "custom" = "curated",
+  options: {
+    industry?: string;
+    count?: number;
+    customFiles?: string[];
+  } = {}
+): Array<{ type: "image"; source: { type: "base64"; media_type: string; data: string } }> {
+  const screenshotDir = path.join(process.cwd(), "public", "reference-headers");
+  let selectedScreenshots: string[] = [];
+
+  switch (mode) {
+    case "all":
+      // Load ALL 59 screenshots for maximum variety
+      selectedScreenshots = getAllScreenshots();
+      console.log(`[Reference Selection] Using ALL ${selectedScreenshots.length} reference screenshots`);
+      break;
+
+    case "random":
+      // Randomly select N screenshots (default 10-15)
+      const count = options.count || Math.floor(Math.random() * 6) + 10; // Random between 10-15
+      const allScreenshots = getAllScreenshots();
+      selectedScreenshots = shuffleArray(allScreenshots).slice(0, count);
+      console.log(`[Reference Selection] Randomly selected ${selectedScreenshots.length} screenshots`);
+      break;
+
+    case "industry-matched":
+      // Select screenshots based on project industry
+      const industry = options.industry || "general";
+      const industryKey = Object.keys(INDUSTRY_SCREENSHOT_MAP).find(key =>
+        industry.toLowerCase().includes(key.toLowerCase()) || key.toLowerCase().includes(industry.toLowerCase())
+      );
+
+      if (industryKey && INDUSTRY_SCREENSHOT_MAP[industryKey]) {
+        selectedScreenshots = INDUSTRY_SCREENSHOT_MAP[industryKey];
+        console.log(`[Reference Selection] Using industry-matched screenshots for ${industry}: ${selectedScreenshots.length} files`);
+      } else {
+        // Fallback to curated selection
+        selectedScreenshots = INDUSTRY_SCREENSHOT_MAP["leadgen"];
+        console.log(`[Reference Selection] No industry match for ${industry}, using leadgen fallback`);
+      }
+      break;
+
+    case "custom":
+      // Use custom-specified screenshot files
+      selectedScreenshots = options.customFiles || [];
+      console.log(`[Reference Selection] Using ${selectedScreenshots.length} custom-specified screenshots`);
+      break;
+
+    case "curated":
+    default:
+      // Original curated selection of 10 representative headers
+      selectedScreenshots = [
+        "s1.png",   // Dark sophisticated header
+        "s5.png",   // Orange branded header with prominent phone
+        "s12.png",  // Two-row header with dual phone numbers
+        "s20.png",  // Two-row utility bar pattern
+        "s22.png",  // Purple/dark top bar with white main nav
+        "s30.png",  // Clean white professional header
+        "s45.png",  // Two-row with consultation CTA
+        "s50.png",  // Announcement bar example
+        "s55.png",  // Centered logo variation
+        "s59.png",  // Modern e-commerce header
+      ];
+      console.log(`[Reference Selection] Using curated selection of ${selectedScreenshots.length} screenshots`);
+      break;
+  }
+
+  // Load the selected screenshots as base64
   const imageBlocks: Array<{ type: "image"; source: { type: "base64"; media_type: string; data: string } }> = [];
 
   for (const filename of selectedScreenshots) {
@@ -698,10 +803,24 @@ function loadHeaderScreenshots(): Array<{ type: "image"; source: { type: "base64
           data: base64Image,
         },
       });
+    } else {
+      console.warn(`[Reference Selection] Screenshot not found: ${filename}`);
     }
   }
 
   return imageBlocks;
+}
+
+/**
+ * Shuffle array using Fisher-Yates algorithm
+ */
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
 }
 
 /**

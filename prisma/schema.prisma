@@ -40,6 +40,11 @@ model Project {
   videoConfig     Json?     // { embedded: bool, background: bool, placeholderUrls: [] }
   media           Json?     // [{ type: "image"|"video", url: string, alt?: string }]
 
+  // Reference Style Selection (for design generation)
+  referenceStyleMode String? @default("industry-matched") // "all" | "random" | "industry-matched" | "curated" | "custom"
+  referenceCount     Int?    @default(10) // Number of references for "random" mode
+  customReferenceFiles Json? // Custom screenshot filenames for "custom" mode
+
   scrapedContent  Json?     // Full scraped data
   screenshot      String?   @db.Text // Base64 screenshot of the original site
   competitors     Json?     // [{ url, analysis, layouts, colors, ctas }]
