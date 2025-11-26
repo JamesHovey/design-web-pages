@@ -299,8 +299,15 @@ function generateCSSCode(variation: any, project: any): string {
   const bodyBgColor = "#ffffff";
   const bodyTextColor = getContrastSafeTextColor(bodyBgColor);
 
+  // Check if header has outline buttons (S1.PNG style)
+  const headerWidgets = variation.widgetStructure?.globalHeader?.widgets || [];
+  const hasOutlineButton = headerWidgets.some((w: any) => w.type === "button" && w.style === "outline");
+  const outlineButtonColor = headerWidgets.find((w: any) => w.type === "button" && w.style === "outline")?.customStyle?.border?.match(/#[0-9a-fA-F]{6}|#[0-9a-fA-F]{3}/)?.[0] || "#00bcd4";
+
   // Get button colors with proper contrast
-  const primaryBtnColors = getButtonColors(colors[0] || "#007bff");
+  const primaryBtnColors = hasOutlineButton
+    ? { background: "transparent", text: headerTextColor, border: outlineButtonColor }
+    : getButtonColors(colors[0] || "#007bff");
 
   return `/* ${variation.name} Design - Generated CSS with WCAG AA Contrast */
 
@@ -375,14 +382,50 @@ button:hover, .btn:hover {
   color: var(--header-text) !important;
 }
 
+/* S1.PNG Style - Logo placeholder styling */
+.elementor-location-header .elementor-site-logo-placeholder {
+  background: transparent !important;
+  color: var(--header-text) !important;
+  box-shadow: none !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
 .elementor-location-header .elementor-nav-menu-link {
   color: var(--header-text) !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  padding: 8px 16px !important;
+}
+
+.elementor-location-header .dt-nav-menu-horizontal {
+  gap: 32px !important;
 }
 
 .elementor-location-header .elementor-button {
+  ${hasOutlineButton ? `
+  background-color: transparent !important;
+  color: var(--header-text) !important;
+  border: 2px solid ${outlineButtonColor} !important;
+  border-radius: 24px !important;
+  padding: 10px 28px !important;
+  transition: all 0.3s ease !important;
+  ` : `
   background-color: var(--button-bg) !important;
   color: var(--button-text) !important;
+  `}
 }
+
+${hasOutlineButton ? `
+.elementor-location-header .elementor-button:hover {
+  background-color: ${outlineButtonColor} !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+}
+` : ``}
 
 .elementor-location-header .elementor-search-icon,
 .elementor-location-header .elementor-cart-icon-link {
