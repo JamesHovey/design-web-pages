@@ -295,6 +295,7 @@ export default function ConfigurePage() {
           logoUrl={project.logoUrl}
           siteName={project.url?.replace(/^https?:\/\/(www\.)?/, '').split('/')[0] || 'Your Company'}
           menuItems={globalHeaderConfig.menuItems}
+          viewports={viewports}
         />
 
         {/* Success/Error Messages */}
