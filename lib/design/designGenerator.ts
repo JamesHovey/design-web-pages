@@ -3,7 +3,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 // 🔥 S1.PNG TEST MODE - Toggle this to true for exact s1.png header replication
-const S1_TEST_MODE = true;
+const S1_TEST_MODE = false;
 
 /**
  * 🔥 TEST MODE: Generate 3 headers matching s1.png exactly
