@@ -201,31 +201,52 @@ export async function generateDesignVariations(
 
   const systemPrompt = `You are an expert website designer creating PROFESSIONAL, PRODUCTION-GRADE GLOBAL HEADERS for Elementor websites.
 
-🖼️ PROFESSIONAL REFERENCES PROVIDED:
-You will be shown 10 professional WordPress/Elementor header screenshots as visual examples.
-Study these carefully to understand:
-- Professional layout patterns (logo left, nav center/right, CTA placement)
-- Widget arrangements (search, cart, phone icons, buttons)
-- Visual hierarchy and spacing
-- Color schemes and contrast
-- Professional vs. amateur design patterns
-- Two-row headers (utility bar + main nav)
-- Contact prominence (phone numbers, CTAs)
+🎯 MANDATORY STYLE REFERENCE: s1.png
+The FIRST image (s1.png) you will see is THE REQUIRED STYLE TEMPLATE. ALL headers must match this exact visual style.
+
+📋 REQUIRED STYLE SPECIFICATIONS FROM s1.png:
+YOU MUST FOLLOW THESE SPECIFICATIONS EXACTLY:
+
+1. ✅ BACKGROUND: Dark navy (#1a1d2e, #1a1a2e, or similar dark sophisticated color)
+   - NEVER use white, light gray, or bright colors
+   - All three variations MUST use dark backgrounds
+
+2. ✅ LAYOUT PATTERN: Logo left, Navigation right-aligned, CTA button far right
+   - This is MANDATORY - do not deviate from this pattern
+
+3. ✅ LOGO:
+   - If logoUrl provided: Display image logo in white/light version
+   - If NO logoUrl: Create text logo in WHITE, uppercase, bold (20px, 700 weight, letter-spacing: 1px)
+
+4. ✅ NAVIGATION MENU:
+   - Right-aligned horizontal menu
+   - White text (#ffffff)
+   - 15px font size, 400-600 weight
+   - 32px spacing between items
+   - Customize menu items based on the industry (e.g., "Services", "Industries", "About" for b2b)
+
+5. ✅ CTA BUTTON (CRITICAL):
+   - Style: OUTLINE (transparent background with colored border)
+   - Border: 2px solid with cyan/blue color (#00bcd4, #00e5ff, or brand color)
+   - Color: White text
+   - Border-radius: 24px (pill shape)
+   - Padding: 10-12px vertical, 28-32px horizontal
+   - Font: 15px, 500-600 weight
+   - Hover: Background fills with border color
+   - Text: Industry-appropriate (e.g., "Get in touch", "Get A Quote", "Contact Us")
+
+6. ✅ HEIGHT: 75-80px (do not exceed 85px)
+
+7. ✅ TYPOGRAPHY: All text must be white/light (#ffffff) for contrast on dark background
+
+8. ✅ MINIMAL WIDGETS: Use ONLY logo + nav + button (no phone icons, no search, no cart unless ecommerce)
+   - Keep it clean and sophisticated like s1.png
 
 CURRENT FOCUS: GLOBAL HEADER ONLY
-- We are building incrementally - headers FIRST, then body sections later
 - Generate ONLY the global header structure
 - No body content, no hero sections, no features - JUST the header
-
-CRITICAL HEADER DESIGN PRINCIPLES:
-1. ✅ Professional styling: Match the quality shown in the reference screenshots
-2. ✅ Industry-appropriate: ${project.industry || "general"} sites need specific visual language
-3. ✅ Strategic layout: Logo placement, navigation hierarchy, CTA visibility (as seen in examples)
-4. ✅ Professional patterns: Use 8px spacing grid, subtle shadows, smooth transitions
-5. ✅ Smart widget selection: Choose header widgets intelligently based on site type and industry
-6. ✅ Specific content: Write real menu items and contact info - NO "Lorem ipsum"
-
-${getIndustryHeaderGuidance(project.industry, project.siteType)}
+- Customize the CONTENT (menu items, CTA text, company name) to the industry
+- Keep the STYLE exactly matching s1.png
 
 HEADER WIDGET SCHEMA (Elementor):
 Use ONLY these widgets for the global header:
@@ -250,55 +271,39 @@ GLOBAL HEADER CONFIGURATION:
 User has configured these header options:
 ${JSON.stringify(project.globalHeaderConfig || {})}
 
-HEADER DESIGN RULES:
-1. Choose widgets intelligently based on:
-   - Site type: ${project.siteType} (ecommerce sites should include cart-icon)
-   - Industry: ${project.industry || "general"} (service businesses should include icon-box with phone)
-   - User configuration: Respect the globalHeaderConfig settings
-2. Professional layout patterns:
-   - Standard: Logo left, nav center, CTA right
-   - Classic: Logo left, nav right, search/contact icons far right
-   - Modern: Logo left, nav right, phone + CTA far right (MOST PROFESSIONAL)
-3. Use the configured menu items: ${JSON.stringify(project.globalHeaderConfig?.menuItems || ["Home", "About", "Services", "Contact"])}
-4. Background colors - PROFESSIONAL PATTERNS ONLY:
-   - Conservative: Pure white (#ffffff) or very light gray (#f8f9fa, #fafbfc)
-   - Balanced: White with subtle shadow OR very light tint of brand color (95% white + 5% brand)
-   - Bold: Dark sophisticated (#1a1a2e, #2c3e50, #1e293b) OR subtle gradient on white
-   - NEVER use solid bright colors as header background (looks amateur)
-   - Brand colors go on BUTTONS and ACCENTS, not backgrounds
-   - Professional rule: Header backgrounds should be neutral (white/light/dark), buttons should be colorful
-5. Contact prominence:
-   - For service businesses: ALWAYS include prominent phone icon-box
-   - Phone should have isHeader: true for proper styling
-   - Use description field for "Call us:" or "24/7 Support"
-   - Position phone prominently in right section before CTA button
-6. Apply professional design patterns:
-   - 8px spacing grid (8px, 16px, 24px, 32px)
-   - Shadow: 2px 2px 6px 0 rgba(0,0,0,0.3)
-   - Transitions: 0.35s ease-out
-   - Professional typography and color hierarchy
+HEADER DESIGN RULES (s1.png STYLE ENFORCED):
+1. ✅ ALL variations must use dark navy backgrounds (#1a1d2e or similar)
+2. ✅ ALL variations must use logo left + nav right + outline button pattern
+3. ✅ Menu items should be customized based on: ${JSON.stringify(project.globalHeaderConfig?.menuItems || ["Home", "About", "Services", "Contact"])}
+4. ✅ Button text should be industry-appropriate for ${project.industry || "general"} industry
+5. ✅ Keep widget selection MINIMAL - only logo, nav, button (match s1.png simplicity)
 
-DESIGN VARIATIONS - HEADER EXAMPLES:
-1. Conservative:
-   - Background: Pure white (#ffffff)
-   - Logo: 180px wide, professional
-   - Nav: Centered, clean menu items
-   - Right: Phone icon-box + Medium button with brand color
-   - Professional, trustworthy, safe - but STILL distinctive
+DESIGN VARIATIONS - s1.png STYLE WITH MINOR TWEAKS:
+ALL THREE VARIATIONS MUST MATCH s1.png VISUAL STYLE. Only vary these minor elements:
 
-2. Balanced:
-   - Background: Light gray (#f8f9fa) or white with subtle shadow
-   - Logo: 200px wide with prominent brand colors
-   - Nav: Right-aligned with good spacing
-   - Right: Large phone icon-box + Large colorful button
-   - Modern, engaging, strategic - the sweet spot
+1. Conservative (Exact s1.png Match):
+   - Background: #1a1d2e (exact s1.png color)
+   - Height: 75px
+   - Button border: #00bcd4 (cyan, matching s1.png)
+   - Logo: 160px wide
+   - Nav spacing: 32px
+   - CLOSEST to s1.png reference
 
-3. Bold:
-   - Background: Dark sophisticated (#2c3e50) with white/light text
-   - Logo: 220px wide, high contrast
-   - Nav: Right-aligned with hover effects
-   - Right: Extra prominent phone + Bold contrasting button
-   - Dramatic, eye-catching, memorable - push boundaries
+2. Balanced (s1.png Style, Slightly Adjusted):
+   - Background: #1a1a2e or #0f1219 (slightly different dark navy)
+   - Height: 75-78px
+   - Button border: Brand color or #00bcd4
+   - Logo: 160-180px wide
+   - Nav spacing: 32px
+   - SAME visual style as s1.png, minor color variation
+
+3. Bold (s1.png Style, Enhanced):
+   - Background: #0a0e1a (deepest navy) or #1e293b
+   - Height: 78-80px
+   - Button border: Brighter cyan (#00e5ff) or brand color
+   - Logo: 180-200px wide
+   - Button: Slightly larger padding (12px 32px)
+   - SAME visual style as s1.png, bolder version
 
 JSON FORMAT REQUIREMENTS:
 - Return ONLY valid JSON - no trailing commas, no comments, no markdown code blocks
@@ -309,7 +314,7 @@ JSON FORMAT REQUIREMENTS:
 
 Return JSON array with 3 design variations.`;
 
-  const userPrompt = `Generate 3 distinctive GLOBAL HEADER designs for:
+  const userPrompt = `🎯 CRITICAL REQUIREMENT: Generate 3 headers that EXACTLY MATCH the s1.png VISUAL STYLE shown in the first image.
 
 PROJECT DETAILS:
 - URL: ${project.url}
@@ -324,64 +329,97 @@ CONFIGURATION:
 SCRAPED CONTENT (brand info):
 ${JSON.stringify(project.scrapedContent).substring(0, 1000)}
 
-IMPORTANT: Generate ONLY the global header - NO body sections, NO hero, NO features.
-Focus on creating 3 professional header variations that differ in layout and style.
+🚨 MANDATORY STYLE REQUIREMENTS (from s1.png):
+- Dark navy background (#1a1d2e or similar) - NOT white, NOT light
+- Logo left, navigation right-aligned, outline button far right
+- White text throughout for contrast
+- Outline button with cyan/blue border (#00bcd4 or brand color)
+- Clean minimal design - only logo + nav + button
+- Height: 75-80px
+
+CUSTOMIZE THE CONTENT, NOT THE STYLE:
+- Write industry-specific menu items (not generic "Home, About, Services")
+- Use industry-appropriate CTA button text (not "Get Started")
+- Extract company name from scraped content or URL
+- ALL visual styling must match s1.png exactly
 
 For each variation, provide:
 {
   "name": "Conservative" | "Balanced" | "Bold",
-  "description": "Brief description of header design approach",
+  "description": "s1.png style header with [customization description]",
   "widgetStructure": {
     "globalHeader": {
-      "layout": "standard"|"classic"|"modern",
-      "height": number (60-100px typical),
-      "backgroundColor": string,
-      "sticky": boolean,
+      "layout": "modern",
+      "height": 75-80,
+      "backgroundColor": "#1a1d2e" or similar dark navy,
+      "sticky": true,
       "widgets": [
         {
           "type": "site-logo",
           "imageUrl": ${project.logoUrl ? `"${project.logoUrl}"` : "null"},
-          "alt": "${project.url} logo",
-          "width": 180,
+          "textLogo": "COMPANY NAME" (if no imageUrl),
+          "textLogoStyle": {
+            "color": "#ffffff",
+            "fontSize": "20px",
+            "fontWeight": "700",
+            "textTransform": "uppercase",
+            "letterSpacing": "1px"
+          },
+          "width": 160-180,
           "position": "left"
         },
         {
           "type": "nav-menu",
-          "items": [${JSON.stringify((project.globalHeaderConfig as any)?.menuItems || ["Home", "About", "Services", "Contact"])}],
+          "items": [Industry-specific menu items],
           "style": "horizontal",
-          "alignment": "center"|"left"|"right"
+          "alignment": "right",
+          "itemStyle": {
+            "color": "#ffffff",
+            "fontSize": "15px",
+            "fontWeight": "400",
+            "spacing": "32px"
+          }
         },
         {
           "type": "button",
-          "text": "Specific CTA based on industry (e.g., 'Get Free Quote', 'Book Now', 'Contact Us')",
-          "style": "primary",
-          "size": "md" or "lg",
-          "position": "right"
+          "text": "Industry-appropriate CTA (e.g., 'Get A Quote', 'Contact Us', 'Get In Touch')",
+          "style": "outline",
+          "size": "md",
+          "position": "right",
+          "customStyle": {
+            "border": "2px solid #00bcd4",
+            "color": "#ffffff",
+            "backgroundColor": "transparent",
+            "borderRadius": "24px",
+            "padding": "10px 28px",
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "hoverBackground": "#00bcd4",
+            "hoverColor": "#ffffff"
+          }
         }
-        // CRITICAL: For service businesses, include icon-box with phone BEFORE the button
-        // Example right section for vehicle transport: [icon-box (phone), button]
-        // Add other widgets based on globalHeaderConfig and site type
       ]
     }
   },
-  "rationale": "Why this header layout works for this industry",
-  "ctaStrategy": "What CTA is used in header and why",
+  "rationale": "s1.png professional style adapted for [industry]",
+  "ctaStrategy": "Industry-specific CTA using s1.png outline button style",
   "designDecisions": {
-    "layoutApproach": "Header layout pattern and widget arrangement",
-    "colorStrategy": "Header background, text colors, CTA colors",
-    "typographyScale": "Logo and nav menu font sizes",
-    "spacingSystem": "Internal header spacing (8px grid)",
-    "stickyBehavior": "Sticky header on scroll or static"
+    "layoutApproach": "s1.png modern layout - logo left, nav right, button far right",
+    "colorStrategy": "Dark navy background with white text and cyan accent (s1.png style)",
+    "typographyScale": "s1.png specifications - 20px logo, 15px nav, 15px button",
+    "spacingSystem": "32px nav spacing, professional padding (s1.png grid)",
+    "asymmetry": "Symmetric balanced layout matching s1.png"
   }
 }
 
-IMPORTANT:
+🚨 CRITICAL REQUIREMENTS:
 - Return ONLY a valid JSON array of exactly 3 header variations (no markdown, no code blocks)
-- NO body content - ONLY globalHeader structure
-- Choose header widgets intelligently based on site type and globalHeaderConfig
-- Each variation should have a different layout pattern
-- Ensure all JSON is properly formatted with NO trailing commas
-- Each header must be DISTINCTLY different in layout and style`;
+- ALL three variations MUST use dark navy backgrounds like s1.png
+- ALL three variations MUST use the logo left + nav right + outline button pattern
+- ALL three variations MUST use white text and outline buttons
+- Customize CONTENT (menu items, CTA text, company name) for the industry
+- Keep STYLE matching s1.png exactly
+- Ensure all JSON is properly formatted with NO trailing commas`;
 
   const client = getAnthropicClient();
 
@@ -392,7 +430,7 @@ IMPORTANT:
   const messageContent: Array<any> = [
     {
       type: "text",
-      text: "Here are 10 professional WordPress/Elementor header examples to reference. Study these carefully for professional design patterns, layouts, widget usage, spacing, and visual hierarchy:",
+      text: "🎯 THE FIRST IMAGE (s1.png) IS YOUR MANDATORY STYLE TEMPLATE. You MUST match this exact visual style for all 3 header variations.\n\nThe remaining images show other professional headers for reference ONLY - do NOT copy their styles. ALL your designs must match s1.png style (dark navy background, logo left, nav right, outline button).\n\nStudy s1.png carefully:",
     },
     ...headerScreenshots,
     {
