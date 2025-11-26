@@ -12,6 +12,7 @@ import CompetitorResearch from "@/components/projects/CompetitorResearch";
 import MediaUpload from "@/components/projects/MediaUpload";
 import ProgressModal from "@/components/ProgressModal";
 import GlobalHeaderSelector, { GlobalHeaderConfig } from "@/components/projects/GlobalHeaderSelector";
+import GlobalHeaderPreview from "@/components/projects/GlobalHeaderPreview";
 
 export default function ConfigurePage() {
   const { data: session, status } = useSession();
@@ -288,6 +289,13 @@ export default function ConfigurePage() {
             </div>
           </div>
         </div>
+
+        {/* Global Header Preview */}
+        <GlobalHeaderPreview
+          logoUrl={project.logoUrl}
+          siteName={project.url?.replace(/^https?:\/\/(www\.)?/, '').split('/')[0] || 'Your Company'}
+          menuItems={globalHeaderConfig.menuItems}
+        />
 
         {/* Success/Error Messages */}
         {successMessage && (
