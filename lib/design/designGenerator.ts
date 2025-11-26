@@ -2,6 +2,175 @@ import type { Project } from "@prisma/client";
 import * as fs from "fs";
 import * as path from "path";
 
+// 🔥 S1.PNG TEST MODE - Toggle this to true for exact s1.png header replication
+const S1_TEST_MODE = true;
+
+/**
+ * 🔥 TEST MODE: Generate 3 headers matching s1.png exactly
+ * Returns hardcoded design variations based on the s1.png reference header
+ */
+function generateS1StyleHeaders(project: any): DesignVariation[] {
+  // Extract company name from URL or use project data
+  const companyName = extractCompanyName(project.url, project.scrapedContent);
+
+  // S1.PNG exact specifications: Dark sophisticated tech header
+  const baseHeader = {
+    layout: "modern",
+    height: 75,
+    backgroundColor: "#1a1d2e", // Dark navy from s1.png
+    sticky: true,
+    widgets: [
+      {
+        type: "site-logo",
+        imageUrl: project.logoUrl || null,
+        alt: `${companyName} logo`,
+        width: 160,
+        position: "left",
+        // If no logo image, use text logo like s1.png
+        textLogo: !project.logoUrl ? companyName : null,
+        textLogoStyle: {
+          color: "#ffffff",
+          fontSize: "20px",
+          fontWeight: "700",
+          textTransform: "uppercase",
+          letterSpacing: "1px"
+        }
+      },
+      {
+        type: "nav-menu",
+        items: [
+          { text: "Services", link: "#services" },
+          { text: "Industries", link: "#industries" },
+          { text: "About", link: "#about" }
+        ],
+        style: "horizontal",
+        alignment: "right",
+        itemStyle: {
+          color: "#ffffff",
+          fontSize: "15px",
+          fontWeight: "400",
+          spacing: "32px"
+        }
+      },
+      {
+        type: "button",
+        text: "Get in touch",
+        link: "#contact",
+        size: "md",
+        style: "outline",
+        position: "right",
+        customStyle: {
+          border: "2px solid #00bcd4", // Cyan from s1.png
+          color: "#ffffff",
+          backgroundColor: "transparent",
+          borderRadius: "24px", // Pill shape
+          padding: "10px 28px",
+          fontSize: "15px",
+          fontWeight: "500",
+          hoverBackground: "#00bcd4",
+          hoverColor: "#ffffff"
+        }
+      }
+    ]
+  };
+
+  // Return 3 variations - all matching s1.png with minor tweaks
+  return [
+    {
+      name: "Conservative",
+      description: "Dark sophisticated header matching s1.png reference - clean tech aesthetic with minimal widgets",
+      widgetStructure: {
+        globalHeader: {
+          ...baseHeader,
+          backgroundColor: "#1a1d2e" // Exact s1.png dark navy
+        }
+      },
+      rationale: "Replicates the s1.png professional tech header exactly. Dark background creates high contrast and sophistication. Minimal widget set (logo, nav, CTA) focuses user attention. Outline button style is modern and professional.",
+      ctaStrategy: "Single prominent 'Get in touch' CTA button in outline style with cyan accent color, matching s1.png exactly",
+      designDecisions: {
+        layoutApproach: "Modern horizontal layout - logo left, navigation right-aligned, CTA button far right (s1.png pattern)",
+        colorStrategy: "Dark navy background (#1a1d2e) with white text and cyan accent (#00bcd4) - exact s1.png colors",
+        typographyScale: "Logo 20px, Nav items 15px, consistent sizing matching s1.png",
+        spacingSystem: "32px spacing between nav items, professional padding - s1.png specifications",
+        asymmetry: "Symmetric layout with balanced weight distribution"
+      }
+    },
+    {
+      name: "Balanced",
+      description: "Dark sophisticated header matching s1.png reference - balanced professional appearance",
+      widgetStructure: {
+        globalHeader: {
+          ...baseHeader,
+          backgroundColor: "#0f1219", // Slightly darker variation
+          height: 75
+        }
+      },
+      rationale: "Maintains s1.png professional aesthetic with slightly adjusted darkness for variation. Same minimal widget approach with high-contrast design. Perfect balance of professionalism and modernity.",
+      ctaStrategy: "Outline CTA button 'Get in touch' with cyan border - s1.png style maintained",
+      designDecisions: {
+        layoutApproach: "Modern layout matching s1.png - logo left, nav right, button far right",
+        colorStrategy: "Darker navy (#0f1219) with white text and cyan (#00bcd4) accent - s1.png inspired",
+        typographyScale: "Matching s1.png - Logo 20px, Nav 15px, Button 15px",
+        spacingSystem: "s1.png spacing grid - 32px nav spacing, proper padding",
+        asymmetry: "Symmetric professional layout"
+      }
+    },
+    {
+      name: "Bold",
+      description: "Dark sophisticated header matching s1.png reference - bold high-contrast version",
+      widgetStructure: {
+        globalHeader: {
+          ...baseHeader,
+          backgroundColor: "#0a0e1a", // Deepest dark variation
+          height: 80,
+          widgets: [
+            ...baseHeader.widgets.slice(0, 2), // Logo and nav
+            {
+              ...baseHeader.widgets[2], // Button
+              customStyle: {
+                ...baseHeader.widgets[2].customStyle,
+                border: "2px solid #00e5ff", // Brighter cyan
+                padding: "12px 32px" // Slightly larger
+              }
+            }
+          ]
+        }
+      },
+      rationale: "Bold interpretation of s1.png with deepest dark background and brighter cyan accent. Maintains exact layout and widget structure while pushing visual impact. Maximum sophistication.",
+      ctaStrategy: "Prominent outline button with brighter cyan (#00e5ff) for maximum visibility - s1.png enhanced",
+      designDecisions: {
+        layoutApproach: "Exact s1.png layout - modern horizontal with right-aligned navigation",
+        colorStrategy: "Deepest navy (#0a0e1a) with bright cyan accent (#00e5ff) - s1.png amplified",
+        typographyScale: "s1.png specifications - 20px logo, 15px nav, 15px button",
+        spacingSystem: "s1.png grid maintained - 32px spacing, professional padding",
+        asymmetry: "Symmetric balanced layout matching reference"
+      }
+    }
+  ];
+}
+
+/**
+ * Extract company name from URL or scraped content
+ */
+function extractCompanyName(url: string, scrapedContent: any): string {
+  // Try to get from scraped title
+  if (scrapedContent?.title) {
+    const title = scrapedContent.title.split('|')[0].split('-')[0].trim();
+    if (title.length > 0 && title.length < 50) {
+      return title;
+    }
+  }
+
+  // Extract from URL domain
+  try {
+    const domain = new URL(url).hostname.replace('www.', '');
+    const name = domain.split('.')[0];
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  } catch {
+    return "COMPANY";
+  }
+}
+
 export interface DesignVariation {
   name: "Conservative" | "Balanced" | "Bold";
   description: string;
@@ -24,6 +193,12 @@ export interface DesignVariation {
 export async function generateDesignVariations(
   project: any
 ): Promise<DesignVariation[]> {
+  // 🔥 TEST MODE: Return hardcoded s1.png-style headers
+  if (S1_TEST_MODE) {
+    console.log("🔥 S1 TEST MODE ACTIVE: Returning hardcoded s1.png-style headers");
+    return generateS1StyleHeaders(project);
+  }
+
   const systemPrompt = `You are an expert website designer creating PROFESSIONAL, PRODUCTION-GRADE GLOBAL HEADERS for Elementor websites.
 
 🖼️ PROFESSIONAL REFERENCES PROVIDED:

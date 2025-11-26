@@ -1,9 +1,9 @@
 "use client";
 
 export default function VersionIndicator() {
-  const version = "1.24.0";
+  const version = "1.25.0";
   const phase = "Deployed";
-  const buildDate = "2025-11-25";
+  const buildDate = "2025-11-26";
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
