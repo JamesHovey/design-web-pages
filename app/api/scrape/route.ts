@@ -103,8 +103,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Step 4: Create project in database
-    // NOTE: Media fetching now happens AFTER Claude designs the layout (in /api/designs/generate)
-    // This ensures we only fetch the media that's actually needed
+    // NOTE: Auto-generation has been disabled. User will configure settings on the configure page.
+    // Design generation only happens when user clicks "Generate Designs" button.
     console.log("Creating project in database...");
     const project = await prisma.project.create({
       data: {
@@ -148,102 +148,9 @@ export async function POST(request: NextRequest) {
           iconBoxPhone: "",
           cartIcon: classification.siteType === "ecommerce",
         },
-        status: "generating", // Set to generating immediately
+        status: "draft", // Set to draft - user will configure before generating designs
       },
     });
-
-    // Step 5: Auto-generate global header designs immediately
-    try {
-      console.log("[Auto-Generation] Starting automatic design generation...");
-
-      // Generate 3 design variations using Claude
-      const variations = await generateDesignVariations(project);
-      console.log(`[Auto-Generation] Generated ${variations.length} design variations`);
-
-      // Analyze media requirements from variations
-      const mediaRequirements = analyzeAllVariations(variations);
-      console.log(`[Auto-Generation] Media needed: ${mediaRequirements.images} images, ${mediaRequirements.videos} videos`);
-
-      // Fetch media if needed
-      let mediaAssets: any[] = [];
-      if (mediaRequirements.images > 0 || mediaRequirements.videos > 0) {
-        console.log(`[Auto-Generation] Fetching media for industry: ${project.industry}`);
-        const mediaResult = await autoPopulateMedia(project.industry || "general");
-
-        if (mediaResult.success) {
-          const neededImages = mediaResult.media
-            .filter((m: any) => m.type === "image")
-            .slice(0, mediaRequirements.images);
-          const neededVideos = mediaResult.media
-            .filter((m: any) => m.type === "video")
-            .slice(0, mediaRequirements.videos);
-
-          mediaAssets = [...neededImages, ...neededVideos];
-          console.log(`✓ Fetched ${neededImages.length} images and ${neededVideos.length} videos`);
-
-          // Update project with fetched media
-          await prisma.project.update({
-            where: { id: project.id },
-            data: { media: mediaAssets },
-          });
-        } else {
-          console.warn(`⚠ Media fetch failed: ${mediaResult.error}`);
-        }
-      }
-
-      // Create design records for each variation
-      const designs = await Promise.all(
-        variations.map(async (variation) => {
-          // Generate HTML preview for header
-          const htmlPreview = generateGlobalHeaderHTML(
-            variation.widgetStructure?.globalHeader,
-            project.colorScheme
-          );
-
-          // Calculate scores
-          const accessibilityScore = 85; // Default good score
-          const distinctivenessScore = 80; // Default good score
-
-          return prisma.design.create({
-            data: {
-              projectId: project.id,
-              name: variation.name,
-              description: variation.description,
-              widgetStructure: variation.widgetStructure,
-              htmlPreview,
-              cssCode: generateCSSCode(variation, project),
-              estimatedBuildTime: 30, // Rough estimate for header
-              accessibilityScore,
-              distinctivenessScore,
-              rationale: variation.rationale,
-              ctaStrategy: variation.ctaStrategy,
-              screenshots: {}, // Will be generated asynchronously
-              qualityIssues: [],
-              qualityStrengths: ["Professional global header design", "Industry-appropriate styling"],
-            },
-          });
-        })
-      );
-
-      // Update project status to completed
-      await prisma.project.update({
-        where: { id: project.id },
-        data: { status: "completed" },
-      });
-
-      console.log(`[Auto-Generation] ✓ Successfully generated ${designs.length} designs`);
-    } catch (designError) {
-      console.error("[Auto-Generation] Failed to generate designs:", designError);
-      // Update project status to failed
-      await prisma.project.update({
-        where: { id: project.id },
-        data: {
-          status: "failed",
-          errorMessage: designError instanceof Error ? designError.message : "Design generation failed",
-        },
-      });
-      // Don't throw - still return the project info
-    }
 
     return NextResponse.json({
       success: true,
