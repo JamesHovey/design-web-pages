@@ -955,6 +955,10 @@ export function generateGlobalHeaderHTML(headerConfig: any, colors?: any): strin
     w.type !== "site-logo" && w.type !== "nav-menu"
   );
 
+  // Get nav alignment for proper container styling
+  const navAlignment = navWidget?.alignment || "center";
+  const navJustify = navAlignment === "center" ? "center" : navAlignment === "right" ? "flex-end" : "flex-start";
+
   // Generate widget HTML
   const logoHTML = logoWidget ? generateSiteLogoWidget(logoWidget) : '';
   const navHTML = navWidget ? generateNavMenuWidget(navWidget) : '';
@@ -980,7 +984,7 @@ export function generateGlobalHeaderHTML(headerConfig: any, colors?: any): strin
     <div class="e-con-inner" style="width: 100%; min-height: ${height}px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; gap: 40px; max-width: 1200px; margin: 0 auto;">
       ${logoHTML}
 
-      <div class="elementor-element elementor-element-nav-${generateElementorId()} e-con-full e-flex e-con e-child" data-element_type="container" style="flex: 1; display: flex; align-items: center;">
+      <div class="elementor-element elementor-element-nav-${generateElementorId()} e-con-full e-flex e-con e-child" data-element_type="container" style="flex: 1; display: flex; align-items: center; justify-content: ${navJustify};">
         ${navHTML}
       </div>
 
